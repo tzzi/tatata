@@ -12,39 +12,39 @@
        <button type="submit">회원가입</button>
     </form>
 
-   <script>
-  	var check = document.getElementById("id").value;
-  	doucument.getElementById("btnId").onclick({
-  		var xhr = new XMLHttpRequest();
-  		xhr.open("get", "idCheck.do?id="+check, true);
-  		xhr.send();
-  		xhr.onreadystatechange = function(){
-  			if(this.readyState ==4){
-  				var obj = this.responseText;
-  				if(obj==1){
-  					doucument.getElementById("idcheck").innetHTML = "중복된 아이디가 있습니다.";
-  				}else{
-  					doucument.getElementById("idcheck").innetHTML = "멋진 아이디입니다.";
-  				}
-  			}
-  		}
-  	})
-  
-  	var check = document.getElementById("nick").value;
-  	doucument.getElementById("btnnick").onclick({
-  		var xhr = new XMLHttpRequest();
-  		xhr.open("get", "nickCheck.do?id="+check, true);
-  		xhr.send();
-  		xhr.onreadystatechange = function(){
-  			if(this.readyState ==4){
-  				var obj = this.responseText;
-  				if(obj==1){
-  					doucument.getElementById("nickcheck").innetHTML = "중복된 닉네임이 있습니다.";
-  				}else{
-  					doucument.getElementById("nickcheck").innetHTML = "멋진 닉네임 입니다.";
-  				}
-  			}
-  		}	
-  	})
-  	
+      <script>
+     var checkid = document.getElementById("id").value;
+     document.getElementById("btnId").onclick = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", "/idcheck.do?id="+checkid, true);
+        xhr.send();
+        xhr.onreadystatechange = function(){
+           if(this.readyState == 4){
+              var obj = this.responseText;
+              if(obj==1){
+                 window.alert("중복된 아이디가 있습니다.");
+              }else{
+                 window.alert("멋진아이디입니다.")
+              }
+           }
+        }
+     }
+     var checknick = document.getElementById("nick").value;
+     document.getElementById("btnnick").onclick = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", "/nickcheck.do?id="+checknick, true);
+        xhr.send();
+        xhr.onreadystatechange = function(){
+           if(this.readyState ==4){
+              var obj = this.responseText;
+              if(obj==1){
+                 window.alert("중복된 닉네임이 있습니다.");
+              }else{
+                 window.alert("멋진 닉네임입니다.");
+              }
+           }
+        }
+     }
+     
+     
    </script>
