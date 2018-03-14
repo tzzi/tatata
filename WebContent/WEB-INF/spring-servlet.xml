@@ -43,7 +43,7 @@
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="c3p0">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.104.12:1521:xe"></property>
-		<property name="user" value="root"></property>
+		<property name="user" value="tata"></property>
 		<property name="password" value="oracle"></property>	
 	</bean>	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">

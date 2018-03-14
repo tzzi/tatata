@@ -4,18 +4,18 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="t_main" template="/WEB-INF/views/tiles-template.jsp">
-		<put-attribute name="title" value="Tiles-engine"></put-attribute>
+	<definition name="index_1" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
 		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
 	</definition>
-	<definition name="join" template="/WEB-INF/views/tiles-template.jsp">
-		<put-attribute name="title" value="Tiles-engine"></put-attribute>
+		<definition name="join_1" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
 		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/account/join.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/joinindex.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
 	</definition>
 </tiles-definitions>
