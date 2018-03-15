@@ -19,7 +19,6 @@ public class AccountDAO {
 		SqlSession session = factory.openSession();
 		int rst = 0;
 		try {
-
 			rst = session.insert("account.join", map);
 
 		} finally {
@@ -29,14 +28,15 @@ public class AccountDAO {
 		return rst;
 	}
 
-	public int idCheck(Map map) {
+	public int idCheck(Map id) {
 
 		SqlSession session = factory.openSession();
 
 		int rst = 1;
 		List<Map> list;
 		try {
-			list = session.selectList("account.idCheck", map);
+			System.out.println("DAO : " + id);
+			list = session.selectList("account.idcheck", id);
 		} finally {
 			session.close();
 		}
@@ -56,12 +56,13 @@ public class AccountDAO {
 		int rst = 1;
 		List<Map> list;
 		try {
-			list = session.selectList("account.nickCheck", map);
+			list = session.selectList("account.nickcheck", map);
+			System.out.println("DAO : " + map);
 		} finally {
 			session.close();
 		}
 
-		if (!list.isEmpty()) {
+		if (list.isEmpty()) {
 			rst = 0;
 		}
 
