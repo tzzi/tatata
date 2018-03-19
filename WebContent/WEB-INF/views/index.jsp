@@ -6,6 +6,7 @@
 	<title>
 		<tiles:getAsString name="title"></tiles:getAsString>
 	</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 	<div align="center">
