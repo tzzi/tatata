@@ -26,7 +26,7 @@
 				<span id="nicktype"></span>
 			</p>
 			<p>
-				<button type="submit" style="padding: 8px; font-size: 12pt; width: 250px">가입하기</button>
+				<button type="submit" style="padding: 8px; font-size: 12pt; width: 250px" id="join">가입하기</button>
 			</p>
 			<p>
 				<a href="../index.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 250px">돌아가기</button></a>
@@ -36,15 +36,35 @@
 		var idsc="";
 		var passsc="";
 		var nicksc="";
+		var idcheck="";
+		var nickcheck="";
+		
+		var joinfail = function() {
+			$("#join").prop("disabled",true);
+		}
+		
+		joinfail();
+		
+		var joinok = function() {
+			if(idsc=="true" && passsc=="true" && nicksc=="true" && idcheck=="true" && nickcheck=="true") {
+				 $("#join").prop("disabled",false);
+			} else {
+				 $("#join").prop("disabled",true);
+			}
+		}
 		
 		var regexp1 = new RegExp("[A-Za-z0-9]+");
 		$("#id").keyup(function() {
 			var t = regexp1.test($(this).val());
 			$("#idtype").html("");
 			if(t==false){
-				$("#idtype").html("<small>id는 영문과 숫자 조합만 가능합니다. 다시입력하세요.</small>");
+				$("#nicktype").html("");
+				$("#idtype").html("<small>id는 한글 및 특수문자 입력이 불가능합니다. 다시입력하세요.</small>");
+				idcheck="false";
 			}else{
 				$("#idtype").html("");
+				idcheck="true";
+				joinok();
 			}
 		});
 		
@@ -53,9 +73,13 @@
 			var t = regexp2.test($(this).val());
 			$("#nicktype").html("");
 			if(t==false){
+				$("#nicktype").html("");
 				$("#nicktype").html("<small>닉네임은 한글만 가능합니다. 다시입력하세요.</small>");
+				nickcheck="false";
 			}else{
 				$("#nicktype").html("");
+				nickcheck="true";
+				joinok();
 			}
 		});
 		
@@ -67,11 +91,16 @@
 			xhr.onreadystatechange = function() {
 				if(this.readyState==4) {
 					if(this.responseText.trim()=="true"){
+						$("#idcheck").html("");
 						$("#idcheck").html("<small>이미 사용중인 아이디입니다.</small>");
-						idsc="true";
-					} else {
-						$("#idcheck").html("<small>없는 아이디입니다. 사용하세요.</small>");
 						idsc="false";
+					} else {
+						$("#idcheck").html("");
+						if(idcheck=="true"){
+							$("#idcheck").html("<small>없는 아이디입니다. 사용하세요.</small>");
+							idsc="true";
+						}
+						joinok();
 					}
 				}
 			}
@@ -79,10 +108,25 @@
 			xhr.send();
 		});
 		
+		$("#pass2").on("change", function() {
+			var pass2 = this.value;
+			var xhr = new XMLHttpRequest();
+			var pass1 = $("#pass1").val();
+			if(pass1 == pass2){
+				$("#passcheck").html("");
+				$("#passcheck").html("<small>비밀번호가 일치합니다.</small>");
+				passsc="true";
+				joinok();
+			} else {
+				$("#passcheck").html("");
+				$("#passcheck").html("<small>비밀번호가 일치하지 않습니다. 다시입력하세요.</small>");
+				passsc="false";
+			}
+		});
+		
 		 $("#nick").on("change", function() {
 			var val = this.value;
 			var xhr = new XMLHttpRequest();
-			$("#nickcheck").html("");
 			xhr.onreadystatechange = function() {
 				if(this.readyState==4) {
 					if(this.responseText.trim()=="true"){
@@ -91,30 +135,17 @@
 						nicksc="false";
 					} else {
 						$("#nickcheck").html("");
-						$("#nickcheck").html("<small>없는 닉네임입니다. 사용하세요.</small>");
+						if(nickcheck=="true"){
+							$("#nickcheck").html("<small>없는 닉네임입니다. 사용하세요.</small>");
+						}
 						nicksc="true";
+						joinok();
 					}
 				}
 			}
 			xhr.open("get","./nickcheck.do?nick=" + val, true);
 			xhr.send();
 		});
-			
-		 $("#pass2").on("change", function() {
-			var pass2 = this.value;
-			var xhr = new XMLHttpRequest();
-			var pass1 = $("#pass1").val();
-			if(pass1 == pass2){
-				$("#passcheck").html("");
-				$("#passcheck").html("<small>비밀번호가 일치합니다.</small>");
-				passsc="true";
-			} else {
-				$("#passcheck").html("");
-				$("#passcheck").html("<small>비밀번호가 일치하지 않습니다. 다시입력하세요.</small>");
-				passsc="false";
-			}
-		});
-		 
 		</script>
 		
 	</div>
