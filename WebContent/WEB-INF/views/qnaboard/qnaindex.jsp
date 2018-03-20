@@ -42,8 +42,5 @@ tr {
 		</table>
 		<hr />
 	</div>
-	<form action="/qnaboard/writeform.do">
-		<button type="submit">글쓰기</button>
-	</form>
-
+<a href="/qnaboard/writeform.do"><button type="submit">글쓰기</button></a>
 </body>
