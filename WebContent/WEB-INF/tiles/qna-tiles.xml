@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+			<definition name="qnaboard" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qnaboard/qnaindex.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		<definition name="writeform" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qnaboard/writeform.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		<definition name="qnadetail" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qnaboard/detail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		</tiles-definitions>

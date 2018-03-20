@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qnaboard">
+	
+	<insert id="qnawrite">			
+	insert into qnaboard(q_no,writer,title,content,LEFT_DATE) values(qnaboard_seq.nextval,#{writer},#{title},#{content},sysdate)
+	</insert>
+	
+	<select id="listallqna" resultType="java.util.HashMap">
+		select * from qnaboard order by q_no desc
+	</select>
+
+	<select id="detailqna" resultType="java.util.LinkedHashMap">
+		select * from qnaboard where q_no = #{q_no}
+	</select>
+	
+	<update id="addcount">
+	update qnaboard set count = count+1 where q_no = #{q_no} 
+	</update>
+</mapper>
