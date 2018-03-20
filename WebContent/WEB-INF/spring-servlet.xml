@@ -30,8 +30,8 @@
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/tiles/*-tiles.xml"/>
 	</bean>
+	<!-- mongo db -->
 	<mongo:mongo-client host="13.125.247.3" port="27017"></mongo:mongo-client>
-
 	<bean id="mongoTemblate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo"></constructor-arg>
 		<constructor-arg name="databaseName" value="root"></constructor-arg>
