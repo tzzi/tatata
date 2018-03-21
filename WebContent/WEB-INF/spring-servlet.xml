@@ -14,22 +14,28 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.10.2.xsd">
 		
-	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="controllers"></context:component-scan>
-	<context:component-scan base-package="beans"></context:component-scan>
-	<context:component-scan base-package="views"></context:component-scan>
+	<mvc:annotation-driven/>
+	<!-- scan setting -->
+	<context:component-scan base-package="controllers"/>
+	<context:component-scan base-package="beans"/>
+	<context:component-scan base-package="service" />
 
+	<!-- view resolve -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 		<property name="order" value="6"/>
 	</bean>
+	
+	<!-- tiles resolve -->
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="4"/>
 	</bean>
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/tiles/*-tiles.xml"/>
 	</bean>
+	
+	<!-- mongo -->
 	<mongo:mongo-client host="13.125.247.3" port="27017"></mongo:mongo-client>
 
 	<bean id="mongoTemblate" class="org.springframework.data.mongodb.core.MongoTemplate">
@@ -37,11 +43,13 @@
 		<constructor-arg name="databaseName" value="root"></constructor-arg>
 	</bean>
 	
+	<!-- multipart -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="uploadTempDir" value="/temp"/>
 	</bean>
 	
+	<!-- SQL -->
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="c3p0">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@project-db-tata.clhfi69ookft.ap-northeast-2.rds.amazonaws.com:1521:orcl"/>
@@ -54,8 +62,25 @@
 		<property name="mapperLocations" value="/WEB-INF/mappers/*-mapper.xml"/>
 	</bean>
 	
+	<!-- Date -->
 	<bean class="java.util.Date">
 	</bean>
 	
+	<!-- Gson -->
 	<bean class="com.google.gson.Gson"/>
+	
+	<!-- mailSender -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="username" value="chokosongi99@gmail.com"/>
+		<property name="password" value="chzh1234"/>
+		<property name="port" value="587"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
