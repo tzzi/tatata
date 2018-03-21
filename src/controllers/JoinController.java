@@ -49,7 +49,6 @@ public class JoinController {
 		System.out.println(map);
 		
 		req.setAttribute("id", id);
-		req.setAttribute("admin", 2);
 		req.setAttribute("nick", nick);
 		
 		int rst = dao.join(map);

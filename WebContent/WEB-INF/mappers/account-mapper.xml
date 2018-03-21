@@ -14,4 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="nickcheck"  resultType="string">
 		select nick from account where nick = #{nick}
 	</select>
+	
+	<select id="login" resultType="java.util.LinkedHashMap">
+		select * from account where id = #{id} and pass = #{pass}
+	</select>
+	
 </mapper>

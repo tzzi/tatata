@@ -4,21 +4,19 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-		<definition name="joinindex" template="/WEB-INF/views/index.jsp">
-			<put-attribute name="title" value="TaTaTa - Join"/>
+		<definition name="loginindex" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Login"/>
 			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-			<put-attribute name="body" value="/WEB-INF/views/join/joinindex.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/login/loginindex.jsp"/>
 			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
-		</definition>
+		</definition>		
 		
-		<definition name="join" template="/WEB-INF/views/index.jsp">
-			<put-attribute name="title" value="TaTaTa - Join"/>
+		<definition name="idfind" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Login"/>
 			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-			<put-attribute name="body" value="/WEB-INF/views/join/join.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/login/idfind.jsp"/>
 			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
-		</definition>
-		
-		
+		</definition>	
 </tiles-definitions>
