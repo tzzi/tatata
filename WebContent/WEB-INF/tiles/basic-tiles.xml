@@ -5,24 +5,10 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 		<definition name="index_1" template="/WEB-INF/views/index.jsp">
-		<put-attribute name="title" value="TaTaTa"></put-attribute>
-		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
-		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
-		</definition>
-		<definition name="join_1" template="/WEB-INF/views/index.jsp">
-		<put-attribute name="title" value="TaTaTa"></put-attribute>
-		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
-		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/account/joinindex.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
-		</definition>
-		<definition name="join" template="/WEB-INF/views/index.jsp">
-		<put-attribute name="title" value="TaTaTa"></put-attribute>
-		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
-		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
-		<put-attribute name="body" value="/WEB-INF/views/account/join.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+			<put-attribute name="title" value="TaTaTa"/>
+			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
 		</definition>
 </tiles-definitions>
