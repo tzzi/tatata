@@ -14,6 +14,7 @@ public class qnaDAO {
 	@Autowired
 	SqlSessionFactory factory;
 	
+	//글 목록보기
 	public List<Map> readAllqna(){
 		SqlSession session = factory.openSession();
 		try {
@@ -24,6 +25,7 @@ public class qnaDAO {
 			
 		}
 	}
+	//글쓰기
 	public int qnaWrite(Map map) {
 		SqlSession session = factory.openSession();
 		int rst = 0;
@@ -35,32 +37,35 @@ public class qnaDAO {
 		}
 		return rst;
 	}
-	public List<Map> detailqna(int q_no){
+	//조회수,글상세보기
+	public Map detailqna(int q_no){
 		SqlSession session = factory.openSession();
 		try {
 			System.out.println(session.selectList("qnaboard.detailqna", q_no));
 			session.update("qnaboard.addcount", q_no);
-			return session.selectList("qnaboard.detailqna", q_no);			
+			return session.selectOne("qnaboard.detailqna", q_no);			
 		}finally {
 			session.close();
 		}
 	}
-	public List<Map> detailwrite(){
+	//리플 보기
+	public List<Map> detail(int q_no){
 		SqlSession session = factory.openSession();
 		try {
-			System.out.println(session.selectList("qnaboard.listqnareply"));
-			session.update("qnaboard.listqnareply");
-			return session.selectList("qnaboard.listqnareply");			
+			System.out.println(session.selectList("qnaboard.listqnareply",q_no));
+			session.update("qnaboard.listqnareply",q_no);
+			return session.selectList("qnaboard.listqnareply",q_no);			
 		}finally {
 			session.close();
 		}
 	}
-	public int qnareplywrite(String content) {
+	//리플 달기
+	public int qnareplywrite(Map map) {
 		SqlSession session = factory.openSession();
 		int rst = 0;
-		System.out.println("content:"+content);
+		System.out.println(map);
 		try {
-			rst = session.insert("qnaboard.insertreply",content);
+			rst = session.insert("qnaboard.insertreply",map);
 			
 		}finally {
 			session.close();

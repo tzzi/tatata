@@ -22,5 +22,5 @@ public class IndexController{
 	public String indexController() {
 		return "index_1";
 	}
-
+String[] a = "ㅇ,ㄹ,ㅎ,ㅗ".split(",");
 }

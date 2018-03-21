@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
+import com.google.gson.Gson;
+
 import beans.qnaDAO;
 
 @Controller
@@ -19,6 +21,8 @@ import beans.qnaDAO;
 public class qnaboardController {
 	@Autowired
 	qnaDAO qdao;
+	@Autowired
+	Gson gson;
 	
 	@RequestMapping("/qnaindex.do")
 	public String indexHandle(ModelMap modelMap)	{
@@ -47,14 +51,15 @@ public class qnaboardController {
 	@RequestMapping("/detail.do")
 	public String detailHandle(@RequestParam int q_no, ModelMap modelMap) {
 		modelMap.put("qnadetail", qdao.detailqna(q_no));
-		modelMap.put("qnadetaillist", qdao.detailwrite());
+		modelMap.put("qnadetaillist", qdao.detail(q_no));
 		return "qnadetail";
 	}
 	
-	@RequestMapping("/detailwrite.do")
-	public String replyHandle(@RequestParam String content, WebRequest req,ModelMap modelMap) {
-		int rst = qdao.qnareplywrite(content);
-		modelMap.put("qnadetaillist", qdao.detailwrite());
+	/*@RequestMapping("/detailwrite.do")
+	public String replyHandle(@RequestParam Map map, WebRequest req,ModelMap modelMap,@RequestParam int q_no) {
+		int rst = qdao.qnareplywrite(map);
+		modelMap.put("qnadetaillist", qdao.detail(q_no));
+		modelMap.put("qnadetail", qdao.detailqna(q_no));
 		if(rst==1) {
 			req.setAttribute("rst", "1", 0);
 		}else {
@@ -62,7 +67,23 @@ public class qnaboardController {
 		}
 			
 		return "qnadetail";
-	}	
-	
+	}*/	
+	@RequestMapping(path="/detailwrite.do", produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String detailwriteController(@RequestParam Map map, WebRequest req,ModelMap modelMap,@RequestParam int q_no) {
+		int rst = qdao.qnareplywrite(map);
+		modelMap.put("qnadetaillist", qdao.detail(q_no));
+		modelMap.put("qnadetail", qdao.detailqna(q_no));
+		String b = "1";
+		if(rst==1) {
+			req.setAttribute("rst", "1", 0);
+			b = "1";
+		}else {
+			req.setAttribute("rst", "0", 0);
+			b ="2";
+		}
+			
+		return "[{\"result\":" +b+"}]";
+	}
 	
 }

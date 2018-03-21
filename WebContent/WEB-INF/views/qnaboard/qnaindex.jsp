@@ -30,6 +30,7 @@ tr {
 			<tbody>
 				<c:forEach items="${qnalist}" var="a">
 					<tr>
+					
 						<td width=5%>${a.Q_NO}</td>
 					<td width=30%><a href="/qnaboard/detail.do?q_no=${a.Q_NO}">${a.TITLE}</a></td>
 						<td width=15%>${a.WRITER}</td>
@@ -37,7 +38,6 @@ tr {
 						<td width=10%>${a.COUNT}</td>
 					</tr>
 				</c:forEach>
-
 			</tbody>
 		</table>
 		<hr />

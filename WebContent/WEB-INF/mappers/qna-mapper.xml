@@ -4,28 +4,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="qnaboard">
 	
+	<!-- qna게시글쓰기 -->
 	<insert id="qnawrite">			
 	insert into qnaboard(q_no,writer,title,content,LEFT_DATE) values(qnaboard_seq.nextval,#{writer},#{title},#{content},sysdate)
 	</insert>
 	
+	<!-- qna리스트 보기 -->
 	<select id="listallqna" resultType="java.util.HashMap">
 		select * from qnaboard order by q_no desc
 	</select>
 
+	<!-- qna글 상세 보기 -->
 	<select id="detailqna" resultType="java.util.LinkedHashMap">
 		select * from qnaboard where q_no = #{q_no}
 	</select>
 	
+	<!-- 조회수 올리기 -->
 	<update id="addcount">
 	update qnaboard set count = count+1 where q_no = #{q_no} 
 	</update>
 	
+	<!-- 리플보기 -->
 	<select id="listqnareply" resultType="java.util.LinkedHashMap">
-	select * from qnareply order by a_no desc
+	select * from qnareply where q_no=#{q_no} order by a_no desc
 	</select>
 	
+	<!-- 리플쓰기 -->
 	<insert id="insertreply">
-	insert into QNAREPLY(a_no,Q_no,left_Date,content) values(qnareply_seq.nextval,qnareply_seq.nextval,sysdate,#{content})
+	insert into QNAREPLY(a_no,Q_no,left_Date,content) values(qnareply_seq.nextval,#{q_no},sysdate,#{content})
 	
 	</insert>
 </mapper>
