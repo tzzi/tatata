@@ -5,7 +5,7 @@
 		<!-- Section 영역 -->
 		<h3>M Y &nbsp; P A G E</h3>
 		<br/>
-		<form action="/mypage/modifyinfo.do" autocomplete="off">
+		<form action="/mypage/modify.do" autocomplete="off">
 		<table>
 			<tr>
 				<th height="50px">I D</th>
