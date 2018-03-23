@@ -10,5 +10,10 @@ public class IndexController{
 	public String indexController() {
 		return "index_1";
 	}
+	
+	@RequestMapping("/startview.do")
+	public String startviewController() {
+		return "tatata";
+	}
 
 }

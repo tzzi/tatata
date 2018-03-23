@@ -5,7 +5,7 @@
 		<!-- Section 영역 -->
 		<h3>M Y &nbsp; P A G E</h3>
 		<br/>
-		<form action="/mypage/modifyinfo.do" autocomplete="off">
+		<form action="/mypage/modify.do" method="post" autocomplete="off">
 		<table>
 			<tr>
 				<th height="50px">I D</th>
@@ -14,7 +14,7 @@
 			
 			<tr>
 				<th height="50px">N I C K</th>
-				<td align="center">${requestScope.nick }</td>
+				<td align="center">${cookie.nick.value }</td>
 			</tr>
 			
 			<tr>

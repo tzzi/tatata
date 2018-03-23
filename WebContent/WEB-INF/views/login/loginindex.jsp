@@ -15,9 +15,6 @@
 			<p>
 				<button type="submit" style="padding: 8px; font-size: 12pt; width: 250px">로그인</button>
 			</p>
-			<p>
-				<input type="checkbox"/><span style="font-size:10pt">로그인 상태유지</span>
-			</p>
 		</form>
 		<small>
 			<a href="/join/joinindex.do" style="font-size: 8pt;">회원가입</a> | 

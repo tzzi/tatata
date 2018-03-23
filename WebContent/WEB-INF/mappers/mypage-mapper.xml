@@ -4,12 +4,15 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
-	<insert id="join">
-		insert into account(id,pass,nick,admin) values(#{id},#{pass},#{nick},2)
+	<insert id="addinfo">
+		insert into addinfo(id, email, gender, birth_y, birth_m, birth_d, area,
+		fear, matchtype, intro) 
+		values(#{id},#{email},#{gender},#{birth_y},#{birth_m},#{birth_d},#{area},
+		#{fear},#{matchtype},#{intro})
 	</insert>
 	
-	<select id="idcheck"  resultType="string">
-		select id from account where id = #{id}
+	<select id="mypageinfo" resultType="hashmap">
+		select * from addinfo where id = #{id}
 	</select>
 	
 </mapper>

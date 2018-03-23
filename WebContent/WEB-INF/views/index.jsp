@@ -9,8 +9,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
-	<div align="center">
-		<div style="width: 960px">
+	<div>
+		<div style="width: 100%">
 			<div style="min-height: 50px;">
 				<tiles:insertAttribute name="header"></tiles:insertAttribute>
 			</div>
@@ -26,4 +26,4 @@
 		</div>
 	</div>
 	</body>
-</html>
+</html> 

@@ -8,20 +8,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LoginDAO {
+public class MyPageDAO {
+
 	@Autowired
 	SqlSessionFactory factory;
 	
-	public Map login(Map param) {
+	public int addinfo(Map param) {
 		SqlSession session = factory.openSession();
-		Map rst = null;
+		int rst = 0;
 		try {
-			rst = session.selectOne("account.login", param);
+			rst = session.insert("mypage.addinfo", param);
 		} finally {
 			session.close();
 		}
 		return rst;
 	}
 	
-	
+	public Map addinfoload(Map param) {
+		SqlSession session = factory.openSession();
+		Map rst = null;
+		try {
+			rst = session.selectOne("mypage.mypageinfo", param);
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
 }
