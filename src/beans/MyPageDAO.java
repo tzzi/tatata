@@ -23,4 +23,15 @@ public class MyPageDAO {
 		}
 		return rst;
 	}
+	
+	public Map addinfoload(Map param) {
+		SqlSession session = factory.openSession();
+		Map rst = null;
+		try {
+			rst = session.selectOne("mypage.mypageinfo", param);
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
 }

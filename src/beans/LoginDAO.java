@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,15 +12,15 @@ public class LoginDAO {
 	@Autowired
 	SqlSessionFactory factory;
 	
-	public List<Map> login(Map param) {
+	public Map login(Map param) {
 		SqlSession session = factory.openSession();
-		List<Map> li = null;
+		Map rst = null;
 		try {
-			li = session.selectList("account.login", param);
+			rst = session.selectOne("account.login", param);
 		} finally {
 			session.close();
 		}
-		return li;
+		return rst;
 	}
 	
 	

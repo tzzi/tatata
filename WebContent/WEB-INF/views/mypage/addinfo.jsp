@@ -15,9 +15,9 @@
 				<td></td>
 				<td align="center">
 					<input type="text" name="email" value="${email }" placeholder="이메일"
-					style="padding: 8px; font-size: 12pt; width: 220px;"/>
+					style="padding: 8px; font-size: 12pt; width: 220px;"  ${ empty email? '':'disabled' }/>
 					<button type="submit" formaction="/mypage/sendKey.do" formmethod="post" 
-					id="email" style="padding: 7px; font-size: 12pt; width: 90px">인증</button>
+					id="email" style="padding: 7px; font-size: 12pt; width: 90px"  ${ empty email? '':'disabled' }>인증</button>
 				 </td>
 			</tr>
 			
@@ -26,9 +26,9 @@
 				<td></td>
 				<td align="center">
 					<input type="text" name="key" placeholder="인증키"
-					style="padding: 8px; font-size: 12pt; width: 220px;" id="inkey"/>
+					style="padding: 8px; font-size: 12pt; width: 220px;" id="inkey"  ${ empty email? '':'disabled' }/>
 					<button type="button" 
-					id="key" style="padding: 7px; font-size: 12pt; width: 90px">확인</button>
+					id="key" style="padding: 7px; font-size: 12pt; width: 90px"  ${ empty email? '':'disabled' } >확인</button>
 					<br/>
 					<br/>
 			</tr>
@@ -43,7 +43,7 @@
 			<tr>
 				<th height="50px">닉네임</th>
 				<td></td>
-				<td align="center"><input type="text" name="nick" value="${nick }" disabled
+				<td align="center"><input type="text" name="nick" value="${cookie.nick.value }" disabled
 				style="padding: 8px; font-size: 12pt; width: 220px;"/>
 			</tr>
 			
@@ -51,9 +51,9 @@
 				<th height="50px">성별</th>
 				<td></td>
 				<td align="center">
-					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" class="authsuccess" disabled />
+					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" class="authsuccess" ${ gender eq 1 ? '':'disabled' } />
 					<label for="man">남성</label>
-					<input type="radio"  ${ gender eq 2 ? 'checked':'' }   name="gender" id="woman" value="2" class="authsuccess" disabled/>
+					<input type="radio"  ${ gender eq 2 ? 'checked':'' }   name="gender" id="woman" value="2" class="authsuccess" ${ gender eq 2 ? '':'disabled' }/>
 					<label for="woman">여성</label>
 				</td>
 			</tr>
@@ -77,6 +77,13 @@
 						</c:forEach>
 					</select> --%>
 
+					<%-- <c:choose>
+						<c:when test="${param.p eq pnum }"><b>${pnum }</b></c:when>
+						<c:otherwise><a href="eta.do?p=${pnum }">${pnum }</a></c:otherwise>
+					</c:choose> --%>
+
+				<c:choose>
+					<c:when test="${empty email }">
 					<fmt:formatDate value="${now}" pattern="yyyy년 MM월dd일 a hh시mm분 ss초"/> 
 					<fmt:formatDate value="<%=new java.util.Date()%>" pattern="yyyy" var="thisYear"/>
 					<fmt:formatDate value="<%=new java.util.Date()%>" pattern="MM" var="thisMonth"/>
@@ -97,6 +104,24 @@
 					       <option value="${loop.index}" <c:if test="${loop.index==thisDate}">SELECTED</c:if>>${loop.index}일
 					      </c:forEach>
 					    </select> 
+					</c:when>
+					
+					<c:otherwise>
+						<select name="birth_y" style="padding: 8px; font-size : 12pt; width:100px ">
+							<option>${birth_y }</option>
+						</select>
+						
+						<select name="birth_m" style="padding: 8px; font-size : 12pt; width:100px ">
+							<option>${birth_m }</option>
+						</select>
+						
+						<select name="birth_d" style="padding: 8px; font-size : 12pt; width:100px ">
+							<option>${birth_d }</option>
+						</select>
+						
+					</c:otherwise>
+				</c:choose>	    
+				
 				</td>
 			</tr>
 
@@ -104,6 +129,8 @@
 				<th height="50px">사는 지역</th>
 				<td></td>
 				<td align="center">
+				<c:choose>
+					<c:when test="${empty email }">
 						<select name="area" style="padding: 8px; font-size : 12pt; width:120px " class="authsuccess" disabled>
 							<option>선택</option>		<option>서울</option>		<option>경기</option>
 							<option>인천</option>		<option>부산</option>		<option>대구</option>
@@ -113,6 +140,14 @@
 							<option>경상남도</option>	<option>경상북도</option>	<option>제주도</option>
 							<option>해외</option>		<option>기타</option>
 						</select>
+						
+					</c:when>
+					<c:otherwise>
+						<select name="area" style="padding: 8px; font-size : 12pt; width:120px " class="authsuccess">
+							<option>${area }</option>
+						</select>
+					</c:otherwise>
+				</c:choose>
 				</td>
 			</tr>
 			
@@ -120,12 +155,16 @@
 				<th height="50px">담력</th>
 				<td></td>
 				<td align="center">
-					<input type="radio" name="fear" id="f_high" value="1" class="authsuccess" disabled/>
+				
+					<input type="radio" ${ fear eq 1 ? 'checked':'' } name="fear" id="f_high" value="1" class="authsuccess" ${ fear eq 1 ? '':'disabled' }/>
 					<label for="f_high">고수</label>
-					<input type="radio" name="fear" id="f_middle" value="2"  class="authsuccess" disabled/>
+					<input type="radio" ${ fear eq 2 ? 'checked':'' } name="fear" id="f_middle" value="2"  class="authsuccess" ${ fear eq 2 ? '':'disabled' }/>
 					<label for="f_middle">중수</label>
-					<input type="radio" name="fear" id="f_low" value="3"  class="authsuccess" disabled/>
+					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" ${ fear eq 3 ? '':'disabled' }/>
 					<label for="f_low">하수</label>
+
+					
+					
 				</td>
 			</tr>
 			
@@ -133,11 +172,11 @@
 				<th height="50px">매칭 유형</th>
 				<td></td>
 				<td align="center">
-					<input type="radio" name="matchtype" id="m_same" value="1" class="authsuccess" disabled/>
+					<input type="radio" ${ matchtype eq 1 ? 'checked':'' } name="matchtype" id="m_same" value="1" class="authsuccess" ${ matchtype eq 1 ? '':'disabled' }/>
 					<label for="m_same">동성</label>
-					<input type="radio" name="matchtype" id="m_diff" value="2" class="authsuccess" disabled/>
+					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess" ${ matchtype eq 2 ? '':'disabled' }/>
 					<label for="m_diff">이성</label>
-					<input type="radio" name="matchtype" id="m_nocare" value="3" class="authsuccess" disabled/>
+					<input type="radio" ${ matchtype eq 3 ? 'checked':'' } name="matchtype" id="m_nocare" value="3" class="authsuccess" ${ matchtype eq 3 ? '':'disabled' }/>
 					<label for="m_nocare">상관없음</label>
 				</td>
 			</tr>
@@ -146,8 +185,18 @@
 				<th height="50px">자기 소개</th>
 				<td></td>
 				<td align="center">
-					<textarea rows="10" cols="100" name="intro" onclick="this.select()" onfocus="this.select()"
-					style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>자기소개를 마음껏 입력하세요.</textarea>
+				<c:choose>
+					<c:when test="${empty email }">
+						<textarea rows="10" cols="100" name="intro" onclick="this.select()" onfocus="this.select()"
+						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>
+						자기소개를 마음껏 입력하세요.</textarea>
+					</c:when>
+					<c:otherwise>
+						<textarea rows="10" cols="100" name="intro"
+						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>
+						${intro }</textarea>
+					</c:otherwise>
+				</c:choose>
 				</td>
 			</tr>
 			
@@ -155,7 +204,7 @@
 				<td></td>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" style="padding: 8px; font-size: 12pt; width: 100px">추가정보입력</button>
+					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" ${ empty email? '':'disabled' }>추가정보입력</button>
 					<input type="reset" value="초기화" style="padding: 8px; font-size: 12pt; width: 100px">
 					<a href="./mypageindex.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
 				</td>

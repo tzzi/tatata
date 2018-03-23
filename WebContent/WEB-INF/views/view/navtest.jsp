@@ -6,15 +6,22 @@
 
 <div class="w3-container">	
 	<br>
-	<div class="w3-bar" align="right"> 
-	  <a href="/join/joinindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">회원가입 </a>
-	  <a href="/login/loginindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">로그인</a>
-	  <a href="/rideboard/rideindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">놀이공원 정보 게시판</a> 
-	  <a href="/qnaboard/qnaindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">Q&A게시판</a>
-	  <a href="/mypage/mypageindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">마이페이지</a>
-	
+	<div class="w3-row">
+  		<div class="w3-col l3 w3-white">
+			<div class="w3-bar" align="left" style="text-align:left;"> 
+				<a href="/index.do" style="text-decoration:none;">타타타로고</a>
+			</div>
+		</div>
+  		<div class="w3-col l9 w3-white w3-right-align">
+  			<a href="/join/joinindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">회원가입 </a>
+	  			<a href="/login/loginindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">로그인</a>
+	  			<a href="/rideboard/rideindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">놀이공원 정보 게시판</a> 
+	  			<a href="/qnaboard/qnaindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">Q&A게시판</a>
+	  			<a href="/mypage/mypageindex.do" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">마이페이지</a>
+  		</div>
 	</div>
+	
+	
 	<br>
-
 
 </div>

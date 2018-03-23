@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{fear},#{matchtype},#{intro})
 	</insert>
 	
-	<select id="idcheck" resultType="string">
-		select id from account where id = #{id}
+	<select id="mypageinfo" resultType="hashmap">
+		select * from addinfo where id = #{id}
 	</select>
 	
 </mapper>

@@ -1,13 +1,16 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,18 +30,49 @@ public class MyPageController {
 	@Autowired
 	EmailAuthService authservice;
 	
+	// 마이페이지 첫화면
 	@RequestMapping("/mypageindex.do")
 	public String joinindexHandle() {
 		return "mypageindex";
 	}
 	
+	// 정보수정
+	@RequestMapping("/modify.do")
+	public String modyfyHandler() {
+		
+		return "modify";
+	}
+	
+	// 추가 정보에 정보 불러오기 - 정보 있으면 disabled되어 정보 불러옴 / 정보 없으면 인증할 수 있도록 열어둠
 	@RequestMapping("/addinfo.do")
-	public String addinfoHandle(HttpServletRequest req) {
+	public String addinfoHandle(@CookieValue(name="id") String id, HttpServletRequest req) {
+		/*System.out.println(mdao.addinfoload(id).get("ID"));*/
+		/*if(mdao.addinfoload(id) != null);*/
+		
 		HttpSession session = req.getSession();
 		session.setAttribute("email", "");
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		
+		System.out.println("mdao.addinfoload(id)" + mdao.addinfoload(map));
+		
+		if(mdao.addinfoload(map) != null) {
+			session.setAttribute("email", mdao.addinfoload(map).get("EMAIL"));
+			session.setAttribute("fear", mdao.addinfoload(map).get("FEAR"));
+			session.setAttribute("birth_y", mdao.addinfoload(map).get("BIRTH_Y"));
+			session.setAttribute("birth_m", mdao.addinfoload(map).get("BIRTH_M"));
+			session.setAttribute("birth_d", mdao.addinfoload(map).get("BIRTH_D"));
+			session.setAttribute("gender", mdao.addinfoload(map).get("GENDER"));
+			session.setAttribute("matchtype", mdao.addinfoload(map).get("MATCHTYPE"));
+			session.setAttribute("area", mdao.addinfoload(map).get("AREA"));
+			session.setAttribute("intro", mdao.addinfoload(map).get("INTRO"));
+		}
+		
 		return "addinfo";
 	}
 	
+	// 인증 받은 사람 - 정보 추가 입력
 	@RequestMapping("/addinforst.do")
 	public String modfiyinfoHandle(@RequestParam Map param, ModelMap map) {
 		System.out.println("addinfo에서 넘어온 파라미터값 " +param);
@@ -74,8 +108,9 @@ public class MyPageController {
 		
 	}
 	
+	// 인증키 보내기
 	@RequestMapping(path="/sendKey.do", produces="application/json;charset=utf-8")
-	public String accountSendKeyHandle(@RequestParam String email, HttpServletRequest req) {
+	public String accountSendKeyHandle(@RequestParam String email, HttpServletRequest req, HttpServletResponse resp) {
 		String result = authservice.sendAuthKey(email);
 		if(result == null) {
 			return "redirect:/mypage/addinfo.do";
@@ -84,11 +119,11 @@ public class MyPageController {
 			session.setAttribute("key", result);
 			session.setAttribute("email", email);
 			System.out.println("key " + result);
-			System.out.println("email " + email);
 			return "addinfo";
 		}
 	}
 	
+	// 인증키 확인하기
 	@RequestMapping(path = "/confirmKey.do", produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String confirmKeyHandle(@RequestParam("key") String param, HttpServletRequest req) {

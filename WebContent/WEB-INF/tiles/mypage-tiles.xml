@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+		<definition name="mypageindex" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Mypage"/>
+			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/mypageindex.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="addinfo" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Mypage"/>
+			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/addinfo.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="addinforst" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Mypage"/>
+			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/addinforst.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="modify" template="/WEB-INF/views/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Mypage"/>
+			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/mypage/modify.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+	</tiles-definitions>
