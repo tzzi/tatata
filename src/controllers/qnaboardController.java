@@ -38,7 +38,7 @@ public class qnaboardController {
 
 	@RequestMapping("/write.do")
 	public String writeHandle(@RequestParam Map map, WebRequest req,ModelMap modelMap) {
-		int rst = qdao.qnaWrite(map);
+		int rst = qdao.qnaWrite(map); 
 		modelMap.put("qnalist", qdao.readAllqna());
 		if(rst==1) {
 			req.setAttribute("rst", "1", 0);
