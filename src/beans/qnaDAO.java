@@ -41,7 +41,7 @@ public class qnaDAO {
 	public Map detailqna(int q_no){
 		SqlSession session = factory.openSession();
 		try {
-			System.out.println(session.selectList("qnaboard.detailqna", q_no));
+			
 			session.update("qnaboard.addcount", q_no);
 			return session.selectOne("qnaboard.detailqna", q_no);			
 		}finally {

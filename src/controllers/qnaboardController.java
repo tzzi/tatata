@@ -55,19 +55,6 @@ public class qnaboardController {
 		return "qnadetail";
 	}
 	
-	/*@RequestMapping("/detailwrite.do")
-	public String replyHandle(@RequestParam Map map, WebRequest req,ModelMap modelMap,@RequestParam int q_no) {
-		int rst = qdao.qnareplywrite(map);
-		modelMap.put("qnadetaillist", qdao.detail(q_no));
-		modelMap.put("qnadetail", qdao.detailqna(q_no));
-		if(rst==1) {
-			req.setAttribute("rst", "1", 0);
-		}else {
-			req.setAttribute("rst", "0", 0);
-		}
-			
-		return "qnadetail";
-	}*/	
 	@RequestMapping(path="/detailwrite.do", produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String detailwriteController(@RequestParam Map map, WebRequest req,ModelMap modelMap,@RequestParam int q_no) {
