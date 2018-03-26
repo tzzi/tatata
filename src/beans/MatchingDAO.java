@@ -183,59 +183,118 @@ public class MatchingDAO {
 			System.out.println("매칭 상대 성별 필터 : "+list);
 			
 			//========================  매칭 상대 구별(동,이성,남,여,)============================= 
-		
-		 int intmyAVG = 0;
-		 for(int c=1;c<=5;c++) {
-			 if(mylist.get("LEVEL"+c)!=null) {
-				 intmyAVG++;
-			 }
-		 }
-		System.out.println("나눌숫자:" +intmyAVG);
-		BigDecimal AVG = new BigDecimal(intmyAVG);//나눌 숫자
-		 BigDecimal myAVG = new BigDecimal("0"); 
-		for(int i=1;i<=5;i++) {
-			if(mylist.get("LEVEL"+i)!=null) {
-			myAVG = myAVG.add((BigDecimal) mylist.get("LEVEL"+i));
-			}
-			}
-		//나의 level 평균
-		System.out.println("나의 평균:" + myAVG.divide(AVG,BigDecimal.ROUND_DOWN));	
-		
-		
-		for(int d=0;d<list.size();d++) {
-			BigDecimal intnotmyAVG = new BigDecimal("0");
-			BigDecimal notmyAVG1 = new BigDecimal("0");
-			BigDecimal one = new BigDecimal("1");
-			for(int e=1;e<=5;e++) {
-				if(list.get(d).get("LEVEL"+e)!=null && mylist.get("LEVEL"+e)!=null) {
-					notmyAVG1 = notmyAVG1.add((BigDecimal) list.get(d).get("LEVEL"+e));
-					intnotmyAVG = intnotmyAVG.add(one);
-					System.out.println("나눌 값1 : "+intnotmyAVG);
-					System.out.println("나누어지는값 : "+notmyAVG1);					
+			List mytypecnt = new LinkedList<>();
+			int mycnt=1;
+			for(int a=1;a<=5;a++) {
+			if(mylist.containsKey("TYPE"+a)) {
+				String mytype = (String) mylist.get("TYPE"+a);
+				if(mylist.containsKey(mytype)) {
+					int cnt = (int) mylist.get(mytype);
+				mylist.put(mytype, cnt+1);
+				}else {
+					mylist.put(mytype, mycnt);
+				}
 				}
 			}
-			list.get(d).put("notmyAVG1", notmyAVG1);//level 더한 값
-			list.get(d).put("intnotmyAVG",intnotmyAVG);//나누어지는 값
-			System.out.println(d+"번쨰 값의 평균"+notmyAVG1.divide(intnotmyAVG,BigDecimal.ROUND_DOWN ));//최좀 평균
-			list.get(d).put("AVG", notmyAVG1.divide(intnotmyAVG,BigDecimal.ROUND_DOWN ));//최종값을 AVG를 키로 저장
-			System.out.println(d+"번째 값의 최종평균"+list.get(d).get("AVG"));
-			System.out.println();
-		}
-		
-		for(int f=0;f<list.size();f++) {
-			if(myAVG.divide(AVG,BigDecimal.ROUND_DOWN).compareTo((BigDecimal) list.get(f).get("AVG"))==0) {
-				System.out.println("f값:" +f);
-				System.out.println(myAVG.divide(AVG,BigDecimal.ROUND_DOWN));
-				System.out.println(list.get(f).get("AVG"));
-				return list.get(f);
+			
+			if(mylist.containsKey("키즈")) {
+				mytypecnt.add(mylist.get("키즈"));
+			}if(mylist.containsKey("연애")) {
+				mytypecnt.add(mylist.get("연애"));
+			}if(mylist.containsKey("스릴")) {
+				mytypecnt.add(mylist.get("스릴"));
 			}
-		}
-	
+			
+			System.out.println("키즈 :"+ mylist.get("키즈"));
+			System.out.println("연애 : "+ mylist.get("연애"));
+			System.out.println("스릴 :"+ mylist.get("스릴"));
+			
+			String mytype = null;
+			Integer i = (Integer) Collections.max(mytypecnt);
+			System.out.println("나의 최대 cnt"+i);
+			if(mylist.containsKey("키즈") && mylist.get("키즈")==i) {
+				mytype = "키즈";
+			}else if(mylist.containsKey("연애") && mylist.get("연애")==i) {
+				mytype = "연애";
+			}else if(mylist.containsKey("스릴") && mylist.get("스릴")==i) {
+				mytype = "스릴";
+			}
+			System.out.println(mytype);
+		 
+			//===============================================내 타입=================================
+			
+			List ntypecnt = new LinkedList<>();
+			int ncnt=1;
+			for(int a=0;a<list.size();a++) {
+				for(int b=1;b<=5;b++) {
+					if(list.get(a).containsKey("TYPE"+b)) {
+						String ntype = (String) list.get(a).get("TYPE"+b);
+						if(list.get(a).containsKey(ntype)) {
+							int cnt = (int) list.get(a).get(ntype);
+							list.get(a).put(ntype, cnt+1);
+						}else {
+							list.get(a).put(ntype, ncnt);
+						}
+					}
+				}
+			}
+			for(int a=0;a<list.size();a++) {
+				if(list.get(a).containsKey("키즈")) {
+					ntypecnt.add(list.get(a).get("키즈"));
+				}if(list.get(a).containsKey("연애")) {
+					ntypecnt.add(list.get(a).get("연애"));
+				}if(list.get(a).containsKey("스릴")) {
+					ntypecnt.add(list.get(a).get("스릴"));
+				}
+				System.out.println("키즈"+list.get(a).get("키즈"));
+				System.out.println("연애"+list.get(a).get("연애"));
+				System.out.println("스릴"+list.get(a).get("스릴"));
+				
+				String ntype = null;
+				Integer j = (Integer)  Collections.max(ntypecnt);
+				System.out.println("상대의 최대 cnt"+j);
+				
+				if(list.get(a).containsKey("키즈") && list.get(a).get("키즈")==j) {
+					ntype = "키즈";
+				}else if(list.get(a).containsKey("연애") && list.get(a).get("연애")==j) {
+					ntype = "연애";
+				}else if(list.get(a).containsKey("스릴") && list.get(a).get("스릴")==j) {
+					ntype = "스릴";
+				}
+				System.out.println("매칭 상대의 타입 : "+ ntype);
+				if(mytype.equals(ntype)) {
+					System.out.println(list.get(a));
+					return list.get(a);
+					
+				}
+			}
+			
+			
 		return null;
-	
+		
 		}finally {
 			session.close();
 		}
 		
+	}
+	public List<Map> matchingcheck(String nick) {
+		SqlSession session = factory.openSession();
+		System.out.println(nick);
+		try {
+			return session.selectList("matchingboard.matchingcheck",nick);
+		}finally {
+			session.close();
+		}
+	}
+	public int matchinginsert(Map map) {
+		SqlSession session = factory.openSession();
+		System.out.println(map);
+		int rst = 0;
+		try {
+			rst = session.insert("matchingboard.matchinginsert",map);
+		}finally {
+			session.close();
+		}
+		return rst;
 	}
 }

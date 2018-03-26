@@ -22,6 +22,33 @@
 	</c:when>
 	<c:otherwise>
 ${matching.NICK }님  입니다.	
+<script>
+	$(document).ready(function(){
+		$.ajax("/matchingBoard/insertmatching.do",{
+			"method" : "post",
+			"async" : false,
+			"data":{
+				"nick" : "${matching.NICK}",
+				"fear" : ${matching.FEAR},
+				"yellow_card" : ${matching.YELLOW_CARD},
+				"gender" : "${matching.GENDER}",
+				"mynick" : "${mypage.NICK}",
+				"e_mail" : "${matching.E_MAIL}"
+			}
+		}).done(function(obj){
+	         //0(실패) or 1(성공)
+	         if(obj[0].result==1){
+	        	window.alert("매칭에 성공하셨습니다.")
+	         }else{
+	        	 window.alert("알 수 없는 오류로 매칭에  실패하셧습니다.")
+	         }
+	    });
+
+	});
+
+
+</script>
+
 	</c:otherwise>
 	
 </c:choose>

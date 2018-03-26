@@ -11,5 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="matchinglist" resultType="java.util.HashMap">
 	select * from mypageTest where nick != #{nick}
 	</select>
-		
+	
+	<select id="matchingcheck" resultType="java.util.HashMap">
+	SELECT DISTINCT * FROM MATCHINGCHECK WHERE mynick= #{nick}
+	</select>
+	
+	<insert id="matchinginsert">
+	
+	insert into matchingcheck(nick,fear,yellow_card,gender,mynick,e_mail) values(#{nick},#{fear},#{yellow_card},#{gender},#{mynick},#{e_mail})
+	</insert>
+	
+	
 </mapper>
