@@ -18,6 +18,7 @@
 					style="padding: 8px; font-size: 12pt; width: 220px;"  ${ empty email? '':'disabled' }/>
 					<button type="submit" formaction="/mypage/sendKey.do" formmethod="post" 
 					id="email" style="padding: 7px; font-size: 12pt; width: 90px"  ${ empty email? '':'disabled' }>인증</button>
+					<input type="hidden" name="h_email" value="${email }"/>
 				 </td>
 			</tr>
 			
@@ -26,9 +27,9 @@
 				<td></td>
 				<td align="center">
 					<input type="text" name="key" placeholder="인증키"
-					style="padding: 8px; font-size: 12pt; width: 220px;" id="inkey"  ${ empty email? '':'disabled' }/>
+					style="padding: 8px; font-size: 12pt; width: 220px;" id="inkey"/>
 					<button type="button" 
-					id="key" style="padding: 7px; font-size: 12pt; width: 90px"  ${ empty email? '':'disabled' } >확인</button>
+					id="key" style="padding: 7px; font-size: 12pt; width: 90px">확인</button>
 					<br/>
 					<br/>
 			</tr>
@@ -36,14 +37,14 @@
 			<tr>
 				<th height="50px">아이디</th>
 				<td></td>
-				<td align="center"><input type="text"  value="${cookie.id.value }" disabled
-				style="padding: 8px; font-size: 12pt; width: 220px;"/><input type="hidden" name="id" value="${cookie.id.value }"/>
+				<td align="center"><input type="text"  value="${sessionScope.userId }" disabled
+				style="padding: 8px; font-size: 12pt; width: 220px;"/><input type="hidden" name="id" value="${sessionScope.userId }"/>
 			</tr>
 			
 			<tr>
 				<th height="50px">닉네임</th>
 				<td></td>
-				<td align="center"><input type="text" name="nick" value="${cookie.nick.value }" disabled
+				<td align="center"><input type="text" name="nick" value="${sessionScope.userNick }" disabled
 				style="padding: 8px; font-size: 12pt; width: 220px;"/>
 			</tr>
 			
@@ -83,7 +84,7 @@
 					</c:choose> --%>
 
 				<c:choose>
-					<c:when test="${empty email }">
+					<c:when test="${empty keytrue }">
 					<fmt:formatDate value="${now}" pattern="yyyy년 MM월dd일 a hh시mm분 ss초"/> 
 					<fmt:formatDate value="<%=new java.util.Date()%>" pattern="yyyy" var="thisYear"/>
 					<fmt:formatDate value="<%=new java.util.Date()%>" pattern="MM" var="thisMonth"/>
@@ -130,7 +131,7 @@
 				<td></td>
 				<td align="center">
 				<c:choose>
-					<c:when test="${empty email }">
+					<c:when test="${empty keytrue }">
 						<select name="area" style="padding: 8px; font-size : 12pt; width:120px " class="authsuccess" disabled>
 							<option>선택</option>		<option>서울</option>		<option>경기</option>
 							<option>인천</option>		<option>부산</option>		<option>대구</option>
@@ -186,15 +187,13 @@
 				<td></td>
 				<td align="center">
 				<c:choose>
-					<c:when test="${empty email }">
+					<c:when test="${empty keytrue }">
 						<textarea rows="10" cols="100" name="intro" onclick="this.select()" onfocus="this.select()"
-						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>
-						자기소개를 마음껏 입력하세요.</textarea>
+						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>자기소개를 마음껏 입력하세요.</textarea>
 					</c:when>
 					<c:otherwise>
 						<textarea rows="10" cols="100" name="intro"
-						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>
-						${intro }</textarea>
+						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" disabled>${intro }</textarea>
 					</c:otherwise>
 				</c:choose>
 				</td>
@@ -204,7 +203,7 @@
 				<td></td>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" ${ empty email? '':'disabled' }>추가정보입력</button>
+					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" ${ empty keytrue? '':'disabled' }>추가정보입력</button>
 					<input type="reset" value="초기화" style="padding: 8px; font-size: 12pt; width: 100px">
 					<a href="./mypageindex.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
 				</td>

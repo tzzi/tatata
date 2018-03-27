@@ -4,7 +4,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-		<definition name="test" template="/WEB-INF/views/index.jsp">
+		<definition name="test" template="/WEB-INF/views/view/index.jsp">
 			<put-attribute name="title" value="TaTaTa - MainTest"/>
 			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
@@ -13,7 +13,7 @@
 		</definition>
 		
 		
-		<definition name="navtest" template="/WEB-INF/views/index.jsp">
+		<definition name="navtest" template="/WEB-INF/views/view/index.jsp">
 			<put-attribute name="title" value="TaTaTa - NavTest"/>
 			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
