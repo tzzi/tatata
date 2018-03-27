@@ -1,10 +1,13 @@
 package controllers;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,19 +28,38 @@ public class LoginController {
 	}	
 	
 	@RequestMapping("/login.do")
-	public String loginHandle(@RequestParam Map param, HttpServletRequest req, HttpServletResponse resp) {
+	public String loginHandle(@RequestParam Map param, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		
+		// 로그인 성공시
 		if(dao.login(param)!=null) {
 			
-			// 쿠키값 올려둠 (로그인 유지)
+			// 세션에 정보 올려둠
 			String id = (String)dao.login(param).get("ID");
-			Cookie cid = new Cookie("id", id);
+			String nick = (String)dao.login(param).get("NICK");
+			String pass = (String)dao.login(param).get("PASS");
+			
+			session.setAttribute("login", 0);
+			session.setAttribute("userId", id);
+			session.setAttribute("userNick", nick);
+			session.setAttribute("pass", pass);
+			
+			session.setAttribute("auth", id);
+
+			BigDecimal admin=  (BigDecimal) dao.login(param).get("ADMIN");
+			System.out.println("admin 숫자 " + admin);
+			session.setAttribute("admin", admin);
+			
+			session.getAttribute("admin");
+			
+			// 쿠키값 올려둠 (로그인 유지)
+			/*Cookie cid = new Cookie("id", id);
+			cid.setMaxAge(60*60*24*1);
 			cid.setPath("/");	// 쿠키값 패쓰 설정
 			resp.addCookie(cid);
 			
-			String nick = (String)dao.login(param).get("NICK");
 			Cookie cnick = new Cookie("nick", nick);
 			cnick.setPath("/");
-			resp.addCookie(cnick);
+			resp.addCookie(cnick);*/
 			
 			return "index_1";
 		} else {
@@ -47,14 +69,15 @@ public class LoginController {
 	}
 
 	@RequestMapping("/logout.do")
-	public String logoutHandle( HttpServletResponse resp) {
+	public String logoutHandle( HttpServletResponse resp, HttpSession session) {
+		session.invalidate();
 		
-		Cookie[] cookies = new Cookie[] {new Cookie("id", "x") , new Cookie("nick", "x"), new Cookie("email","x") };
+		/*Cookie[] cookies = new Cookie[] {new Cookie("id", "x") , new Cookie("nick", "x"), new Cookie("email","x") };
 		for(Cookie c : cookies) {
 			c.setMaxAge(0);
 			c.setPath("/");
 			resp.addCookie(c);
-		}
+		}*/
 	    return "redirect:/index.do";
 	}
 

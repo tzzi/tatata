@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+		<definition name="ride_index" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/rideboard/index.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="write" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/rideboard/write.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="write_complete" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/rideboard/write_complete.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="list" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/rideboard/list.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+		
+		<definition name="detail" template="/WEB-INF/views/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/rideboard/detail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>
+</tiles-definitions>

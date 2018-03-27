@@ -34,4 +34,24 @@ public class MyPageDAO {
 		}
 		return rst;
 	}
+	
+	public int updatePassword(Map param) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.update("mypage.passupdate", param);
+		} finally {
+			session.close();
+		}
+	}
+	
+	public int updateInfo(Map param) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.update("mypage.infoupdate", param);
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }
