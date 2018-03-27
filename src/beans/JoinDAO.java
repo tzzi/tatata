@@ -45,4 +45,24 @@ public class JoinDAO {
 		}
 		return rst != null;
 	}
+	
+	public int deleteid(Map map) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.delete("account.deleteid", map);
+		} finally {
+			session.close();
+		}
+	}
+
+	public int deleteinfo(Map map) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.delete("account.deleteinfo", map);
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }

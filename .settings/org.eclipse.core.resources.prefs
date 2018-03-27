@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//WebContent/WEB-INF/views/rideboard/write.jsp=UTF-8
+=======
+encoding//WebContent/WEB-INF/views/view/nav.jsp=UTF-8
+>>>>>>> refs/heads/master

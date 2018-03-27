@@ -59,7 +59,7 @@
 			$("#idtype").html("");
 			if(t==false){
 				$("#nicktype").html("");
-				$("#idtype").html("<small>id는 한글 및 특수문자 입력이 불가능합니다. 다시입력하세요.</small>");
+				$("#idtype").html("<small style=\"color:red\">id는 한글 및 특수문자 입력이 불가능합니다. 다시입력하세요.</small>");
 				idcheck="false";
 			}else{
 				$("#idtype").html("");
@@ -74,7 +74,7 @@
 			$("#nicktype").html("");
 			if(t==false){
 				$("#nicktype").html("");
-				$("#nicktype").html("<small>닉네임은 한글만 가능합니다. 다시입력하세요.</small>");
+				$("#nicktype").html("<small style=\"color:red\">닉네임은 한글만 가능합니다. 다시입력하세요.</small>");
 				nickcheck="false";
 			}else{
 				$("#nicktype").html("");
@@ -92,12 +92,12 @@
 				if(this.readyState==4) {
 					if(this.responseText.trim()=="true"){
 						$("#idcheck").html("");
-						$("#idcheck").html("<small>이미 사용중인 아이디입니다.</small>");
+						$("#idcheck").html("<small style=\"color:red\">이미 사용중인 아이디입니다.</small>");
 						idsc="false";
 					} else {
 						$("#idcheck").html("");
 						if(idcheck=="true"){
-							$("#idcheck").html("<small>없는 아이디입니다. 사용하세요.</small>");
+							$("#idcheck").html("<small style=\"color:green\">없는 아이디입니다. 사용하세요.</small>");
 							idsc="true";
 						}
 						joinok();
@@ -114,12 +114,12 @@
 			var pass1 = $("#pass1").val();
 			if(pass1 == pass2){
 				$("#passcheck").html("");
-				$("#passcheck").html("<small>비밀번호가 일치합니다.</small>");
+				$("#passcheck").html("<small style=\"color:green\">비밀번호가 일치합니다.</small>");
 				passsc="true";
 				joinok();
 			} else {
 				$("#passcheck").html("");
-				$("#passcheck").html("<small>비밀번호가 일치하지 않습니다. 다시입력하세요.</small>");
+				$("#passcheck").html("<small style=\"color:red\">비밀번호가 일치하지 않습니다. 다시입력하세요.</small>");
 				passsc="false";
 			}
 		});
@@ -131,12 +131,12 @@
 				if(this.readyState==4) {
 					if(this.responseText.trim()=="true"){
 						$("#nickcheck").html("");
-						$("#nickcheck").html("<small>이미 사용중인 닉네임입니다.</small>");
+						$("#nickcheck").html("<small style=\"color:red\">이미 사용중인 닉네임입니다.</small>");
 						nicksc="false";
 					} else {
 						$("#nickcheck").html("");
 						if(nickcheck=="true"){
-							$("#nickcheck").html("<small>없는 닉네임입니다. 사용하세요.</small>");
+							$("#nickcheck").html("<small style=\"color:green\">없는 닉네임입니다. 사용하세요.</small>");
 						}
 						nicksc="true";
 						joinok();

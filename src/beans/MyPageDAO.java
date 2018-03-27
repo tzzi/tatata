@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,64 +8,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AccountDAO {
+public class MyPageDAO {
 
 	@Autowired
 	SqlSessionFactory factory;
-
-	public int join(Map map) {
-
+	
+	public int addinfo(Map param) {
 		SqlSession session = factory.openSession();
 		int rst = 0;
 		try {
-			rst = session.insert("account.join", map);
-
+			rst = session.insert("mypage.addinfo", param);
 		} finally {
 			session.close();
 		}
-
 		return rst;
 	}
-
-	public int idCheck(Map id) {
-
-		SqlSession session = factory.openSession();
-
-		int rst = 1;
-		List<Map> list;
-		try {
-			System.out.println("DAO : " + id);
-			list = session.selectList("account.idcheck", id);
-		} finally {
-			session.close();
-		}
-
-		if (list.isEmpty()) {
-			rst = 0;
-		}
-
-		return rst;
-	}
-
 	
-	// 중복 체크는 중복 값이 있을 때 1, 아니면 0을 리턴
-	public int nickCheck(Map map) {
-
+	public Map addinfoload(Map param) {
 		SqlSession session = factory.openSession();
-		int rst = 1;
-		List<Map> list;
+		Map rst = null;
 		try {
-			list = session.selectList("account.nickcheck", map);
-			System.out.println("DAO : " + map);
+			rst = session.selectOne("mypage.mypageinfo", param);
 		} finally {
 			session.close();
 		}
-
-		if (list.isEmpty()) {
-			rst = 0;
-		}
-
 		return rst;
 	}
-
+	
+	public int updatePassword(Map param) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.update("mypage.passupdate", param);
+		} finally {
+			session.close();
+		}
+	}
+	
+	public int updateInfo(Map param) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.update("mypage.infoupdate", param);
+		} finally {
+			session.close();
+		}
+	}
+	
+	
 }

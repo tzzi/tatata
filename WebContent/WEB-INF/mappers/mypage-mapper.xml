@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+	<insert id="addinfo">
+		INSERT INTO addinfo
+		(id, email, gender, birth_y, birth_m, birth_d, area,
+		fear, matchtype, intro) 
+		VALUES
+		(#{id},#{email},#{gender},#{birth_y},#{birth_m},#{birth_d},#{area},
+		#{fear},#{matchtype},#{intro})
+	</insert>
+	
+	<select id="mypageinfo" resultType="hashmap">
+		SELECT * FROM addinfo
+		WHERE id = #{id}
+	</select>
+	
+	<update id="passupdate">
+		UPDATE account
+		SET pass = #{pass}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="infoupdate">
+		UPDATE addinfo
+		SET gender = #{gender}, birth_y = #{birth_y}, birth_m = #{birth_m},
+		birth_d = #{birth_d}, area = #{area}, fear = #{fear},
+		matchtype = #{matchtype}, intro = #{intro}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
