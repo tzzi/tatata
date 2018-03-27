@@ -37,17 +37,43 @@ public class qnaDAO {
 		}
 		return rst;
 	}
-	//조회수,글상세보기
+	//글상세보기
 	public Map detailqna(int q_no){
 		SqlSession session = factory.openSession();
 		try {
-			
-			session.update("qnaboard.addcount", q_no);
 			return session.selectOne("qnaboard.detailqna", q_no);			
 		}finally {
 			session.close();
 		}
 	}
+	//조회수 올리기
+	public int addcount(int q_no) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		try {
+			rst =session.update("qnaboard.addcount", q_no);
+			System.out.println("조회수 증가한다");
+			return rst;
+		}finally {
+			session.close();
+		}
+	}
+		
+	
+	//추천하기
+	public int like(int q_no) {
+		SqlSession session = factory.openSession();
+		try {
+			int rst= session.update("qnaboard.addlike",q_no);
+			System.out.println("좋아요 증가한다!!");
+			return rst;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
 	//리플 보기
 	public List<Map> detail(int q_no){
 		SqlSession session = factory.openSession();

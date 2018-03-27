@@ -34,4 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into QNAREPLY(a_no,Q_no,left_Date,content) values(qnareply_seq.nextval,#{q_no},sysdate,#{content})
 	
 	</insert>
+	
+	<!-- 추천수 올리기 -->
+	<update id="addlike">
+	update qnaboard set q_like = q_like+1 where q_no = #{q_no} 
+	</update>
+	
+	
 </mapper>
