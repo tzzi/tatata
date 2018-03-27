@@ -14,4 +14,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="nickcheck"  resultType="string">
 		select nick from account where nick = #{nick}
 	</select>
+	
+	<select id="login" resultType="hashmap">
+		select * from account where id = #{id} and pass = #{pass}
+	</select>
+	
+	<!-- <select id="logindto" resultType="UserVO">
+		select * from userTable where id = #{id} and pass = #{pass}
+	</select>
+
+	로그인된 경우 해당 세션id와 유효시간을 사용자 테이블에 세팅
+	<update id="keepLogin">
+		update userTable set sessionKey = #{sessionId}, sessionLimit = #{next} where id = #{id}
+	</update>
+	
+	<select id="checkUserWithSessionKey" resultType="UserVO">
+		select * from userTable where sessionKey = #{sessionId} and sessionLimit > now()
+	</select> -->
+
+	<delete id="deleteid">
+		DELETE FROM account
+		<where>
+			id = #{id}
+		</where>
+	</delete>
+	
+	<delete id="deleteinfo">
+		DELETE FROM addinfo where id = #{id}
+	</delete>
+	
 </mapper>

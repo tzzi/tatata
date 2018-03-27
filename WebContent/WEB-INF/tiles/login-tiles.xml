@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+		<definition name="loginindex" template="/WEB-INF/views/view/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Login"/>
+			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/login/loginindex.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>		
+		
+		<definition name="idfind" template="/WEB-INF/views/view/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Login"/>
+			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/login/idfind.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>	
+		
+		<!-- 로그인 폼 -->
+		<definition name="loginform" template="/WEB-INF/views/view/index.jsp">
+			<put-attribute name="title" value="TaTaTa - Login"/>
+			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
+			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
+			<put-attribute name="body" value="/WEB-INF/views/user/loginform.jsp"/>
+			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+		</definition>	
+		
+		
+</tiles-definitions>
