@@ -28,7 +28,7 @@ ${mypage.BASKET3}<br />
 ${mypage.BASKET4}<br />
 ${mypage.BASKET5}<br />
 		<hr />
-		<form action="/matchingBoard/matching.do">
+		<form action="/matchingBoard/matching.do" method="post">
 			<button type="submit" id="matching">매칭하기</button>
 			<input type="hidden" value="${mypage.NICK }" name="nick" />
 		</form>

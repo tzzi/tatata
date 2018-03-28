@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,21 @@ public class qnaboardController {
 	}
 
 	@RequestMapping("/write.do")
-	public String writeHandle(@RequestParam Map map, WebRequest req, ModelMap modelMap) {
+	public String writeHandle(@RequestParam Map map, WebRequest req, ModelMap modelMap,HttpSession session) {
+		
+		String nick = (String) session.getAttribute("userNick");
+		
+		System.out.println("글쓰기 닉네임 : "+ nick);//닉네임 받아오기 
+		
+		System.out.println("Map"+map);
+
+		map.put("writer", nick);
+		
+		System.out.println("Map put"+map);
+		
+			
+		
+		
 		int rst = qdao.qnaWrite(map);
 		modelMap.put("qnalist", qdao.readAllqna());
 		if (rst == 1) {
@@ -49,16 +64,19 @@ public class qnaboardController {
 			req.setAttribute("rst", "0", 0);
 		}
 
-		return "qnaboard";
+		return "redirect:/qnaboard/qnaindex.do";
 	}
 
 	@RequestMapping("/detail.do")
 	public String detailHandle(@RequestParam int q_no, ModelMap modelMap, HttpServletResponse response,
-			HttpServletRequest request) {
+			HttpServletRequest request,HttpSession session) {
+		
+		String id = (String) session.getAttribute("userId");
 		modelMap.put("qnadetail", qdao.detailqna(q_no));
 		modelMap.put("qnadetaillist", qdao.detail(q_no));
-
-		Cookie setCookie = new Cookie("count"+q_no, "1"); // 쿠키 생성
+		
+		
+		Cookie setCookie = new Cookie("count"+q_no+id, "조회수쿠키"); // 쿠키 생성
 		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
 		response.addCookie(setCookie);
 
@@ -72,7 +90,7 @@ public class qnaboardController {
 				String name = c.getName(); // 쿠키 이름 가져오기				
 				System.out.println(name);
 				//동일이름의 쿠기가 있다면
-				if(name.equals("count"+q_no)) {
+				if(name.equals("count"+q_no+id)) {
 				System.out.println("동일이름의 쿠키가 존재함");
 				return "qnadetail";
 				}else {
@@ -87,6 +105,46 @@ public class qnaboardController {
 
 	}
 
+
+	@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String addlikeController(@RequestParam int q_no,HttpServletResponse response,
+			HttpServletRequest request,HttpSession session) {
+		String id = (String) session.getAttribute("userId");
+		Cookie setCookie = new Cookie("like"+q_no+id,"좋아요쿠키");
+		setCookie.setMaxAge(60*60*24);//재 좋아요 기간 하루	
+		response.addCookie(setCookie);//쿠키 추가
+		
+		Cookie[] getCookie = request.getCookies();//쿠키 가져오기
+		
+		if(getCookie != null) {
+			for(int i=0;i<getCookie.length;i++) {
+				Cookie c = getCookie[i];
+				String name = c.getName();
+				System.out.println("좋아요 쿠키 이름"+name);
+				
+				
+				String a = "0";//반환값
+				
+				if(name.equals("like"+q_no+id)) {
+					System.out.println("좋아요-> 동일 쿠키가 존재함");
+					return "[{\"result\":" + a + "}]";
+				}else {
+					System.out.println("좋아요-> 동일 이름의 쿠키가 존재하지 안음");
+				}
+				
+			}
+			String a = "0";//반환값
+			int rst = qdao.like(q_no);
+			if(rst==1) {
+				a = "1";
+				return "[{\"result\":" + a + "}]";
+			}
+		}
+		return null;
+		
+		
+	}
 	@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
@@ -102,20 +160,7 @@ public class qnaboardController {
 			req.setAttribute("rst", "0", 0);
 			b = "2";
 		}
-
+		
 		return "[{\"result\":" + b + "}]";
-	}
-
-	@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String addlikeController(@RequestParam int q_no) {
-		int rst = qdao.like(q_no);
-		String a = "0";
-		if (rst == 1) {
-			a = "1";// 성공
-		} else {
-			a = "0";
-		}
-		return "[{\"result\":" + a + "}]";
 	}
 }

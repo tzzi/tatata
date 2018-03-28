@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,34 +20,44 @@ public class MatchingBoardController {
 
 	@Autowired
 	MatchingDAO mdao;
-
+	
+	//마이페이지 
 	@RequestMapping("/matchingIndex.do")
-	public String indexHandle(@RequestParam String nick, ModelMap modelMap) {
+	public String indexHandle(ModelMap modelMap,HttpSession session) {
+		String nick = (String) session.getAttribute("userNick");
+		System.out.println(nick);
+		
 		modelMap.put("mypage", mdao.readmypage(nick));
 		return "matchingIndex";
 	}
 	
 	
 	@RequestMapping("/matching.do")
-	public String matchingHandle(@RequestParam String nick, ModelMap modelMap) {
+	public String matchingHandle(HttpSession session, ModelMap modelMap) {
+		
+		String nick = (String) session.getAttribute("userNick");
+		
 		modelMap.put("matching",mdao.Matchingpage(nick));
 		modelMap.put("mypage", mdao.readmypage(nick));
 		return "matching";
 	}
 	@RequestMapping("/matching2.do")
-	public String matching2Handle(@RequestParam String nick, ModelMap modelMap) {
+	public String matching2Handle(HttpSession session, ModelMap modelMap) {
+		
+		String nick = (String) session.getAttribute("userNick");
+		
 		modelMap.put("matching2", mdao.Matchingpage2(nick));
 		return "matching2";
 	}
 	@RequestMapping("/matchingcheck.do")
-	public String matchingcheckHandle(@RequestParam String nick,ModelMap modelmap) {
+	public String matchingcheckHandle(HttpSession session, ModelMap modelmap) {
+		String nick = (String) session.getAttribute("userNick");
 		modelmap.put("matchingcheck", mdao.matchingcheck(nick));
 		System.out.println(modelmap);
 		return "matchingcheck";
 	}
 	
 	@RequestMapping(path="/insertmatching.do", produces="application/json;charset=utf-8")
-	
 	@ResponseBody
 	public String insertmatchingHandle(@RequestParam Map map, WebRequest req) {
 		int rst = mdao.matchinginsert(map);

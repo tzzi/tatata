@@ -20,8 +20,7 @@
 				<th style="width: 150px;">내용</th>
 				<th style="width: 150px;">작성자</th>
 				<th style="width: 150px;">작성 날짜</th>
-			<!-- 추천 미구현 -->	<th style="width: 150px;">추천수</th>
-
+				<!-- <th style="width: 150px;">추천수</th> -->
 
 			</tr>
 
@@ -33,7 +32,7 @@
 					<td width=30%>${a.CONTENT}</td>
 					<td width=15%>${a.ADMIN}</td>
 					<td width=10%>${a.LEFT_DATE}</td>
-					<td width=10%>${a.COUNT}</td><!-- 추천 -->
+					<%-- <td width=10%>${a.COUNT}</td><!-- 추천 --> --%>
 
 				</tr>
 			</c:forEach>
@@ -67,7 +66,7 @@
   transform: translateY(4px);
 }
 </style>
-<button type="submit" class="button" id="like">추천!!</button>
+<button type="submit" class="button" id="like">글 추천!!</button>
 
 </div>
 
@@ -106,7 +105,6 @@
 	});
 
 	$("#like").click(function(){
-		window.alert("시작")
 		$.ajax("/qnaboard/addlike.do",{
 			"method" : "post",
 			"async": false,
@@ -117,12 +115,29 @@
 			if(obj[0].result==1){
 				window.alert("추천 되었습니다.")
 			}else{
-				window.alert("알수없는 이유로 추천에 실패하셨습니다.")
+				window.alert("이미 추천 하셨습니다.")
 			}
 		});
 		location.reload();
 	});
 	
+	/* $("#Rlike").click(function(){
+		$.ajax("/qnaboard/addRlike.do",{
+			"method" : "post",
+			"async" : false,
+			"data": {
+				"q_no" : ${qnadetail.Q_NO}
+				"a_no" : ${qnadetail.A_NO}
+			}
+		}).done(function(obj){
+			if(obj[0].result==1){
+				window.alert(${qnadetail.ADMIN}+"님의 댓글이 추천되었습니다.")
+			}else{
+				window.alert("이미 추천 하셨습니다.")
+			}
+		});
+		location.reload();
+	}); */
 	
 	
 	

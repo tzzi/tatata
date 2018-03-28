@@ -35,10 +35,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
-	<!-- 추천수 올리기 -->
+	<!-- 글 추천수 올리기 -->
 	<update id="addlike">
 	update qnaboard set q_like = q_like+1 where q_no = #{q_no} 
 	</update>
 	
+	<!-- 댓글 추천 하기 -->
+	<update id="addRlike">
+	update qnareply	set count = count+1 where q_no = #{q_no} and a_no = #{a_no}
+	</update>
 	
 </mapper>
