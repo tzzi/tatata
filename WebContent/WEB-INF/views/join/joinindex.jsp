@@ -26,13 +26,17 @@
 				<span id="nicktype"></span>
 			</p>
 			<p>
-				<button type="submit" style="padding: 8px; font-size: 12pt; width: 250px" id="join">가입하기</button>
+				<button type="submit" id="join_bt" style="padding: 8px; font-size: 12pt; width: 250px" id="join">가입하기</button>
 			</p>
 			<p>
 				<a href="../index.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 250px">돌아가기</button></a>
 			</p>
 		</form>
 		<script>
+		$("#join_bt").on("click", function() {
+			window.alert("가입이 완료되었습니다. 로그인해주세요.");
+		});
+		
 		var idsc="";
 		var passsc="";
 		var nicksc="";
