@@ -43,6 +43,7 @@ public class MyPageController {
 	// 정보수정 - 비번 확인 후 정보수정 화면띄우기
 	@RequestMapping("/modifyinfo.do")
 	public String modyfyinfoHandler() {
+		
 		return "modify_info";
 	}
 	
@@ -63,7 +64,8 @@ public class MyPageController {
 		map.put("pass", param);
 		mdao.updatePassword(map);
 		System.out.println("비밀번호 변경 : " + mdao.updatePassword(map));
-		return "redirect:/index.do";
+		session.setAttribute("pass", param);
+		return "index_1";
 	}
 	
 	// 정보수정 - 정보 변경
