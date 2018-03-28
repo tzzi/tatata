@@ -11,13 +11,13 @@
 		
 		<table>		
 			<tr>
-				<th height="50px">I D</th>
+				<th height="50px">아이디</th>
 				<td></td>
 				<td align="center">${sessionScope.userId }</td> 
 			</tr>
 			
 			<tr>
-				<th height="50px">P A S S</th>
+				<th height="50px">비밀번호</th>
 				<td></td>
 				<td align="center">
 				<input type="password" name="pass1" id="inputpass" placeholder="비밀번호"

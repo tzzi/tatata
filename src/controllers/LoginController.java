@@ -11,16 +11,20 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import beans.LoginDAO;
+import beans.MyPageDAO;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired
 	LoginDAO dao;
+	@Autowired
+	MyPageDAO mdao;
 	
 	@RequestMapping("/loginindex.do")
 	public String joinindexHandle() {
@@ -28,7 +32,8 @@ public class LoginController {
 	}	
 	
 	@RequestMapping("/login.do")
-	public String loginHandle(@RequestParam Map param, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+	public String loginHandle(@RequestParam Map param, HttpServletRequest req, 
+			HttpServletResponse resp, HttpSession session, ModelMap map) {
 		
 		// 로그인 성공시
 		if(dao.login(param)!=null) {
@@ -44,9 +49,16 @@ public class LoginController {
 			session.setAttribute("pass", pass);
 			
 			session.setAttribute("auth", id);
-
+			
+			// 추가정보 입력한 사람들 정보 불러오기
+			map.put("id", id);
+			mdao.addinfoload(map);
+			System.out.println("추가정보받아오기 됨? : "+ mdao.addinfoload(map));
+			session.setAttribute("addinfo", mdao.addinfoload(map));
+			
+			// 관리자 여부 파단하기
 			BigDecimal admin=  (BigDecimal) dao.login(param).get("ADMIN");
-			System.out.println("admin 숫자 " + admin);
+			System.out.println("admin 관리자1, 사용자2 : " + admin);
 			session.setAttribute("admin", admin);
 			
 			session.getAttribute("admin");

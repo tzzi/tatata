@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,14 +38,29 @@ public class MyPageController {
 	
 	// 정보수정 - 화면띄우기
 	@RequestMapping("/modify.do")
-	public String modyfyHandler() {
+	public String modyfyHandler(HttpSession session) {
+		System.out.println(session.getAttribute("addinfo"));
+		Map map = (Map)session.getAttribute("addinfo");
+		if(map!=null) {
+		session.setAttribute("email", map.get("EMAIL"));
+		}
 		return "modify";
 	}
 	
 	// 정보수정 - 비번 확인 후 정보수정 화면띄우기
 	@RequestMapping("/modifyinfo.do")
-	public String modyfyinfoHandler() {
-		
+	public String modyfyinfoHandler(HttpSession session) {
+		System.out.println(session.getAttribute("addinfo"));
+		Map map = (Map)session.getAttribute("addinfo");
+		session.setAttribute("gender", map.get("GENDER"));
+		session.setAttribute("birth_y", map.get("BIRTH_Y"));
+		session.setAttribute("birth_m", map.get("BIRTH_M"));
+		session.setAttribute("birth_d", map.get("BIRTH_D"));
+		session.setAttribute("area", map.get("AREA"));
+		session.setAttribute("fear", map.get("FEAR"));
+		session.setAttribute("matchtype", map.get("MATCHTYPE"));
+		session.setAttribute("intro", map.get("INTRO"));
+	
 		return "modify_info";
 	}
 	
@@ -55,34 +72,32 @@ public class MyPageController {
 		
 	
 	// 정보수정 - 비밀번호 변경
-	@RequestMapping("/passupdate.do")
+	@RequestMapping(path="/passupdate.do")
 	public String passupdateHandler
-	(@RequestParam("pass2") String param, HttpServletRequest req, HttpSession session, ModelMap map) {
+	(@RequestParam("pass2") String param, HttpServletRequest req, HttpSession session) {
 		String id = (String) session.getAttribute("userId");
 		System.out.println("session에서 넘어온 id : " +id);
+		Map map = new HashMap();
 		map.put("id", id);
 		map.put("pass", param);
 		mdao.updatePassword(map);
 		System.out.println("비밀번호 변경 : " + mdao.updatePassword(map));
 		session.setAttribute("pass", param);
-		return "index_1";
+		return "redirect:/index.do";
 	}
 	
 	// 정보수정 - 정보 변경
 	@RequestMapping("/modifyrst.do")
 	public String modifyrstHandler(
-			@RequestParam Map param, HttpSession session, ModelMap map) {
+			@RequestParam Map param, HttpSession session) {
 		System.out.println("정보변경 넘어온 파라미터값 " + param);
-		map.put("gender", param.get("gender"));
-		map.put("birth_y", param.get("birth_y"));
-		map.put("birth_m", param.get("birth_m"));
-		map.put("birth_d", param.get("birth_d"));
-		map.put("area", param.get("area"));
-		map.put("fear", param.get("fear"));
-		map.put("matchtype", param.get("matchtype"));
-		map.put("intro", param.get("intro"));
+		String id = (String)session.getAttribute("userId");
+		param.put("id", id);
 		
-		mdao.updateInfo(map);
+		mdao.updateInfo(param);
+		
+		session.setAttribute("addinfo", param);
+		
 		return "redirect:/index.do";
 	}
 	
@@ -94,8 +109,9 @@ public class MyPageController {
 	
 	// 회원탈퇴 결과
 		@RequestMapping("/delete.do")
-		public String deleteResultHandeler(HttpSession session, ModelMap map) {
+		public String deleteResultHandeler(HttpSession session) {
 			String id = (String)session.getAttribute("userId");
+			Map map = new HashMap();
 			map.put("id", id);
 			dao.deleteid(map);
 			dao.deleteinfo(map);
@@ -154,20 +170,21 @@ public class MyPageController {
 	
 	// 인증 받은 사람 - 정보 추가 입력
 	@RequestMapping("/addinforst.do")
-	public String addinfoHandle(@RequestParam Map param, ModelMap map, HttpSession session) {
+	public String addinfoHandle(@RequestParam Map param, HttpSession session) {
 		System.out.println("addinfo에서 넘어온 파라미터값 " +param);
-		String id = (String)param.get("id");
+		/*String id = (String)param.get("id");*/
 		String email = (String)param.get("h_email");
-		Integer gender = Integer.parseInt((String)param.get("gender"));
+		/*Integer gender = Integer.parseInt((String)param.get("gender"));
 		Integer birth_y = Integer.parseInt((String)param.get("birth_y"));
 		Integer birth_m = Integer.parseInt((String)param.get("birth_m"));
 		Integer birth_d = Integer.parseInt((String)param.get("birth_d"));
 		String area = (String)param.get("area");
 		Integer fear = Integer.parseInt((String)param.get("fear"));
 		Integer matchtype = Integer.parseInt((String)param.get("matchtype"));
-		String intro = (String)param.get("intro");
+		String intro = (String)param.get("intro");*/
 		
-		map.put("id", id);
+		param.put("email", email);
+		/*map.put("id", id);
 		map.put("email", email);
 		map.put("gender", gender);
 		map.put("birth_y", birth_y);
@@ -176,12 +193,13 @@ public class MyPageController {
 		map.put("area", area);
 		map.put("fear", fear);
 		map.put("matchtype", matchtype);
-		map.put("intro", intro);
-		System.out.println("넘길 맵 : " +map);
+		map.put("intro", intro);*/
+		/*System.out.println("넘길 맵 : " +map);*/
 		
-		session.setAttribute("addinfo", map);
-		
-		int rst = mdao.addinfo(map);
+		session.setAttribute("addinfo", param);
+		session.setAttribute("email", email);
+		System.out.println("넘길 파람값 : " + param);
+		int rst = mdao.addinfo(param);
 		if(rst==1) {
 			return "addinfo";
 		} else {

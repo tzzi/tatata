@@ -25,8 +25,9 @@ public class AuthFilter implements Filter{
 		System.out.println("TARGET URI : " + uri);
 		HttpSession session = request.getSession();
 	
-		if (uri.startsWith("/login/loginindex.do")) {
+		if (uri.startsWith("/login/loginindex.do") || uri.startsWith("/join/joinindex.do") ) {
 			chain.doFilter(req, resp);
+			
 		} else {
 			
 			StringBuffer url = request.getRequestURL();

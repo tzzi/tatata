@@ -45,7 +45,8 @@
   	<url-pattern>/qnaboard/*</url-pattern>
   	<url-pattern>/rideboard/*</url-pattern>
   	<url-pattern>/mypage/*</url-pattern>
-  </filter-mapping>
+  	<url-pattern>/matchingBoard/*</url-pattern>
+   </filter-mapping>
 	
 	
 </web-app>
