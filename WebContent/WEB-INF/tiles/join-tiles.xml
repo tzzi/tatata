@@ -6,7 +6,7 @@
 <tiles-definitions>
 		<definition name="joinindex" template="/WEB-INF/views/view/index.jsp">
 			<put-attribute name="title" value="TaTaTa - Join"/>
-			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
 			<put-attribute name="body" value="/WEB-INF/views/join/joinindex.jsp"/>
 			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
@@ -14,7 +14,7 @@
 		
 		<definition name="join" template="/WEB-INF/views/view/index.jsp">
 			<put-attribute name="title" value="TaTaTa - Join"/>
-			<put-attribute name="header" value="/WEB-INF/views/header_1.jsp"/>
+			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
 			<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
 			<put-attribute name="body" value="/WEB-INF/views/join/join.jsp"/>
 			<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
