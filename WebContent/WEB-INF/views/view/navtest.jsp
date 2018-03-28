@@ -31,7 +31,7 @@
 				<c:otherwise>
 					<c:choose>
 					<c:when test="${gender eq 1 }">
-						<img src="/image/man.jpg" height="50" width="50">
+						<img src="/image/man.png" height="50" width="50">
 					</c:when>
 					<c:when test="${gender eq 2 }">
 						<img src="/image/woman.png"  height="50" width="50">

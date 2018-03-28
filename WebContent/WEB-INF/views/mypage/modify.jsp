@@ -78,8 +78,10 @@ $("#pass_bt").on("click", function() {
 		if(obj.rst) {
 			if(e!=null){
 				$("#modify").prop("disabled", false);
+			} else {
+				$("#modify").prop("disabled", false);
+				$("#updatepass").prop("disabled", false);
 			}
-			$("#updatepass").prop("disabled", false);
 		}else {
 			window.alert("비밀번호가 불일치합니다.");
 			$("#inputpass").val("");
