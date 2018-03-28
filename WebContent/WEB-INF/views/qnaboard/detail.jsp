@@ -117,7 +117,7 @@
 			if(obj[0].result==1){
 				window.alert("추천 되었습니다.")
 			}else{
-				window.alert("알수없는 이유로 추천에 실패하셨습니다.")
+				window.alert("추천을 하루에 두번 이상 할 수 없습니다.")
 			}
 		});
 		location.reload();
