@@ -12,11 +12,12 @@
  
 
 <!-- session에서 가져오는 것으로 대체 -->
- <p>
+<!--  <p>
 <label><h5>NAME</h5></label></p>
 <input class="w3-input" type="text" name="writer" style="width:50%" required>
 <p>
-
+controller에서 넘김
+ -->
 
 <!-- 글제목 설정 -->
 <p>

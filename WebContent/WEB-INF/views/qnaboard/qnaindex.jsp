@@ -36,7 +36,7 @@ table {
 				<tr class="w3-light-grey" align="center">
 					<th>no</th>
 					<th>제목</th>
-					<th>글쓴이</th>
+					<th>글쓴이(닉네임)</th>
 					<th>등록일</th>
 					<th>조회</th>
 					<th>좋아요</th>

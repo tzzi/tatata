@@ -72,8 +72,6 @@ public class qnaDAO {
 		}
 		
 	}
-	
-	
 	//리플 보기
 	public List<Map> detail(int q_no){
 		SqlSession session = factory.openSession();
