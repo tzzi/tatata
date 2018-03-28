@@ -53,7 +53,7 @@ public class JoinController {
 		
 		int rst = dao.join(map);
 		if(rst==1) {
-			return "join";
+			return "redirect:/index.do";
 		} else {
 			return "redirect:/join/joinindex.do";
 		}
