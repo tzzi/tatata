@@ -66,7 +66,7 @@ public class qnaboardController {
 
 		return "redirect:/qnaboard/qnaindex.do";
 	}
-
+//조회수, 글상세보기
 	@RequestMapping("/detail.do")
 	public String detailHandle(@RequestParam int q_no, ModelMap modelMap, HttpServletResponse response,
 			HttpServletRequest request,HttpSession session) {
@@ -105,46 +105,25 @@ public class qnaboardController {
 
 	}
 
-
+//좋아요 증가
 	@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String addlikeController(@RequestParam int q_no,HttpServletResponse response,
-			HttpServletRequest request,HttpSession session) {
-		String id = (String) session.getAttribute("userId");
-		Cookie setCookie = new Cookie("like"+q_no+id,"좋아요쿠키");
-		setCookie.setMaxAge(60*60*24);//재 좋아요 기간 하루	
-		response.addCookie(setCookie);//쿠키 추가
+	public String addlikeController(@RequestParam int q_no) {
+		int rst = qdao.like(q_no);
 		
-		Cookie[] getCookie = request.getCookies();//쿠키 가져오기
-		
-		if(getCookie != null) {
-			for(int i=0;i<getCookie.length;i++) {
-				Cookie c = getCookie[i];
-				String name = c.getName();
-				System.out.println("좋아요 쿠키 이름"+name);
-				
-				
-				String a = "0";//반환값
-				
-				if(name.equals("like"+q_no+id)) {
-					System.out.println("좋아요-> 동일 쿠키가 존재함");
-					return "[{\"result\":" + a + "}]";
-				}else {
-					System.out.println("좋아요-> 동일 이름의 쿠키가 존재하지 안음");
-				}
-				
-			}
-			String a = "0";//반환값
-			int rst = qdao.like(q_no);
-			if(rst==1) {
-				a = "1";
-				return "[{\"result\":" + a + "}]";
-			}
+		String b = "0";
+		if(rst==1) {
+			b = "1";
+		}else {
+			b = "2";
 		}
-		return null;
-		
-		
+		return "[{\"result\":" + b + "}]";
+				
 	}
+	
+	
+	
+	
 	@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
@@ -163,4 +142,19 @@ public class qnaboardController {
 		
 		return "[{\"result\":" + b + "}]";
 	}
+	
+	//중복확인
+	@RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String overlapController(@RequestParam String overlap) {
+		int rst = qdao.overlap(overlap);
+		String b = "0";
+		if (rst ==1) {
+			b="1";
+		}else {
+			b="2";
+		}
+		return "[{\"result\":" + b + "}]";
+	}
+	
 }

@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="matchingboard">
 	<!-- mypage에서 필요 정보 가져오기 (test용)-->
 	<select id="mypagelist" resultType="java.util.HashMap">
-	select * from mypageTest where nick = #{nick}
+	select * from addinfo where id = #{id}
 	</select>
 	
 	<select id="matchinglist" resultType="java.util.HashMap">

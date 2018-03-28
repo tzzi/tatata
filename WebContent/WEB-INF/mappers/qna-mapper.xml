@@ -45,4 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update qnareply	set count = count+1 where q_no = #{q_no} and a_no = #{a_no}
 	</update>
 	
+	<!-- 추천 중복 확인하기 -->
+	<insert id="overlap">
+	insert into boardlike(boardlike) values(#{overlap})
+	</insert>
+	
 </mapper>

@@ -19,10 +19,10 @@ public class MatchingDAO {
 	SqlSessionFactory factory;
 
 	// 마이 페이지내용 보여주기.(dbtest)
-	public Map readmypage(String nick) {
+	public Map readmypage(String id) {
 		SqlSession session = factory.openSession();
 		try {
-			return session.selectOne("matchingboard.mypagelist", nick);
+			return session.selectOne("matchingboard.mypagelist", id);
 
 		} finally {
 			session.close();

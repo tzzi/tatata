@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -24,10 +25,15 @@ public class MatchingBoardController {
 	//마이페이지 
 	@RequestMapping("/matchingIndex.do")
 	public String indexHandle(ModelMap modelMap,HttpSession session) {
-		String nick = (String) session.getAttribute("userNick");
-		System.out.println(nick);
 		
-		modelMap.put("mypage", mdao.readmypage(nick));
+		String nick = (String) session.getAttribute("userNick");
+		System.out.println("nick : "+ nick);
+
+		String id = (String) session.getAttribute("userId");
+		System.out.println("id : "+id);
+		
+		modelMap.put("mypage", mdao.readmypage(id));
+		System.out.println(modelMap);
 		return "matchingIndex";
 	}
 	

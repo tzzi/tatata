@@ -72,6 +72,7 @@ public class qnaDAO {
 		}
 		
 	}
+	
 	//리플 보기
 	public List<Map> detail(int q_no){
 		SqlSession session = factory.openSession();
@@ -96,5 +97,20 @@ public class qnaDAO {
 		}
 		return rst;
 	}
-	
+	//중복 좋아요 확인 작업
+	public int overlap(String overlap) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		System.out.println("overlap" + overlap);
+		try {
+			rst = session.insert("qnaboard.overlap", overlap);
+			System.out.println(rst);
+		}catch(Exception e){
+			rst = 2;
+			return rst;
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
 }

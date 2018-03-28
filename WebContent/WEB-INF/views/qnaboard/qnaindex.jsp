@@ -42,27 +42,6 @@ table {
 					<th>좋아요</th>
 				</tr>
 			</thead>
-
-
-			<%-- <table cellpadding="0" cellspacing="0" class="board_list"">
-							<caption>게시판</caption>
-							<colgroup>
-								<col width="65"><col width="*"><col width="90"><col width="80"><col width="60"><col width="60">
-							</colgroup>
-							<thead>
-								<tr>
-									<th>no</th>
-									<th>제목</th>
-									<th>글쓴이</th>
-									<th>등록일</th>
-									<th>조회</th>
-									<th>좋아요</th>
-								</tr>
-							</thead>
-			
-			 --%>
-
-
 			<tbody>
 				<c:forEach items="${qnalist}" var="a">
 					<tr>

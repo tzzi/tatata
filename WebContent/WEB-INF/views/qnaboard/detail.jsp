@@ -80,8 +80,6 @@
 	<button style="width: 81%;" id="b1">
 		<small>댓글 남기기</small>
 	</button>
-
-
 </div>
 <script>
 	$("#b1").click(function() {
@@ -105,39 +103,34 @@
 	});
 
 	$("#like").click(function(){
-		$.ajax("/qnaboard/addlike.do",{
+		window.alert("우옷")
+		$.ajax("/qnaboard/overlap.do",{
 			"method" : "post",
 			"async": false,
 			"data":{
-				"q_no" : ${qnadetail.Q_NO}
+				"overlap" : "${sessionScope.userId}${qnadetail.Q_NO}"
 			}
 		}).done(function(obj){
 			if(obj[0].result==1){
-				window.alert("추천 되었습니다.")
+				$.ajax("/qnaboard/addlike.do",{
+				"method" : "post",
+				"async" : false,
+				"data":{
+					"q_no" : ${qnadetail.Q_NO}
+				}
+				}).done(function(obj){
+					if(obj[0].result==1){
+						window.alert("추천 되었습니다.")
+					}else{
+						window.alert("알 수 없는 이유로 추천에 실패하셨습니다.")
+					}
+				});
 			}else{
 				window.alert("이미 추천 하셨습니다.")
 			}
 		});
 		location.reload();
 	});
-	
-	/* $("#Rlike").click(function(){
-		$.ajax("/qnaboard/addRlike.do",{
-			"method" : "post",
-			"async" : false,
-			"data": {
-				"q_no" : ${qnadetail.Q_NO}
-				"a_no" : ${qnadetail.A_NO}
-			}
-		}).done(function(obj){
-			if(obj[0].result==1){
-				window.alert(${qnadetail.ADMIN}+"님의 댓글이 추천되었습니다.")
-			}else{
-				window.alert("이미 추천 하셨습니다.")
-			}
-		});
-		location.reload();
-	}); */
 	
 	
 	

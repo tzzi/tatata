@@ -5,14 +5,31 @@
 
 <h1>나의 정보</h1>
 
-닉네임 : ${mypage.NICK}
+아아디 : ${mypage.ID}
 <br />
-매칭유형 : ${mypage.G_MATCH}
+매칭유형 : 
+<c:choose>
+	<c:when test="${mypage.MATCHTYPE eq 1 }">
+	동성	
+	</c:when>
+	<c:when test="${mypage.MATCHTYPE eq 2 }">
+	이성
+	</c:when>
+	<c:otherwise>
+	상관없음
+	</c:otherwise>
+</c:choose>
+
+
 <br />
+이메일 : ${mypage.E_MAIL }
+<br/>
 담력 : ${mypage.FEAR}
 <br />
 경고 : ${mypage.YELLOW_CARD}
 <br />
+자기소개 : ${mypage.INTRO }
+
 
 <hr />
 장바구니
