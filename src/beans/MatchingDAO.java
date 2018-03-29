@@ -319,9 +319,10 @@ public class MatchingDAO {
 		}
 	}
 	//장바구니 하나 삭제
-	public int deletebasket(String nick,int no) {
+	public int deletebasket(String nick,String no) {
 		SqlSession session = factory.openSession();
 		System.out.println("나의 닉네임 : "+nick);
+		System.out.println("no : "+no);
 		int rst =0;
 		try {
 			System.out.println("basket.delete"+no);

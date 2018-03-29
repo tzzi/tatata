@@ -86,4 +86,18 @@ public class MatchingBoardController {
 		return "basketFix";
 	}
 	
+	//딜리트
+	@RequestMapping(path="/delete.do", produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String deletebasketHandle(@RequestParam String nick,@RequestParam String no) {
+		int rst = mdao.deletebasket(nick, no);
+		String b = "11";
+		if(rst==1) {
+			b="1";
+		}else {
+			b="2";
+		}
+		return "[{\"result\":" +b+"}]";
+	}
+	
 }
