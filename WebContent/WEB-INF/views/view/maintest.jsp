@@ -23,14 +23,15 @@
 
 <div id="main">
 
-<div class="w3-pale-red">
+<!-- <div class="w3-pale-red">
   <button id="openNav" class="w3-button w3-pale-red w3-xlarge" onclick="w3_open()">&#9776;</button>
   <div class="w3-container" style="color:white">
     <h1>My Page</h1>
   </div>
 </div>
-
-<div class="w3-container">
+ -->
+<div >
+	<img src="/image/SiteMain_1.jpg">
 </div>
 
 </div>

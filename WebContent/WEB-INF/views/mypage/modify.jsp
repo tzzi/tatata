@@ -78,8 +78,8 @@ $("#pass_bt").on("click", function() {
 		if(obj.rst) {
 			if(e!=null){
 				$("#modify").prop("disabled", false);
+				$("#updatepass").prop("disabled", false);
 			} else {
-				$("#modify").prop("disabled", false);
 				$("#updatepass").prop("disabled", false);
 			}
 		}else {

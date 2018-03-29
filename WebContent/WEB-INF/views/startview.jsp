@@ -8,7 +8,7 @@
 <style>
 html {
 	font-family: "Lato", sans-serif;
-	background: url(/start/start_logo.jpg) no-repeat center center fixed;
+	background: url(/start/MainPage.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -18,26 +18,45 @@ html {
 .button {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #f4511e;
+	background-color: none;
 	border: none;
-	color: #FFFFFF;
+	color: none;
 	text-align: center;
 	font-size: 28px;
-	padding: 20px;
+	padding: 20px; 
 	width: 200px;
 	transition: all 0.5s;
 	cursor: pointer;
 	margin: 5px;
 }
 
-.button span {
+.my-transparent-button {
+	display: inline-block;
+	border-radius: 4px;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+    outline: none;
+    color: #FFFFFF; 
+    padding: 20px; 
+	width: 200px;
+	font-size: 28px;
+	text-align: center;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+    
+} 
+
+.my-transparent-button span {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	transition: 0.5s;
 }
 
-.button span:after {
+.my-transparent-button span:after {
 	content: '\00bb';
 	position: absolute;
 	opacity: 0;
@@ -46,11 +65,11 @@ html {
 	transition: 0.5s;
 }
 
-.button:hover span {
+.my-transparent-button:hover span {
 	padding-right: 25px;
 }
 
-.button:hover span:after {
+.my-transparent-button:hover span:after {
 	opacity: 1;
 	right: 0;
 }
@@ -64,22 +83,22 @@ html {
 <body>
 	<div align="center">
 		<div style="width: 960px">
-			<div style="min-height: 100px;"></div>
+			<div style="min-height: 400px;"></div>
 
 
-			<div style="min-height: 200px"></div>
-			<div style="min-height: 150px">
-			<h1>놀이공원 & 놀이기구 정보를 한눈에</h1>
-			<h3><b>생생한 현장 소식을 전하다</b></h3>
+			<div style="min-height: 100px"></div>
+			<div style="min-height: 170px"> 
+			<!-- <h1>놀이공원 & 놀이기구 정보를 한눈에</h1>
+			<h3><b>생생한 현장 소식을 전하다</b></h3> -->
 			</div>
 			<div align="center" style="min-height: 150px;">
 
 
-				<a href="/join/joinindex.do"><button class="button"
+				<a href="/join/joinindex.do"><button class="my-transparent-button"
 						style="vertical-align: middle">
 						<span>J O I N </span>
 					</button></a> 
-				<a href="/login/loginindex.do"><button class="button"
+				<a href="/login/loginindex.do"><button class="my-transparent-button"
 						style="vertical-align: middle">
 						<span>L O G I N</span>
 					</button></a>
