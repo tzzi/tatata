@@ -55,8 +55,8 @@
 	<hr />
 	<div align="left">
 		<a href="/rideboard/list.do"><button style="outline: none;"
-				class="w3-btn w3-white w3-border">전체보기</button></a>
-     <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button style="outline: none;" class="w3-btn w3-white w3-border">롯데월드</button></a> 
+				class="w3-btn w3-light-gray w3-border">전체보기</button></a>
+       <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button style="outline: none;" class="w3-btn w3-white w3-border">롯데월드</button></a> 
 	  <a href="/rideboard/parkdetail.do?park_name=에버랜드"><button style="outline: none;" class="w3-btn w3-white w3-border">에버랜드</button></a>
 	 <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button style="outline: none;" class="w3-btn w3-white w3-border">서울랜드</button></a>
 	 <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button style="outline: none;" class="w3-btn w3-white w3-border">경주월드</button></a>
@@ -70,11 +70,7 @@
 	</c:if>
     <div class="w3-third w3-container w3-margin-bottom" style="border: 2px;"  >
         <p align="center"><b>${ride.RIDE_NAME }</b></p>
-      <a href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}">
-      <img src="${ride.IMAGE }" alt="Norway" 
-      style="width:100%;height: 180px;" class="w3-hover-opacity"></a><hr/>
-      
-      
+      <a href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}"><img src="${ride.IMAGE }" alt="Norway" style="width:100%;height: 180px;" class="w3-hover-opacity"></a><hr/>
       <div class="w3-container w3-white">
         
       </div>
@@ -88,7 +84,6 @@
 </body>
 
 <script>
-
 	var slideIndex = 1;
 	showDivs(slideIndex);
 

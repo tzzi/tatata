@@ -85,15 +85,21 @@ public class RideController {
 		modelMap.put("rideboard",rdao.list());
 		return "list";
 	}
-	
+	//좋아요 , 조회수 , 상세보기
 	@RequestMapping("/detail.do")
 	public String detailHandle(@RequestParam String ride_name,ModelMap modelMap) {
-		
+		modelMap.put("rideboard", rdao.goodcnt(ride_name));
+		modelMap.put("rideboard", rdao.count(ride_name));
 		modelMap.put("rideboard",rdao.detail(ride_name));
-		
 		System.out.println(modelMap);
 		return "detail";
 	}
 	
 	
+	@RequestMapping("/parkdetail.do")
+	public String parkdetailHandle(@RequestParam String park_name, ModelMap modelMap) {
+	
+		modelMap.put("rideboard", rdao.parkdetail(park_name));
+		return "parkdetail";
+	}
 }
