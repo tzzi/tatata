@@ -96,12 +96,7 @@ public class RideboardDAO {
 			System.out.println(nick);
 			System.out.println(basket);
 
-			Map map2 = new LinkedHashMap<>();
-			map2.put("basket", basket);
-			map2.put("type", type);
-
-			System.out.println(map2);
-
+			
 			System.out.println(mylist);
 
 			if (mylist == null) {
@@ -110,22 +105,8 @@ public class RideboardDAO {
 				return rst;
 			} else {
 				for (int a = 1; a<= 5; a++) {
-					if (mylist.get("BASKET" + a) != null) {
-						if (mylist.get("BASKET" + a).equals(basket)) {
-							return 5;// null이 아니고 같은 이름이 있다.
-						} else {// 널은 아니지만 같은 이름이 아니다.
-							System.out.println("비어있진 않지만 같은 놀이기구가 아니다.");
-						}
-					}else if (mylist.get("BASKET" + a) == null) {// 비어있다.
-						for(int b=1;b<=5;b++) {
-							
-						}
-						
-						System.out.println(a + "번 들어간다");
-						System.out.println(map);
-						System.out.println("basket.basket" + a);
-						rst = session.update("basket.basket" + a, map);
-						return rst;
+					if(mylist.get("BASKET"+a)!=null && mylist.get("BASKET"+a).equals(basket)) {//basket1~5가 null이 아니면서 들어온값과 같은것이 있을때
+						return 5;						
 					}
 				}
 			}
