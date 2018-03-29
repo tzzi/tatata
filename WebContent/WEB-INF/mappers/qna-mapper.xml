@@ -32,7 +32,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 리플쓰기 -->
 	<insert id="insertreply">
 	insert into QNAREPLY(a_no,Q_no,left_Date,content) values(qnareply_seq.nextval,#{q_no},sysdate,#{content})
-	
 	</insert>
 	
 	<!-- 글 추천수 올리기 -->
