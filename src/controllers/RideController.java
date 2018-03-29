@@ -129,6 +129,9 @@ public class RideController {
 		String a=null;
 		int rst= 0;
 		//rst = rdao.basket(map, nick, basket, type);		
+
+		rst = rdao.basket(map, nick, basket, type);		
+
 		System.out.println("rst값 : " + rst);
 		if(rst==5) {
 		 a ="5";
