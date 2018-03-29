@@ -8,7 +8,7 @@
 	font-family : '굴림'
 	}
 </style> -->
-<link rel="stylesheet" href="/WEB-INF/views/view/style.css">
+<!-- <link rel="stylesheet" href="/WEB-INF/views/view/style.css"> -->
 <div class="w3-container">
 	<br>
 	<div class="w3-row">

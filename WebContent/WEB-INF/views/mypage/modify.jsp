@@ -28,8 +28,9 @@
 					<th height="50px">이메일</th>
 					
 					<td align="center">
-						<input type="text" idname="email" value="${email }" placeholder="이메일"
+						<input type="text" name="email" value="${email }" placeholder="이메일"
 						style="padding: 8px; font-size: 12pt; width: 250px;" disabled/>
+						<input type="hidden" id="email" name="email_h" value="${email }"/>
 					 </td>
 				</tr>
 				<tr>
@@ -76,10 +77,10 @@ $("#pass_bt").on("click", function() {
 		}
 	}).done(function(obj){
 		if(obj.rst) {
-			if(e!=null){
-				$("#modify").prop("disabled", false);
+			if($.trim($("#email").val())==''){
 				$("#updatepass").prop("disabled", false);
 			} else {
+				$("#modify").prop("disabled", false);
 				$("#updatepass").prop("disabled", false);
 			}
 		}else {

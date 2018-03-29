@@ -7,19 +7,19 @@
 		<tiles:getAsString name="title"></tiles:getAsString>
 	</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/view/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/WEB-INF/views/view/style.css"> -->
 	
 	</head>
 	<body>
 	<div>
 		<div style="width: 100%">
-			<div style="min-height: 70px">
+			<div style="min-height: 10%">
 				<tiles:insertAttribute name="nav"></tiles:insertAttribute>
 			</div>
-			<div style="min-height: 500px">
+			<div style="min-height: 85%">
 				<tiles:insertAttribute name="body"></tiles:insertAttribute>
 			</div>
-			<div style="min-height: 120px">
+			<div style="min-height: 5%">
 				<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 			</div>
 		</div>

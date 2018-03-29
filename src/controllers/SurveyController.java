@@ -12,11 +12,19 @@ public class SurveyController {
 		
 	return "surveyindex";
 	}
+	
 	// 매칭 후기 설문조사판
 	@RequestMapping("/survey.do")
 	public String serveyHandle() {
 			
 	return "survey";
+	}
+	
+	// 매칭 후기 설문조사결과
+		@RequestMapping("/surveyrst.do")
+		public String serveyResultHandle() {
+				
+		return "surveyrst";
 			
 	}
 }
