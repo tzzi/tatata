@@ -3,18 +3,33 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="rideboard">
-	
+
 	<!-- 놀이 기구 등록 -->
 	<insert id="ride_write">
-		insert into rideboard(no,park_name,ride_name,type,image,content,left_date)
-		values(no_seq1.nextval,#{park_name },#{ride_name },#{type },#{image},#{content },#{left_date})
+		insert into
+		rideboard(no,park_name,ride_name,type,image,content,left_date)
+		values(no_seq1.nextval,#{park_name },#{ride_name },#{type
+		},#{image},#{content },#{left_date})
 	</insert>
-	
+	<!-- 게시판 전체 목록 -->
 	<select id="list" resultType="java.util.HashMap">
-	select * from rideboard order by no asc
+		select * from rideboard order by no asc
 	</select>
-	
+	<!-- 게시글 보기 -->
 	<select id="detail" resultType="java.util.HashMap">
-	select * from rideboard where ride_name= #{ride_name }
+		select * from rideboard where ride_name= #{ride_name }
 	</select>
+	<!-- 공원별 게시물 -->
+	<select id="parkdetail" resultType="java.util.HashMap">
+		select * from rideboard where park_name= #{park_name }
+	</select>
+	<!-- 조회수 -->
+	<update id="count">
+		update rideboard set count = count+1 where ride_name =#{ride_name }
+	</update>
+
+	<!-- 좋아요 수 -->
+	<update id="goodcnt">
+		update rideboard set good_cnt = good_cnt+1 where ride_name =#{ride_name }
+	</update>
 </mapper>
