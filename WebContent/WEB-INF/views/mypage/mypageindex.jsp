@@ -8,20 +8,22 @@
 		<form action="/mypage/modify.do" method="post" autocomplete="off">
 		<table>
 			<tr>
-				<th height="50px">I D</th>
+				<th height="50px">아이디</th>
 				<td align="center">${sessionScope.userId }</td> 
 			</tr>
 			
 			<tr>
-				<th height="50px">N I C K</th>
+				<th height="50px">닉네임</th>
 				<td align="center">${sessionScope.userNick }</td>
 			</tr>
 			
 			<tr>
-				<th height="50px">A U T H</th>
+				<th height="50px">인증</th>
 				<td align="center">
 				
-				<a href="/mypage/addinfo.do"><button type="button" class="btn btn-primary" style="padding: 6px; font-size: 12pt; width: 180px"> 
+				<a href="/mypage/addinfo.do">
+				<button type="button" class="btn btn-primary" style="padding: 6px; font-size: 12pt; width: 180px"
+				${ empty addinfo? '':'disabled' }> 
 				인증하러가기</button></a>
 				</td>
 			</tr>
@@ -33,8 +35,8 @@
 			<tr>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 180px">정보수정</button>
-					<a href="/mypage/deleteform.do"><button type="button" style="padding: 8px; font-size: 12pt; width: 180px">회원탈퇴</button></a><br/>
+					<button type="submit" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 150px">정보수정</button>
+					<a href="/mypage/deleteform.do"><button type="button" style="padding: 8px; font-size: 12pt; width: 150px">회원탈퇴</button></a><br/>
 				</td>
 			</tr>
 			

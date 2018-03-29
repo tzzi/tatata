@@ -8,6 +8,7 @@
 <br />
 조회수 : ${qnadetail.COUNT}
 <br />
+추천수 : ${qnadetail.Q_LIKE }
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <hr />
@@ -19,8 +20,7 @@
 				<th style="width: 150px;">내용</th>
 				<th style="width: 150px;">작성자</th>
 				<th style="width: 150px;">작성 날짜</th>
-			<!-- 추천 미구현 -->	<th style="width: 150px;">추천수</th>
-
+				<!-- <th style="width: 150px;">추천수</th> -->
 
 			</tr>
 
@@ -32,7 +32,7 @@
 					<td width=30%>${a.CONTENT}</td>
 					<td width=15%>${a.ADMIN}</td>
 					<td width=10%>${a.LEFT_DATE}</td>
-					<td width=10%>${a.COUNT}</td><!-- 추천 -->
+					<%-- <td width=10%>${a.COUNT}</td><!-- 추천 --> --%>
 
 				</tr>
 			</c:forEach>
@@ -41,6 +41,37 @@
 	</table>
 </div>
 <hr />
+<div align="center">
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<button type="submit" class="button" id="like">글 추천!!</button>
+
+</div>
+
+
+
 
 <div align="center" style="width: 70%; margin-top: 10px;">
 	<textarea id="content"
@@ -49,7 +80,6 @@
 	<button style="width: 81%;" id="b1">
 		<small>댓글 남기기</small>
 	</button>
-
 </div>
 <script>
 	$("#b1").click(function() {
@@ -71,4 +101,37 @@
 		$("#content").val("");
 		location.reload();
 	});
+
+	$("#like").click(function(){
+		window.alert("우옷")
+		$.ajax("/qnaboard/overlap.do",{
+			"method" : "post",
+			"async": false,
+			"data":{
+				"overlap" : "${sessionScope.userId}${qnadetail.Q_NO}"
+			}
+		}).done(function(obj){
+			if(obj[0].result==1){
+				$.ajax("/qnaboard/addlike.do",{
+				"method" : "post",
+				"async" : false,
+				"data":{
+					"q_no" : ${qnadetail.Q_NO}
+				}
+				}).done(function(obj){
+					if(obj[0].result==1){
+						window.alert("추천 되었습니다.")
+					}else{
+						window.alert("알 수 없는 이유로 추천에 실패하셨습니다.")
+					}
+				});
+			}else{
+				window.alert("이미 추천 하셨습니다.")
+			}
+		});
+		location.reload();
+	});
+	
+	
+	
 </script>

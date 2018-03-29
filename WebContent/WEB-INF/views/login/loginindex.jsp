@@ -16,9 +16,9 @@
 				<button type="submit" style="padding: 8px; font-size: 12pt; width: 250px">로그인</button>
 			</p>
 		</form>
-		<small>
+		<!-- <small>
 			<a href="/join/joinindex.do" style="font-size: 8pt;">회원가입</a> | 
 			<a href="/login/idfind.do" style="font-size: 8pt">아이디 찾기</a> | 
 			<a href="/login/passfind.do" style="font-size: 8pt">비밀번호 찾기</a>
-		</small>
+		</small> -->
 </div>

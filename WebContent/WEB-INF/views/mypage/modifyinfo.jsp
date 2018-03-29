@@ -14,7 +14,8 @@
 				<th height="50px">아이디</th>
 				<td></td>
 				<td align="center"><input type="text"  value="${sessionScope.userId }" disabled
-				style="padding: 8px; font-size: 12pt; width: 250px;"/><input type="hidden" name="id" value="${sessionScope.userId }"/>
+				style="padding: 8px; font-size: 12pt; width: 250px;"/>
+				<input type="hidden" name="id" value="${sessionScope.userId }"/>
 			</tr>
 			
 
@@ -30,7 +31,7 @@
 				<td></td>
 				<td align="center">
 					<input type="text" name="email" value="${email }" placeholder="이메일"
-					style="padding: 8px; font-size: 12pt; width: 250px;" />
+					style="padding: 8px; font-size: 12pt; width: 250px;" disabled/>
 					<input type="hidden" name="h_email" value="${email }"/>
 				 </td>
 			</tr>

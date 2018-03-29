@@ -37,17 +37,42 @@ public class qnaDAO {
 		}
 		return rst;
 	}
-	//조회수,글상세보기
+	//글상세보기
 	public Map detailqna(int q_no){
 		SqlSession session = factory.openSession();
 		try {
-			
-			session.update("qnaboard.addcount", q_no);
 			return session.selectOne("qnaboard.detailqna", q_no);			
 		}finally {
 			session.close();
 		}
 	}
+	//조회수 올리기
+	public int addcount(int q_no) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		try {
+			rst =session.update("qnaboard.addcount", q_no);
+			System.out.println("조회수 증가한다");
+			return rst;
+		}finally {
+			session.close();
+		}
+	}
+		
+	
+	//추천하기
+	public int like(int q_no) {
+		SqlSession session = factory.openSession();
+		try {
+			int rst= session.update("qnaboard.addlike",q_no);
+			System.out.println("좋아요 증가한다!!");
+			return rst;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
 	//리플 보기
 	public List<Map> detail(int q_no){
 		SqlSession session = factory.openSession();
@@ -72,5 +97,20 @@ public class qnaDAO {
 		}
 		return rst;
 	}
-	
+	//중복 좋아요 확인 작업
+	public int overlap(String overlap) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		System.out.println("overlap" + overlap);
+		try {
+			rst = session.insert("qnaboard.overlap", overlap);
+			System.out.println(rst);
+		}catch(Exception e){
+			rst = 2;
+			return rst;
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
 }
