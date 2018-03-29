@@ -50,6 +50,9 @@
 					<a href="/matchingBoard/matchingIndex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						매칭보드</a>
+					<a href="/survey/surveyindex.do"
+						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
+						매칭후기</a>
 					<a href="/mypage/mypageindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						마이페이지</a>
