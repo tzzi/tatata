@@ -55,13 +55,17 @@
 	
 	<!-- mongo -->
 
-	<mongo:mongo-client host="13.125.247.3" port="27017"></mongo:mongo-client>
-	<bean id="mongoTemblate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	<mongo:mongo-client host="13.125.247.3" port="13579"></mongo:mongo-client>
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo"></constructor-arg>
 		<constructor-arg name="databaseName" value="root"></constructor-arg>
 	</bean>
 	
 	<!-- multipart -->
+	<!-- multipart resolve / spring framework 에서는 
+				단 하나의 MultipartResolver만 등록가능하고, 
+				id를 multipartResolver 로 등록해야됨. 
+				dispatcherServlet이 id로 검색해서 사용-->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="uploadTempDir" value="/temp"/>

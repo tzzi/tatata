@@ -3,6 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
+	<!-- 첫페이지 -->
 	<display-name>tatata</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -13,6 +14,8 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>startview.do</welcome-file>
 	</welcome-file-list>
+	
+	<!-- spring -->
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -23,6 +26,8 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	<!-- encode -->
 	<filter>
 		<filter-name>encode</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -36,17 +41,18 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<!-- Authfilter -->
 	<filter>
-  	<filter-name>auth</filter-name>
-  	<filter-class>filters.AuthFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>auth</filter-name>
-  	<url-pattern>/qnaboard/*</url-pattern>
-  	<url-pattern>/rideboard/*</url-pattern>
-  	<url-pattern>/mypage/*</url-pattern>
-  	<url-pattern>/matchingBoard/*</url-pattern>
-   </filter-mapping>
-	
-	
+		<filter-name>auth</filter-name>
+		<filter-class>filters.AuthFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>auth</filter-name>
+		<url-pattern>/qnaboard/*</url-pattern>
+		<url-pattern>/rideboard/*</url-pattern>
+		<url-pattern>/mypage/*</url-pattern>
+		<url-pattern>/matchingBoard/*</url-pattern>
+	</filter-mapping>
+
+
 </web-app>
