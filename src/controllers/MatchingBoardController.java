@@ -33,7 +33,10 @@ public class MatchingBoardController {
 		System.out.println("id : "+id);
 		
 		modelMap.put("mypage", mdao.readmypage(id));
+		System.out.println("mypage작업 완료");
+		modelMap.put("mybasket", mdao.readmybasket(nick));
 		System.out.println(modelMap);
+		
 		return "matchingIndex";
 	}
 	
@@ -75,4 +78,12 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
+	@RequestMapping("/basketFix.do")
+	public String basketFixHandle(ModelMap modelmap,HttpSession session) {
+		String nick = (String) session.getAttribute("userNick");
+		modelmap.put("myinfo", mdao.mybasketinfo(nick));
+		
+		return "basketFix";
+	}
+	
 }

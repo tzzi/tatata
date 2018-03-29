@@ -18,7 +18,7 @@ public class MatchingDAO {
 	@Autowired
 	SqlSessionFactory factory;
 
-	// 마이 페이지내용 보여주기.(dbtest)
+	// 마이 페이지내용 보여주기.(addinfo)
 	public Map readmypage(String id) {
 		SqlSession session = factory.openSession();
 		try {
@@ -28,6 +28,17 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+	//마이 페이지보여주기 (장바구니)
+	public Map readmybasket(String nick) {
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectOne("basket.myinfo",nick);
+		}finally {
+			session.close();
+		}
+	}
+	
+	
 	//매칭 리스트 뽑기 
 	public Map Matchingpage(String nick) {
 		SqlSession session = factory.openSession();
@@ -297,4 +308,30 @@ public class MatchingDAO {
 		}
 		return rst;
 	}
+	//장바구니 정보 가져오기
+	public Map mybasketinfo(String nick) {
+		SqlSession session = factory.openSession();
+		System.out.println("나의 닉네임 : "+nick);
+		try {
+			return session.selectOne("basket.myinfo");
+		}finally {
+			session.close();
+		}
+	}
+	//장바구니 하나 삭제
+	public int deletebasket(String nick,int no) {
+		SqlSession session = factory.openSession();
+		System.out.println("나의 닉네임 : "+nick);
+		int rst =0;
+		try {
+			System.out.println("basket.delete"+no);
+			rst= session.update("basket.delete"+no,nick);			
+			
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	
 }

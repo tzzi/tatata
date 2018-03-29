@@ -37,6 +37,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update mybasketinfo set basket5 = #{basket},type5=#{type} where nick = #{nick}
 </update>
 
+<!-- 장바구니 1번 행 삭제 -->
+<update id="delete1">
+	update mybasketinfo set basket1 = null, type1=null where nick = #{nick};
+</update>
+
+<!-- 장바구니 2번 행 삭제 -->
+<update id="delete2">
+	update mybasketinfo set basket2 = null, type2=null where nick = #{nick};
+</update>
+
+<!-- 장바구니 3번 행 삭제 -->
+<update id="delete3">
+	update mybasketinfo set basket3 = null, type3=null where nick = #{nick};
+</update>
+
+<!-- 장바구니 4번 행 삭제 -->
+<update id="delete4">
+	update mybasketinfo set basket4 = null, type4=null where nick = #{nick};
+</update>
+
+<!-- 장바구니 5번 행 삭제 -->
+<update id="delete5">
+	update mybasketinfo set basket5 = null, type5=null where nick = #{nick};
+</update>
+
+
+
+
+
+
+
+
 <!-- 내 정보 가져오기 -->
 <select id="myinfo" resultType="java.util.LinkedHashMap">
 	select * from mybasketinfo where nick=#{nick}
