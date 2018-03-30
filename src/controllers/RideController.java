@@ -123,13 +123,15 @@ public class RideController {
       modelMap.put("rideboard", rdao.parkdetail(park_name));
       return "parkdetail";
    }
+   //장바구니
    @RequestMapping(path = "/cart.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String basketHandle(@RequestParam Map map,@RequestParam String nick,@RequestParam String basket,@RequestParam String type) {
 		String a=null;
 		int rst= 0;
-		//rst = rdao.basket(map, nick, basket, type);		
-
+		
+				
+		
 		rst = rdao.basket(map, nick, basket, type);		
 
 		System.out.println("rst값 : " + rst);

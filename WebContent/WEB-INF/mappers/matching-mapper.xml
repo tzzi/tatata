@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="matchinglist" resultType="java.util.HashMap">
-	select * from mypageTest where nick != #{nick}
+	select * from addinfo where id != #{id}
 	</select>
 	
 	<select id="matchingcheck" resultType="java.util.HashMap">
@@ -17,9 +17,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="matchinginsert">
-	
 	insert into matchingcheck(nick,fear,yellow_card,gender,mynick,e_mail) values(#{nick},#{fear},#{yellow_card},#{gender},#{mynick},#{e_mail})
 	</insert>
 	
+	<insert id="agree">
+	insert into matchingagree(id,nick,gender,area,fear,matchtype,yellow_card,email,
+	basket1,basket2,basket3,basket4,basket5,
+	type1,type2,type3,type4,type5)
+	values
+	(#{ID},#{NICK},#{GENDER},#{AREA},#{FEAR},#{MATCHTYPE},#{YELLOW_CARD},#{EMAIL},
+	#{BASKET1, jdbcType=VARCHAR},#{BASKET2, jdbcType=VARCHAR},#{BASKET3, jdbcType=VARCHAR},#{BASKET4, jdbcType=VARCHAR},#{BASKET5, jdbcType=VARCHAR}
+	,#{TYPE1, jdbcType=VARCHAR},#{TYPE2, jdbcType=VARCHAR},#{TYPE3, jdbcType=VARCHAR},#{TYPE4, jdbcType=VARCHAR},#{TYPE5, jdbcType=VARCHAR}
+	)	
+	</insert>
 	
+	<select id="mybasketinfo" resultType="java.util.HashMap">
+	select * from mybasketinfo where nick = #{nick}	
+	</select>
+
+	<select id="checkagree" resultType="java.util.HashMap">
+	select * from matchingagree where nick = #{nick}
+	
+	</select>
 </mapper>

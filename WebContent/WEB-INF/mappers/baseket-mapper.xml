@@ -8,8 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 처음 장바구니 저장 저장 -->
 <insert id="first">
-	insert into mybasketinfo(nick,basket1,type1) values(#{nick},#{basket},#{type})
+	insert into mybasketinfo(nick,basket1,type1) 
+	values(#{nick},#{basket},#{type}
+	)
 </insert>
+
+
 
 <!-- 1번째에 저장 -->
 <update id="basket1">
@@ -61,12 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <update id="delete5">
 	update mybasketinfo set basket5 = null, type5=null where nick = #{nick}
 </update>
-
-
-
-
-
-
 
 
 <!-- 내 정보 가져오기 -->

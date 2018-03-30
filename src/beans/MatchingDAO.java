@@ -40,20 +40,27 @@ public class MatchingDAO {
 	
 	
 	//매칭 리스트 뽑기 
-	public Map Matchingpage(String nick) {
+	public Map Matchingpage(String nick,String id) {
 		SqlSession session = factory.openSession();
 		try {
 			List<Map> list = new LinkedList<>();
 			//나의 정보
-			Map mylist =session.selectOne("matchingboard.mypagelist", nick);//list2
-			System.out.println(mylist);
+			System.out.println("id : " +id);
+			System.out.println("nick : " +nick);
+			
+			Map mylist =session.selectOne("matchingboard.mypagelist", id);//list2
+			System.out.println("나의 정보 : " + mylist);
 			//나를 제외한 정보
 			List<Map> notmylist = session.selectList("matchingboard.matchinglist",nick);//list
+			System.out.println("나를 제외한 정보 : "+notmylist);
 			
-			String mygender = (String) mylist.get("gender");//나의 성별.	
-			String g_match = (String) mylist.get("G_MATCH");
+			int mygender =  (int) mylist.get("gender");//나의 성별.	
+			String MATCHTYPE = (String) mylist.get("MATCHTYPE");
 			
-			if(g_match.equals("이성")) {
+			System.out.println("내 성별" + mygender);
+			System.out.println("나의 매칭 타입" + MATCHTYPE);
+			
+			if(MATCHTYPE.equals("이성")) {
 				for(int a=0;a<notmylist.size();a++) {
 					if(!(mylist.get("GENDER").equals(notmylist.get(a).get("GENDER"))) &&
 					(notmylist.get(a).get("G_MATCH").equals("이성") || notmylist.get(a).get("G_MATCH").equals("무관"))	
@@ -62,7 +69,7 @@ public class MatchingDAO {
 						System.out.println(notmylist.get(a));
 					}
 				}
-			}else if(g_match.equals("동성")) {
+			}else if(MATCHTYPE.equals("동성")) {
 				for(int b=0;b<notmylist.size();b++) {
 					if(mylist.get("GENDER").equals(notmylist.get(b).get("GENDER")) &&
 						(notmylist.get(b).get("G_MATCH").equals("동성") || notmylist.get(b).get("G_MATCH").equals("무관"))
@@ -333,6 +340,51 @@ public class MatchingDAO {
 		}
 		return rst;
 	}
-	
-	
+	//addinfo 목록 불러오기
+	public Map addinfo(String id) {
+		SqlSession session = factory.openSession();
+		System.out.println("1   "+id);
+		try {
+			return session.selectOne("matchingboard.mypagelist",id);
+		}finally {
+			session.close();
+		}
+	}
+	//mybasketinfo 목록 가져오기
+	public Map readmybasketinfo(String nick) {
+		SqlSession session = factory.openSession();
+		System.out.println("2   "+nick);
+		try {
+			return session.selectOne("matchingboard.mybasketinfo",nick);
+		}finally {
+			session.close();
+		}
+	}
+	//agree insert
+	public int agree(Map map3) {
+		SqlSession session = factory.openSession();
+		System.out.println("3");
+		int rst = 0;
+		try {
+			System.out.println(session.insert("matchingboard.agree",map3));
+			rst = session.insert("matchingboard.agree",map3);
+			System.out.println("agree rst : "+ rst);
+			return rst;
+		}catch(Exception e) {
+			return 2;
+		}
+		finally {
+			session.close();
+		}
+	}
+	//check agree
+	public Map checkagree(String nick) {
+		SqlSession session = factory.openSession();
+		System.out.println("checkagree");
+		try {
+			return session.selectOne("matchingboard.checkagree",nick);
+		}finally {
+			session.close();
+		}
+	}
 }

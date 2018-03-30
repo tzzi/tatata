@@ -3,115 +3,177 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <div align="center">
-<h1>나의 정보</h1>
+	<h1>나의 정보</h1>
 
-아아디 : ${mypage.ID}
+
+	<p>
+		<c:choose>
+			<c:when test="${mypage.MATCHTYPE eq null }">
+  마이 페이지에서 정보수정을 통해 매칭유형과 이메일, 담력등을 선택해주세요<hr />
+			</c:when>
+
+			<c:otherwise>
+ 아아디 : ${mypage.ID}
 <br />
 매칭유형 : 
 <c:choose>
-	<c:when test="${mypage.MATCHTYPE eq 1 }">
+					<c:when test="${mypage.MATCHTYPE eq 1 }">
 	동성	
 	</c:when>
-	<c:when test="${mypage.MATCHTYPE eq 2 }">
+					<c:when test="${mypage.MATCHTYPE eq 2 }">
 	이성
 	</c:when>
-	<c:otherwise>
+					<c:otherwise>
 	상관없음
 	</c:otherwise>
-</c:choose>
+				</c:choose>
 
 
-<br />
+				<br />
 이메일 : ${mypage.EMAIL }
-<br/>
+<br />
 담력 : ${mypage.FEAR}
 <br />
 경고 : ${mypage.YELLOW_CARD}
 <br />
 자기소개 : ${mypage.INTRO }
-
-
 <hr />
 장바구니
 <br />
-<c:choose>
-	<c:when test="${mybasket.BASKET1 eq null}">
-			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br/>
-		<a href="/rideboard/list.do"><button type="submit" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 200px">놀이기구 보러가기</button></a>	
-	</c:when>
+
+			</c:otherwise>
+		</c:choose>
+
+		<c:choose>
+			<c:when
+				test="${mybasket.BASKET1 eq null && mybasket.BASKET2 eq null && mybasket.BASKET3 eq null && mybasket.BASKET1 eq null && mybasket.BASKET4 eq null 
+	&& mybasket.BASKET5 eq null}">
+			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br />
+				<a href="/rideboard/list.do"><button type="submit"
+						class="btn btn-primary"
+						style="padding: 8px; font-size: 12pt; width: 200px">놀이기구
+						보러가기</button></a>
+			</c:when>
+			<c:otherwise>
+
+				<c:choose>
+					<c:when test="${mybasket.BASKET1 eq null}">
+					</c:when>
+					<c:otherwise>${mybasket.BASKET1}    <button
+							type="submit" class="delete" id="1">목록에서 빼기</button>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+				<c:choose>
+					<c:when test="${mybasket.BASKET2 eq null}">
+					</c:when>
+					<c:otherwise>${mybasket.BASKET2}   <button
+							type="submit" class="delete" id="2">목록에서 빼기</button>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+				<c:choose>
+					<c:when test="${mybasket.BASKET3 eq null}">
+					</c:when>
+					<c:otherwise>${mybasket.BASKET3}   <button
+							type="submit" class="delete" id="3">목록에서 빼기</button>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+				<c:choose>
+					<c:when test="${mybasket.BASKET4 eq null}">
+					</c:when>
+					<c:otherwise>${mybasket.BASKET4}   <button
+							type="submit" class="delete" id="4">목록에서 빼기</button>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+				<c:choose>
+					<c:when test="${mybasket.BASKET5 eq null}">
+					</c:when>
+					<c:otherwise>${mybasket.BASKET5}   <button
+							type="submit" class="delete" id="5">목록에서 빼기</button>
+						<br />
+					</c:otherwise>
+				</c:choose>
+
+			</c:otherwise>
+		</c:choose>
+	<hr />
+	
+	<c:choose>
+		<c:when test="${checkagree.NICK eq null}">
+		<button type="submit" id="agree">매칭 동의</button>
+		</c:when>
 	<c:otherwise>
-<c:choose>
-<c:when test="${mybasket.BASKET1 eq null}">
-</c:when>
-<c:otherwise>${mybasket.BASKET1}    <button type="submit" class="delete" id="1">목록에서 빼기</button><br/>
-</c:otherwise>
-</c:choose>
+		<!-- 널이 아니라면 -->
+		<c:choose>
+		<c:when
+			test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
+ 	&& mypage.MATCHTYPE ne null }">
+			<form action="/matchingBoard/matching.do" method="post">
+				<button type="submit" id="matching">매칭하기</button>
+			</form>
 
-<c:choose>
-<c:when test="${mybasket.BASKET2 eq null}">
-</c:when>
-<c:otherwise>${mybasket.BASKET2}   <button type="submit" class="delete" id="2">목록에서 빼기</button><br/>
-</c:otherwise>
-</c:choose>
+		</c:when>
+		<c:otherwise>
+ 			장바구니에 정보가 없거나 내정보에서 매칭유형,이메일,담력 등을 설정하지 않으면 매칭을 할 수 없습니다.
+ 	</c:otherwise>
 
-<c:choose>
-<c:when test="${mybasket.BASKET3 eq null}">
-</c:when>
-<c:otherwise>${mybasket.BASKET3}   <button type="submit" class="delete" id="3">목록에서 빼기</button><br/>
-</c:otherwise>
-</c:choose>
-
-<c:choose>
-<c:when test="${mybasket.BASKET4 eq null}">
-</c:when>
-<c:otherwise>${mybasket.BASKET4}   <button type="submit" class="delete" id="4">목록에서 빼기</button><br/>
-</c:otherwise>
-</c:choose>
-
-<c:choose>
-<c:when test="${mybasket.BASKET5 eq null}">
-</c:when>
-<c:otherwise>${mybasket.BASKET5}   <button type="submit" class="delete" id="5">목록에서 빼기</button><br/>
-</c:otherwise>
-</c:choose>
-
-
-<a href="/rideboard/list.do"><button type="submit">장바구니 추가하기</button></a>
-
-		<hr />
-		<form action="/matchingBoard/matching.do" method="post">
-			<button type="submit" id="matching">매칭하기</button>
-			<input type="hidden" value="${sessionScope.userNick}" name="nick" />
-		</form>
+	</c:choose>
 
 	</c:otherwise>
-</c:choose>
+	</c:choose>
+		
+
+
 </div>
 
 
 
 
 <script>
-$(".delete").click(function(){
-	var id = $(this).attr("id");
-	$.ajax("/matchingBoard/delete.do",{
-		"method" : "post",
-		"async" : false,
-		"data": {
-			"nick" : "${sessionScope.userNick}",
-			"no" : id
-		}
-	}).done(function(obj){
-		if(obj[0].result==1){
-			window.alert("장바구니에서 삭제되었습니다.")
-		}
+	$(".delete").click(function() {
+		var id = $(this).attr("id");
+		$.ajax("/matchingBoard/delete.do", {
+			"method" : "post",
+			"async" : false,
+			"data" : {
+				"nick" : "${sessionScope.userNick}",
+				"no" : id
+			}
+		}).done(function(obj) {
+			if (obj[0].result == 1) {
+				window.alert("장바구니에서 삭제되었습니다.")
+			}
+		});
+		location.reload();
 	});
-	location.reload();
-});
 
+	$("#agree").click(function() {
+		window.alert("1")
+		$.ajax("/matchingBoard/agree.do", {
+			"method" : "post",
+			"async" : false,
+			"data" : {
+				"nick" : "${sessionScope.userNick}",
+				"id" : "${sessionScope.userId}"
+			}
+		}).done(function(obj) {
+			if (obj[0].result == 1) {
+				window.alert("매칭에 동의하셨습니다.");
+			} else if (obj[0].result == 2) {
+				window.alert("이미 매칭에 동의하셨습니다.");
+			} else {
+				window.alert("알 수 없는 이유로 매칭에 동의하지 못했습니다.");
+			}
+		});
 
-
-
+	});
 </script>
 
 

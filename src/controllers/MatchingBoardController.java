@@ -35,21 +35,30 @@ public class MatchingBoardController {
 		modelMap.put("mypage", mdao.readmypage(id));
 		System.out.println("mypage작업 완료");
 		modelMap.put("mybasket", mdao.readmybasket(nick));
-		System.out.println(modelMap);
+		
+		modelMap.put("checkagree", mdao.checkagree(nick));
+		
+		System.out.println("modelMap : "+modelMap);
+		
 		
 		return "matchingIndex";
 	}
 	
-	
+	//1차 매칭
 	@RequestMapping("/matching.do")
 	public String matchingHandle(HttpSession session, ModelMap modelMap) {
 		
 		String nick = (String) session.getAttribute("userNick");
+		String id = (String) session.getAttribute("userId");
 		
-		modelMap.put("matching",mdao.Matchingpage(nick));
-		modelMap.put("mypage", mdao.readmypage(nick));
+		
+		modelMap.put("matching",mdao.Matchingpage(nick,id));
+		//modelMap.put("mypage", mdao.readmypage(nick));
+		
 		return "matching";
 	}
+	
+	
 	@RequestMapping("/matching2.do")
 	public String matching2Handle(HttpSession session, ModelMap modelMap) {
 		
@@ -99,5 +108,36 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
-	
+
+	@RequestMapping(path="/agree.do",  produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String agreeHandle(HttpSession session) {
+		Map map1 = new LinkedHashMap<>();
+		Map map2 = new LinkedHashMap<>();
+		Map map3 = new LinkedHashMap<>();
+		String b = "11";
+		String nick = (String) session.getAttribute("userNick");
+		String id = (String) session.getAttribute("userId");
+				
+		
+		map1 = mdao.addinfo(id);
+		map2 = mdao.readmybasketinfo(nick);
+		
+		System.out.println("정보 불러오기 완료");
+		
+		map3.putAll(map1);			
+		map3.putAll(map2);	
+		System.out.println("map3 : "+ map3);
+		map3.put("id", id);
+		map3.put("nick", nick);
+		
+		int rst = mdao.agree(map3);
+		System.out.println("막rst : " +rst);
+		if(rst==1) {
+			b="1";
+		}else if(rst==2) {
+			b="2";
+		}
+		return "[{\"result\":" +b+"}]";
+	}
 }
