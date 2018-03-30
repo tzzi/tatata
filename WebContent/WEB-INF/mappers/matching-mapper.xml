@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="matchinginsert">
-	insert into matchingcheck(nick,fear,yellow_card,gender,mynick,e_mail) values(#{nick},#{fear},#{yellow_card},#{gender},#{mynick},#{e_mail})
+	insert into matchingcheck(matchingnick,fear,yellow_card,gender,mynick,email,overlap) values(#{matchingnick},#{fear},#{yellow_card},#{gender},#{mynick},#{email},#{overlap})
 	</insert>
 	
 	<insert id="agree">
@@ -34,9 +34,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="mybasketinfo" resultType="java.util.HashMap">
 	select * from mybasketinfo where nick = #{nick}	
 	</select>
-
+	
+	<!-- 매칭리스트에 있는 나의 정보 -->
 	<select id="checkagree" resultType="java.util.HashMap">
 	select * from matchingagree where nick = #{nick}
-	
 	</select>
+	
+	<!-- 매칭 리스트에 있는 나를 제외한 정보 -->
+	<select id="notmylist" resultType="java.util.HashMap">
+	select * from matchingagree where nick != #{nick}
+	</select>
+	
+	<!-- 새로운 장바구니 업데이트 -->
+	<update id="updatebasket">
+	update matchingagree set 
+	basket1=#{BASKET1,jdbcType=VARCHAR},
+	basket2=#{BASKET2,jdbcType=VARCHAR},
+	basket3=#{BASKET3,jdbcType=VARCHAR},
+	basket4=#{BASKET4,jdbcType=VARCHAR},
+	basket5=#{BASKET5,jdbcType=VARCHAR},
+	type1=#{TYPE1,jdbcType=VARCHAR},
+	type2=#{TYPE2,jdbcType=VARCHAR},
+	type3=#{TYPE3,jdbcType=VARCHAR},
+	type4=#{TYPE4,jdbcType=VARCHAR},
+	type5=#{TYPE5,jdbcType=VARCHAR}
+	where nick = #{NICK}
+	</update>
+	
+	
 </mapper>

@@ -50,21 +50,35 @@ public class MatchingBoardController {
 		
 		String nick = (String) session.getAttribute("userNick");
 		String id = (String) session.getAttribute("userId");
+		int rst = 0;
 		
+		Map map = new LinkedHashMap<>();
+		map = mdao.mybasketinfo(nick);
+		System.out.println("update map"+map);
+		rst=mdao.updateagree(map);
 		
-		modelMap.put("matching",mdao.Matchingpage(nick,id));
-		//modelMap.put("mypage", mdao.readmypage(nick));
+		if(rst==1) {
+			modelMap.put("matching",mdao.Matchingpage(nick,id));
+			modelMap.put("mypage", mdao.readmypage(nick));
+			System.out.println(modelMap);			
+			return "matching";
+		}else {
+			return "matchingIndex";
+		}
 		
-		return "matching";
 	}
 	
-	
+	//2차 매칭
 	@RequestMapping("/matching2.do")
 	public String matching2Handle(HttpSession session, ModelMap modelMap) {
 		
 		String nick = (String) session.getAttribute("userNick");
 		
-		modelMap.put("matching2", mdao.Matchingpage2(nick));
+		String id = (String) session.getAttribute("userId");
+		System.out.println("id : "+id);
+		
+		
+		modelMap.put("matching2", mdao.Matchingpage2(nick, id));
 		return "matching2";
 	}
 	@RequestMapping("/matchingcheck.do")
@@ -82,8 +96,11 @@ public class MatchingBoardController {
 		String b = "1";
 		if(rst==1) {
 			b="1";
-		}else {
-			b = "2";
+		}else if(rst==2) {
+			b="2";
+		}
+		else {
+			b = "3";
 		}
 		return "[{\"result\":" +b+"}]";
 	}
@@ -95,7 +112,7 @@ public class MatchingBoardController {
 		return "basketFix";
 	}
 	
-	//딜리트
+	//놀이기구 목록 삭제
 	@RequestMapping(path="/delete.do", produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String deletebasketHandle(@RequestParam String nick,@RequestParam String no) {
@@ -140,4 +157,6 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
+	
+	
 }

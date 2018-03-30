@@ -48,31 +48,31 @@ public class MatchingDAO {
 			System.out.println("id : " +id);
 			System.out.println("nick : " +nick);
 			
-			Map mylist =session.selectOne("matchingboard.mypagelist", id);//list2
+			Map mylist =session.selectOne("matchingboard.checkagree", nick);//list2
 			System.out.println("나의 정보 : " + mylist);
 			//나를 제외한 정보
-			List<Map> notmylist = session.selectList("matchingboard.matchinglist",nick);//list
+			List<Map> notmylist = session.selectList("matchingboard.notmylist",nick);//list
 			System.out.println("나를 제외한 정보 : "+notmylist);
 			
-			int mygender =  (int) mylist.get("gender");//나의 성별.	
+			String mygender =  (String) mylist.get("GENDER");//나의 성별.	
 			String MATCHTYPE = (String) mylist.get("MATCHTYPE");
 			
 			System.out.println("내 성별" + mygender);
 			System.out.println("나의 매칭 타입" + MATCHTYPE);
 			
-			if(MATCHTYPE.equals("이성")) {
+			if(MATCHTYPE.equals("2")) {
 				for(int a=0;a<notmylist.size();a++) {
 					if(!(mylist.get("GENDER").equals(notmylist.get(a).get("GENDER"))) &&
-					(notmylist.get(a).get("G_MATCH").equals("이성") || notmylist.get(a).get("G_MATCH").equals("무관"))	
+					(notmylist.get(a).get("MATCHTYPE").equals("2") || notmylist.get(a).get("MATCHTYPE").equals("3"))	
 							){
 						list.add(notmylist.get(a));
 						System.out.println(notmylist.get(a));
 					}
 				}
-			}else if(MATCHTYPE.equals("동성")) {
+			}else if(MATCHTYPE.equals("1")) {
 				for(int b=0;b<notmylist.size();b++) {
 					if(mylist.get("GENDER").equals(notmylist.get(b).get("GENDER")) &&
-						(notmylist.get(b).get("G_MATCH").equals("동성") || notmylist.get(b).get("G_MATCH").equals("무관"))
+						(notmylist.get(b).get("MATCHTYPE").equals("1") || notmylist.get(b).get("MATCHTYPE").equals("3"))
 							) {
 						list.add(notmylist.get(b));
 						System.out.println(notmylist.get(b));
@@ -82,12 +82,12 @@ public class MatchingDAO {
 			}else {
 				for(int c=0;c<notmylist.size();c++) {
 					String x_match = (String) notmylist.get(c).get("G_MATCH");
-					if(x_match.equals("이성")) {
+					if(x_match.equals("2")) {
 						if(!(notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
 							System.out.println("내가 무관이고 상대방이 이성 이고 내가 그 이성에 맞는 성별일때 :" +notmylist.get(c));
 						}
-					}else if(x_match.equals("동성")){
+					}else if(x_match.equals("1")){
 						if((notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
 							System.out.println("내가 무관이고 상대방이 동성이고 내가 그 동성에 맞는 성별일떄: "+ notmylist.get(c));
@@ -96,6 +96,7 @@ public class MatchingDAO {
 				}
 			}
 			System.out.println("매칭 상대 성별 필터 : "+list);
+			System.out.println("이얏호");
 			
 			//========================  매칭 상대 구별(동,이성,남,여,)============================= 
 			
@@ -149,33 +150,40 @@ public class MatchingDAO {
 		}
 
 	}
-	//담력 매칭
-		public Map Matchingpage2(String nick) {
+	//type매칭 
+		public Map Matchingpage2(String nick,String id) {
 		SqlSession session = factory.openSession();
 		try {
-			List<Map> list = new LinkedList<>();//남여, 필터링된 list<map>
+			List<Map> list = new LinkedList<>();
 			//나의 정보
-			Map mylist =session.selectOne("matchingboard.mypagelist", nick);//list2
-			System.out.println(mylist);
+			System.out.println("id : " +id);
+			System.out.println("nick : " +nick);
+			
+			Map mylist =session.selectOne("matchingboard.checkagree", nick);//list2
+			System.out.println("나의 정보 : " + mylist);
 			//나를 제외한 정보
-			List<Map> notmylist = session.selectList("matchingboard.matchinglist",nick);//list
+			List<Map> notmylist = session.selectList("matchingboard.notmylist",nick);//list
+			System.out.println("나를 제외한 정보 : "+notmylist);
 			
-			String mygender = (String) mylist.get("gender");//나의 성별.	
-			String g_match = (String) mylist.get("G_MATCH");
+			String mygender =  (String) mylist.get("GENDER");//나의 성별.	
+			String MATCHTYPE = (String) mylist.get("MATCHTYPE");
 			
-			if(g_match.equals("이성")) {
+			System.out.println("내 성별" + mygender);
+			System.out.println("나의 매칭 타입" + MATCHTYPE);
+			
+			if(MATCHTYPE.equals("2")) {
 				for(int a=0;a<notmylist.size();a++) {
 					if(!(mylist.get("GENDER").equals(notmylist.get(a).get("GENDER"))) &&
-					(notmylist.get(a).get("G_MATCH").equals("이성") || notmylist.get(a).get("G_MATCH").equals("무관"))	
+					(notmylist.get(a).get("MATCHTYPE").equals("2") || notmylist.get(a).get("MATCHTYPE").equals("3"))	
 							){
 						list.add(notmylist.get(a));
 						System.out.println(notmylist.get(a));
 					}
 				}
-			}else if(g_match.equals("동성")) {
+			}else if(MATCHTYPE.equals("1")) {
 				for(int b=0;b<notmylist.size();b++) {
 					if(mylist.get("GENDER").equals(notmylist.get(b).get("GENDER")) &&
-						(notmylist.get(b).get("G_MATCH").equals("동성") || notmylist.get(b).get("G_MATCH").equals("무관"))
+						(notmylist.get(b).get("MATCHTYPE").equals("1") || notmylist.get(b).get("MATCHTYPE").equals("3"))
 							) {
 						list.add(notmylist.get(b));
 						System.out.println(notmylist.get(b));
@@ -185,12 +193,12 @@ public class MatchingDAO {
 			}else {
 				for(int c=0;c<notmylist.size();c++) {
 					String x_match = (String) notmylist.get(c).get("G_MATCH");
-					if(x_match.equals("이성")) {
+					if(x_match.equals("2")) {
 						if(!(notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
 							System.out.println("내가 무관이고 상대방이 이성 이고 내가 그 이성에 맞는 성별일때 :" +notmylist.get(c));
 						}
-					}else if(x_match.equals("동성")){
+					}else if(x_match.equals("1")){
 						if((notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
 							System.out.println("내가 무관이고 상대방이 동성이고 내가 그 동성에 맞는 성별일떄: "+ notmylist.get(c));
@@ -199,7 +207,7 @@ public class MatchingDAO {
 				}
 			}
 			System.out.println("매칭 상대 성별 필터 : "+list);
-			
+			System.out.println("이얏호");
 			//========================  매칭 상대 구별(동,이성,남,여,)============================= 
 			List mytypecnt = new LinkedList<>();
 			int mycnt=1;
@@ -310,7 +318,10 @@ public class MatchingDAO {
 		int rst = 0;
 		try {
 			rst = session.insert("matchingboard.matchinginsert",map);
-		}finally {
+		}catch(Exception e) {
+			rst = 2;
+		}
+		finally {
 			session.close();
 		}
 		return rst;
@@ -320,7 +331,7 @@ public class MatchingDAO {
 		SqlSession session = factory.openSession();
 		System.out.println("나의 닉네임 : "+nick);
 		try {
-			return session.selectOne("basket.myinfo");
+			return session.selectOne("basket.myinfo",nick);
 		}finally {
 			session.close();
 		}
@@ -366,7 +377,6 @@ public class MatchingDAO {
 		System.out.println("3");
 		int rst = 0;
 		try {
-			System.out.println(session.insert("matchingboard.agree",map3));
 			rst = session.insert("matchingboard.agree",map3);
 			System.out.println("agree rst : "+ rst);
 			return rst;
@@ -383,6 +393,19 @@ public class MatchingDAO {
 		System.out.println("checkagree");
 		try {
 			return session.selectOne("matchingboard.checkagree",nick);
+		}finally {
+			session.close();
+		}
+	}
+	//update agreebasket
+	public int updateagree(Map map){
+		SqlSession session = factory.openSession();
+		System.out.println("agree update");
+		int rst;
+		try {
+			rst =session.update("matchingboard.updatebasket",map);
+			System.out.println(rst);
+		return rst;
 		}finally {
 			session.close();
 		}

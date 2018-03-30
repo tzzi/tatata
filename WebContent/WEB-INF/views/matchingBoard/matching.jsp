@@ -21,26 +21,30 @@
 	
 	</c:when>
 	<c:otherwise>
-${matching.NICK }님  입니다.	
+${matching.NICK }님  입니다.
+
 <script>
 	$(document).ready(function(){
 		$.ajax("/matchingBoard/insertmatching.do",{
 			"method" : "post",
 			"async" : false,
 			"data":{
-				"nick" : "${matching.NICK}",
+				"matchingnick" : "${matching.NICK}",
 				"fear" : ${matching.FEAR},
 				"yellow_card" : ${matching.YELLOW_CARD},
 				"gender" : "${matching.GENDER}",
-				"mynick" : "${mypage.NICK}",
-				"e_mail" : "${matching.E_MAIL}"
+				"mynick" : "${sessionScope.userNick}",
+				"email" : "${matching.EMAIL}",
+				"overlap" : "${matching.NICK}${sessionScope.userNick}"
 			}
 		}).done(function(obj){
 	         //0(실패) or 1(성공)
 	         if(obj[0].result==1){
 	        	window.alert("매칭에 성공하셨습니다.")
+	         }else if(obj[0].result==2){
+	        	 window.alert("이미 같은 사람과 매칭 되었습니다 .(f5 그만 눌러!!!)")
 	         }else{
-	        	 window.alert("알 수 없는 오류로 매칭에  실패하셧습니다.")
+	        	 window.alert("알수없는 이유로 매칭에 싱패하셨습니다.")
 	         }
 	    });
 

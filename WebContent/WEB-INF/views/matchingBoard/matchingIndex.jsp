@@ -15,6 +15,17 @@
 			<c:otherwise>
  아아디 : ${mypage.ID}
 <br />
+나의 성별 : 
+<c:choose>
+<c:when test="${mypage.GENDER eq 1 }">
+男
+</c:when>
+<c:otherwise>
+女
+</c:otherwise>
+</c:choose>
+<br/>
+
 매칭유형 : 
 <c:choose>
 					<c:when test="${mypage.MATCHTYPE eq 1 }">
@@ -104,31 +115,32 @@
 			</c:otherwise>
 		</c:choose>
 	<hr />
-	
-	<c:choose>
-		<c:when test="${checkagree.NICK eq null}">
-		<button type="submit" id="agree">매칭 동의</button>
-		</c:when>
-	<c:otherwise>
-		<!-- 널이 아니라면 -->
-		<c:choose>
-		<c:when
-			test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
- 	&& mypage.MATCHTYPE ne null }">
-			<form action="/matchingBoard/matching.do" method="post">
-				<button type="submit" id="matching">매칭하기</button>
-			</form>
 
+	<c:choose>
+		<c:when test="${checkagree.NICK eq null && (mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
+ 	&& mypage.MATCHTYPE ne null}">
+			<button type="submit" id="agree">매칭 동의</button>
 		</c:when>
 		<c:otherwise>
+			<!-- 널이 아니라면 -->
+			<c:choose>
+				<c:when
+					test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
+ 	&& mypage.MATCHTYPE ne null }">
+					<form action="/matchingBoard/matching.do" method="post">
+						<button type="submit" id="matching">매칭하기</button>
+					</form>
+
+				</c:when>
+				<c:otherwise>
  			장바구니에 정보가 없거나 내정보에서 매칭유형,이메일,담력 등을 설정하지 않으면 매칭을 할 수 없습니다.
  	</c:otherwise>
 
+			</c:choose>
+
+		</c:otherwise>
 	</c:choose>
 
-	</c:otherwise>
-	</c:choose>
-		
 
 
 </div>
@@ -155,7 +167,6 @@
 	});
 
 	$("#agree").click(function() {
-		window.alert("1")
 		$.ajax("/matchingBoard/agree.do", {
 			"method" : "post",
 			"async" : false,
@@ -167,23 +178,15 @@
 			if (obj[0].result == 1) {
 				window.alert("매칭에 동의하셨습니다.");
 			} else if (obj[0].result == 2) {
+				window.alert(obj[0].result)
 				window.alert("이미 매칭에 동의하셨습니다.");
 			} else {
 				window.alert("알 수 없는 이유로 매칭에 동의하지 못했습니다.");
 			}
 		});
-
+		location.reload();
 	});
 </script>
-
-
-
-
-
-
-
-
-
 
 
 
