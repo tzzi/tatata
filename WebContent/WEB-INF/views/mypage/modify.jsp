@@ -28,9 +28,9 @@
 					<th height="50px">이메일</th>
 					
 					<td align="center">
-						<input type="text" name="email" value="${email }" placeholder="이메일"
+						<input type="text" name="email" value="${sessionScope.email }" placeholder="이메일"
 						style="padding: 8px; font-size: 12pt; width: 250px;" disabled/>
-						<input type="hidden" id="email" name="email_h" value="${email }"/>
+						<input type="hidden" id="email" name="email_h" value="${sessionScope.email }"/>
 					 </td>
 				</tr>
 				<tr>

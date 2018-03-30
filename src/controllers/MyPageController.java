@@ -57,6 +57,7 @@ public class MyPageController {
 		session.setAttribute("birth_m", map.get("BIRTH_M"));
 		session.setAttribute("birth_d", map.get("BIRTH_D"));
 		session.setAttribute("area", map.get("AREA"));
+		session.setAttribute("email", map.get("EMAIL"));
 		session.setAttribute("fear", map.get("FEAR"));
 		session.setAttribute("matchtype", map.get("MATCHTYPE"));
 		session.setAttribute("intro", map.get("INTRO"));
@@ -146,7 +147,7 @@ public class MyPageController {
 		/*if(mdao.addinfoload(id) != null);*/
 		
 		String id = (String) session.getAttribute("userId");
-		session.setAttribute("email", "");
+		/*session.setAttribute("email", "");*/
 		
 		map.put("id", id);
 		
@@ -170,21 +171,20 @@ public class MyPageController {
 	
 	// 인증 받은 사람 - 정보 추가 입력
 	@RequestMapping("/addinforst.do")
-	public String addinfoHandle(@RequestParam Map param, HttpSession session) {
+	public String addinfoHandle(@RequestParam Map param, HttpSession session, ModelMap map) {
 		System.out.println("addinfo에서 넘어온 파라미터값 " +param);
-		/*String id = (String)param.get("id");*/
+		String id = (String)param.get("id");
 		String email = (String)param.get("h_email");
-		/*Integer gender = Integer.parseInt((String)param.get("gender"));
+		Integer gender = Integer.parseInt((String)param.get("gender"));
 		Integer birth_y = Integer.parseInt((String)param.get("birth_y"));
 		Integer birth_m = Integer.parseInt((String)param.get("birth_m"));
 		Integer birth_d = Integer.parseInt((String)param.get("birth_d"));
 		String area = (String)param.get("area");
 		Integer fear = Integer.parseInt((String)param.get("fear"));
 		Integer matchtype = Integer.parseInt((String)param.get("matchtype"));
-		String intro = (String)param.get("intro");*/
+		String intro = (String)param.get("intro");
 		
-		param.put("email", email);
-		/*map.put("id", id);
+		map.put("id", id);
 		map.put("email", email);
 		map.put("gender", gender);
 		map.put("birth_y", birth_y);
@@ -193,17 +193,18 @@ public class MyPageController {
 		map.put("area", area);
 		map.put("fear", fear);
 		map.put("matchtype", matchtype);
-		map.put("intro", intro);*/
-		/*System.out.println("넘길 맵 : " +map);*/
+		map.put("intro", intro);
+		System.out.println("넘길 맵 : " +map);
 		
-		session.setAttribute("addinfo", param);
+		session.setAttribute("addinfo", map);
 		session.setAttribute("email", email);
-		System.out.println("넘길 파람값 : " + param);
-		int rst = mdao.addinfo(param);
+		System.out.println("넘길 파람값 : " + map);
+		int rst = mdao.addinfo(map);
+		System.out.println("rst: " +rst);
 		if(rst==1) {
 			return "addinfo";
 		} else {
-			return "redirect:/mypage/addinforst.do";
+			return "/mypage/addinforst.do";
 		}
 		
 	}

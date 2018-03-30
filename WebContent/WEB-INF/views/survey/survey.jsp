@@ -24,8 +24,7 @@ input[type=radio] {
 
 			<div class="w3-container w3-margin-top" align="center"
 				style="width: 1000px;">
-				<form class="w3-container w3-card-4" action="/survey/surveyrst.do"
-					method="post" enctype="multipart/form-data">
+				<form class="w3-container w3-card-4" action="/survey/surveyrst.do" method="post" enctype="multipart/form-data">
 					<div>
 						<br />
 						<div class="w3-container">
@@ -43,115 +42,61 @@ input[type=radio] {
 									<td>매칭된 상대방에 대한 총평</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="total"> 
+											<input class="w3-radio" type="radio" name="total"  value="total_5"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="total"  value="total_4"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="total"  value="total_3"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="total" value="total_2"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="total" value="total_1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p> 
 									</td>
 								</tr>
 								<tr>
 									<td>본인의 매칭 유형 선택</td>
 									<td>
-									<input class="w3-radio" type="radio" name="match_type"><label>동성</label>
-									<input class="w3-radio" type="radio" name="match_type"><label>이성</label>
-									<input class="w3-radio" type="radio" name="match_type"><label>무관</label>
-									</td>
-								</tr>
-								<tr>
-									<td>본인의 매칭 유형에 대한 만족도는?</td>
-									<td>
-										<p>
-											<input class="w3-radio" type="radio" name="m_satis"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_satis"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_satis"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_satis"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_satis"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
+									<input class="w3-radio" type="radio" name="match_type" value="type_1"><label>동성</label>
+									<input class="w3-radio" type="radio" name="match_type" value="type_2"><label>이성</label>
+									<input class="w3-radio" type="radio" name="match_type" value="type_3"><label>무관</label>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방의 첫인상에 대한 만족도는?</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_first"> 
+											<input class="w3-radio" type="radio" name="m_first" value="first_5"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_first" value="first_4"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_first" value="first_3"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_first" value="first_2"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_first" value="first_1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
-									</td>
-								</tr>
-								<tr>
-									<td>함께 이용한 놀이기구가 만족스러웠다</td>
-									<td>
-										<p>
-											<input class="w3-radio" type="radio" name="m_rides"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_rides"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_rides"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_rides"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_rides"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p>
 									</td>
 								</tr>
@@ -253,8 +198,7 @@ input[type=radio] {
 						</div>
 						
 					</div>
-
-
+					
 					<button type="reset"
 						class="w3-button w3-section w3-theme-l2 w3-ripple">
 						<b style="color: white">리셋</b>
@@ -270,8 +214,64 @@ input[type=radio] {
 
 				</form>
 			</div>
-
-
 		</div>
 	</div>
 </div>
+
+<!-- <div id="rst" onchange="input()"></div>
+<div id="mongodbinputdiv">
+	<input type="text" id ="inname" placeholder="input name">
+	<input type="text" id = "inage" placeholder="input age">
+	<button id="btn_add"><small>몽고추가</small></button>
+</div> -->
+ <!-- onclick="sendAddReq()" -->
+
+<!-- <script>
+	$('#btn_add').click(function() {
+		var name = $('#inname').val();
+		var age = $('#inage').val();
+		
+		var trans_object =
+			{
+				'name' : name,
+				'age' : age
+			}
+		
+		var trans_json = JSON.stringify(trans_object); //json으로 반환
+		
+		$.ajax({
+			url: "/survey/test.do",
+			type: 'POST',
+			dataType: 'json',
+			data: trans_json,
+			contentType: 'application/json',
+			mimeType: 'applicatioin/json',
+			success: function(retVal) {
+				alert("success ajax..." + '/' retVal.val);
+			}
+			
+		});
+	});
+	
+	function sendAddReq() {
+		var xhr = new XMLHttpRequest();
+		xhr.open("post", "/survey/test.do", true);
+		xhr.onreadystatechange = function() {
+			if(this.readyState==4) {
+				if(JSON.parse(this.responseText)) {
+					/* document.getElementById("rst").innerHTML += document.getElementById("reply").value + "<br/>"; */
+					document.getElementById("mongo").value = "";
+				} else {
+					window.alert("댓글 등록 중 오류 발생");
+				}
+			}
+		}
+		/* xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); */
+		var param = {
+			"content" : document.getElementById("mongo").value
+		}
+		xhr.send(JSON.stringify(param));
+		
+	}
+</script>
+ -->
