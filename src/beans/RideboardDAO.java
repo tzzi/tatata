@@ -100,6 +100,8 @@ public class RideboardDAO {
 			System.out.println(mylist);
 
 			if (mylist == null) {
+				
+				System.out.println(map);
 				System.out.println("닉네임으로된 정보가 없음. 새로운 장바구니 insert");
 				rst = session.update("basket.first", map);
 				return rst;

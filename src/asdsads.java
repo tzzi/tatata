@@ -16,9 +16,9 @@ public class asdsads {
 		
 		Map map3 = new LinkedHashMap<>();
 		map3.put("1", map1);
-		map3.put("2", map2);
+		map3.put("1", map2);
 		
-		System.out.println(map3.get("1")==map3.get("2"));
+		System.out.println(map3.get("1"));
 	}
 
 }
