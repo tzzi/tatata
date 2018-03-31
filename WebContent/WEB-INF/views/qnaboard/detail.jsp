@@ -103,7 +103,6 @@
 	});
 
 	$("#like").click(function(){
-		window.alert("우옷")
 		$.ajax("/qnaboard/overlap.do",{
 			"method" : "post",
 			"async": false,

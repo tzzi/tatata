@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${rideboard.RIEDE_NAME }</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -30,7 +30,7 @@
   <div class="w3-third">
     <div class="w3-container w3-light-grey">
       <h2>조회수 :${rideboard.COUNT }</h2>
-       <!-- 좋아요 버튼 --><button type="button" id ="like" class="w3-button w3-black w3-theme-d1 w3-small  w3-margin-bottom"><i class="fa fa-thumbs-up"></i> Like</button> 
+   <!-- <button type="button" id ="like" class="w3-button w3-black w3-theme-d1 w3-small  w3-margin-bottom"><i class="fa fa-thumbs-up"></i> Like</button>  -->
 		<!-- 장바구니 버튼 -->  <button type="button" id ="cart" class="w3-button w3-black w3-theme-d1 w3-xlarge  w3-margin-bottom"><i class="fa fa-shopping-cart"></i></button>     
     </div>
     <br>

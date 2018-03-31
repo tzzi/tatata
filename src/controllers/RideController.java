@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -86,10 +87,31 @@ public class RideController {
    //놀이기구 전체 목록
    @RequestMapping("/list.do")
    public String listHandle(ModelMap modelMap) {
-      System.out.println(rdao.list());
-      modelMap.put("rideboard",rdao.list());
+      System.out.println(rdao.alllist());
+      modelMap.put("rideboard",rdao.alllist());
       return "list";
    }
+   //놀이기구 좋아요 중복 체크
+   @RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")
+   @ResponseBody
+   public String rideOverlapController(@RequestParam String ride_name,HttpSession session) {
+	   String nick = (String) session.getAttribute("userNick");
+	   String id = (String) session.getAttribute("userId");
+	   String overlap = ride_name+id;
+	   
+	   System.out.println("중복 체크 받은 String : "+ overlap);
+	   int rst = rdao.rideOverlapCheck(overlap);
+	   String b= "0";
+	   if(rst==1) {
+		   b="1";//중복 없음
+	   }else {
+		   b = "2";//중복있음
+	   }
+	   
+	   return "[{\"result\":" + b + "}]";
+   }
+   
+   
    // 좋아요 수 증가
    @RequestMapping(path = "/ride_like.do", produces = "application/json;charset=utf-8")
    @ResponseBody
@@ -105,24 +127,50 @@ public class RideController {
       return "[{\"result\":" + b + "}]";
             
    }
-   //조회수 , 상세보기
+ //조회수, 글상세보기, 쿠키로 중복 조회수 막음(1일)
    @RequestMapping("/detail.do")
-   public String detailHandle(@RequestParam String ride_name,ModelMap modelMap){
+   public String detailHandle(@RequestParam String ride_name,ModelMap modelMap, HttpServletResponse response,
+			HttpServletRequest request,HttpSession session,@RequestParam int no){
       
-      modelMap.put("rideboard", rdao.count(ride_name));
-      modelMap.put("rideboard",rdao.detail(ride_name));
-      System.out.println(modelMap);
-      
-      
-      return "detail";
+	   modelMap.put("rideboard",rdao.detail(ride_name));//특정 놀이기구 정보 확인
+	   System.out.println(modelMap);
+	   //쿠키 사용 
+	   String id = (String) session.getAttribute("userId");
+	   Cookie setCookie = new Cookie("count"+no+id, "조회수쿠키"); // 쿠키 생성
+		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
+		response.addCookie(setCookie);
+	   
+		Cookie[] getCookie = request.getCookies();
+		
+		if (getCookie != null) {
+
+			for (int i = 0; i < getCookie.length; i++) {
+
+				Cookie c = getCookie[i];
+				String name = c.getName(); // 쿠키 이름 가져오기				
+				System.out.println(name);
+				//동일이름의 쿠기가 있다면
+				if(name.equals("count"+no+id)) {
+				System.out.println("동일이름의 쿠키가 존재함");
+				return "R_detail";
+				}else {
+					System.out.println("동일이름의 쿠기가 존재하지 않음");
+				}
+				
+			}
+
+			rdao.addcount(ride_name);//쿠키가 없으면 조회수 증가
+		}
+
+      return "R_detail";
    }
    
-   @RequestMapping("/parkdetail.do")
+   /*@RequestMapping("/parkdetail.do")
    public String parkdetailHandle(@RequestParam String park_name, ModelMap modelMap) {
    
       modelMap.put("rideboard", rdao.parkdetail(park_name));
       return "parkdetail";
-   }
+   }*/
    //장바구니
    @RequestMapping(path = "/cart.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
@@ -146,6 +194,24 @@ public class RideController {
 		return "[{\"result\":" + a + "}]";
 		
 	}
-
-   
+   //공원 이름 별 목록
+   @RequestMapping(path = "/worldlist.do", produces = "application/json;charset=utf-8")
+  @ResponseBody
+   public String detailworldController(String park_name,ModelMap modelMap) {
+	   System.out.println("공원 이름별 목록");
+	   String a="a";
+	   System.out.println(park_name);
+	   if(!park_name.equals("all")) {		   
+		   modelMap.put("rideboard", rdao.parkdetail(park_name));
+		   System.out.println("전체 목록이 아님");
+	   }else {
+		modelMap.put("rideboard",rdao.alllist());
+		   System.out.println("전체 목록");
+	   }
+	   
+	   return "[{\"result\":" + a + "}]";
+   }
+  	
+ 	
+  		
 }

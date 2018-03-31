@@ -53,22 +53,23 @@
    </div>
    <hr />
    <div align="left">
-      <a href="/rideboard/list.do"><button style="outline: none;"
-            class="w3-btn w3-white w3-border">전체보기</button></a> <a
-         href="/rideboard/parkdetail.do?park_name=롯데월드"><button
-            style="outline: none;" class="w3-btn w3-white w3-border">롯데월드</button></a>
-      <a href="/rideboard/parkdetail.do?park_name=에버랜드"><button
-            style="outline: none;" class="w3-btn w3-white w3-border">에버랜드</button></a>
-      <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button
-            style="outline: none;" class="w3-btn w3-white w3-border">서울랜드</button></a>
-      <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button
-            style="outline: none;" class="w3-btn w3-white w3-border">경주월드</button></a>
-      <a href="/rideboard/parkdetail.do?park_name=롯데월드"><button
-            style="outline: none;" class="w3-btn w3-white w3-border">e
-            월 드</button></a>
+      <!-- <a href="/rideboard/list.do"></a> -->
+      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="all">전체보기</button>
+     
+       <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="롯데월드">롯데월드</button>
+            
+      <button  style="outline: none;" class="w3-btn w3-white w3-border world" id="에버랜드">에버랜드</button>
+            
+      <button  style="outline: none;" class="w3-btn w3-white w3-border world"  id="서울랜드">서울랜드</button>
+            
+      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="경주월드">경주월드</button>
+            
+      <button style="outline: none;" class="w3-btn w3-white w3-border world" id="e월드">e 월 드</button>
       <hr />
    </div>
 
+<div id="worldlist">
+</div>
    <c:forEach items="${rideboard }" var="ride" varStatus="vs">
       <c:if test="${vs.count %3 == 1}">
          <div class="w3-row-padding">
@@ -78,7 +79,7 @@
          <p align="center">
             <b>${ride.RIDE_NAME }</b>
          </p>
-         <a href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}"> <img
+         <a href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}&no=${ride.NO}"> <img
             src="${ride.IMAGE }" alt="Norway"
             style="width: 100%; height: 180px;" class="w3-hover-opacity"></a>
          <div align="left" class="w3-light-gray">
@@ -94,25 +95,42 @@
          </div>
       </c:if>
    </c:forEach>
-   <br />
+   <hr />
 </body>
 <script>
    //좋아요 버튼 
    $(".like").click(function() {
-      var id = $(this).attr("id");
-      $.ajax("/rideboard/ride_like.do",{
-         "method" : "post",
-         "async" : false,
-         "data" : {
-            "ride_name" : id
-         }
-      }).done(function(obj){
-         if(obj[0].result==1){
-            window.alert("추천되었습니다.")
-         };
-      });
+	   var id = $(this).attr("id");
+	   window.alert(id+"  좋아요 버튼 누름")
+	   $.ajax("/rideboard/overlap.do",{
+		   "method" : "post",
+		   "async" : false,
+		   "data" : {
+			   "ride_name" : id
+		   }
+	   }).done(function(obj){
+		   if(obj[0].result==1){
+			   $.ajax("/rideboard/ride_like.do",{
+				   "method": "post", 
+				   "async" : false,
+				   "data" :{
+					   "ride_name" : id
+				   }
+			   }).done(function(obj){
+				   window.alert(obj)
+				   if(obj[0].result==1){
+					   window.alert("추천되었습니다.")
+				   }else{
+					   window.alert("알 수 없는 이유로 추천에 실패하셨습니다.")
+				   }
+			   });
+		   }else{
+			   window.alert("이미 추천 하셨습니다.")
+		   }
+	   });
+  	location.reload();
    });
-
+  
    var slideIndex = 1;
    showDivs(slideIndex);
 

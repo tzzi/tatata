@@ -33,7 +33,7 @@
    update rideboard set good_cnt = good_cnt+1 where ride_name= #{ride_name}
    </update>
    <!--  좋아요 중복체크 -->
-   <insert id="ride_like">
-   insert into ridelike(user_id,ride_name) values (#{user_id},#{ride_name})
+   <insert id="ride_likeoverlap">
+   insert into ridelike(ride_like) values (#{overlap})
    </insert>
 </mapper>

@@ -66,14 +66,14 @@ public class qnaboardController {
 
 		return "redirect:/qnaboard/qnaindex.do";
 	}
-//조회수, 글상세보기
+//조회수, 글상세보기, 쿠키로 중복 조회수 막음(1일)
 	@RequestMapping("/detail.do")
 	public String detailHandle(@RequestParam int q_no, ModelMap modelMap, HttpServletResponse response,
 			HttpServletRequest request,HttpSession session) {
 		
 		String id = (String) session.getAttribute("userId");
-		modelMap.put("qnadetail", qdao.detailqna(q_no));
-		modelMap.put("qnadetaillist", qdao.detail(q_no));
+		modelMap.put("qnadetail", qdao.detailqna(q_no));//글상세
+		modelMap.put("qnadetaillist", qdao.detail(q_no));//리플보기
 		
 		
 		Cookie setCookie = new Cookie("count"+q_no+id, "조회수쿠키"); // 쿠키 생성

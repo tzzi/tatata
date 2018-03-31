@@ -29,7 +29,7 @@ public class RideboardDAO {
 	   }
 
 	   // 전체 리스트 목록
-	   public List<Map> list() {
+	   public List<Map> alllist() {
 	      SqlSession session = factory.openSession();
 	      try {
 	         return session.selectList("rideboard.list");
@@ -51,7 +51,7 @@ public class RideboardDAO {
 	   }
 
 	   // 조회수
-	   public int count(String ride_name) {
+	   public int addcount(String ride_name) {
 	      SqlSession session = factory.openSession();
 	      try {
 	         int rst = 0;
@@ -74,6 +74,26 @@ public class RideboardDAO {
 	      }
 	   }
 
+	   //좋아요 중복체크
+	   public int rideOverlapCheck(String overlap) {
+		   SqlSession session = factory.openSession();
+		   int rst = 0;
+		   try {
+			   System.out.println("중복쳌 받은 String"+overlap);
+			   rst = session.insert("rideboard.ride_likeoverlap",overlap);
+			   System.out.println("중복체크 rst : " + rst);
+			   return rst;
+		   }catch(Exception e) {
+			   System.out.println("중복 데이터 있음");
+			   rst = 5;
+		   }finally{
+			   session.close();
+		   }
+		return rst;
+	   }
+	   
+	   
+	   
 	   // 좋아요 수
 	   public int goodcnt(String ride_name) {
 	      SqlSession session = factory.openSession();
@@ -84,7 +104,7 @@ public class RideboardDAO {
 	      } finally {
 	         session.close();
 	      }
-	   }
+	   }  
 	// 장바구니
 	public int basket(Map map, String nick, String basket, String type) {
 		SqlSession session = factory.openSession();

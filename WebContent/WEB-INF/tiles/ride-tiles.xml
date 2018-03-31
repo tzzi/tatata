@@ -36,7 +36,7 @@
 		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
 		</definition>
 		
-		<definition name="detail" template="/WEB-INF/views/view/index.jsp">
+		<definition name="R_detail" template="/WEB-INF/views/view/index.jsp">
 		<put-attribute name="title" value="TaTaTa"></put-attribute>
 		<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp"/>
 			<put-attribute name="header" value="/WEB-INF/views/view/header.jsp"/>
