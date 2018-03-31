@@ -208,7 +208,7 @@ public class RideController {
 		modelMap.put("rideboard",rdao.alllist());
 		   System.out.println("전체 목록");
 	   }
-	   
+	   System.out.println("[{\"result\":" + a + "}]");
 	   return "[{\"result\":" + a + "}]";
    }
   	

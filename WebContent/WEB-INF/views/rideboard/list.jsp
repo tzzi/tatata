@@ -117,7 +117,6 @@
 					   "ride_name" : id
 				   }
 			   }).done(function(obj){
-				   window.alert(obj)
 				   if(obj[0].result==1){
 					   window.alert("추천되었습니다.")
 				   }else{
@@ -130,7 +129,7 @@
 	   });
   	location.reload();
    });
-  
+ 
    var slideIndex = 1;
    showDivs(slideIndex);
 
@@ -161,5 +160,24 @@
       x[slideIndex - 1].style.display = "block";
       dots[slideIndex - 1].className += " w3-white";
    }
+   
+   $(".world").click(function(){
+	   var park_name = $(this).attr("id");
+	   window.alert("world버튼 눌림")
+	   $.ajax("/rideboard/worldlist.do",{
+		   "method" : "post",
+	   "async" : false,
+	   "data" :{
+			"park_name" : park_name
+		}
+	   }).done(function(obj){
+		   window.alert(obj)
+	   });
+   });
+   
+   
+   
+   
+   
 </script>
 </html>
