@@ -39,7 +39,7 @@ public class qnaboardController {
 	public String wirteformHandle() {
 		return "writeform";
 	}
-
+	
 	@RequestMapping("/write.do")
 	public String writeHandle(@RequestParam Map map, WebRequest req, ModelMap modelMap,HttpSession session) {
 		
@@ -75,6 +75,9 @@ public class qnaboardController {
 		modelMap.put("qnadetail", qdao.detailqna(q_no));//글상세
 		modelMap.put("qnadetaillist", qdao.detail(q_no));//리플보기
 		
+		String likecheck = id+q_no;
+		System.out.println("likecheck : "+ likecheck);
+		modelMap.put("likecheck", qdao.checklike(likecheck));
 		
 		Cookie setCookie = new Cookie("count"+q_no+id, "조회수쿠키"); // 쿠키 생성
 		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
@@ -111,23 +114,42 @@ public class qnaboardController {
 	public String addlikeController(@RequestParam int q_no) {
 		int rst = qdao.like(q_no);
 		
+		
 		String b = "0";
 		if(rst==1) {
 			b = "1";
-		}else {
+		}else{
 			b = "2";
 		}
 		return "[{\"result\":" + b + "}]";
 				
 	}
+	//좋아요 취소,좋아요수 빼기
+	@RequestMapping(path = "/likecancel.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String likecancelController(@RequestParam int q_no,HttpSession session) {
+		String id = (String) session.getAttribute("userId");
+		String likecheck = id+q_no;
+		int rst = 0 ;
+		String b = "0";
+		System.out.println("좋아요 취소한다아!!");
+		rst = qdao.deletelike(likecheck);
+		qdao.subtractlike(q_no);
+		if(rst==1) {
+			b ="1";
+		}else {
+			b="2";
+		}
+		return "[{\"result\":" + b + "}]";
+	}
 	
-	
-	
-	
+	//리플쓰기
 	@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
-			@RequestParam int q_no) {
+			@RequestParam int q_no,HttpSession session) {
+		String nick = (String) session.getAttribute("userNick");
+		map.put("nick", nick);
 		int rst = qdao.qnareplywrite(map);
 		modelMap.put("qnadetaillist", qdao.detail(q_no));
 		modelMap.put("qnadetail", qdao.detailqna(q_no));

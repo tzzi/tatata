@@ -42,6 +42,20 @@
 </div>
 <hr />
 <div align="center">
+
+<!--  버튼 색깔
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */ 
+
+${sessionScope.userId}${qnadetail.Q_NO}
+
+-->
+
+<c:choose>
+<c:when test="${likecheck.BOARDLIKE eq null}">
 <style>
 .button {
   display: inline-block;
@@ -66,6 +80,36 @@
   transform: translateY(4px);
 }
 </style>
+</c:when>
+<c:otherwise>
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #555555;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #555555}
+
+.button:active {
+  background-color: #555555;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+</c:otherwise>
+</c:choose>
+
+
 <button type="submit" class="button" id="like">글 추천!!</button>
 
 </div>
@@ -125,7 +169,19 @@
 					}
 				});
 			}else{
-				window.alert("이미 추천 하셨습니다.")
+				$.ajax("/qnaboard/likecancel.do",{
+					"method":"post",
+					"async" : false,
+					"data":{
+						"q_no" : ${qnadetail.Q_NO}
+					}
+				}).done(function(obj){
+					if(obj[0].result==1){
+						window.alert("추천이 취소되었습니다.")
+					}else{
+						window.alert("알 수없는 이유로 추천취소에 실패하셨습니다.")
+					}
+				});
 			}
 		});
 		location.reload();

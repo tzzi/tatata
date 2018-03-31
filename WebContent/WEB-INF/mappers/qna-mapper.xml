@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 리플쓰기 -->
 	<insert id="insertreply">
-	insert into QNAREPLY(a_no,Q_no,left_Date,content) values(qnareply_seq.nextval,#{q_no},sysdate,#{content})
+	insert into QNAREPLY(a_no,Q_no,left_Date,content,admin) values(qnareply_seq.nextval,#{q_no},sysdate,#{content},#{nick})
 	</insert>
 	
 	<!-- 글 추천수 올리기 -->
@@ -48,5 +48,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="overlap">
 	insert into boardlike(boardlike) values(#{overlap})
 	</insert>
+	
+	<!-- 버튼 색깔 바꾸기 -->
+	<select id="likecheck" resultType="java.util.LinkedHashMap">
+	select * from boardlike where boardlike=#{likecheck}
+	</select>
+	
+	<!-- 좋아요 취소 -->
+	<delete id="liekcancel">
+	delete from boardlike where boardlike=#{likecheck}
+	</delete>
+	
+	<update id="subtractlike">
+	update qnaboard set q_like = q_like-1 where q_no = #{q_no} 
+	</update>
+	
+	
 	
 </mapper>

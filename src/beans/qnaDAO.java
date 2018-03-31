@@ -113,4 +113,37 @@ public class qnaDAO {
 		}
 		return rst;
 	}
+	//버튼 색 바꾸기
+	public Map checklike(String likecheck) {
+		SqlSession session = factory.openSession();
+		System.out.println("likecheck : " +likecheck);
+		try {
+			return session.selectOne("qnaboard.likecheck",likecheck);
+		}finally {
+			session.close();
+		}
+	}
+	//좋아요 취소
+	public int deletelike(String likecheck) {
+		SqlSession session = factory.openSession();
+		System.out.println("likecancel : " +likecheck);
+		try {
+			return session.delete("qnaboard.liekcancel",likecheck);
+		}finally {
+			session.close();
+		}
+	}
+	//추천 빼기
+	public int subtractlike(int q_no) {
+		SqlSession session = factory.openSession();
+		try {
+			int rst = 0;
+			rst = session.update("qnaboard.subtractlike",q_no);
+			System.out.println("좋아요 하나 빠진다아");
+			return rst;
+		}finally {
+			session.close();
+		}
+	}
+	
 }
