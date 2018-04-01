@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+	pageEncoding="UTF-8"%>
 
-</body>
-</html>
+${sessionScope.userNick} 님께서 선택한 설문조사 결과 <br/><br/>
+
+id : ${sessionScope.userId}<br/>
+total : ${survey_rst.total}<br/>
+match_type : ${survey_rst.match_type}<br/>
+m_first : ${survey_rst.m_first }<br/>
+m_moral : ${survey_rst.m_moral }<br/>
+m_meet : ${survey_rst.m_meet }<br/>
+m_communi : ${survey_rst.m_communi }<br/>

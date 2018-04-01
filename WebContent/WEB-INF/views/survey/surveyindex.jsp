@@ -25,14 +25,15 @@ html, body, h1, h2, h3, h4, h5, h6 {
 						<img src="/image/survey.png">
 					</div>
 					<div>
-						<small style="color:green"><b>설문조사를 완료하신 분들께는 추첨을 통하여 기프트콘을 선물해 드립니다!!</b></small>
+						<small style="color:green"><b>설문조사를 완료하신 분들께는 추첨을 통하여 기프트콘을 선물해 드립니다!!</b></small><br/>
+						<small style="color:red"><b>설문조사는 한 아이디당, 한 번만 가능하오니 신중하게 임해주세요^^</b></small>
 					</div>
 					<div>
 						<a href="/survey/survey.do"><button type="button"
-							class="w3-button w3-section w3-theme-l2 w3-ripple">
+							class="w3-button w3-section w3-theme-l2 w3-ripple" id="survey_go">
 							<b style="color: white">설문조사 하러가기</b>
 						</button></a> <a href="/survey/surveyrst.do"><button type="button"
-							class="w3-button w3-section w3-theme-l2 w3-ripple">
+							class="w3-button w3-section w3-theme-l2 w3-ripple" id="survey_rst">
 							<b style="color: white">설문조사 결과보기</b>
 						</button></a>
 					</div>
@@ -48,3 +49,5 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<div class="w3-display-middle w3-padding"></div>
 	</div>
 </div>
+
+

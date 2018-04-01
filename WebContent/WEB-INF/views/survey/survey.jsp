@@ -42,25 +42,25 @@ input[type=radio] {
 									<td>매칭된 상대방에 대한 총평</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="total"  value="total_5"> 
+											<input class="w3-radio" type="radio" name="total"  value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"  value="total_4"> 
+											<input class="w3-radio" type="radio" name="total"  value="4"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total"  value="total_3"> 
+											<input class="w3-radio" type="radio" name="total"  value="3"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total" value="total_2"> 
+											<input class="w3-radio" type="radio" name="total" value="2"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="total" value="total_1"> 
+											<input class="w3-radio" type="radio" name="total" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p> 
 									</td>
@@ -68,34 +68,34 @@ input[type=radio] {
 								<tr>
 									<td>본인의 매칭 유형 선택</td>
 									<td>
-									<input class="w3-radio" type="radio" name="match_type" value="type_1"><label>동성</label>
-									<input class="w3-radio" type="radio" name="match_type" value="type_2"><label>이성</label>
-									<input class="w3-radio" type="radio" name="match_type" value="type_3"><label>무관</label>
+									<input class="w3-radio" type="radio" name="match_type" value="1"><label>동성</label>
+									<input class="w3-radio" type="radio" name="match_type" value="2"><label>이성</label>
+									<input class="w3-radio" type="radio" name="match_type" value="3"><label>무관</label>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방의 첫인상에 대한 만족도는?</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_first" value="first_5"> 
+											<input class="w3-radio" type="radio" name="m_first" value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first" value="first_4"> 
+											<input class="w3-radio" type="radio" name="m_first" value="4"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first" value="first_3"> 
+											<input class="w3-radio" type="radio" name="m_first" value="3"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first" value="first_2"> 
+											<input class="w3-radio" type="radio" name="m_first" value="2"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_first" value="first_1"> 
+											<input class="w3-radio" type="radio" name="m_first" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p>
 									</td>
@@ -104,26 +104,26 @@ input[type=radio] {
 									<td>상대방은 약속시간을 잘 지켰다</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_pr_time"> 
+											<input class="w3-radio" type="radio" name="m_pr_time" value="5"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_pr_time" value="4"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_pr_time" value="3"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_pr_time" value="2"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_pr_time" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_pr_time"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_pr_time"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_pr_time"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_pr_time"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p>
 									</td>
 								</tr>
@@ -131,26 +131,26 @@ input[type=radio] {
 									<td>상대방의 도덕성에 대해 평가하자면?</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_moral"> 
+											<input class="w3-radio" type="radio" name="m_moral" value="5"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_moral" value="4"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_moral" value="3"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_moral" value="2"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_moral" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_moral"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_moral"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_moral"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_moral"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p>
 									</td>
 								</tr>
@@ -158,26 +158,26 @@ input[type=radio] {
 									<td>상대방과 대화가 잘 통했다</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_communi"> 
+											<input class="w3-radio" type="radio" name="m_communi" value="5"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_communi" value="4"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_communi" value="3"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_communi" value="2"> 
+											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
+											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
+											<input class="w3-radio" type="radio" name="m_communi" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_communi"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_communi"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_communi"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
-											<input class="w3-radio" type="radio" name="m_communi"> 
-											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;">
-											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 										</p>
 									</td>
 								</tr>
@@ -185,11 +185,11 @@ input[type=radio] {
 									<td>한 번 더 만나볼 의사가 있다? 없다?</td>
 									<td>
 										<p>
-											<input class="w3-radio" type="radio" name="m_meet"> 
+											<input class="w3-radio" type="radio" name="m_meet" value="1"> 
 											<label>있다</label>
-											<input class="w3-radio" type="radio" name="m_meet"> 
+											<input class="w3-radio" type="radio" name="m_meet" value="2"> 
 											<label>없다</label>
-											<input class="w3-radio" type="radio" name="m_meet"> 
+											<input class="w3-radio" type="radio" name="m_meet" value="3"> 
 											<label>무념무상</label>
 										</p>
 									</td>
@@ -217,6 +217,11 @@ input[type=radio] {
 		</div>
 	</div>
 </div>
+
+<script>
+	
+</script>
+
 
 <!-- <div id="rst" onchange="input()"></div>
 <div id="mongodbinputdiv">
