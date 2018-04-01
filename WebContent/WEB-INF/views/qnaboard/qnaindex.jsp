@@ -57,7 +57,9 @@ table {
 			</tbody>
 		</table>
 		<hr />
+		<c:if test=""></c:if>
 	</div >
+	
 	<div align="center">
 <style>
 .button {

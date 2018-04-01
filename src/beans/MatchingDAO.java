@@ -303,6 +303,7 @@ public class MatchingDAO {
 		}
 		
 	}
+		//내가 선택한 매칭 상대
 	public List<Map> matchingcheck(String nick) {
 		SqlSession session = factory.openSession();
 		System.out.println(nick);
@@ -312,6 +313,21 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+	//나를 선택한 매칭 상대
+	public List<Map> matchingforme(String nick) {
+		SqlSession session = factory.openSession();
+		System.out.println(nick);
+		try {
+			return session.selectList("matchingboard.matchingforme",nick);
+		}finally {
+			session.close();
+		}
+	}
+	
+	
+	
+	
+	
 	public int matchinginsert(Map map) {
 		SqlSession session = factory.openSession();
 		System.out.println(map);

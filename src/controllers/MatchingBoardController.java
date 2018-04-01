@@ -81,14 +81,20 @@ public class MatchingBoardController {
 		modelMap.put("matching2", mdao.Matchingpage2(nick, id));
 		return "matching2";
 	}
+	//나의 매칭 상황 보기
 	@RequestMapping("/matchingcheck.do")
 	public String matchingcheckHandle(HttpSession session, ModelMap modelmap) {
 		String nick = (String) session.getAttribute("userNick");
-		modelmap.put("matchingcheck", mdao.matchingcheck(nick));
+		System.out.println("매칭 상황보기");
+		
+		modelmap.put("matchingcheck", mdao.matchingcheck(nick));//내가 고를 상대
+		
+		modelmap.put("matchingforme", mdao.matchingforme(nick));//나를 고른 상대
 		System.out.println(modelmap);
+		
 		return "matchingcheck";
 	}
-	
+	//매칭 상황 등록
 	@RequestMapping(path="/insertmatching.do", produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String insertmatchingHandle(@RequestParam Map map, WebRequest req) {
@@ -125,7 +131,7 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
-
+	//매칭 동의
 	@RequestMapping(path="/agree.do",  produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String agreeHandle(HttpSession session) {

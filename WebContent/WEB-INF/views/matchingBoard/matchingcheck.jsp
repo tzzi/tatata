@@ -5,13 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<div align="center">
 </head>
 <body>
-나의 매칭 목록<br/>
-<c:forEach items="${matchingcheck}" var="a">
-		${a.NICK }  /  ${a.GENDER }   /  ${a.E_MAIL } <br/>
-			</c:forEach>
+<h1>내가 매칭한  사람</h1><br/>
+<c:forEach items="${matchingcheck }" var="a">
+${a.MATCHINGNICK } /
+<c:choose>
+	<c:when test="${a.GENDER eq 1}">
+	남성
+	</c:when>
+	<c:when test="${a.GENDER eq 2}">
+	여성
+	</c:when>
+</c:choose>
+/  ${a.EMAIL } <hr/> 
+</c:forEach>
+<h1>나를 매칭한 사람</h1><br/>
 
+<c:forEach items="${matchingforme }" var="b">
+${b.MYNICK}<br/>
+</c:forEach>
+</div>
 </body>
 </html>

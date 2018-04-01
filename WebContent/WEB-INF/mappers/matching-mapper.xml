@@ -12,8 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from addinfo where id != #{id}
 	</select>
 	
+	<!-- 내가 고를 상대 확인 -->
 	<select id="matchingcheck" resultType="java.util.HashMap">
 	SELECT DISTINCT * FROM MATCHINGCHECK WHERE mynick= #{nick}
+	</select>
+	
+	<!-- 나를 선택한 상대 확인 -->
+	<select id="matchingforme" resultType="java.util.HashMap">
+	SELECT DISTINCT * FROM MATCHINGCHECK WHERE MATCHINGNICK= #{nick}
 	</select>
 	
 	<insert id="matchinginsert">

@@ -21,8 +21,16 @@
 	
 	</c:when>
 	<c:otherwise>
-${matching.NICK }님  입니다.
-
+<p>
+${matching.NICK }님  입니다.<br/>
+</p>
+ <a href="/matchingBoard//matchingcheck.do"><button type="submit"
+						class="btn btn-primary"
+						style="padding: 8px; font-size: 12pt; width: 200px">나의 매칭</button></a>
+<p>
+<br/>
+<!-- <a href="/matchingBoard/matchingcheck.do"><input type="submit">나의 매칭</input></a> -->
+</p>
 <script>
 	$(document).ready(function(){
 		$.ajax("/matchingBoard/insertmatching.do",{
