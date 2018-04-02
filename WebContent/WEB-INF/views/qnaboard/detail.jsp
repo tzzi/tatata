@@ -26,7 +26,7 @@
 
 		</thead>
 		<tbody>
-			<c:forEach items="${qnadetaillist}" var="a">
+			<c:forEach items="${ridedetail}" var="a">
 				<tr>
 					<td width=5%>${a.A_NO}</td>
 					<td width=30%>${a.CONTENT}</td>

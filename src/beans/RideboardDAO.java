@@ -49,7 +49,28 @@ public class RideboardDAO {
 	         session.close();
 	      }
 	   }
-
+	   // 놀이기구 리플
+	   public int ridereplywrite(Map map) {
+		  SqlSession session = factory.openSession();
+		  int rst = 0;
+		  System.out.println(map);
+		  try {
+			  rst = session.insert("rideboard.ridereply_write",map);
+		  }finally {
+			  session.close();
+		  }
+		  return rst;
+	   }
+	   //놀이기구 리플보기
+	   public List<Map> replydetail(String ride_name){
+		   SqlSession session = factory.openSession();
+		   try {
+			   
+			   return session.selectList("rideboard.ridereply_list",ride_name);
+		   }finally {
+			   session.close();
+		   }
+	   }
 	   // 조회수
 	   public int addcount(String ride_name) {
 	      SqlSession session = factory.openSession();
@@ -68,7 +89,7 @@ public class RideboardDAO {
 	      try {
 	         System.out.println(park_name);
 
-	         return session.selectList("rideboard.parkdetail", park_name);
+	         return session.selectList("rideboard.parkdetail",park_name);
 	      } finally {
 	         session.close();
 	      }

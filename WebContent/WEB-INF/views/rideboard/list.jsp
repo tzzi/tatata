@@ -54,39 +54,41 @@
    <hr />
    <div align="left">
       <!-- <a href="/rideboard/list.do"></a> -->
-      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="all">전체보기</button>
-     
-       <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="롯데월드">롯데월드</button>
-            
-      <button  style="outline: none;" class="w3-btn w3-white w3-border world" id="에버랜드">에버랜드</button>
-            
-      <button  style="outline: none;" class="w3-btn w3-white w3-border world"  id="서울랜드">서울랜드</button>
-            
-      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="경주월드">경주월드</button>
-            
-      <button style="outline: none;" class="w3-btn w3-white w3-border world" id="e월드">e 월 드</button>
-      <hr />
+      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="전체보기"  onclick="location.href='/rideboard/list.do'">전체보기</button>
+       <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="롯데월드" onclick="location.href='/rideboard/place.do?name=롯데월드'">롯데월드</button>
+      <button  style="outline: none;" class="w3-btn w3-white w3-border world" id="에버랜드"  onclick="location.href='/rideboard/place.do?name=에버랜드'">에버랜드</button>
+      <button  style="outline: none;" class="w3-btn w3-white w3-border world"  id="서울랜드"  onclick="location.href='/rideboard/place.do?name=서울랜드'">서울랜드</button>
+      <button style="outline: none;" class="w3-btn w3-white w3-border world"  id="경주월드"  onclick="location.href='/rideboard/place.do?name=경주월드'">경주월드</button>      
+      <button style="outline: none;" class="w3-btn w3-white w3-border world" id="e월드"  onclick="location.href='/rideboard/place.do?name=e 월드'">e 월 드</button>
    </div>
+   <br/>
+   스릴 , 연애 , 어린이
+      
+      <hr />
 
 <div id="worldlist">
 </div>
    <c:forEach items="${rideboard }" var="ride" varStatus="vs">
       <c:if test="${vs.count %3 == 1}">
          <div class="w3-row-padding">
-      </c:if>
-      <div class="w3-third w3-container w3-margin-bottom"
-         style="border: 2px;">
+      </c:if>44
+      <div class="w3-third w3-container w3-margin-bottom" align="center"
+         style="width:300px;height:300px border: 2px;">
          <p align="center">
             <b>${ride.RIDE_NAME }</b>
          </p>
          <a href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}&no=${ride.NO}"> <img
             src="${ride.IMAGE }" alt="Norway"
             style="width: 100%; height: 180px;" class="w3-hover-opacity"></a>
-         <div align="left" class="w3-light-gray">
+         <div align="left">
+         <small><b>&nbsp;&nbsp;&nbsp;놀이공원 > ${ride.PARK_NAME }</b></small>
+         <br/>
             <button type="button" id="${ride.RIDE_NAME }"
                class="w3-button  w3-small like">
-               <i class="fa fa-thumbs-up w3-large"></i>
-            </button>
+               <i class="fa fa-thumbs-up w3-large">&nbsp; ${ride.GOOD_CNT }</i>
+            </button> 
+            <b>${ride.TYPE }</b>
+   
          </div>
          <hr />
          <div class="w3-container w3-white"></div>
@@ -136,7 +138,7 @@
    function plusDivs(n) {
       showDivs(slideIndex += n);
    }
-
+ㅍㄴ
    function currentDiv(n) {
       showDivs(slideIndex = n);
    }
@@ -161,19 +163,6 @@
       dots[slideIndex - 1].className += " w3-white";
    }
    
-   $(".world").click(function(){
-	   var park_name = $(this).attr("id");
-	   window.alert("world버튼 눌림")
-	   $.ajax("/rideboard/worldlist.do",{
-		   "method" : "post",
-	   "async" : false,
-	   "data" :{
-			"park_name" : park_name
-		}
-	   }).done(function(obj){
-		   window.alert(obj)
-	   });
-   });
    
    
    
