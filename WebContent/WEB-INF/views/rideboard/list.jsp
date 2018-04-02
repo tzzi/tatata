@@ -70,6 +70,7 @@
 
 <div id="worldlist">
 </div>
+
    <c:forEach items="${rideboard }" var="ride" varStatus="vs">
       <c:if test="${vs.count %3 == 1}">
          <div class="w3-row-padding">

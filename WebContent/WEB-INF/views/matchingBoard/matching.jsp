@@ -16,7 +16,7 @@
 	담력이 비슷 한 사람끼리 매칭 하시겠습니까?<br/>
 	<form action="/matchingBoard/matching2.do">
 			<button type="submit" id="matching">담력이 비슷한 사람끼리 매칭</button>
-			<input type="hidden" value="${mypage.NICK }" name="nick" />
+			<input type="hidden" value="${mypage.NICK }"/>
 		</form>
 	
 	</c:when>

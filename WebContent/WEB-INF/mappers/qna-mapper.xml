@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 리플보기 -->
 	<select id="listqnareply" resultType="java.util.LinkedHashMap">
-	select * from qnareply where q_no=#{q_no} order by a_no desc
+	select * from qnareply where q_no=#{q_no} order by a_no asc
 	</select>
 	
 	<!-- 리플쓰기 -->
