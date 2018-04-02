@@ -135,7 +135,7 @@ html {
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Username" name="id"  id="id1" pattern="[A-Za-z0-9]+" required>
           <label><b>비밀번호</b></label>
           <input class="w3-input w3-border" type="password" placeholder="Password" name="pass" id="password" pattern="[A-Za-z0-9]+" required>
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">로그인</button>
+          <button class="w3-button w3-block w3-green w3-section w3-padding" type="button" id="login">로그인</button>
         </div>
       </form>
 
@@ -336,6 +336,26 @@ html {
 			 $("#id1").val("");
 			 $("#password").val("");
 		 })
+		 
+		 $("#login").click(function(){
+			$.ajax("/login/login.do",{
+				"method" : "post",
+				"async" : false,
+				"data" : {
+					"id" : $("#id1").val(),
+					"pass" : $("#password").val()
+				}
+			}).done(function(obj){
+				if(obj[0].result==1){
+					window.alert("아이디나 비밀번호를 확인해주세요")
+				}else{
+					location.href = "/index.do";
+				}
+			});
+		});
+		
+		
+		 
 		 
 		 
 		</script>

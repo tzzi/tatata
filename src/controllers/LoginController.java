@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import beans.LoginDAO;
 import beans.MyPageDAO;
@@ -31,22 +32,29 @@ public class LoginController {
 		return "loginindex";
 	}	
 	
-	@RequestMapping("/login.do")
+	@RequestMapping(path = "/login.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
 	public String loginHandle(@RequestParam Map param, HttpServletRequest req, 
 			HttpServletResponse resp, HttpSession session, ModelMap map) {
 		
 		// 로그인 성공시
 		if(dao.login(param)!=null) {
-			
+			System.out.println("param : "+param);
+			if(mdao.addinfoload(param)!=null) {
+				BigDecimal gender = (BigDecimal)mdao.addinfoload(param).get("GENDER");
+				session.setAttribute("gender", gender);				
+			}
 			// 세션에 정보 올려둠
 			String id = (String)dao.login(param).get("ID");
 			String nick = (String)dao.login(param).get("NICK");
 			String pass = (String)dao.login(param).get("PASS");
 			
+			
 			session.setAttribute("login", 0);
 			session.setAttribute("userId", id);
 			session.setAttribute("userNick", nick);
 			session.setAttribute("pass", pass);
+			
 			
 			session.setAttribute("auth", id);
 			
@@ -72,11 +80,12 @@ public class LoginController {
 			Cookie cnick = new Cookie("nick", nick);
 			cnick.setPath("/");
 			resp.addCookie(cnick);*/
-			
-			return "index_1";
+			String b= "2";
+			return "[{\"result\":" + b + "}]";
 		} else {
 			System.out.println("로그인 실패 " + dao.login(param));
-			return "redirect:/login/loginindex.do";
+			String b = "1";
+			return "[{\"result\":" + b + "}]";
 		}
 	}
 

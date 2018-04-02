@@ -43,7 +43,7 @@
 					</c:choose>
 					
 					<a href="/mypage/mypageindex.do">
-					&nbsp;<b>${userId }</b>&nbsp;
+					&nbsp;<b>${userId }</b><small><b>(${userNick })</b></small>
 					</a>
 					<a href="/rideboard/list.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
@@ -60,9 +60,6 @@
 					<a href="/survey/surveyindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						매칭후기</a>
-					<a href="/mypage/mypageindex.do"
-						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						마이페이지</a>
 					<a href="/login/logout.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						로그아웃</a>

@@ -30,9 +30,9 @@
 				<th height="50px">이메일</th>
 				<td></td>
 				<td align="center">
-					<input type="text" name="email" value="${email }" placeholder="이메일"
+					<input type="text" name="email" value="${addinfoload.EMAIL}" placeholder="이메일"
 					style="padding: 8px; font-size: 12pt; width: 250px;" disabled/>
-					<input type="hidden" name="h_email" value="${email }"/>
+					<input type="hidden" name="h_email" value="${addinfoload.EMAIL}"/>
 				 </td>
 			</tr>
 			
@@ -40,7 +40,7 @@
 				<th height="50px">성별</th>
 				<td></td>
 				<td align="center">
-					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" />
+					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" checked="checked"/>
 					<label for="man">남성</label>
 					<input type="radio"  ${ gender eq 2 ? 'checked':'' }   name="gender" id="woman" value="2" />
 					<label for="woman">여성</label>
@@ -52,19 +52,19 @@
 				<td></td>
 				<td align="center"> 
 				
-						<select name="birth_y" style="padding: 8px; font-size : 12pt; width:100px">
+						<select name="birth_y" style="padding: 8px; font-size : 12pt; width:100px" required="required">
 							<c:forEach var="x" begin="1910" end="2018" step="1">
 								<option ${birth_y == x ? 'selected':'' }>${x }</option>
 							</c:forEach>
 						</select>
 						
-						<select name="birth_m" style="padding: 8px; font-size : 12pt; width:100px">
+						<select name="birth_m" style="padding: 8px; font-size : 12pt; width:100px" required="required">
 							<c:forEach var="x" begin="1" end="12" step="1">
 								<option ${birth_m == x ? 'selected':'' }>${x }</option>
 							</c:forEach>
 						</select>
 						
-						<select name="birth_d" style="padding: 8px; font-size : 12pt; width:100px">
+						<select name="birth_d" style="padding: 8px; font-size : 12pt; width:100px" required="required">
 							<c:forEach var="x" begin="1" end="31" step="1">
 								<option ${birth_d == x ? 'selected':'' }>${x }</option>
 							</c:forEach>
@@ -80,8 +80,8 @@
 				<td></td>
 				<td align="center">
 
-						<select name="area" style="padding: 8px; font-size : 12pt; width:120px ">
-							<option>${area }</option>	<option>서울</option>		<option>경기</option>
+						<select name="area" style="padding: 8px; font-size : 12pt; width:120px " required="required">
+							<option>${area }</option>	<option selected="selected">서울</option>		<option>경기</option>
 							<option>인천</option>		<option>부산</option>		<option>대구</option>
 							<option>대전</option>		<option>세종</option>		<option>광주</option>
 							<option>울산</option>		<option>강원</option>		<option>충청남도</option>	
@@ -102,7 +102,7 @@
 					<label for="f_high">고수</label>
 					<input type="radio" ${ fear eq 2 ? 'checked':'' } name="fear" id="f_middle" value="2"  class="authsuccess" />
 					<label for="f_middle">중수</label>
-					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" />
+					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" checked="checked" />
 					<label for="f_low">하수</label>
 	
 					
@@ -115,8 +115,8 @@
 				<td align="center">
 					<input type="radio" ${ matchtype eq 1 ? 'checked':'' } name="matchtype" id="m_same" value="1" class="authsuccess" />
 					<label for="m_same">동성</label>
-					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess" />
-					<label for="m_diff">이성</label>
+					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess" checked="checked"/>
+					<label for="m_diff" >이성</label>
 					<input type="radio" ${ matchtype eq 3 ? 'checked':'' } name="matchtype" id="m_nocare" value="3" class="authsuccess" />
 					<label for="m_nocare">상관없음</label>
 				</td>
@@ -127,7 +127,7 @@
 				<td></td>
 				<td align="center">					
 						<textarea rows="10" cols="100" name="intro"
-						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess">${intro }</textarea>
+						style="padding: 8px; font-size: 12pt; width: 350px; height: 200px; resize:none;" class="authsuccess" required="required">${intro }</textarea>
 				</td>
 			</tr>
 			
@@ -135,7 +135,7 @@
 				<td></td>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" id="confirm" style="padding: 8px; font-size: 12pt; width: 100px">확인</button>
+					<button type="submit" id="confirm" style="padding: 8px; font-size: 12pt; width: 100px" >확인</button>
 					<a href="./mypageindex.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
 				</td>
 			</tr>
