@@ -23,6 +23,9 @@
 	<select id="parkdetail" resultType="java.util.HashMap">
 		select * from rideboard where park_name= #{park_name }
 	</select>
+	<select id ="parkdetail_type" resultType="java.util.HashMap">
+	select * from rideboard where park_name =#{park_name }
+	</select>
 	<!-- 조회수 -->
 	<update id="count">
 		update rideboard set count = count+1 where ride_name =#{ride_name }
@@ -36,4 +39,13 @@
    <insert id="ride_likeoverlap">
    insert into ridelike(ride_like) values (#{overlap})
    </insert>
+   <!-- 놀이기구 리뷰 쓰기 -->
+   <insert id ="ridereply_write">
+   insert into ridereply(no,ridename,score,nick,ment,leftdate) values(no_seq.nextval,#{ride_name},#{score},#{nick},#{ment},sysdate)
+   </insert>
+   <!-- 놀이기구 리뷰 보기 -->
+   <select id="ridereply_list" resultType="java.util.HashMap">
+   select * from ridereply where ridename = #{ridename}
+   </select>
+   
 </mapper>

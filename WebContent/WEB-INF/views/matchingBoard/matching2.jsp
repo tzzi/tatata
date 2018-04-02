@@ -1,14 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     놀이기구 타입으로 찾아낸 너의 상대<br/>
-${matching2.NICK}
-
-
+<c:choose>
+<c:when test="${matching2.NICK eq null}">
+죄송합니다. 매칭 상대를 찾을 수 없습니다.
+</c:when>
+<c:otherwise>
+${matching2.NICK}님이 매칭 되었습니다.
 <p>
  <a href="/matchingBoard//matchingcheck.do"><button type="submit"
 						class="btn btn-primary"
 						style="padding: 8px; font-size: 12pt; width: 200px">나의 매칭</button></a>
 	</p>					
+
+</c:otherwise>
+
+
+</c:choose>
+
+
 <script>
 	$(document).ready(function(){
 		$.ajax("/matchingBoard/insertmatching.do",{

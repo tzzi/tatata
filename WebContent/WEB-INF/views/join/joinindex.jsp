@@ -3,7 +3,7 @@
 	<div align="center" style="min-height: 80%">
 		<!-- Section 영역 -->
 		<h3>J O I N</h3>
-		<form action="./join.do" method="post" autocomplete="off">
+		<form action="/join/join.do" method="post" autocomplete="off">
 			<p>
 				<input type="text" name="id" id="id" placeholder="아이디"
 				 style="padding: 8px; font-size: 12pt; width: 250px;" pattern="[A-Za-z0-9]+"/><br/>
