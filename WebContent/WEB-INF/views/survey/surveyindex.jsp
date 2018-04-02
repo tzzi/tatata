@@ -30,9 +30,9 @@ html, body, h1, h2, h3, h4, h5, h6 {
 					</div>
 					<div>
 						<a href="/survey/survey.do"><button type="button"
-							class="w3-button w3-section w3-theme-l2 w3-ripple" id="survey_go">
+							class="w3-button w3-section w3-theme-l2 w3-ripple" id="survey_go" ${empty survey_record? '':'disabled' }>
 							<b style="color: white">설문조사 하러가기</b>
-						</button></a> <a href="/survey/surveyrst.do"><button type="button"
+						</button></a> <a href="/survey/surveytotalresult.do"><button type="button"
 							class="w3-button w3-section w3-theme-l2 w3-ripple" id="survey_rst">
 							<b style="color: white">설문조사 결과보기</b>
 						</button></a>
@@ -49,5 +49,3 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<div class="w3-display-middle w3-padding"></div>
 	</div>
 </div>
-
-

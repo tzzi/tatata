@@ -8,4 +8,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{id}, #{total}, #{match_type}, #{m_first},#{m_pr_time}, #{m_moral}, #{m_meet}, #{m_communi}
 		)
 	</insert>
+	
+	<select id="loadid" resultType="hashmap">
+		select * from match_survey where id = #{id}
+	</select>
+	
+	<select id="loadtotalall" resultType="String">
+		select total from match_survey
+	</select>
+	
+	<!-- <select id="avgall" resultType="hashmap">
+		select avg(*) from match_survey
+	</select> -->
 </mapper>

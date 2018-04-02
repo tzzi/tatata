@@ -203,8 +203,8 @@ input[type=radio] {
 						class="w3-button w3-section w3-theme-l2 w3-ripple">
 						<b style="color: white">리셋</b>
 					</button>
-					<button type="submit"
-						class="w3-button w3-section w3-theme-l2 w3-ripple">
+					<button type="submit" 
+						class="w3-button w3-section w3-theme-l2 w3-ripple" id="complete">
 						<b style="color: white">완료</b>
 					</button>
 					<a href="../index.do"><button type="button"
@@ -219,7 +219,10 @@ input[type=radio] {
 </div>
 
 <script>
-	
+	$("#complete").on("click", function() {
+		window.alert("설문이 완료되었습니다. 감사합니다.");
+	});
+
 </script>
 
 

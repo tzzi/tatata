@@ -55,10 +55,12 @@
 	
 	<!-- mongo -->
 
-	<mongo:mongo-client host="13.125.247.3" port="13579"></mongo:mongo-client>
+	<mongo:mongo-client host="13.125.247.3" port="13579" id="mongo"/>
+	<!-- <mongo:db-factory dbname="root" mongo-ref="mongo" id="dbFactory"/> -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg name="mongo" ref="mongo"></constructor-arg>
-		<constructor-arg name="databaseName" value="root"></constructor-arg>
+		<constructor-arg name="mongo" ref="mongo"/>
+		<constructor-arg name="databaseName" value="root"/>
+		<!-- <constructor-arg name="mongoDbFactory" ref="dbFactory"/> -->
 	</bean>
 	
 	<!-- multipart -->
