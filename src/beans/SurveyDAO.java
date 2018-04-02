@@ -13,6 +13,7 @@ public class SurveyDAO {
 	@Autowired
 	SqlSessionFactory factory;
 	
+	// 설문조사 결과 insert
 	public int insertSurvey(Map param) {
 		SqlSession session = factory.openSession();
 		int rst = 0;
@@ -24,6 +25,7 @@ public class SurveyDAO {
 		return rst;
 	}
 	
+	// id로 설문조사 테이블 모든 내용 가져오기
 	public Map loadIdfromSurvey(String param) {
 		SqlSession session = factory.openSession();
 		Map rst = null;
@@ -35,6 +37,7 @@ public class SurveyDAO {
 		return rst;
 	}
 	
+	// total값 구해봄. 시험삼아
 	public List loadallSurvey() {
 		SqlSession session = factory.openSession();
 		List<Object> rst = null;
@@ -46,4 +49,16 @@ public class SurveyDAO {
 		return rst;
 	}
 	
+	// 각 문항당 평균값 구하기
+	public Map averageForEachSurvey() {
+		SqlSession session = factory.openSession();
+		Map rst = null;
+		try {
+			rst = session.selectOne("survey.avgall");
+		} catch (Exception e) {
+			session.close();
+		}
+		return rst;
+		
+	}
 }

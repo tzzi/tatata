@@ -22,12 +22,37 @@ table {
 	margin: auto;
 	text-align: center;
 }
+
+.button {
+	display: inline-block;
+	padding: 15px 25px;
+	font-size: 24px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+}
+
+.button:hover {
+	background-color: #3e8e41
+}
+
+.button:active {
+	background-color: #3e8e41;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
 </style>
 
 </head>
 <body>
 	<div class="w3-container" align="center">
-		
+
 
 		<table class="w3-table-all w3-hoverable"
 			style="width: 1000px; margin-left: auto; margin-right: auto; text-align: center">
@@ -58,40 +83,26 @@ table {
 		</table>
 		<hr />
 		<c:if test=""></c:if>
-	</div >
-	
-	<div align="center">
-<style>
-.button {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
-
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-</style>
-</head>
-
-
-<!-- <button class="button">Click Me</button> -->
-<a href="/qnaboard/writeform.do"><button type="submit" class="button">글쓰기</button></a>
-	
 	</div>
-	
-	
+	<div class="w3-center">
+		<div class="w3-container">
+			<div class="w3-bar">
+				<a href="#" class="w3-button">«</a> <a href="#"
+					class="w3-button w3-green">1</a> <a href="#" class="w3-button">2</a>
+				<a href="#" class="w3-button">3</a> <a href="#" class="w3-button">4</a>
+				<a href="#" class="w3-button">»</a>
+			</div>
+		</div>
+	</div>
+	<br/>
+
+	<div align="center">
+
+		<!-- <button class="button">Click Me</button> -->
+		<a href="/qnaboard/writeform.do"><button type="submit"
+				class="button">글쓰기</button></a>
+
+	</div>
+
+
 </body>

@@ -9,7 +9,8 @@
 		<h1 style="color: white" align="center">매칭 후기 결과</h1>
 	</header>
 
-	<div class="w3-row" >
+
+	<div class="w3-row w3-center" align="center">
 		<div class="w3-col w3-center w3-container">
 			<div class="w3-container w3-margin-top w3-center" style="width: 800px;">
 				<form class="w3-card-4">
@@ -20,7 +21,11 @@
 						뭐지
 					</div>
 					<div>
-						
+						첫인상 평점평균 : ${avg_m_first }<br/>
+						만남의사 평점평균 : ${avg_m_meet }<br/>
+						약속시간 평점평균 : ${avg_m_pr_time }<br/>
+						도덕성 평점평균 :${avg_m_moral }<br/>
+						총점 평균 : ${avg_total }
 					</div>
  
 				</form>

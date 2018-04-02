@@ -18,13 +18,32 @@ public class qnaDAO {
 	public List<Map> readAllqna(){
 		SqlSession session = factory.openSession();
 		try {
-			System.out.println(session.selectList("qnaboard.listallqna"));
+			//System.out.println(session.selectList("qnaboard.listallqna"));
 			return session.selectList("qnaboard.listallqna");
 		}finally {
 			session.close();
-			
 		}
 	}
+	// 페이징 처리하기
+	public List<Map> listPagingQna(){
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectList("qnaboard.listpaging");
+		}finally {
+			session.close();
+		}
+	}
+	
+	// 글 갯수 구하기
+	public int countQna() {
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectOne("qnaboard.countqna");
+		} finally {
+			session.close();
+		}
+	}
+	
 	//글쓰기
 	public int qnaWrite(Map map) {
 		SqlSession session = factory.openSession();

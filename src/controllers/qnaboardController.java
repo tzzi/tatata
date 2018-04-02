@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,11 +28,21 @@ public class qnaboardController {
 	Gson gson;
 
 	@RequestMapping("/qnaindex.do")
-	public String indexHandle(ModelMap modelMap) {
+	public String indexHandle(ModelMap modelMap, HttpServletRequest req) {
 		modelMap.put("qnalist", qdao.readAllqna());
+		//System.out.println(qdao.listPagingQna());
+		/*modelMap.put("begin", 1);
+		modelMap.put("end", 5);*/
+	
+		/*int begin = Integer.parseInt(req.getParameter("begin"));
+		int end = Integer.parseInt(req.getParameter("end"));*/
+		int total = qdao.countQna();
+		/*int currentPage = (begin-1)/5 + 1;*/
+		
+		
 		return "qnaboard";
 	}
-
+	
 	@RequestMapping("/writeform.do")
 	public String wirteformHandle() {
 		return "writeform";

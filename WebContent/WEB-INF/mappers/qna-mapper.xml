@@ -14,6 +14,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from qnaboard order by q_no desc
 	</select>
 
+	<!-- qna페이징-->
+	<select id="listpaging" resultType="java.util.LinkedHashMap">
+		<!-- select * from 
+		(select rownum rn, tt.* from 
+		(select * from qnaboard order by q_no desc) tt) 
+		where rn >= 1 and rn <= 10 -->
+		select * from 
+		( select ROW_NUMBER() OVER(ORDER BY q_no desc) RNUM, 
+		q_no,writer,title,content,left_date from qnaboard ) X 
+		WHERE X.RNUM BETWEEN #{first} AND #{last}
+	</select>
+	
+	<!-- qna 총 갯수 -->
+	<select id="countqna" resultType="integer">
+		select count(*) from qnaboard
+	</select>
+	
 	<!-- qna글 상세 보기 -->
 	<select id="detailqna" resultType="java.util.LinkedHashMap">
 		select * from qnaboard where q_no = #{q_no}
