@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +33,25 @@ public class MyPageController {
 	
 	// 마이페이지 첫화면
 	@RequestMapping("/mypageindex.do")
-	public String joinindexHandle() {
+	public String joinindexHandle(HttpSession session) {
+		
 		return "mypageindex";
 	}
 	
 	// 정보수정 - 화면띄우기
 	@RequestMapping("/modify.do")
-	public String modyfyHandler(HttpSession session) {
+	public String modyfyHandler(HttpSession session,ModelMap modelmap) {
 		System.out.println(session.getAttribute("addinfo"));
 		Map map = (Map)session.getAttribute("addinfo");
+		
+		String id=(String) session.getAttribute("userId");
+		System.out.println(id);
+		Map param = new LinkedHashMap<>();
+		param.put("id", id);
+		modelmap.put("addinfoload", mdao.addinfoload(param));
+		System.out.println("모델맵 : "+ modelmap);
+			
+		
 		if(map!=null) {
 		session.setAttribute("email", map.get("EMAIL"));
 		}
@@ -49,7 +60,17 @@ public class MyPageController {
 	
 	// 정보수정 - 비번 확인 후 정보수정 화면띄우기
 	@RequestMapping("/modifyinfo.do")
-	public String modyfyinfoHandler(HttpSession session) {
+	public String modyfyinfoHandler(HttpSession session,ModelMap modelmap) {
+		System.out.println(session.getAttribute("addinfo"));
+		
+		String id=(String) session.getAttribute("userId");
+		System.out.println(id);
+		Map param = new LinkedHashMap<>();
+		param.put("id", id);
+		modelmap.put("addinfoload", mdao.addinfoload(param));
+		System.out.println("모델맵 : "+ modelmap);
+			
+		
 		System.out.println(session.getAttribute("addinfo"));
 		Map map = (Map)session.getAttribute("addinfo");
 		session.setAttribute("gender", map.get("GENDER"));
@@ -96,7 +117,11 @@ public class MyPageController {
 		param.put("id", id);
 		
 		mdao.updateInfo(param);
+		String email = (String) param.get("h_email");
+		System.out.println("email : "+ email);
 		
+		param.put("email", email);		
+		System.out.println("파람 : " + param);
 		session.setAttribute("addinfo", param);
 		
 		return "redirect:/index.do";
