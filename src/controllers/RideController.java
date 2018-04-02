@@ -225,8 +225,8 @@ public class RideController {
 	// 공원 이름 별 목록
 	@RequestMapping(path = "/place.do")
 	public String detailworldController(String name, ModelMap modelMap) {
-		modelMap.put("rideboard", rdao.)
-		modelMap.put("rideboard", rdao.parkdetail(name));
+	//	modelMap.put("rideboard", rdao.)
+	//	modelMap.put("rideboard", rdao.parkdetail(name));
 		return "list";
 	}
 	
