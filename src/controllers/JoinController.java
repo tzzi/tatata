@@ -37,21 +37,14 @@ public class JoinController {
 	}
 	
 	@RequestMapping("/join.do")
-	public String joinrstHandle(@RequestParam Map<String, String> param, ModelMap map, HttpServletRequest req) {
-		
-		String id = param.get("id");
-		String pass = param.get("pass1");
-		String nick = param.get("nick");
-		
-		map.put("id", id);
-		map.put("pass", pass);
-		map.put("nick", nick);
-		System.out.println(map);
-		
+	public String joinrstHandle(@RequestParam Map<String, String> param) {
+
+		param.put("pass", param.get("pass1"));
+		/*
 		req.setAttribute("id", id);
 		req.setAttribute("nick", nick);
-		
-		int rst = dao.join(map);
+		*/
+		int rst = dao.join(param);
 		if(rst==1) {
 			return "redirect:/index.do";
 		} else {

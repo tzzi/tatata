@@ -222,13 +222,32 @@ public class RideController {
 
 	}
 
+
 	// 공원 이름 별 목록
-	@RequestMapping(path = "/place.do")
-	public String detailworldController(String name, ModelMap modelMap) {
+	//@RequestMapping(path = "/place.do")
+	//public String detailworldController(String name, ModelMap modelMap) {
 	//	modelMap.put("rideboard", rdao.)
 	//	modelMap.put("rideboard", rdao.parkdetail(name));
-		return "list";
-	}
+	//	return "list";
+	//}
 	
 
+
+   //공원 이름 별 목록
+   @RequestMapping(path = "/worldlist.do", produces = "application/json;charset=utf-8")
+  @ResponseBody
+   public String detailworldController(String park_name,ModelMap modelMap) {
+	   System.out.println("공원 이름별 목록");
+	   String a="a";
+	   System.out.println(park_name);
+	   if(!park_name.equals("all")) {		   
+		   modelMap.put("rideboard", rdao.parkdetail(park_name));
+		   System.out.println("전체 목록이 아님");
+	   }else {
+		modelMap.put("rideboard",rdao.alllist());
+		   System.out.println("전체 목록");
+	   }
+	   return "[{\"result\":" + a + "}]";
+   }
 }
+  	

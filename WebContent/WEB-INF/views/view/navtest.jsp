@@ -27,6 +27,7 @@
 					<a href="/login/loginindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						로그인</a>
+						
 				</c:when>
 				<c:otherwise>
 					<c:choose>
@@ -40,7 +41,10 @@
 						<img src="/image/default.png"  height="50" width="50">
 					</c:otherwise>
 					</c:choose>
+					
+					<a href="/mypage/mypageindex.do">
 					&nbsp;<b>${userId }</b>&nbsp;
+					</a>
 					<a href="/rideboard/list.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						놀이공원 정보 게시판</a>
@@ -50,6 +54,9 @@
 					<a href="/matchingBoard/matchingIndex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						매칭보드</a>
+					<a href="/matchingBoard//matchingcheck.do"
+						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
+						매칭 목록</a>	
 					<a href="/survey/surveyindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						매칭후기</a>

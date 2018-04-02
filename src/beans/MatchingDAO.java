@@ -81,7 +81,7 @@ public class MatchingDAO {
 				//무관일때
 			}else {
 				for(int c=0;c<notmylist.size();c++) {
-					String x_match = (String) notmylist.get(c).get("G_MATCH");
+					String x_match = (String) notmylist.get(c).get("MATCHTYPE");
 					if(x_match.equals("2")) {
 						if(!(notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
@@ -192,7 +192,7 @@ public class MatchingDAO {
 				//무관일때
 			}else {
 				for(int c=0;c<notmylist.size();c++) {
-					String x_match = (String) notmylist.get(c).get("G_MATCH");
+					String x_match = (String) notmylist.get(c).get("MATCHTYPE");
 					if(x_match.equals("2")) {
 						if(!(notmylist.get(c).get("GENDER").equals(mylist.get("GENDER")))) {
 							list.add(notmylist.get(c));
@@ -223,23 +223,24 @@ public class MatchingDAO {
 				}
 			}
 			
-			if(mylist.containsKey("키즈")) {
-				mytypecnt.add(mylist.get("키즈"));
+			if(mylist.containsKey("어린이")) {
+				mytypecnt.add(mylist.get("어린이"));
 			}if(mylist.containsKey("연애")) {
 				mytypecnt.add(mylist.get("연애"));
 			}if(mylist.containsKey("스릴")) {
 				mytypecnt.add(mylist.get("스릴"));
 			}
 			
-			System.out.println("키즈 :"+ mylist.get("키즈"));
+			System.out.println("키즈 :"+ mylist.get("어린이"));
 			System.out.println("연애 : "+ mylist.get("연애"));
 			System.out.println("스릴 :"+ mylist.get("스릴"));
 			
 			String mytype = null;
+			System.out.println("mytypecnt"+mytypecnt);
 			Integer i = (Integer) Collections.max(mytypecnt);
 			System.out.println("나의 최대 cnt"+i);
-			if(mylist.containsKey("키즈") && mylist.get("키즈")==i) {
-				mytype = "키즈";
+			if(mylist.containsKey("어린이") && mylist.get("어린이")==i) {
+				mytype = "어린이";
 			}else if(mylist.containsKey("연애") && mylist.get("연애")==i) {
 				mytype = "연애";
 			}else if(mylist.containsKey("스릴") && mylist.get("스릴")==i) {
@@ -265,14 +266,14 @@ public class MatchingDAO {
 				}
 			}
 			for(int a=0;a<list.size();a++) {
-				if(list.get(a).containsKey("키즈")) {
-					ntypecnt.add(list.get(a).get("키즈"));
+				if(list.get(a).containsKey("어린이")) {
+					ntypecnt.add(list.get(a).get("어린이"));
 				}if(list.get(a).containsKey("연애")) {
 					ntypecnt.add(list.get(a).get("연애"));
 				}if(list.get(a).containsKey("스릴")) {
 					ntypecnt.add(list.get(a).get("스릴"));
 				}
-				System.out.println("키즈"+list.get(a).get("키즈"));
+				System.out.println("어린이"+list.get(a).get("어린이"));
 				System.out.println("연애"+list.get(a).get("연애"));
 				System.out.println("스릴"+list.get(a).get("스릴"));
 				
@@ -280,8 +281,8 @@ public class MatchingDAO {
 				Integer j = (Integer)  Collections.max(ntypecnt);
 				System.out.println("상대의 최대 cnt"+j);
 				
-				if(list.get(a).containsKey("키즈") && list.get(a).get("키즈")==j) {
-					ntype = "키즈";
+				if(list.get(a).containsKey("어린이") && list.get(a).get("어린이")==j) {
+					ntype = "어린이";
 				}else if(list.get(a).containsKey("연애") && list.get(a).get("연애")==j) {
 					ntype = "연애";
 				}else if(list.get(a).containsKey("스릴") && list.get(a).get("스릴")==j) {
