@@ -14,7 +14,7 @@ public class qnaDAO {
 	@Autowired
 	SqlSessionFactory factory;
 	
-	//글 목록보기
+	//전체 글 목록보기
 	public List<Map> readAllqna(){
 		SqlSession session = factory.openSession();
 		try {
@@ -24,16 +24,7 @@ public class qnaDAO {
 			session.close();
 		}
 	}
-	// 페이징 처리하기
-	public List<Map> listPagingQna(){
-		SqlSession session = factory.openSession();
-		try {
-			return session.selectList("qnaboard.listpaging");
-		}finally {
-			session.close();
-		}
-	}
-	
+
 	// 글 갯수 구하기
 	public int countQna() {
 		SqlSession session = factory.openSession();
@@ -43,6 +34,20 @@ public class qnaDAO {
 			session.close();
 		}
 	}
+	//페이징 하기
+	public List<Map> pagingQna(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			System.out.println("semap : " +map);
+			System.out.println("보여줄 List<Map> : " + session.selectList("qnaboard.rownumlist",map));
+			return session.selectList("qnaboard.rownumlist",map);
+			
+			
+		}finally {
+			session.close();
+		}
+	}
+	
 	
 	//글쓰기
 	public int qnaWrite(Map map) {

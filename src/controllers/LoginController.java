@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import beans.LoginDAO;
+import beans.MatchingDAO;
 import beans.MyPageDAO;
 
 @Controller
@@ -26,6 +27,8 @@ public class LoginController {
 	LoginDAO dao;
 	@Autowired
 	MyPageDAO mdao;
+	@Autowired
+	MatchingDAO mcdao;
 	
 	@RequestMapping("/loginindex.do")
 	public String joinindexHandle() {
@@ -55,8 +58,15 @@ public class LoginController {
 			session.setAttribute("userNick", nick);
 			session.setAttribute("pass", pass);
 			
-			
 			session.setAttribute("auth", id);
+			
+					
+			//매칭 된사람
+			if(mcdao.matchingforme(nick)!=null || mcdao.matchingcheck(nick)!=null) {
+				System.out.println("우우와앗");
+				session.setAttribute("mathcingcheck", "1");
+			}
+			
 			
 			// 추가정보 입력한 사람들 정보 불러오기
 			map.put("id", id);
