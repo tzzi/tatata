@@ -43,7 +43,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		<div class="w3-col w3-container l4"></div>
 	</div>
-
+	
 
 	<div class="w3-display-container" style="height: 50%;">
 		<div class="w3-display-middle w3-padding"></div>

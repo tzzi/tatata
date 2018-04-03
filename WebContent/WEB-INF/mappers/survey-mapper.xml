@@ -22,4 +22,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		count(*),avg(total),avg(m_first),avg(m_pr_time),avg(m_moral),avg(m_meet),avg(m_communi)
 		FROM match_survey
 	</select>
+	
+	<!-- <select id="areachart" resultType="hashmap">
+		SELECT * FROM (SELECT area,count(*) FROM addinfo GROUP BY area ORDER BY count(*) DESC) WHERE ROWNUM <=5
+	</select> -->
+
+
+	<select id="genderrate" resultType="hashmap">
+		SELECT gender, count(*) FROM addinfo GROUP BY gender
+	</select>
+	
+	<select id="fearrate" resultType="hashmap">
+		SELECT fear, count(*) FROM matchingagree GROUP BY fear
+	</select>
+	
+	<select id="matchtyperank" resultType="hashmap">
+		SELECT matchtype, count(*) FROM addinfo GROUP BY matchtype
+	</select>
+	<!-- SELECT * FROM (SELECT area,count(*) FROM addinfo GROUP BY area ORDER 
+	BY count(*) DESC) WHERE ROWNUM <=5  가입자 지역별 순위 SELECT gender, count(*) 
+		FROM addinfo GROUP BY gender 성별 가입자 남성/여성 비율 SELECT fear, count(*) FROM 
+		matchingagree GROUP BY fear  가입 동의자들의 담력도 SELECT matchtype, count(*) FROM 
+		addinfo GROUP BY matchtype 매칭 유형 순위  -->
+		
 </mapper>

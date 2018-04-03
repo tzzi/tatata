@@ -37,6 +37,18 @@ public class SurveyController {
 		Map param = new LinkedHashMap<>();
 		param.put("id", id);
 //		System.out.println(sdao.loadIdfromSurvey(id));
+		System.out.println("가입자 남녀비율 : " + sdao.genderrate());
+		System.out.println("가입자 남녀비율 0번째 : " + sdao.genderrate().get(0));
+		System.out.println("가입자 남녀비율 1번째 : " + sdao.genderrate().get(1));
+		System.out.println("담력도 : " + sdao.fearrate());
+		System.out.println("담력도 : " + sdao.fearrate().get(0));
+		System.out.println("담력도 : " + sdao.fearrate().get(1));
+		System.out.println("담력도 : " + sdao.fearrate().get(2));
+		System.out.println("매칭유형 : " + sdao.matchtyperank());
+		System.out.println("매칭유형 : " + sdao.matchtyperank().get(0));
+		System.out.println("매칭유형 : " + sdao.matchtyperank().get(1));
+		System.out.println("매칭유형 : " + sdao.matchtyperank().get(2));
+		
 		if(sdao.loadIdfromSurvey(id)!= null && mdao.addinfoload(param)!=null) {
 			session.setAttribute("survey_record", 1);
 		} 
