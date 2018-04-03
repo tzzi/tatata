@@ -181,19 +181,6 @@ input[type=radio] {
 										</p>
 									</td>
 								</tr>
-								<tr>
-									<td>한 번 더 만나볼 의사가 있다? 없다?</td>
-									<td>
-										<p>
-											<input class="w3-radio" type="radio" name="m_meet" value="1"> 
-											<label>있다</label>
-											<input class="w3-radio" type="radio" name="m_meet" value="2"> 
-											<label>없다</label>
-											<input class="w3-radio" type="radio" name="m_meet" value="3"> 
-											<label>무념무상</label>
-										</p>
-									</td>
-								</tr>
 							</table>
 						</div>
 						

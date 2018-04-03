@@ -1,4 +1,4 @@
-package controllers;
+/*package controllers;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -117,3 +117,4 @@ public class InstaController {
 		return "mongo/list";
 	}
 }
+*/

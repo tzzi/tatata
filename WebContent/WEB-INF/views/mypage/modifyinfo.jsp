@@ -102,7 +102,7 @@
 					<label for="f_high">고수</label>
 					<input type="radio" ${ fear eq 2 ? 'checked':'' } name="fear" id="f_middle" value="2"  class="authsuccess" />
 					<label for="f_middle">중수</label>
-					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" checked="checked" />
+					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" />
 					<label for="f_low">하수</label>
 	
 					
@@ -115,7 +115,7 @@
 				<td align="center">
 					<input type="radio" ${ matchtype eq 1 ? 'checked':'' } name="matchtype" id="m_same" value="1" class="authsuccess" />
 					<label for="m_same">동성</label>
-					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess" checked="checked"/>
+					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess"/>
 					<label for="m_diff" >이성</label>
 					<input type="radio" ${ matchtype eq 3 ? 'checked':'' } name="matchtype" id="m_nocare" value="3" class="authsuccess" />
 					<label for="m_nocare">상관없음</label>

@@ -46,7 +46,7 @@ public class JoinController {
 		*/
 		int rst = dao.join(param);
 		if(rst==1) {
-			return "redirect:/index.do";
+			return "redirect:/";
 		} else {
 			return "redirect:/join/joinindex.do";
 		}

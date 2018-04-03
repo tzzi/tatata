@@ -99,7 +99,7 @@ public class LoginController {
 			c.setPath("/");
 			resp.addCookie(c);
 		}*/
-	    return "redirect:/index.do";
+	    return "redirect:/";
 	}
 
 	@RequestMapping("/idfind.do")

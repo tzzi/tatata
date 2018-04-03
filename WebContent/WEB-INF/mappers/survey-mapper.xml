@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="avgall" resultType="hashmap">
 		SELECT
-		count(*),avg(total),avg(m_first),avg(m_pr_time),avg(m_moral),avg(m_meet)
+		count(*),avg(total),avg(m_first),avg(m_pr_time),avg(m_moral),avg(m_meet),avg(m_communi)
 		FROM match_survey
 	</select>
 </mapper>

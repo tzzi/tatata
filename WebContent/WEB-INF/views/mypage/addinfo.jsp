@@ -52,7 +52,7 @@
 				<th height="50px">성별</th>
 				<td></td>
 				<td align="center">
-					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" class="authsuccess" ${ gender eq 1 ? '':'disabled' } />
+					<input type="radio"  ${ gender eq 1 ? 'checked':'' }  name="gender" id="man" value="1" class="authsuccess" ${ gender eq 1 ? '':'disabled' } checked/>
 					<label for="man">남성</label>
 					<input type="radio"  ${ gender eq 2 ? 'checked':'' }   name="gender" id="woman" value="2" class="authsuccess" ${ gender eq 2 ? '':'disabled' }/>
 					<label for="woman">여성</label>
@@ -133,7 +133,7 @@
 				<c:choose>
 					<c:when test="${empty keytrue }">
 						<select name="area" style="padding: 8px; font-size : 12pt; width:120px " class="authsuccess" disabled>
-							<option>선택</option>		<option>서울</option>		<option>경기</option>
+							<option>서울</option>		<option>경기</option>
 							<option>인천</option>		<option>부산</option>		<option>대구</option>
 							<option>대전</option>		<option>세종</option>		<option>광주</option>
 							<option>울산</option>		<option>강원</option>		<option>충청남도</option>	
@@ -157,7 +157,7 @@
 				<td></td>
 				<td align="center">
 				
-					<input type="radio" ${ fear eq 1 ? 'checked':'' } name="fear" id="f_high" value="1" class="authsuccess" ${ fear eq 1 ? '':'disabled' }/>
+					<input type="radio" ${ fear eq 1 ? 'checked':'' } name="fear" id="f_high" value="1" class="authsuccess" ${ fear eq 1 ? '':'disabled' } checked/>
 					<label for="f_high">고수</label>
 					<input type="radio" ${ fear eq 2 ? 'checked':'' } name="fear" id="f_middle" value="2"  class="authsuccess" ${ fear eq 2 ? '':'disabled' }/>
 					<label for="f_middle">중수</label>
@@ -173,7 +173,7 @@
 				<th height="50px">매칭 유형</th>
 				<td></td>
 				<td align="center">
-					<input type="radio" ${ matchtype eq 1 ? 'checked':'' } name="matchtype" id="m_same" value="1" class="authsuccess" ${ matchtype eq 1 ? '':'disabled' }/>
+					<input type="radio" ${ matchtype eq 1 ? 'checked':'' } name="matchtype" id="m_same" value="1" class="authsuccess" ${ matchtype eq 1 ? '':'disabled' } checked/>
 					<label for="m_same">동성</label>
 					<input type="radio" ${ matchtype eq 2 ? 'checked':'' } name="matchtype" id="m_diff" value="2" class="authsuccess" ${ matchtype eq 2 ? '':'disabled' }/>
 					<label for="m_diff">이성</label>
@@ -203,7 +203,7 @@
 				<td></td>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" ${ empty keytrue? '':'disabled' }>추가정보입력</button>
+					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" class="authsuccess" id="addinfoinsert" disabled>추가정보입력</button>
 					<input type="reset" value="초기화" style="padding: 8px; font-size: 12pt; width: 100px">
 					<a href="./mypageindex.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
 				</td>
@@ -235,5 +235,9 @@
 				window.alert("인증키가 불일치합니다.");
 			}
 		});
+	});
+	
+	$("#addinfoinsert").on("click", function() {
+		window.alert("정보 수정이 완료되었습니다.");
 	});
 </script>
