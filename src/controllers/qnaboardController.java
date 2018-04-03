@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -28,20 +29,49 @@ public class qnaboardController {
 	Gson gson;
 
 	@RequestMapping("/qnaindex.do")
-	public String indexHandle(ModelMap modelMap, HttpServletRequest req) {
+	public String indexHandle(ModelMap modelMap, HttpServletRequest req/*,@RequestParam int page*/) {
 		modelMap.put("qnalist", qdao.readAllqna());
-		//System.out.println(qdao.listPagingQna());
-		/*modelMap.put("begin", 1);
-		modelMap.put("end", 5);*/
+		Map map = new LinkedHashMap<>();
+		int totalCount= qdao.countQna();
+		int page = 1;
+		System.out.println("글의 총 갯 수 : " + totalCount);
+		int countlist = 10; // 한 화면에 보여줄 글의 갯수
+		int countpage = 10;// [][]의 갯수
+		System.out.println("page : " + page);
+		
+		int totalPage = totalCount / countlist;
+
+
+		if (totalCount % countlist > 0) {
+		    totalPage++;//
+		}
+		if (totalPage < page) {
+		    page = totalPage;
+		}
+		
+		int startPage = ((page - 1) / 10) * 10 + 1;  //
+
+		int endPage = startPage + countpage - 1;  //
 	
-		/*int begin = Integer.parseInt(req.getParameter("begin"));
-		int end = Integer.parseInt(req.getParameter("end"));*/
-		int total = qdao.countQna();
-		/*int currentPage = (begin-1)/5 + 1;*/
-		
-		
+		if (endPage > totalPage) {
+
+		    endPage = totalPage;
+
+		}
+		map.put("totalCount", totalCount);
+		map.put("countlist", countlist);
+		map.put("countpage", countpage);
+		map.put("totalPage", totalPage);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("page", page);
+		System.out.println(map);
+		modelMap.put("paging", map);
 		return "qnaboard";
+		/*return "qnadetailExam";*/
 	}
+	
+	
 	
 	@RequestMapping("/writeform.do")
 	public String wirteformHandle() {
@@ -186,5 +216,7 @@ public class qnaboardController {
 		}
 		return "[{\"result\":" + b + "}]";
 	}
+	
+	
 	
 }

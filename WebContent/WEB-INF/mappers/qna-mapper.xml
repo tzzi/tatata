@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- qna 총 갯수 -->
 	<select id="countqna" resultType="integer">
 		select count(*) from qnaboard
+		
 	</select>
 	
 	<!-- qna글 상세 보기 -->
@@ -80,6 +81,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update qnaboard set q_like = q_like-1 where q_no = #{q_no} 
 	</update>
 	
+	<!-- <select id="rownumlist" resultType="java.util.LinkedHashMap">
+	select * from (select rownum rn, tt.* from 
+	(select * from qnaboard ORDER BY left_date desc)tt)
+	 where rn &ge; 1 and rn &le; 10
+	</select>	 -->
 	
 	
+		
 </mapper>

@@ -35,7 +35,7 @@ table {
 	background-color: #4CAF50;
 	border: none;
 	border-radius: 15px;
-	 	box-shadow: 0 5px #999;
+	box-shadow: 0 5px #999;
 }
 
 .button:hover {
@@ -53,8 +53,8 @@ table {
 <body>
 
 	<div class="w3-container ">
-			<h1>Q&A 게시판</h1>
-			<br/>
+		<h1>Q&A 게시판2</h1>
+		<br />
 
 		<table class="w3-table-all w3-hoverable "
 			style="margin-left: auto; margin-right: auto; text-align: center">
@@ -83,29 +83,28 @@ table {
 			</tbody>
 		</table>
 		<style>
-		table {
+table {
 	height: 15px;
 	margin: auto;
 	text-align: center;
 }
+
 th {
-    text-align: center;
-  }
-		</style>
+	text-align: center;
+}
+</style>
 		<table class="w3-table-all"
 			style="margin-left: auto; margin-right: auto; text-align: center">
-			<tr class="w3-right" >
-				<th>
-				<a href="/qnaboard/writeform.do" style="margin-right: 3px" ><button type="submit"
-				class="button">글쓰기</button></a>
-				</th>
-			
-				</tr>
+			<tr class="w3-right">
+				<th><a href="/qnaboard/writeform.do" style="margin-right: 3px"><button
+							type="submit" class="button">글쓰기</button></a></th>
+
+			</tr>
 		</table>
-		
-		<hr/>
-		
-		
+
+		<hr />
+
+
 		<!-- <p align="right">
 		<button class="button">Click Me</button>
 	
@@ -114,14 +113,43 @@ th {
 	<div class="w3-center">
 		<div class="w3-container">
 			<div class="w3-bar">
-				<a href="#" class="w3-button">«</a> <a href="#"
-					class="w3-button w3-green">1</a> <a href="#" class="w3-button">2</a>
-				<a href="#" class="w3-button">3</a> <a href="#" class="w3-button">4</a>
-				<a href="#" class="w3-button">»</a>
+				<c:choose>
+					<c:when test="${paging.page gt  1}">
+						<a href="/qnaboard/qnaindex2?page=${paging.page-1}">이전</a>
+					</c:when>
+				</c:choose>
+
+
+				<c:forEach var="item" items="${paging}" begin="${paging.startPage }"
+					end="${paging.endPage }" step="1" varStatus="status">
+					<c:choose>
+						<c:when test="${status.index eq paging.page}">
+							<b>[${paging.page }]</b>
+						</c:when>
+						<c:otherwise>
+						<a href="/qnaboard/qnaindex2?page=${status.index }">[${status.index }]</a>
+			
+			</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+			<c:choose>
+			<c:when test="${paging.page lt paging.totalPage }">
+				<a href="/qnaboard/qnaindex2?page=${paging.page+1 }">다음</a>
+			</c:when>
+			</c:choose>
+			
+			<c:choose>
+			<c:when test="${paging.endPage lt paging.totalPage }">
+			<a href="/qnaboard/qnaindex2?page=${paging.totalPage }">끝</a>
+			</c:when>
+			
+			</c:choose>
+			
 			</div>
 		</div>
 	</div>
-	<br/>
+	<br />
 
 
 
