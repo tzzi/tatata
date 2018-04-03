@@ -52,8 +52,8 @@ table {
 </head>
 <body>
 
-	<div class="w3-container ">
-		<h1>Q&A 게시판2</h1>
+	<div class="w3-container w3-center">
+		<h1>Q&A 게시판</h1>
 		<br />
 
 		<table class="w3-table-all w3-hoverable "
@@ -115,7 +115,7 @@ th {
 			<div class="w3-bar">
 				<c:choose>
 					<c:when test="${paging.page gt  1}">
-						<a href="/qnaboard/qnaindex2?page=${paging.page-1}">이전</a>
+						<a href="/qnaboard/qnaindex2.do?page=${paging.page-1}">이전</a>
 					</c:when>
 				</c:choose>
 
@@ -127,7 +127,7 @@ th {
 							<b>[${paging.page }]</b>
 						</c:when>
 						<c:otherwise>
-						<a href="/qnaboard/qnaindex2?page=${status.index }">[${status.index }]</a>
+						<a href="/qnaboard/qnaindex2.do?page=${status.index }">[${status.index }]</a>
 			
 			</c:otherwise>
 					</c:choose>
@@ -135,13 +135,13 @@ th {
 
 			<c:choose>
 			<c:when test="${paging.page lt paging.totalPage }">
-				<a href="/qnaboard/qnaindex2?page=${paging.page+1 }">다음</a>
+				<a href="/qnaboard/qnaindex2.do?page=${paging.page+1 }">다음</a>
 			</c:when>
 			</c:choose>
 			
 			<c:choose>
 			<c:when test="${paging.endPage lt paging.totalPage }">
-			<a href="/qnaboard/qnaindex2?page=${paging.totalPage }">끝</a>
+			<a href="/qnaboard/qnaindex2.do?page=${paging.totalPage }">끝</a>
 			</c:when>
 			
 			</c:choose>
