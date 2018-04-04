@@ -91,6 +91,71 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+	//리플 달기
+		public int matchingreplywrite(Map map) {
+			SqlSession session = factory.openSession();
+			int rst = 0;
+			System.out.println(map);
+			try {
+				rst = session.insert("matchingboard.insertreply",map);
+				
+			}finally {
+				session.close();
+			}
+			return rst;
+		}
+		//중복 좋아요 확인 작업
+		public int overlap(String overlap) {
+			SqlSession session = factory.openSession();
+			int rst = 0;
+			System.out.println("overlap" + overlap);
+			try {
+				rst = session.insert("matchingboard.overlap", overlap);
+				System.out.println(rst);
+			}catch(Exception e){
+				rst = 2;
+				return rst;
+			}finally {
+				session.close();
+			}
+			return rst;
+		}
+		//추천하기
+		public int like(int m_no) {
+			SqlSession session = factory.openSession();
+			try {
+				int rst= session.update("matchingboard.addlike",m_no);
+				System.out.println("좋아요 증가한다!!");
+				return rst;
+			}finally {
+				session.close();
+			}
+			
+		}
+		//좋아요 취소
+		public int deletelike(String likecheck) {
+			SqlSession session = factory.openSession();
+			System.out.println("likecancel : " +likecheck);
+			try {
+				return session.delete("matchingboard.liekcancel",likecheck);
+			}finally {
+				session.close();
+			}
+		}
+		//추천 빼기
+		public int subtractlike(int m_no) {
+			SqlSession session = factory.openSession();
+			try {
+				int rst = 0;
+				rst = session.update("matchingboard.subtractlike",m_no);
+				System.out.println("좋아요 하나 빠진다아");
+				return rst;
+			}finally {
+				session.close();
+			}
+		}
+		
+		
 	//조회수 올리기
 	public int addcount(int m_no) {
 		SqlSession session = factory.openSession();
@@ -512,5 +577,40 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
-
+	//글 삭제하기
+	public int delete(int m_no) {
+		SqlSession session = factory.openSession();
+		System.out.println(m_no);
+		int rst;
+		try {
+			rst = session.delete("matchingboard.matchingboard",m_no);
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	//리플 삭제하기
+	public int deleteReply(int m_no) {
+		SqlSession session = factory.openSession();
+		int rst;
+		try {
+			rst = session.delete("matchingboard.deletereply",m_no);
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	//글 수정하기
+	public int update(Map map) {
+		SqlSession session = factory.openSession();
+		System.out.println(map);
+		int rst;
+		try {
+			rst = session.update("matchingboard.update",map);
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	
 }

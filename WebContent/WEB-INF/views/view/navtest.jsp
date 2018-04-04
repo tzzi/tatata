@@ -34,7 +34,6 @@
 				</c:when>
 				<c:otherwise>
 				
-				
 				<c:choose>
 				<c:when test="${mathcingcheck ne null }">
 					<a href="/matchingBoard/matchingcheck.do"

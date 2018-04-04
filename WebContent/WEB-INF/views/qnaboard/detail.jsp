@@ -127,34 +127,7 @@ ${qnadetail.CONTENT}
 			<br />
 </div>
 </div>
-<%-- <div>
-	<table style="width: 700px; margin-top: 30px; margin-left: 30px;">
-		<thead>
-			<tr style="background-color: black; color: white">
-				<th style="width: 50px;">no</th>
-				<th style="width: 150px;">내용</th>
-				<th style="width: 150px;">작성자</th>
-				<th style="width: 150px;">작성 날짜</th>
-				<!-- <th style="width: 150px;">추천수</th> -->
 
-			</tr>
-
-		</thead>
-		<tbody>
-			<c:forEach items="${qnadetaillist}" var="a">
-				<tr>
-					<td width=5%>${a.A_NO}</td>
-					<td width=30%>${a.CONTENT}</td>
-					<td width=15%>${a.ADMIN}</td>
-					<td width=10%>${a.LEFT_DATE}</td>
-					<td width=10%>${a.COUNT}</td><!-- 추천 -->
-
-				</tr>
-			</c:forEach>
-
-		</tbody>
-	</table>
-</div> --%>
 <hr />
 <div align="center">
 
