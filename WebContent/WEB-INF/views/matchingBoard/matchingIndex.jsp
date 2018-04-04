@@ -221,9 +221,6 @@
 				test="${mybasket.BASKET1 eq null && mybasket.BASKET2 eq null && mybasket.BASKET3 eq null && mybasket.BASKET1 eq null && mybasket.BASKET4 eq null 
 
 				&& mybasket.BASKET5 eq null}">
-			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br />
-				<a href="/rideboard/list.do"><button type="button"
-						class="btn btn-primary">
 			<small style="color:red">장바구니에 정보가 없으면 매칭이 되지 않습니다.</small><br />
 				<a href="/rideboard/list.do"><button type="button"
 						class="w3-button w3-section w3-theme-l2 w3-ripple"

@@ -4,8 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://www.w3schools.com/lib/w3-theme-purple.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
 
 
 <div class="w3-container" align="center">
@@ -18,28 +17,73 @@
 		<form class="w3-card-4 w3-center">
 			<div class="w3-padding-large">
 				<p>
-					<h3>사는 지역 TOP3</h3>
-					1위 : ${area_1 }<br/>
-					2위 : ${area_2 }<br/>
-					3위 : ${area_3 }<br/>
+					<div class="w3-container" align="left">
+					  <div class="w3-panel w3-pale-red w3-leftbar w3-border-red">
+					    <p><b>AREA TOP3</b></p>
+					    <p>1 : ${area_1 }</p>
+					    <p>2 : ${area_2 }</p>
+					    <p>3 : ${area_3 }</p>
+					  </div>
+					</div>
 				</p>
+				<div class="w3-container" align="left">
 				<p>
-					<h3>성별 비율</h3>
-					남자 : <fmt:formatNumber value="${man_rate }" pattern="##.##" />%<br/>
-					여자 : <fmt:formatNumber value="${woman_rate }" pattern="##.##" />%<br/>
+					<%-- <div class="w3-container" align="left">
+					  <div class="w3-panel w3-theme-l5 w3-leftbar w3-border-purple">
+					    <p><b>GENDER RATE</b></p>
+					    <p><img src="/image/man_symbol.png" height="20" width="20"> : 
+					    <fmt:formatNumber value="${man_rate }" pattern="##.##" />%<br/></p>
+					    <p><img src="/image/woman_symbol.png" height="20" width="20"> : 
+					    <fmt:formatNumber value="${woman_rate }" pattern="##.##" />%</p>
+					  </div>
+					</div> --%>
+					<b>GENDER RATE</b>
+					<div class="w3-row" style="width:100%">
+					    <div class="w3-col w3-pale-blue w3-container" style="width:${man_rate }%">
+					   	<p><small><b><img src="/image/man_symbol.png" height="20" width="20"> <fmt:formatNumber value="${man_rate }" pattern="##.##" />%</b></small></p></div>
+					   	<div class="w3-col w3-pale-red w3-container" style="width:${woman_rate }%">
+					   	<p><small><b><img src="/image/woman_symbol.png" height="20" width="20"> <fmt:formatNumber value="${woman_rate }" pattern="##.##" />%</b></small></p></div>
+					</div>
 				</p>
 				<p>	
-					<h3>담력도 비율</h3>
-					고수 : <fmt:formatNumber value="${fear_1_rate }" pattern="##.##" />%<br/>
-					중수 : <fmt:formatNumber value="${fear_2_rate }" pattern="##.##" />%<br/>
-					하수 : <fmt:formatNumber value="${fear_3_rate }" pattern="##.##" />%<br/>
+					<%-- <div class="w3-container" align="left">
+					  <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+					    <p><b>FEAR RATE</b></p>
+					    <p>고수 : <fmt:formatNumber value="${fear_1_rate }" pattern="##.##" />%</p>
+					    <p>중수 : <fmt:formatNumber value="${fear_2_rate }" pattern="##.##" />%</p>
+					    <p>하수 : <fmt:formatNumber value="${fear_3_rate }" pattern="##.##" />%</p>
+					   </div>
+					</div> --%>
+					<b>FEAR RATE</b>
+					<div class="w3-row" style="width:100%">
+					    <div class="w3-col w3-theme-l4 w3-container" style="width:${fear_1_rate }%">
+					   	<p><small><b>고수<br/> <fmt:formatNumber value="${fear_1_rate }" pattern="##.##" />%</b></small></p></div>
+					   	<div class="w3-col w3-theme-l3 w3-container" style="width:${fear_2_rate }%">
+					   	<p><small><b>중수<br/> <fmt:formatNumber value="${fear_2_rate }" pattern="##.##" />%</b></small></p></div>
+					   	<div class="w3-col w3-theme-l2 w3-container" style="width:${fear_3_rate }%">
+				    	<p><small><b>하수<br/> <fmt:formatNumber value="${fear_3_rate }" pattern="##.##" />%</b></small></p></div>
+					</div>
 				</p>
 				<p>
-					<h3>매칭유형 비율</h3>
-					동성 : <fmt:formatNumber value="${matchtype_1_rate }" pattern="##.##" />%<br/>
-					이성 : <fmt:formatNumber value="${matchtype_2_rate }" pattern="##.##" />%<br/>
-					상관없음 : <fmt:formatNumber value="${matchtype_3_rate }" pattern="##.##" />%<br/>
+					<%-- <div class="w3-container" align="left">
+					  <div class="w3-panel w3-pale-green w3-leftbar w3-border-green">
+					    <p><b>MATCHTYPE RATE</b></p>
+					    <p>동성 : <fmt:formatNumber value="${matchtype_1_rate }" pattern="##.##" />%</p>
+					    <p>이성 : <fmt:formatNumber value="${matchtype_2_rate }" pattern="##.##" />%</p>
+					    <p>상관없음 : <fmt:formatNumber value="${matchtype_3_rate }" pattern="##.##" />%</p>
+					  </div>
+					</div> --%>
+					<b>MATCHTYPE RATE</b>
+					<div class="w3-row" style="width:100%">
+					    <div class="w3-col w3-theme-l1 w3-container" style="width:${matchtype_1_rate }%">
+					   	<p><small><b>동성<br/> <fmt:formatNumber value="${matchtype_1_rate }" pattern="##.##" />%</b></small></p></div>
+					   	<div class="w3-col w3-theme w3-container" style="width:${matchtype_2_rate }%">
+					   	<p><small><b>이성<br/> <fmt:formatNumber value="${matchtype_2_rate }" pattern="##.##" />%</b></small></p></div>
+					   	<div class="w3-col w3-theme-d1 w3-container" style="width:${matchtype_3_rate }%">
+				    	<p><small><b>무관<br/> <fmt:formatNumber value="${matchtype_3_rate }" pattern="##.##" />%</b></small></p></div>
+					</div>
 				</p>
+				</div>
 			</div>
 		</form>
 				

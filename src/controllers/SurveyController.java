@@ -58,8 +58,8 @@ public class SurveyController {
 		double man_rate = (double)man_cnt / (double)people_total * 100;
 		double woman_rate = (double)woman_cnt / (double)people_total * 100;
 		
-		System.out.println("남자 비율 : " + man_rate);
-		System.out.println("여자 비율 : " + woman_rate);
+		/*System.out.println("남자 비율 : " + man_rate);
+		System.out.println("여자 비율 : " + woman_rate);*/
 		
 		session.setAttribute("man_rate", man_rate);
 		session.setAttribute("woman_rate", woman_rate);
@@ -77,9 +77,9 @@ public class SurveyController {
 		double fear_2_rate = (double)fear_2_cnt / (double)fear_total * 100;
 		double fear_3_rate = (double)fear_3_cnt / (double)fear_total * 100;
 		
-		System.out.println("담력도 1 비율 : " + fear_1_rate);
+		/*System.out.println("담력도 1 비율 : " + fear_1_rate);
 		System.out.println("담력도 2 비율 : " + fear_2_rate);
-		System.out.println("담력도 3 비율 : " + fear_3_rate);
+		System.out.println("담력도 3 비율 : " + fear_3_rate);*/
 		
 		session.setAttribute("fear_1_rate", fear_1_rate);
 		session.setAttribute("fear_2_rate", fear_2_rate);
@@ -98,20 +98,20 @@ public class SurveyController {
 		double matchtype_2_rate = (double)matchtype_2_cnt / (double)matchtype_total * 100;
 		double matchtype_3_rate = (double)matchtype_3_cnt / (double)matchtype_total * 100;
 		
-		System.out.println("매칭유형 1 비율 : " + matchtype_1_rate);
+		/*System.out.println("매칭유형 1 비율 : " + matchtype_1_rate);
 		System.out.println("매칭유형 2 비율 : " + matchtype_2_rate);
-		System.out.println("매칭유형 3 비율 : " + matchtype_3_rate);
+		System.out.println("매칭유형 3 비율 : " + matchtype_3_rate);*/
 		
 		session.setAttribute("matchtype_1_rate", matchtype_1_rate);
 		session.setAttribute("matchtype_2_rate", matchtype_2_rate);
 		session.setAttribute("matchtype_3_rate", matchtype_3_rate);
 		
-		System.out.println("지역별 차트 : " + sdao.areachart());
+		/*System.out.println("지역별 차트 : " + sdao.areachart());
 		System.out.println("지역 1위 : " + sdao.areachart().get(0).get("AREA"));
 		System.out.println("지역 2위 : " + sdao.areachart().get(1).get("AREA"));
 		System.out.println("지역 3위 : " + sdao.areachart().get(2).get("AREA"));
 		System.out.println("지역 4위 : " + sdao.areachart().get(3).get("AREA"));
-		System.out.println("지역 5위 : " + sdao.areachart().get(4).get("AREA"));
+		System.out.println("지역 5위 : " + sdao.areachart().get(4).get("AREA"));*/
 		String area_1 = (String) sdao.areachart().get(0).get("AREA");
 		String area_2 = (String) sdao.areachart().get(1).get("AREA");
 		String area_3 = (String) sdao.areachart().get(2).get("AREA");
