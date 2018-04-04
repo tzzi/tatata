@@ -28,6 +28,42 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+	// 글 갯수 구하기
+	public int countmatching() {
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectOne("matchingboard.countmatching");
+		} finally {
+			session.close();
+		}
+	}
+	//페이징 하기
+	public List<Map> pagingmatching(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			System.out.println("semap : " +map);
+			System.out.println("보여줄 List<Map> : " + session.selectList("matchingboard.rownumlist",map));
+			return session.selectList("matchingboard.rownumlist",map);
+			
+		}finally {
+			session.close();
+		}
+	}
+	//글 쓰기
+	public int matchingWrite(Map map) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		try {
+			rst = session.insert("matchingboard.matchingwrite",map);
+			
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	
+	
 	//마이 페이지보여주기 (장바구니)
 	public Map readmybasket(String nick) {
 		SqlSession session = factory.openSession();
@@ -436,4 +472,5 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+
 }

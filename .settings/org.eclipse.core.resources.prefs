@@ -2,5 +2,6 @@
 <<<<<<<=HEAD
 >>>>>>>=refs/heads/master
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/matchingBoard/matchingBoard.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/survey/surveyrst.jsp=UTF-8
 encoding//WebContent/WEB-INF/views/view/nav.jsp=UTF-8
