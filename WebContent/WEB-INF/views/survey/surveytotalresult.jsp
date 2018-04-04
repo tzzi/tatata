@@ -6,20 +6,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<style>
+[class*="col-"] {
+    float: center;
+    padding: 15px;
+/*     border: 1px solid red; */
+}
+[class*="colo-"] {
+    float: right;
+    padding: 15px;
+/*     border: 1px solid red; */
+}
+.col-1 {width: 50%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.colo-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.colo-7 {width: 20%;}
+.cool-8 {width: 13.33%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+</style>
+
 <div class="w3-container">
 
 	<header class="w3-container w3-pale-red">
 		<h1 style="color: white" align="center">매칭 후기 결과</h1>
 	</header>
 
-
 	<div class="w3-row">
-		<div class="w3-col w3-container">
-			<div class="w3-container w3-margin-top" style="width: 800px;">
+		<div class="w3-col w3-container l4"></div>
+		<div class="w3-col w3-container l4">
+			<div class="w3-container w3-margin-top" style="width: 500px;">
 				<form class="w3-card-4">
-					<div class="w3-margin-top"></div>
-					<div></div>
 					<div>
+						<p>
 						<!-- 총점 평균 -->
 						총점 평균<br/>
 						<div class="w3-light-grey w3-round">
@@ -86,7 +110,7 @@
 								</c:otherwise>
 							</c:choose>
 						</div>
-
+						</p>
 						<!-- 첫인상 평점평균 -->
 						첫인상 평점평균<br />
 						<div class="w3-light-grey w3-round">
@@ -426,6 +450,7 @@
 				</form>
 			</div>
 		</div>
+		<div class="w3-col w3-container l4"></div>
 	</div>
 	
 	<div class="w3-display-container" style="height: 50%;">

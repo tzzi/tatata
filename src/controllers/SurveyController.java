@@ -35,28 +35,34 @@ public class SurveyController {
 	public String surveyIndexHandle(HttpSession session) {
 		String id = (String)session.getAttribute("userId");
 		Map param = new LinkedHashMap<>();
+		param.put("id", id);		
+		if(sdao.loadIdfromSurvey(id)!= null && mdao.addinfoload(param)!=null) {
+			session.setAttribute("survey_record", 1);
+		} 
+	return "surveyindex";
+	}
+	
+	// 통계창
+	@RequestMapping("/statistics.do")
+	public String statisticsHandle(HttpSession session) {
+		String id = (String)session.getAttribute("userId");
+		Map param = new LinkedHashMap<>();
 		param.put("id", id);
-//		System.out.println(sdao.loadIdfromSurvey(id));
-		System.out.println("가입자 남녀비율 : " + sdao.genderrate());
-		System.out.println("가입자 남녀비율 0번째 : " + sdao.genderrate().get(0));
-		System.out.println("가입자 남녀비율 0번째 CNT : " + sdao.genderrate().get(0).get("CNT"));
-		System.out.println("가입자 남녀비율 1번째 : " + sdao.genderrate().get(1));
-		BigDecimal man_cnt = (BigDecimal)sdao.genderrate().get(0).get("CNT");
-		BigDecimal woman_cnt = (BigDecimal)sdao.genderrate().get(1).get("CNT");
-		System.out.println("가입자 남자 수 : " + man_cnt.intValue());
-		System.out.println("가입자 여자 수 : " + woman_cnt.intValue());
-		System.out.println("가입자 전체 수 : " + (man_cnt.intValue()+woman_cnt.intValue()));
-		int people_total = man_cnt.intValue() + woman_cnt.intValue();
-		double man_rate = (double)man_cnt.intValue() / (double)people_total * 100;
+		
+		BigDecimal man = (BigDecimal)sdao.genderrate().get(0).get("CNT");
+		BigDecimal woman = (BigDecimal)sdao.genderrate().get(1).get("CNT");
+		
+		int man_cnt = man.intValue();
+		int woman_cnt = woman.intValue();
+		int people_total = man_cnt + woman_cnt;
+		double man_rate = (double)man_cnt / (double)people_total * 100;
+		double woman_rate = (double)woman_cnt / (double)people_total * 100;
+		
 		System.out.println("남자 비율 : " + man_rate);
-		double woman_rate = (double)woman_cnt.intValue() / (double)people_total * 100;
 		System.out.println("여자 비율 : " + woman_rate);
 		
-		
-		System.out.println("담력도 : " + sdao.fearrate());
-		System.out.println("담력도 1: " + sdao.fearrate().get(0));
-		System.out.println("담력도 2: " + sdao.fearrate().get(1));
-		System.out.println("담력도 3: " + sdao.fearrate().get(2));
+		session.setAttribute("man_rate", man_rate);
+		session.setAttribute("woman_rate", woman_rate);
 		
 		BigDecimal fear_1 = (BigDecimal)sdao.fearrate().get(0).get("CNT");
 		BigDecimal fear_2 = (BigDecimal)sdao.fearrate().get(1).get("CNT");
@@ -75,12 +81,10 @@ public class SurveyController {
 		System.out.println("담력도 2 비율 : " + fear_2_rate);
 		System.out.println("담력도 3 비율 : " + fear_3_rate);
 		
-		
-		System.out.println("매칭유형 : " + sdao.matchtyperank());
-		System.out.println("매칭유형 1: " + sdao.matchtyperank().get(0));
-		System.out.println("매칭유형 2: " + sdao.matchtyperank().get(1));
-		System.out.println("매칭유형 3: " + sdao.matchtyperank().get(2));
-		
+		session.setAttribute("fear_1_rate", fear_1_rate);
+		session.setAttribute("fear_2_rate", fear_2_rate);
+		session.setAttribute("fear_3_rate", fear_3_rate);
+	
 		BigDecimal matchtype_1 = (BigDecimal)sdao.matchtyperank().get(0).get("CNT");
 		BigDecimal matchtype_2 = (BigDecimal)sdao.matchtyperank().get(1).get("CNT");
 		BigDecimal matchtype_3 = (BigDecimal)sdao.matchtyperank().get(2).get("CNT");
@@ -98,18 +102,29 @@ public class SurveyController {
 		System.out.println("매칭유형 2 비율 : " + matchtype_2_rate);
 		System.out.println("매칭유형 3 비율 : " + matchtype_3_rate);
 		
+		session.setAttribute("matchtype_1_rate", matchtype_1_rate);
+		session.setAttribute("matchtype_2_rate", matchtype_2_rate);
+		session.setAttribute("matchtype_3_rate", matchtype_3_rate);
+		
 		System.out.println("지역별 차트 : " + sdao.areachart());
 		System.out.println("지역 1위 : " + sdao.areachart().get(0).get("AREA"));
 		System.out.println("지역 2위 : " + sdao.areachart().get(1).get("AREA"));
 		System.out.println("지역 3위 : " + sdao.areachart().get(2).get("AREA"));
 		System.out.println("지역 4위 : " + sdao.areachart().get(3).get("AREA"));
 		System.out.println("지역 5위 : " + sdao.areachart().get(4).get("AREA"));
+		String area_1 = (String) sdao.areachart().get(0).get("AREA");
+		String area_2 = (String) sdao.areachart().get(1).get("AREA");
+		String area_3 = (String) sdao.areachart().get(2).get("AREA");
+		String area_4 = (String) sdao.areachart().get(3).get("AREA");
+		String area_5 = (String) sdao.areachart().get(4).get("AREA");
 		
+		session.setAttribute("area_1", area_1);
+		session.setAttribute("area_2", area_2);
+		session.setAttribute("area_3", area_3);
+		session.setAttribute("area_4", area_4);
+		session.setAttribute("area_5", area_5);
 		
-		if(sdao.loadIdfromSurvey(id)!= null && mdao.addinfoload(param)!=null) {
-			session.setAttribute("survey_record", 1);
-		} 
-	return "surveyindex";
+	return "statistics";
 	}
 	
 	// 매칭 후기 설문조사판
@@ -148,7 +163,7 @@ public class SurveyController {
 		//  {COUNT(*)=5, AVG(M_FIRST)=4.2, AVG(M_MEET)=2.2, AVG(M_PR_TIME)=4.4, AVG(M_MORAL)=4, AVG(TOTAL)=4.6}
 //		System.out.println("평균값 구하기 키로겟 " + sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 		// 자리수.. 설정
-		System.out.println("sdao.averageForEachSurvey() : " + sdao.averageForEachSurvey());
+//		System.out.println("sdao.averageForEachSurvey() : " + sdao.averageForEachSurvey());
 		session.setAttribute("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 		session.setAttribute("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
 		session.setAttribute("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));

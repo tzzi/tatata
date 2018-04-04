@@ -3,11 +3,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
-<!-- <style>
-html, body, h1, h2, h3, h4, h5, h6 {
+<style>
+/* html, body, h1, h2, h3, h4, h5, h6 {
   font-family: "Comic Sans MS";
-}
-</style> -->
+} */
+</style> 
 
 <div class="w3-container">
 
