@@ -72,7 +72,9 @@ public class MyPageController {
 			
 		
 		System.out.println(session.getAttribute("addinfo"));
+		
 		Map map = (Map)session.getAttribute("addinfo");
+		System.out.println("GENDER에 있는 것" + map.get("GENDER"));
 		session.setAttribute("gender", map.get("GENDER"));
 		session.setAttribute("birth_y", map.get("BIRTH_Y"));
 		session.setAttribute("birth_m", map.get("BIRTH_M"));
@@ -227,7 +229,7 @@ public class MyPageController {
 		int rst = mdao.addinfo(map);
 		System.out.println("rst: " +rst);
 		if(rst==1) {
-			return "addinfo";
+			return "redirect:/index.do";
 		} else {
 			return "/mypage/addinforst.do";
 		}

@@ -41,7 +41,7 @@ input[type=radio] {
 								<tr>
 									<td>매칭된 상대방에 대한 총평</td>
 									<td>
-										<p>
+										<div class="survey">
 											<input class="w3-radio" type="radio" name="total"  value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
@@ -62,21 +62,23 @@ input[type=radio] {
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 											<input class="w3-radio" type="radio" name="total" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p> 
+										</div> 
 									</td>
 								</tr>
 								<tr>
 									<td>본인의 매칭 유형 선택</td>
 									<td>
-									<input class="w3-radio" type="radio" name="match_type" value="1"><label>동성</label>
-									<input class="w3-radio" type="radio" name="match_type" value="2"><label>이성</label>
-									<input class="w3-radio" type="radio" name="match_type" value="3"><label>무관</label>
+									<div class="survey">
+										<input class="w3-radio" type="radio" name="match_type" value="1"><label>동성</label>
+										<input class="w3-radio" type="radio" name="match_type" value="2"><label>이성</label>
+										<input class="w3-radio" type="radio" name="match_type" value="3"><label>무관</label>
+									</div>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방의 첫인상에 대한 만족도는?</td>
 									<td>
-										<p>
+										<div class="survey">
 											<input class="w3-radio" type="radio" name="m_first" value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
@@ -97,13 +99,13 @@ input[type=radio] {
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 											<input class="w3-radio" type="radio" name="m_first" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방은 약속시간을 잘 지켰다</td>
 									<td>
-										<p>
+										<div class="survey">
 											<input class="w3-radio" type="radio" name="m_pr_time" value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
@@ -124,13 +126,13 @@ input[type=radio] {
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 											<input class="w3-radio" type="radio" name="m_pr_time" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방의 도덕성에 대해 평가하자면?</td>
 									<td>
-										<p>
+										<div class="survey">
 											<input class="w3-radio" type="radio" name="m_moral" value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
@@ -151,13 +153,13 @@ input[type=radio] {
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 											<input class="w3-radio" type="radio" name="m_moral" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>상대방과 대화가 잘 통했다</td>
 									<td>
-										<p>
+										<div class="survey">
 											<input class="w3-radio" type="radio" name="m_communi" value="5"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;">
 											<img src="/image/star.png" style="height: 15px; width: 15px;">
@@ -178,20 +180,7 @@ input[type=radio] {
 											<img src="/image/star.png" style="height: 15px; width: 15px;"></label>
 											<input class="w3-radio" type="radio" name="m_communi" value="1"> 
 											<label><img	src="/image/star.png" style="height: 15px; width: 15px;"></label>
-										</p>
-									</td>
-								</tr>
-								<tr>
-									<td>한 번 더 만나볼 의사가 있다? 없다?</td>
-									<td>
-										<p>
-											<input class="w3-radio" type="radio" name="m_meet" value="1"> 
-											<label>있다</label>
-											<input class="w3-radio" type="radio" name="m_meet" value="2"> 
-											<label>없다</label>
-											<input class="w3-radio" type="radio" name="m_meet" value="3"> 
-											<label>무념무상</label>
-										</p>
+										</div>
 									</td>
 								</tr>
 							</table>
@@ -204,7 +193,7 @@ input[type=radio] {
 						<b style="color: white">리셋</b>
 					</button>
 					<button type="submit" 
-						class="w3-button w3-section w3-theme-l2 w3-ripple" id="complete">
+						class="w3-button w3-section w3-theme-l2 w3-ripple" id="complete" disabled>
 						<b style="color: white">완료</b>
 					</button>
 					<a href="../index.do"><button type="button"
@@ -219,6 +208,10 @@ input[type=radio] {
 </div>
 
 <script>
+	$(".survey").on("change", function(){
+		$("#complete").prop("disabled", false);
+	});
+
 	$("#complete").on("click", function() {
 		window.alert("설문이 완료되었습니다. 감사합니다.");
 	});

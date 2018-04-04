@@ -28,6 +28,42 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+	// 글 갯수 구하기
+	public int countmatching() {
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectOne("matchingboard.countmatching");
+		} finally {
+			session.close();
+		}
+	}
+	//페이징 하기
+	public List<Map> pagingmatching(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			System.out.println("semap : " +map);
+			System.out.println("보여줄 List<Map> : " + session.selectList("matchingboard.rownumlist",map));
+			return session.selectList("matchingboard.rownumlist",map);
+			
+		}finally {
+			session.close();
+		}
+	}
+	//글 쓰기
+	public int matchingWrite(Map map) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		try {
+			rst = session.insert("matchingboard.matchingwrite",map);
+			
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	
+	
 	//마이 페이지보여주기 (장바구니)
 	public Map readmybasket(String nick) {
 		SqlSession session = factory.openSession();
@@ -97,7 +133,9 @@ public class MatchingDAO {
 			}
 			System.out.println("매칭 상대 성별 필터 : "+list);
 			System.out.println("이얏호");
-			
+			if(list.size()==0) {
+				return null;
+			}
 			//========================  매칭 상대 구별(동,이성,남,여,)============================= 
 			
 			String basket1 = (String) mylist.get("BASKET1");
@@ -106,6 +144,7 @@ public class MatchingDAO {
 			String basket4 = (String) mylist.get("BASKET4");
 			String basket5 = (String) mylist.get("BASKET5");
 			
+			System.out.println(list);
 			
 			for(int i=0; i<list.size();i++) {
 				int cnt = 0;
@@ -122,7 +161,7 @@ public class MatchingDAO {
 			}
 			
 			
-			System.out.println(list.get(0).get("cnt"));
+			//System.out.println(list.get(0).get("cnt"));
 			
 			List listcnt = new LinkedList<>();
 			
@@ -208,6 +247,12 @@ public class MatchingDAO {
 			}
 			System.out.println("매칭 상대 성별 필터 : "+list);
 			System.out.println("이얏호");
+			
+			if(list.size()==0) {
+				return null;
+			}
+			
+		
 			//========================  매칭 상대 구별(동,이성,남,여,)============================= 
 			List mytypecnt = new LinkedList<>();
 			int mycnt=1;
@@ -427,4 +472,5 @@ public class MatchingDAO {
 			session.close();
 		}
 	}
+
 }

@@ -19,7 +19,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="avgall" resultType="hashmap">
 		SELECT
-		count(*),avg(total),avg(m_first),avg(m_pr_time),avg(m_moral),avg(m_meet)
+		count(*),avg(total),avg(m_first),avg(m_pr_time),avg(m_moral),avg(m_meet),avg(m_communi)
 		FROM match_survey
 	</select>
+	
+	<select id="areachart" resultType="java.util.LinkedHashMap">
+		SELECT * FROM (SELECT area,count(*) cnt FROM addinfo GROUP BY area ORDER BY count(*) DESC) WHERE ROWNUM &lt;=5
+	</select>
+
+	<select id="genderrate" resultType="java.util.LinkedHashMap">
+		SELECT gender, count(*) cnt FROM addinfo GROUP BY gender ORDER BY gender ASC
+	</select>
+	
+	<select id="fearrate" resultType="java.util.LinkedHashMap">
+		SELECT fear, count(*) cnt FROM matchingagree GROUP BY fear ORDER BY fear ASC
+	</select>
+	
+	<select id="matchtyperank" resultType="java.util.LinkedHashMap">
+		SELECT matchtype, count(*) cnt FROM addinfo GROUP BY matchtype ORDER BY matchtype ASC
+	</select>
+	
+	<!-- SELECT * FROM (SELECT area,count(*) FROM addinfo GROUP BY area ORDER 
+	BY count(*) DESC) WHERE ROWNUM <=5  가입자 지역별 순위 SELECT gender, count(*) 
+		FROM addinfo GROUP BY gender 성별 가입자 남성/여성 비율 SELECT fear, count(*) FROM 
+		matchingagree GROUP BY fear  가입 동의자들의 담력도 SELECT matchtype, count(*) FROM 
+		addinfo GROUP BY matchtype 매칭 유형 순위  -->
+		
 </mapper>

@@ -52,6 +52,7 @@
 		<url-pattern>/rideboard/*</url-pattern>
 		<url-pattern>/mypage/*</url-pattern>
 		<url-pattern>/matchingBoard/*</url-pattern>
+		<url-pattern>/survey/*</url-pattern>
 	</filter-mapping>
 
 

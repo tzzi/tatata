@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- <style type="text/css">
 	.font {
 	font-family : '굴림'
@@ -28,8 +29,24 @@
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						로그인</a>
 						
+					
+						
 				</c:when>
 				<c:otherwise>
+				
+				
+				<c:choose>
+				<c:when test="${mathcingcheck ne null }">
+					<a href="/matchingBoard/matchingcheck.do"
+						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
+						<i class="material-icons" style="font-size:30px;color:red;">favorite</i>
+						</a>
+						</c:when>
+				</c:choose>	
+					
+					
+					
+						
 					<c:choose>
 					<c:when test="${gender eq 1 }">
 						<img src="/image/man.png" height="50" width="50">
@@ -54,15 +71,19 @@
 					<a href="/matchingBoard/matchingIndex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						매칭보드</a>
-					<a href="/matchingBoard//matchingcheck.do"
+					<a href="/matchingBoard/matchingreview.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						매칭 목록</a>	
+						매칭 게시판</a>
 					<a href="/survey/surveyindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						매칭후기</a>
+						후기 설문조사</a>
+					<a href="/survey/statistics.do"
+						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
+						통계</a>
 					<a href="/login/logout.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						로그아웃</a>
+						
 				</c:otherwise>
 			</c:choose>
 

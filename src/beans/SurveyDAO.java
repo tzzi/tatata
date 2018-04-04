@@ -59,6 +59,54 @@ public class SurveyDAO {
 			session.close();
 		}
 		return rst;
-		
 	}
+	
+	// 가입자들의 사는 지역 순위
+	public List<Map> areachart() {
+		SqlSession session = factory.openSession();
+		List<Map> rst = null;
+		try {
+			rst = session.selectList("survey.areachart");
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	// 가입자 성별 비율
+	public List<Map> genderrate() {
+		SqlSession session = factory.openSession();
+		List<Map> rst = null;
+		try {
+			rst = session.selectList("survey.genderrate");
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	// 매칭 된 사람들의 담력도 순위
+	public List<Map> fearrate() {
+		SqlSession session = factory.openSession();
+		List<Map> rst = null;
+		try {
+			rst = session.selectList("survey.fearrate");
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
+	
+	// 매칭 유형 순위
+	public List<Map> matchtyperank() {
+		SqlSession session = factory.openSession();
+		List<Map> rst = null;
+		try {
+			rst = session.selectList("survey.matchtyperank");
+		} finally {
+			session.close();
+		}
+		return rst;
+	}
+	
 }
