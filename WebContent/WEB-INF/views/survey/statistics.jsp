@@ -3,16 +3,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<div class="w3-container">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
 
+
+<div class="w3-container" align="center">
 	<header class="w3-container w3-pale-red">
-		<h1 style="color: white" align="center">STATISTICS</h1>
+		<h1 style="color: white" align="center">S T A T I S T I C S &nbsp; A B O U T &nbsp; U S E R S</h1>
 	</header>
-
-	<div class="w3-row w3-center">
-		<div class="w3-col w3-container">
-			<div class="w3-container w3-margin-top" style="width: 800px;">
-				<form class="w3-card-4">
+	<br />
+	
+	<div class="w3-container w3-margin-top w3-center" style="width: 550px;">
+		<form class="w3-card-4 w3-center">
+			<div class="w3-padding-large">
 				<p>
 					<h3>사는 지역 TOP3</h3>
 					1위 : ${area_1 }<br/>
@@ -36,12 +40,8 @@
 					이성 : <fmt:formatNumber value="${matchtype_2_rate }" pattern="##.##" />%<br/>
 					상관없음 : <fmt:formatNumber value="${matchtype_3_rate }" pattern="##.##" />%<br/>
 				</p>
-				</form>
 			</div>
-		</div>
-	</div>
-	
-	<div class="w3-display-container" style="height: 50%;">
-		<div class="w3-display-middle w3-padding"></div>
+		</form>
+				
 	</div>
 </div>

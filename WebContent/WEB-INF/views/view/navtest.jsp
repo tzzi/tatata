@@ -77,7 +77,7 @@
 					<a href="/survey/surveyindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						후기 설문조사</a>
-					<a href="/survey/statstics.do"
+					<a href="/survey/statistics.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						통계</a>
 					<a href="/login/logout.do"

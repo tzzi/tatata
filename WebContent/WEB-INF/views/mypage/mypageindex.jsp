@@ -15,6 +15,7 @@
 		<form class="w3-card-4 w3-center" action="/mypage/modify.do" method="post" autocomplete="off">
 			<div align="center">
 			<table>
+				<tr><td><br/></td></tr>
 				<tr>
 					<th height="50px">아이디</th>
 					<td align="center">${sessionScope.userId }</td>
