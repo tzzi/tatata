@@ -61,8 +61,48 @@ public class MatchingDAO {
 		}
 		return rst;
 	}
-	
-	
+	//글 상세 보기
+	public Map detailmatching(int m_no){
+		SqlSession session = factory.openSession();
+		try {
+			return session.selectOne("matchingboard.detailmatching", m_no);			
+		}finally {
+			session.close();
+		}
+	}
+	//리플 보기
+	public List<Map> detail(int m_no){
+		SqlSession session = factory.openSession();
+		try {
+			System.out.println(session.selectList("matchingboard.listmatchingreply",m_no));
+			session.update("matchingboard.listmatchingreply",m_no);
+			return session.selectList("matchingboard.listmatchingreply",m_no);			
+		}finally {
+			session.close();
+		}
+	}
+	//버튼 색 바꾸기
+	public Map checklike(String likecheck) {
+		SqlSession session = factory.openSession();
+		System.out.println("likecheck : " +likecheck);
+		try {
+			return session.selectOne("matchingboard.likecheck",likecheck);
+		}finally {
+			session.close();
+		}
+	}
+	//조회수 올리기
+	public int addcount(int m_no) {
+		SqlSession session = factory.openSession();
+		int rst = 0;
+		try {
+			rst =session.update("matchingboard.addcount", m_no);
+			System.out.println("조회수 증가한다");
+			return rst;
+		}finally {
+			session.close();
+		}
+	}
 	
 	//마이 페이지보여주기 (장바구니)
 	public Map readmybasket(String nick) {

@@ -3,7 +3,9 @@ package controllers;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,8 +132,9 @@ public class MatchingBoardController {
 	}
 	@RequestMapping("/writeform.do")
 	public String wirteformHandle() {
-		return "writeform";
+		return "mwriteform";
 	}
+	
 	@RequestMapping("/write.do")
 	public String writeHandle(@RequestParam Map map, WebRequest req, ModelMap modelMap,HttpSession session) {
 		
@@ -151,13 +154,53 @@ public class MatchingBoardController {
 		int rst = mdao.matchingWrite(map);
 		if (rst == 1) {
 			req.setAttribute("rst", "1", 0);
+			System.out.println("매칭 글쓰기 들어감");
 		} else {
 			req.setAttribute("rst", "0", 0);
 		}
-
 		return "redirect:/matchingBoard/matchingreview.do";
 	}
-	
+	//조회수, 글상세보기, 쿠키로 중복 조회수 막음(1일)
+		@RequestMapping("/detail.do")
+		public String detailHandle(@RequestParam int m_no, ModelMap modelMap, HttpServletResponse response,
+				HttpServletRequest request,HttpSession session) {
+			
+			String id = (String) session.getAttribute("userId");
+			modelMap.put("matchingdetail", mdao.detailmatching(m_no));//글상세
+			modelMap.put("matchingdetaillist", mdao.detail(m_no));//리플보기
+			
+			String likecheck = id+m_no;
+			System.out.println("likecheck : "+ likecheck);
+			modelMap.put("likecheck", mdao.checklike(likecheck));
+			System.out.println("나와라 모델맵 : "+ modelMap);
+			Cookie setCookie = new Cookie("count"+m_no+id, "조회수쿠키"); // 쿠키 생성
+			setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
+			response.addCookie(setCookie);
+
+			Cookie[] getCookie = request.getCookies();
+
+			if (getCookie != null) {
+
+				for (int i = 0; i < getCookie.length; i++) {
+
+					Cookie c = getCookie[i];
+					String name = c.getName(); // 쿠키 이름 가져오기				
+					System.out.println(name);
+					//동일이름의 쿠기가 있다면
+					if(name.equals("count"+m_no+id)) {
+					System.out.println("동일이름의 쿠키가 존재함");
+					return "matchingdetail";
+					}else {
+						System.out.println("동일이름의 쿠기가 존재하지 않음");
+					}
+					
+				}
+
+				mdao.addcount(m_no);
+			}
+			return "matchingdetail";
+
+		}
 	
 	
 	

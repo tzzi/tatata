@@ -58,6 +58,24 @@
 		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp" />
 	</definition>
 	
+	<definition name="mwriteform" template="/WEB-INF/views/view/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/view/header.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/matchingBoard/writeform.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp" />
+	</definition>
+	
+	<definition name="matchingdetail" template="/WEB-INF/views/view/index.jsp">
+		<put-attribute name="title" value="TaTaTa"></put-attribute>
+		<put-attribute name="nav" value="/WEB-INF/views/view/navtest.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/view/header.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/matchingBoard/matchingdetail.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>
 		
