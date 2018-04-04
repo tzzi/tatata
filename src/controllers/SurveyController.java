@@ -152,7 +152,7 @@ public class SurveyController {
 	
 	// 전체 사람들의 설문조사 결과보기
 	@RequestMapping(path="/surveytotalresult.do") //, method=RequestMethod.POST
-	public String serveyTotalResultHandle(HttpSession session) {
+	public String serveyTotalResultHandle(HttpSession session, ModelMap map) {
 		String id = (String)session.getAttribute("userId");
 //		System.out.println(sdao.loadIdfromSurvey(id));;
 		//{TOTAL=5, M_COMMUNI=3, M_FIRST=4, M_MORAL=4, M_MEET=2, ID=www, MATCH_TYPE=2, M_PR_TIME=5}
@@ -164,12 +164,18 @@ public class SurveyController {
 //		System.out.println("평균값 구하기 키로겟 " + sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 		// 자리수.. 설정
 //		System.out.println("sdao.averageForEachSurvey() : " + sdao.averageForEachSurvey());
-		session.setAttribute("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
-		session.setAttribute("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
-		session.setAttribute("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));
-		session.setAttribute("avg_m_moral", sdao.averageForEachSurvey().get("AVG(M_MORAL)"));
-		session.setAttribute("avg_m_communi", sdao.averageForEachSurvey().get("AVG(M_COMMUNI)"));
-		session.setAttribute("avg_total", sdao.averageForEachSurvey().get("AVG(TOTAL)"));
+		map.put("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
+		map.put("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
+		map.put("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));
+		map.put("avg_m_moral", sdao.averageForEachSurvey().get("AVG(M_MORAL)"));
+		map.put("avg_m_communi", sdao.averageForEachSurvey().get("AVG(M_COMMUNI)"));
+		map.put("avg_total", sdao.averageForEachSurvey().get("AVG(TOTAL)"));
+//		session.setAttribute("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
+//		session.setAttribute("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
+//		session.setAttribute("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));
+//		session.setAttribute("avg_m_moral", sdao.averageForEachSurvey().get("AVG(M_MORAL)"));
+//		session.setAttribute("avg_m_communi", sdao.averageForEachSurvey().get("AVG(M_COMMUNI)"));
+//		session.setAttribute("avg_total", sdao.averageForEachSurvey().get("AVG(TOTAL)"));
 //		int avg_total = 0;
 		/*BigDecimal total = (BigDecimal)sdao.averageForEachSurvey().get("AVG(TOTAL)");
 		System.out.println(total.doubleValue()); // doubleValue로 뽑아 쓸 수 있음
