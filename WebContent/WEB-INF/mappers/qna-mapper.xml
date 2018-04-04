@@ -89,6 +89,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE X.RNUM BETWEEN #{first} AND #{last}
 	</select>
 	
+	<!-- 글삭제 -->
+	<delete id="delete">
+	delete from qnaboard where q_no = #{q_no}
+	</delete>
+	
+	<!-- 리플도 삭제 -->
+	<delete id="deletereply">
+	delete from qnareply where q_no = #{q_no}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id="update">
+	update qnaboard set title=#{title},content=#{content},left_Date=sysdate where q_no = #{q_no}
+	</update>
+	
 	
 		
 </mapper>

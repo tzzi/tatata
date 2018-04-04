@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -341,9 +343,23 @@ public class MatchingBoardController {
 		String nick = (String) session.getAttribute("userNick");
 		System.out.println("매칭 상황보기");
 		
+		List<Map> list1 = new LinkedList<>();
+		List<Map> list2 = new LinkedList<>();
+		Map map1 = new LinkedHashMap<>();
+		Map map2 = new LinkedHashMap<>();
+		
 		modelmap.put("matchingcheck", mdao.matchingcheck(nick));//내가 고를 상대
+		list1.addAll(mdao.matchingcheck(nick));
+		System.out.println(list1.size());
+		map1.put("list1", list1.size());
+		modelmap.put("list1", map1);
 		
 		modelmap.put("matchingforme", mdao.matchingforme(nick));//나를 고른 상대
+		list2.addAll(mdao.matchingforme(nick));
+		System.out.println(list2.size());
+		map2.put("list2", list2.size());
+		modelmap.put("list2", map2);
+		
 		System.out.println(modelmap);
 		
 		return "matchingcheck";
@@ -395,7 +411,6 @@ public class MatchingBoardController {
 		String likecheck = id+m_no;
 		System.out.println("likecheck : "+ likecheck);
 		modelmap.put("likecheck", mdao.checklike(likecheck));
-		System.out.println("나와라 모델맵 : "+ modelmap);
 		Cookie setCookie = new Cookie("count"+m_no+id, "조회수쿠키"); // 쿠키 생성
 		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
 		response.addCookie(setCookie);
@@ -476,7 +491,7 @@ public class MatchingBoardController {
 	@ResponseBody
 	public String deleteHandle(@RequestParam int m_no) {
 		int rst1 = mdao.delete(m_no);
-		int rst2 = mdao.delete(m_no);
+		int rst2 = mdao.deleteReply(m_no);
 		String b = "0";
 		if(rst1==1) {
 			b = "1";

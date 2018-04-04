@@ -583,7 +583,7 @@ public class MatchingDAO {
 		System.out.println(m_no);
 		int rst;
 		try {
-			rst = session.delete("matchingboard.matchingboard",m_no);
+			rst = session.delete("matchingboard.delete",m_no);
 		}finally {
 			session.close();
 		}

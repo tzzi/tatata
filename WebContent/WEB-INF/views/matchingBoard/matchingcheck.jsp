@@ -8,15 +8,18 @@
 <div align="center">
 </head>
 <body>
+
+
 <c:choose>
-<c:when test="${mathcingcheck eq null }">
-매칭된 사람이 없습니다.
+<c:when test="${list1.list1 eq 0 }">
+내가 매칭한 사람이 없습니다.<br/>
 </c:when>
 <c:otherwise>
-<h1>내가 매칭한  사람</h1><br/>
+<h1>내가 매칭한 사람</h1>
 <c:forEach items="${matchingcheck }" var="a">
 ${a.MATCHINGNICK } /
-<c:choose>
+
+ <c:choose>
 	<c:when test="${a.GENDER eq 1}">
 	남성
 	</c:when>
@@ -24,24 +27,29 @@ ${a.MATCHINGNICK } /
 	여성
 	</c:when>
 </c:choose>
-/  ${a.EMAIL } <hr/> 
+/  ${a.EMAIL } / ${a.FEAR }  / ${a.YELLOW_CARD }
+
+ 
+<hr/> 
 </c:forEach>
+
 </c:otherwise>
-
-
 </c:choose>
 
-
 <c:choose>
-<c:when test="${mathcingforme eq null}">
+<c:when test="${list2.list2 eq 0 }">
+나를 매칭한 사람이 없습니다.
 </c:when>
 <c:otherwise>
-<h1>나를 매칭한 사람</h1><br/>
+<h1>나를 매칭한 사람</h1>
 <c:forEach items="${matchingforme }" var="b">
 ${b.MYNICK}<br/>
 </c:forEach>
 </c:otherwise>
+
 </c:choose>
+
+
 
 
 </div>

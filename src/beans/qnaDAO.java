@@ -168,5 +168,41 @@ public class qnaDAO {
 			session.close();
 		}
 	}
-	
+	//글 수정하기
+	public int update(Map map) {
+		SqlSession session = factory.openSession();
+		System.out.println(map);
+		int rst;
+		try {
+			rst = session.update("qnaboard.update",map);
+		}finally {
+			session.close();
+		}
+		return rst;
+	}
+	//글 삭제하기
+		public int delete(int q_no) {
+			SqlSession session = factory.openSession();
+			System.out.println(q_no);
+			int rst;
+			try {
+				rst = session.delete("qnaboard.delete",q_no);
+			}finally {
+				session.close();
+			}
+			return rst;
+		}
+		//리플 삭제하기
+		public int deleteReply(int q_no) {
+			SqlSession session = factory.openSession();
+			int rst;
+			try {
+				rst = session.delete("qnaboard.deletereply",q_no);
+			}finally {
+				session.close();
+			}
+			return rst;
+		}
+		
+		
 }

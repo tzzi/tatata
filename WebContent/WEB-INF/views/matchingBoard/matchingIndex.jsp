@@ -195,7 +195,7 @@
 				test="${mybasket.BASKET1 eq null && mybasket.BASKET2 eq null && mybasket.BASKET3 eq null && mybasket.BASKET1 eq null && mybasket.BASKET4 eq null 
 				&& mybasket.BASKET5 eq null}">
 			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br />
-				<a href="/rideboard/list.do"><button type="submit"
+				<a href="/rideboard/list.do"><button type="button"
 						class="btn btn-primary"
 						style="padding: 8px; font-size: 12pt; width: 200px">놀이기구
 						보러가기</button></a>

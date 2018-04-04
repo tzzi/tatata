@@ -138,7 +138,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 글삭제 -->
-	<delete id="matchingboard">
+	<delete id="delete">
 	delete from MATCHINGBOARD where m_no = #{m_no}
 	</delete>
 	

@@ -62,7 +62,7 @@
 }
 
 .colo-7 {
-	width: 20%;
+	width: 23%;
 }
 
 .cool-8 {
@@ -199,9 +199,20 @@
 			</form>
 		</div>
 	</div>
-
 </div>
-
+<div class="colo-7">
+<c:choose>
+	<c:when test="${qnadetail.WRITER eq userNick}">
+	<form action="/qnaboard/modified.do">
+	<button type="submit" id="modified">수정</button>
+	<button type="button" id="delete1">삭제</button>
+	<input type=hidden name = "q_no" value="${qnadetail.Q_NO }">
+	<input type=hidden name = "title" value="${qnadetail.TITLE }">
+	<input type=hidden name = "content" value="${qnadetail.CONTENT }">
+	</form>
+	</c:when>
+	</c:choose>
+	</div>
 <hr />
 <div align="center">
 
@@ -353,6 +364,26 @@ ${sessionScope.userId}${qnadetail.Q_NO}
 		});
 		location.reload();
 	});
+	
+	$("#delete1").click(function(){
+		window.alert("삭제 버튼 누름")
+		$.ajax("/qnaboard/Postsdelte.do",{
+			"method" : "post",
+			"data":{
+				"q_no" : ${qnadetail.Q_NO}
+			}
+		}).done(function(obj){
+			if(obj[0].result==1){
+				window.alert("글이 삭제되었습니다.")
+			}else{
+				window.alert("알 수없는 이유로 글 삭제에 실패하셨습니다.")
+			}
+			location.href="/qnaboard/qnaindex.do";
+		});
+	});
+	
+	
+	
 	
 	
 	

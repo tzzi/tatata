@@ -286,7 +286,74 @@ public class qnaboardController {
 		}
 		return "[{\"result\":" + b + "}]";
 	}
-	
-	
+	@RequestMapping("/modified.do")
+	public String modifiedController(@RequestParam Map map,ModelMap modelmap,HttpSession session ) {
+		String nick = (String) session.getAttribute("userNick");
+		
+		modelmap.put("modified", map);
+		
+		System.out.println(modelmap);
+		return "qnamodified";
+		
+	}
+	@RequestMapping("/modifiedcomplete.do")
+	public String modifiedcompleteHandle(@RequestParam int q_no,@RequestParam Map map,ModelMap modelmap,
+			HttpSession session,HttpServletResponse response, HttpServletRequest request) {
+		
+		String id = (String) session.getAttribute("userId");
+		
+		qdao.update(map);
+		
+		modelmap.put("qnadetail", qdao.detailqna(q_no));//글상세
+		modelmap.put("qnadetaillist", qdao.detail(q_no));//리플보기
+		
+		String likecheck = id+q_no;
+		System.out.println("likecheck : "+ likecheck);
+		modelmap.put("likecheck", qdao.checklike(likecheck));
+		System.out.println("나와라 모델맵 : "+ modelmap);
+		Cookie setCookie = new Cookie("count"+q_no+id, "조회수쿠키"); // 쿠키 생성
+		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
+		response.addCookie(setCookie);
+
+		Cookie[] getCookie = request.getCookies();
+
+		if (getCookie != null) {
+
+			for (int i = 0; i < getCookie.length; i++) {
+
+				Cookie c = getCookie[i];
+				String name = c.getName(); // 쿠키 이름 가져오기				
+				System.out.println(name);
+				//동일이름의 쿠기가 있다면
+				if(name.equals("count"+q_no+id)) {
+				System.out.println("동일이름의 쿠키가 존재함");
+				return "qnadetail";
+				}else {
+					System.out.println("동일이름의 쿠기가 존재하지 않음");
+				}
+				
+			}
+
+			qdao.addcount(q_no);
+		}
+		
+		
+		
+		return "qnadetail";
+	}
+	@RequestMapping(path="/Postsdelte.do",  produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String deleteHandle(@RequestParam int q_no) {
+		int rst1 = qdao.delete(q_no);
+		int rst2 = qdao.deleteReply(q_no);
+		String b = "0";
+		if(rst1==1) {
+			b = "1";
+		}else {
+			b = "2";
+		}
+		
+		return "[{\"result\":" +b+"}]";
+	}
 	
 }
