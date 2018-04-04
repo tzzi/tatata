@@ -202,8 +202,79 @@ public class MatchingBoardController {
 
 		}
 	
-	
-	
+		//리플쓰기
+		@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
+				@RequestParam int m_no,HttpSession session) {
+			String nick = (String) session.getAttribute("userNick");
+			map.put("nick", nick);
+			int rst = mdao.matchingreplywrite(map);
+			modelMap.put("qnadetaillist", mdao.detail(m_no));
+			modelMap.put("qnadetail", mdao.detailmatching(m_no));
+			System.out.println("2 : " +modelMap);
+			String b = "1";
+			if (rst == 1) {
+				req.setAttribute("rst", "1", 0);
+				b = "1";
+			} else {
+				req.setAttribute("rst", "0", 0);
+				b = "2";
+			}
+			
+			return "[{\"result\":" + b + "}]";
+		}
+
+		//중복확인
+		@RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String overlapController(@RequestParam String overlap) {
+			int rst = mdao.overlap(overlap);
+			
+			String b = "0";
+			if (rst ==1) {
+				b="1";
+			}else {
+				b="2";
+			}
+			return "[{\"result\":" + b + "}]";
+		}
+		
+		//좋아요 증가
+		@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String addlikeController(@RequestParam int m_no) {
+			int rst = mdao.like(m_no);
+			
+			
+			String b = "0";
+			if(rst==1) {
+				b = "1";
+			}else{
+				b = "2";
+			}
+			return "[{\"result\":" + b + "}]";
+					
+		}
+		//좋아요 취소,좋아요수 빼기
+		@RequestMapping(path = "/likecancel.do", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String likecancelController(@RequestParam int m_no,HttpSession session) {
+			String id = (String) session.getAttribute("userId");
+			String likecheck = id+m_no;
+			int rst = 0 ;
+			String b = "0";
+			System.out.println("좋아요 취소한다아!!");
+			rst = mdao.deletelike(likecheck);
+			mdao.subtractlike(m_no);
+			if(rst==1) {
+				b ="1";
+			}else {
+				b="2";
+			}
+			return "[{\"result\":" + b + "}]";
+		}
+		
 	
 	//마이페이지 
 	@RequestMapping("/matchingIndex.do")
@@ -300,6 +371,61 @@ public class MatchingBoardController {
 		
 		return "basketFix";
 	}
+	//글 수정하기
+	@RequestMapping("/modified.do")
+	public String modifiedHandle(@RequestParam Map map,ModelMap modelmap,HttpSession session) {
+		String nick = (String) session.getAttribute("userNick");
+	
+		modelmap.put("modified", map);
+		System.out.println(modelmap);
+		return "modified";
+		
+	}
+	@RequestMapping("/modifiedcomplete.do")
+	public String modifiedcompleteHandle(@RequestParam int m_no,@RequestParam Map map,ModelMap modelmap,
+			HttpSession session,HttpServletResponse response, HttpServletRequest request) {
+		
+		String id = (String) session.getAttribute("userId");
+		
+		mdao.update(map);
+		
+		modelmap.put("matchingdetail", mdao.detailmatching(m_no));//글상세
+		modelmap.put("matchingdetaillist", mdao.detail(m_no));//리플보기
+		
+		String likecheck = id+m_no;
+		System.out.println("likecheck : "+ likecheck);
+		modelmap.put("likecheck", mdao.checklike(likecheck));
+		System.out.println("나와라 모델맵 : "+ modelmap);
+		Cookie setCookie = new Cookie("count"+m_no+id, "조회수쿠키"); // 쿠키 생성
+		setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
+		response.addCookie(setCookie);
+
+		Cookie[] getCookie = request.getCookies();
+
+		if (getCookie != null) {
+
+			for (int i = 0; i < getCookie.length; i++) {
+
+				Cookie c = getCookie[i];
+				String name = c.getName(); // 쿠키 이름 가져오기				
+				System.out.println(name);
+				//동일이름의 쿠기가 있다면
+				if(name.equals("count"+m_no+id)) {
+				System.out.println("동일이름의 쿠키가 존재함");
+				return "matchingdetail";
+				}else {
+					System.out.println("동일이름의 쿠기가 존재하지 않음");
+				}
+				
+			}
+
+			mdao.addcount(m_no);
+		}
+		
+		
+		
+		return "matchingdetail";
+	}
 	
 	//놀이기구 목록 삭제
 	@RequestMapping(path="/delete.do", produces="application/json;charset=utf-8")
@@ -346,6 +472,19 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
-	
+	@RequestMapping(path="/Postsdelte.do",  produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String deleteHandle(@RequestParam int m_no) {
+		int rst1 = mdao.delete(m_no);
+		int rst2 = mdao.delete(m_no);
+		String b = "0";
+		if(rst1==1) {
+			b = "1";
+		}else {
+			b = "2";
+		}
+		
+		return "[{\"result\":" +b+"}]";
+	}
 	
 }

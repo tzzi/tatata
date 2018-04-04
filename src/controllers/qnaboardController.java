@@ -29,7 +29,7 @@ public class qnaboardController {
 	Gson gson;
 
 	@RequestMapping("/qnaindex.do")
-	public String indexHandle(ModelMap modelMap, HttpServletRequest req/*,@RequestParam int page*/) {
+	public String indexHandle(ModelMap modelMap, HttpServletRequest req) {
 		//modelMap.put("qnalist", qdao.readAllqna());
 		Map map = new LinkedHashMap<>();
 		int totalCount= qdao.countQna();
@@ -212,6 +212,31 @@ public class qnaboardController {
 
 	}
 
+	//리플쓰기
+		@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
+				@RequestParam int q_no,HttpSession session) {
+			String nick = (String) session.getAttribute("userNick");
+			map.put("nick", nick);
+			int rst = qdao.qnareplywrite(map);
+			modelMap.put("qnadetaillist", qdao.detail(q_no));
+			modelMap.put("qnadetail", qdao.detailqna(q_no));
+			String b = "1";
+			if (rst == 1) {
+				req.setAttribute("rst", "1", 0);
+				b = "1";
+			} else {
+				req.setAttribute("rst", "0", 0);
+				b = "2";
+			}
+			
+			return "[{\"result\":" + b + "}]";
+		}
+		
+	
+	
+	
 //좋아요 증가
 	@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
@@ -247,28 +272,6 @@ public class qnaboardController {
 		return "[{\"result\":" + b + "}]";
 	}
 	
-	//리플쓰기
-	@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
-			@RequestParam int q_no,HttpSession session) {
-		String nick = (String) session.getAttribute("userNick");
-		map.put("nick", nick);
-		int rst = qdao.qnareplywrite(map);
-		modelMap.put("qnadetaillist", qdao.detail(q_no));
-		modelMap.put("qnadetail", qdao.detailqna(q_no));
-		System.out.println("2 : " +modelMap);
-		String b = "1";
-		if (rst == 1) {
-			req.setAttribute("rst", "1", 0);
-			b = "1";
-		} else {
-			req.setAttribute("rst", "0", 0);
-			b = "2";
-		}
-		
-		return "[{\"result\":" + b + "}]";
-	}
 	
 	//중복확인
 	@RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")

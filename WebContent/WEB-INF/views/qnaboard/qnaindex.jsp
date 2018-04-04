@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
 <!doctype html>
 <style>
 /* td {
@@ -52,15 +54,17 @@ table {
 </head>
 <body>
 
-	<div class="w3-container ">
-			<h1>Q&A 게시판</h1>
-			<br/>
+	<div class="w3-container" align="center">
+		<header class="w3-container w3-pale-red">
+			<h1 style="color: white" align="center">Q N A &nbsp; B O A R D</h1>
+		</header>
+		<br />
 
-		<table class="w3-table-all w3-hoverable "
+		<table class="w3-table-all w3-hoverable"
 			style="margin-left: auto; margin-right: auto; text-align: center">
 
 			<thead>
-				<tr class="w3-light-grey w3-center" align="center">
+				<tr class="w3-red w3-center" align="center">
 					<th>no</th>
 					<th>제목</th>
 					<th>글쓴이(닉네임)</th>
@@ -81,8 +85,17 @@ table {
 					</tr>
 				</c:forEach>
 			</tbody>
+			<tr>
+				<td colspan="6" align="right">
+					<a href="/qnaboard/writeform.do" style="margin-right: 3px" ><button type="submit"
+					class="button">글쓰기</button></a>
+				</td>
+			</tr>
 		</table>
-		<style>
+		
+		
+				
+		<!-- <style>
 		table {
 	height: 15px;
 	margin: auto;
@@ -91,17 +104,16 @@ table {
 th {
     text-align: center;
   }
-		</style>
-		<table class="w3-table-all"
+		</style> -->
+		<!-- <table class="w3-table-all"
 			style="margin-left: auto; margin-right: auto; text-align: center">
 			<tr class="w3-right" >
 				<th>
-				<a href="/qnaboard/writeform.do" style="margin-right: 3px" ><button type="submit"
-				class="button">글쓰기</button></a>
+				
 				</th>
 			
 				</tr>
-		</table>
+		</table>-->
 		
 		<hr/>
 		
