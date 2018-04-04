@@ -39,15 +39,72 @@ public class SurveyController {
 //		System.out.println(sdao.loadIdfromSurvey(id));
 		System.out.println("가입자 남녀비율 : " + sdao.genderrate());
 		System.out.println("가입자 남녀비율 0번째 : " + sdao.genderrate().get(0));
+		System.out.println("가입자 남녀비율 0번째 CNT : " + sdao.genderrate().get(0).get("CNT"));
 		System.out.println("가입자 남녀비율 1번째 : " + sdao.genderrate().get(1));
+		BigDecimal man_cnt = (BigDecimal)sdao.genderrate().get(0).get("CNT");
+		BigDecimal woman_cnt = (BigDecimal)sdao.genderrate().get(1).get("CNT");
+		System.out.println("가입자 남자 수 : " + man_cnt.intValue());
+		System.out.println("가입자 여자 수 : " + woman_cnt.intValue());
+		System.out.println("가입자 전체 수 : " + (man_cnt.intValue()+woman_cnt.intValue()));
+		int people_total = man_cnt.intValue() + woman_cnt.intValue();
+		double man_rate = (double)man_cnt.intValue() / (double)people_total * 100;
+		System.out.println("남자 비율 : " + man_rate);
+		double woman_rate = (double)woman_cnt.intValue() / (double)people_total * 100;
+		System.out.println("여자 비율 : " + woman_rate);
+		
+		
 		System.out.println("담력도 : " + sdao.fearrate());
-		System.out.println("담력도 : " + sdao.fearrate().get(0));
-		System.out.println("담력도 : " + sdao.fearrate().get(1));
-		System.out.println("담력도 : " + sdao.fearrate().get(2));
+		System.out.println("담력도 1: " + sdao.fearrate().get(0));
+		System.out.println("담력도 2: " + sdao.fearrate().get(1));
+		System.out.println("담력도 3: " + sdao.fearrate().get(2));
+		
+		BigDecimal fear_1 = (BigDecimal)sdao.fearrate().get(0).get("CNT");
+		BigDecimal fear_2 = (BigDecimal)sdao.fearrate().get(1).get("CNT");
+		BigDecimal fear_3 = (BigDecimal)sdao.fearrate().get(2).get("CNT");
+		
+		int fear_1_cnt = fear_1.intValue();
+		int fear_2_cnt = fear_2.intValue();
+		int fear_3_cnt = fear_3.intValue();
+		int fear_total = fear_1_cnt + fear_2_cnt + fear_3_cnt;
+		
+		double fear_1_rate = (double)fear_1_cnt / (double)fear_total * 100;
+		double fear_2_rate = (double)fear_2_cnt / (double)fear_total * 100;
+		double fear_3_rate = (double)fear_3_cnt / (double)fear_total * 100;
+		
+		System.out.println("담력도 1 비율 : " + fear_1_rate);
+		System.out.println("담력도 2 비율 : " + fear_2_rate);
+		System.out.println("담력도 3 비율 : " + fear_3_rate);
+		
+		
 		System.out.println("매칭유형 : " + sdao.matchtyperank());
-		System.out.println("매칭유형 : " + sdao.matchtyperank().get(0));
-		System.out.println("매칭유형 : " + sdao.matchtyperank().get(1));
-		System.out.println("매칭유형 : " + sdao.matchtyperank().get(2));
+		System.out.println("매칭유형 1: " + sdao.matchtyperank().get(0));
+		System.out.println("매칭유형 2: " + sdao.matchtyperank().get(1));
+		System.out.println("매칭유형 3: " + sdao.matchtyperank().get(2));
+		
+		BigDecimal matchtype_1 = (BigDecimal)sdao.matchtyperank().get(0).get("CNT");
+		BigDecimal matchtype_2 = (BigDecimal)sdao.matchtyperank().get(1).get("CNT");
+		BigDecimal matchtype_3 = (BigDecimal)sdao.matchtyperank().get(2).get("CNT");
+		
+		int matchtype_1_cnt = matchtype_1.intValue();
+		int matchtype_2_cnt = matchtype_2.intValue();
+		int matchtype_3_cnt = matchtype_3.intValue();
+		int matchtype_total = matchtype_1_cnt + matchtype_2_cnt + matchtype_3_cnt;
+		
+		double matchtype_1_rate = (double)matchtype_1_cnt / (double)matchtype_total * 100;
+		double matchtype_2_rate = (double)matchtype_2_cnt / (double)matchtype_total * 100;
+		double matchtype_3_rate = (double)matchtype_3_cnt / (double)matchtype_total * 100;
+		
+		System.out.println("매칭유형 1 비율 : " + matchtype_1_rate);
+		System.out.println("매칭유형 2 비율 : " + matchtype_2_rate);
+		System.out.println("매칭유형 3 비율 : " + matchtype_3_rate);
+		
+		System.out.println("지역별 차트 : " + sdao.areachart());
+		System.out.println("지역 1위 : " + sdao.areachart().get(0).get("AREA"));
+		System.out.println("지역 2위 : " + sdao.areachart().get(1).get("AREA"));
+		System.out.println("지역 3위 : " + sdao.areachart().get(2).get("AREA"));
+		System.out.println("지역 4위 : " + sdao.areachart().get(3).get("AREA"));
+		System.out.println("지역 5위 : " + sdao.areachart().get(4).get("AREA"));
+		
 		
 		if(sdao.loadIdfromSurvey(id)!= null && mdao.addinfoload(param)!=null) {
 			session.setAttribute("survey_record", 1);
