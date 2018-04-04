@@ -136,5 +136,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="subtractlike">
 	update MATCHINGBOARD set m_like = m_like-1 where m_no = #{m_no} 
 	</update>
+	
+	<!-- 글삭제 -->
+	<delete id="matchingboard">
+	delete from MATCHINGBOARD where m_no = #{m_no}
+	</delete>
+	
+	<!-- 리플도 삭제 -->
+	<delete id="deletereply">
+	delete from MATCHINGREPLY where m_no = #{m_no}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id="update">
+	update MATCHINGBOARD set title=#{title},content=#{content},left_Date=sysdate where m_no = #{m_no}
+	</update>
+	
 			
 </mapper>

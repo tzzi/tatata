@@ -60,10 +60,12 @@ public class LoginController {
 			
 			session.setAttribute("auth", id);
 			
-					
+			
+			System.out.println("1"+mcdao.matchingforme(nick).size());
+			System.out.println("2"+mcdao.matchingcheck(nick).size());
+			
 			//매칭 된사람
-			if(mcdao.matchingforme(nick)!=null || mcdao.matchingcheck(nick)!=null) {
-				System.out.println("우우와앗");
+			if(mcdao.matchingforme(nick).size()!=0 || mcdao.matchingcheck(nick).size()!=0) {
 				session.setAttribute("mathcingcheck", "1");
 			}
 			

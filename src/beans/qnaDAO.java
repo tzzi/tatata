@@ -125,7 +125,6 @@ public class qnaDAO {
 	public int overlap(String overlap) {
 		SqlSession session = factory.openSession();
 		int rst = 0;
-		System.out.println("overlap" + overlap);
 		try {
 			rst = session.insert("qnaboard.overlap", overlap);
 			System.out.println(rst);
