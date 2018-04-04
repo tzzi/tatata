@@ -22,7 +22,43 @@
 <label><h5>CONTENT</h5></label></p>
 <br/>
 <p>
-
+<small  style="font-size: 20px">운영시간</small>&nbsp;&nbsp;
+         <select name="time"
+            style="padding: 12px; font-size: 12pt; min-height: 5;outline: none;"  
+            class="authsuccess" >
+            <option>09:00 ~ 18:00</option>
+            <option>10:00 ~ 19:00</option>
+            <option>10:00 ~ 20:00</option>
+            <option>13:00 ~ 22:00</option>
+         </select>&nbsp;&nbsp;
+         
+         <small  style="font-size: 20px">키</small>&nbsp;&nbsp;
+         <select name="limit"
+            style="padding: 12px; font-size: 12pt; min-height: 5;outline: none;"  
+            class="authsuccess" >
+            <option>80cm ~</option>
+            <option>90cm ~</option>
+            <option>100cm ~</option>
+            <option>110cm ~</option>
+            <option>120cm ~</option>
+            <option>130cm ~</option>
+            <option>140cm ~</option>
+            <option>150cm ~</option>
+         </select>&nbsp;&nbsp;
+          <small  style="font-size: 20px">이용요금</small>&nbsp;&nbsp;
+         <select name="price"
+            style="padding: 12px; font-size: 12pt; min-height: 5;outline: none;"  
+            class="authsuccess" >
+            <option> ~ 3000원</option>
+            <option> ~ 4000원</option>
+            <option> ~ 5000원</option>
+            <option> ~ 6000원</option>
+            <option> ~ 7000원</option>
+            <option> ~ 8000원</option>
+            <option> ~ 9000원</option>
+            <option> ~ 10000원</option>
+         </select>&nbsp;&nbsp;
+         <br/><br/>
 <small  style="font-size: 20px">놀이공원</small>&nbsp;&nbsp;
          <select name="park_name"
             style="padding: 12px; font-size: 12pt; min-height: 5;outline: none;"  

@@ -7,9 +7,9 @@
 	<!-- 놀이 기구 등록 -->
 	<insert id="ride_write">
 		insert into
-		rideboard(no,park_name,ride_name,type,image,content,left_date)
+		rideboard(no,park_name,ride_name,type,image,content,left_date,time,limit,price)
 		values(no_seq1.nextval,#{park_name },#{ride_name },#{type
-		},#{image},#{content },#{left_date})
+		},#{image},#{content },#{left_date},#{time},#{limit},#{price})
 	</insert>
 	<!-- 게시판 전체 목록 -->
 	<select id="list" resultType="java.util.HashMap">
