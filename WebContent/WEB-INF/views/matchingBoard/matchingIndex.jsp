@@ -4,10 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <style>
-body{
-  padding:100px 0;
-}
-
 #heart {
     position: relative;
     width: 100px;

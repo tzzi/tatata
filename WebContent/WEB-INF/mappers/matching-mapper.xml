@@ -67,5 +67,74 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where nick = #{NICK}
 	</update>
 	
+
+	<!-- matching 게시글쓰기 -->
+	<insert id="matchingwrite">			
+	insert into MATCHINGBOARD(m_no,writer,title,content,LEFT_DATE) values(matching_seq.nextval,#{writer},#{title},#{content},sysdate)
+	</insert>
 	
+	<!-- matching 리스트 보기 -->
+	<select id="listallmatching" resultType="java.util.HashMap">
+		select * from MATCHINGBOARD order by q_no desc
+	</select>
+	
+	<!-- 페이징 된 리스트 보여주기 -->
+	<select id="rownumlist" resultType="java.util.LinkedHashMap">
+	select * from (select rownum rn, tt.* from 
+	(select * from MATCHINGBOARD ORDER BY left_date desc)tt)
+	 where rn  <![CDATA[ >= ]]> ${start} and rn <![CDATA[ <= ]]> ${end}
+
+	</select>
+
+	<!-- matching 총 갯수 -->
+	<select id="countmatching" resultType="integer">
+		select count(*) from MATCHINGBOARD
+		
+	</select>
+	
+	<!-- matching 글 상세 보기 -->
+	<select id="detailmatching" resultType="java.util.LinkedHashMap">
+		select * from MATCHINGBOARD where m_no = #{m_no}
+	</select>
+	
+	<!-- 조회수 올리기 -->
+	<update id="addcount">
+	update MATCHINGBOARD set count = count+1 where m_no = #{m_no} 
+	</update>
+	
+	<!-- 리플보기 -->
+	<select id="listmatchingreply" resultType="java.util.LinkedHashMap">
+	select * from MATCHINGreply where m_no=#{m_no} order by m_no asc
+	</select>
+	
+	<!-- 리플쓰기 -->
+	<insert id="insertreply">
+	insert into MATCHINGreply(a_no,m_no,left_Date,content,admin) values(matching_seq.nextval,#{m_no},sysdate,#{content},#{nick})
+	</insert>
+	
+	<!-- 글 추천수 올리기 -->
+	<update id="addlike">
+	update MATCHINGBOARD set m_like = m_like+1 where m_no = #{m_no} 
+	</update>
+
+	<!-- 추천 중복 확인하기 -->
+	<insert id="overlap">
+	insert into matchinglike(matchinglike) values(#{overlap})
+	</insert>
+	
+	<!-- 버튼 색깔 바꾸기 -->
+	<select id="likecheck" resultType="java.util.LinkedHashMap">
+	select * from matchinglike where matchinglike=#{likecheck}
+	</select>
+	
+	<!-- 좋아요 취소 -->
+	<delete id="liekcancel">
+	delete from matchinglike where matchinglike=#{likecheck}
+	</delete>
+	
+	<!-- 좋아요 빼기 -->
+	<update id="subtractlike">
+	update MATCHINGBOARD set m_like = m_like-1 where m_no = #{m_no} 
+	</update>
+			
 </mapper>
