@@ -6,7 +6,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
-	href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -50,7 +50,7 @@
 }
 
 .colo-4 {
-	width: 33.33%;
+	width: 50%;
 }
 
 .col-5 {
@@ -107,81 +107,120 @@
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="w3-light-grey w3-padding-24 w3-margin-bottom w3-center">
-	<div class="header"></div>
+<div class="w3-container" align="center">
+	<header class="w3-container w3-pale-red">
+		<h1 style="color: white" align="center">R E V I E W &nbsp; B O A R D</h1>
+	</header>
+	<br />
 </div>
+
 <div class="w3-row-padding w3-content" style="max-width: 1400px">
 
 	<div class="col-6">
-		<div class="w3-twothird"></div>
-		<div id="rcorners2">
+		<div class="w3-container w3-margin-top w3-center"
+			style="width: 550px; height: 700px">
+			<form class="w3-card-4 w3-center">
 
-			<p id="rcorners1" align="center">
-				${matchingdetail.TITLE}<br />
-			</p>
-			${matchingdetail.CONTENT}
+				<!-- 글제목 설정 -->
+				<div>
+					<br /> <label><h4>T I T L E</h4></label>
+				</div>
+				<div align="center">
+					<input class="w3-input" type="text" value="${matchingdetail.TITLE}"
+						style="width: 300px;" disabled> <br />
+				</div>
+				<div align="right">
+					조 회 수 : ${matchingdetail.COUNT} &nbsp;&nbsp;&nbsp;&nbsp;<span
+						class="fa fa-thumbs-up button" id="like">&nbsp;${matchingdetail.M_LIKE }</span>&nbsp;&nbsp;&nbsp;
+				</div>
+				<!-- 내용 입력 -->
+				<div>
+					<label><h4>C O N T E N T</h4></label>
+				</div>
+				<div>
+					<textarea rows="20" cols="50" disabled>${matchingdetail.CONTENT}</textarea>
+					<br />
+				</div>
+				<br />
+			</form>
 		</div>
-		<hr />
-	</div>
-	<div class="col-4">
-		<div class="w3-container w3-light-grey">
-			<h2>
-				조회수
-				:&nbsp;${matchingdetail.COUNT}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<span class="fa fa-thumbs-up w3-xxlarge button" id="like">&nbsp;${matchingdetail.M_LIKE }</span>
-			</h2>
-		</div>
-
-		<br />
-
-
-		<div class="w3-container w3-light-grey w3-justify">
-			<h2>실시간  리뷰</h2>
-			<p class="w3-justify">
-			<div id="rsc"
-				style="overflow: scroll; width: 451px; height: 200px; padding: 10px;">
-				<c:forEach items="${matchingdetaillist }" var="a">
-					<c:choose>
-						<c:when test="${gender eq 1 }">
-							<img src="/image/man.png" height="50" width="50">
-						</c:when>
-						<c:when test="${gender eq 2 }">
-							<img src="/image/woman.png" height="50" width="50">
-						</c:when>
-						<c:otherwise>
-							<img src="/image/default.png" height="50" width="50">
-						</c:otherwise>
-					</c:choose>
-			${a.ADMIN} : ${a.CONTENT} <br />
-				</c:forEach>
-			</div>
-			</p>
-		</div>
-	</div>
-	<div class="col-4">
-		<textarea id="content" name="ment"
-			style="width: 400px; padding: 3px; height: 80px;"></textarea>
-		<button type="button" id="b1"
-			style="width: 51px; padding: 3px; height: 80;">
-			<b>작성</b>
-		</button>
-		<br />
 	</div>
 	
-	<div class="col-9">
-	<c:choose>
-	<c:when test="${matchingdetail.WRITER eq userNick}">
-	<form action="/matchingBoard/modified.do">
-	<button type="button" id="delete">삭제</button>
-	<button type="submit" id="modified">수정</button>
-	<input type=hidden name = "m_no" value="${matchingdetail.M_NO }">
-	<input type=hidden name = "title" value="${matchingdetail.TITLE }">
-	<input type=hidden name = "content" value="${matchingdetail.CONTENT }">
-	</form>
-	</c:when>
-	</c:choose>
-	</div>
-	
+	<div class="colo-4">
+		<div class="w3-container w3-margin-top w3-center"
+			style="width: 550px; height: 700px">
+			<form class="w3-card-4 w3-center">
+				<div class="w3-left">
+					<div>
+						<br /> <label><h4>C O M M E N T</h4></label>
+					</div>
+					<p class="w3-justify w3-left">
+					
+						<div class="w3-left" align="left" id="rsc"
+						style="overflow: scroll; width: 510px; height: 425px; padding: 20px;">
+						<c:forEach items="${matchingdetaillist }" var="a">
+							<c:choose>
+								<c:when test="${gender eq 1 }">
+									<img src="/image/man.png" height="50" width="50">
+								</c:when>
+								<c:when test="${gender eq 2 }">
+									<img src="/image/woman.png" height="50" width="50">
+								</c:when>
+								<c:otherwise>
+									<img src="/image/default.png" height="50" width="50">
+								</c:otherwise>
+							</c:choose>
+					${a.ADMIN} : ${a.CONTENT} <br />
+						</c:forEach>
+					</div>
+					</p>
+				</div>
+				<br />
+				<div>
+					<div class="w3-text-theme">
+						<table align="center">
+							<tr>
+								<td>
+									<textarea class="w3-text" id="content" name="ment"
+							style="width: 400px; padding: 3px; height: 80px;"></textarea>
+								</td>
+								<td>&nbsp;&nbsp;</td>
+								<td>
+									<button type="button" id="b1"
+									class="w3-button w3-section w3-theme-l1 w3-ripple"
+									style="width: 51px; padding: 3px; height: 80;">
+									<b>작성</b>
+									</button>
+								</td>
+							</tr>
+							<tr height="40px">
+								<td colspan="3" align="center">
+									<c:choose>
+										<c:when test="${matchingdetail.WRITER eq userNick}">
+										<form action="/matchingBoard/modified.do">
+											<button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple" 
+											id="delete" style="width: 120px; padding: 8px; ">삭제</button>
+											&nbsp;&nbsp;
+											<button type="submit" class="w3-button w3-section w3-theme-l2 w3-ripple" 
+											id="modified" style="width: 120px; padding: 8px; ">수정</button>
+											&nbsp;&nbsp;
+											<a href="./matchingreview.do"><button type="button"
+											class="w3-button w3-section w3-theme-l2 w3-ripple"
+											style="padding: 8px; font-size: 12pt; width: 120px">이전으로</button></a>
+											<input type=hidden name = "m_no" value="${matchingdetail.M_NO }">
+											<input type=hidden name = "title" value="${matchingdetail.TITLE }">
+											<input type=hidden name = "content" value="${matchingdetail.CONTENT }">
+										</form>
+										</c:when>
+										</c:choose>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>	
 </div>
 <hr />
 <div align="center">
@@ -227,7 +266,7 @@ ${sessionScope.userId}${matchingdetail.M_NO}
 </style>
 		</c:when>
 		<c:otherwise>
-			<style>
+<style>
 .button {
 	display: inline-block;
 	padding: 5px 9px;
@@ -253,11 +292,15 @@ ${sessionScope.userId}${matchingdetail.M_NO}
 	transform: translateY(4px);
 }
 </style>
+
+
 		</c:otherwise>
 	</c:choose>
 </div>
 <br />
 <br />
+
+
 <script>
 	$("#b1").click(function() {
 		$.ajax("/matchingBoard/detailwrite.do",{

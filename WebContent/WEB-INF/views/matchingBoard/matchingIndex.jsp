@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
 <style>
 
 #heart {
@@ -108,34 +110,30 @@
 		<div class="w3-container w3-margin-top w3-center"
 			style="width: 550px; height: 700px">
 			<form class="w3-card-4 w3-center">
-	<p>
+	
 		<c:choose>
 			<c:when test="${mypage.MATCHTYPE eq null }">
   				<small style="color:red">상단의 본인의 아이디를 클릭하여 이메일 인증 후, 추가 정보를 입력해주세요.</small>
 			</c:when>
 
 			<c:otherwise>
-			
+			<div align="center">
 				<table>
+					<tr><td><br/></td></tr>
 					<tr>
-						<th>아 이 디</th>
-						<td>${mypage.ID}</td>
+						<th height="50px">아 이 디</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">${mypage.ID}</td>
 					</tr>
 					<tr>
-						<th>이 메 일</th>
-						<td>${mypage.EMAIL }</td>
+						<th height="50px">이 메 일</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">${mypage.EMAIL }</td>
 					</tr>
 					<tr>
-						<th>담 력</th>
-						<td>${mypage.FEAR}</td>
-					</tr>
-					<tr>
-						<th>자 기 소 개</th>
-						<td>${mypage.INTRO }</td>
-					</tr>
-					<tr>
-						<th>성 별</th>
-						<td>
+						<th height="50px">성 별</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">
 							<c:choose>
 								<c:when test="${mypage.GENDER eq 1 }">
 									<img src="/image/man_symbol.png" height="30" width="30">
@@ -147,8 +145,37 @@
 						</td>
 					</tr>
 					<tr>
-						<th>매 칭 유 형</th>
-						<td>
+						<th height="50px">담 력</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">
+						<c:choose>
+							<c:when test="${mypage.FEAR eq 1}">
+								고수
+							</c:when>
+							<c:when test="${mypage.FEAR eq 2}">
+								중수
+							</c:when>
+							<c:otherwise>
+								하수
+							</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+<!-- modelMap : {mypage={FEAR=1, BIRTH_D=3, AREA=서울, INTRO=자기소개를 마음껏 입력하세요., YELLOW_CARD=0, GENDER=1, BIRTH_M=4, ID=wer, EMAIL=kingoyster99@naver.com, BIRTH_Y=2018, MATCHTYPE=1}, mybasket={NICK=헤핳}, checkagree={FEAR=1, BASKET1=후렌치레볼루션2 VR, AREA=서울, NICK=헤핳, YELLOW_CARD=0, GENDER=1, ID=wer, EMAIL=kingoyster99@naver.com, TYPE1=스릴, MATCHTYPE=1}}
+ -->
+					<tr>
+						<th height="50px">자 기 소 개</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">
+						<textarea class="w3-input" rows="10" cols="100" name="intro"
+						style="padding: 8px; font-size: 12pt; width: 300px; height: 200px; resize: none;"
+						disabled>${mypage.INTRO }</textarea>
+						</td>
+					</tr>
+					<tr>
+						<th height="50px">매 칭 유 형</th>
+						<td>&nbsp;&nbsp;</td>
+						<td align="center">
 							<c:choose>
 								<c:when test="${mypage.MATCHTYPE eq 1 }">
 									<c:choose>
@@ -175,8 +202,9 @@
 							</c:choose>
 						</td>
 					</tr>
+					<tr><td><br/></td></tr>
 				</table>
-						
+			</div>	
 			</c:otherwise>
 		</c:choose>
 			</form>
@@ -184,19 +212,17 @@
 	</div>
 	
 	
-	<br/>
 	<div class="colo-4">
-		<div class="w3-container w3-margin-top w3-center"
-			style="width: 550px; height: 700px">
-			<form class="w3-card-4 w3-center">
+		<div class="w3-container w3-margin-top w3-center" style="width: 550px; height: 700px">
+			<form class="w3-card-4 w3-center w3-padding-32">
 				<div>
-		<c:choose>
+				<c:choose>
 			<c:when
 				test="${mybasket.BASKET1 eq null && mybasket.BASKET2 eq null && mybasket.BASKET3 eq null && mybasket.BASKET1 eq null && mybasket.BASKET4 eq null 
-				&& mybasket.BASKET5 eq null}">
-			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br />
-				<a href="/rideboard/list.do"><button type="submit"
-						class="btn btn-primary"
+	&& mybasket.BASKET5 eq null}">
+			<small style="color:red">장바구니에 정보가 없으면 매칭이 되지 않습니다.</small><br />
+				<a href="/rideboard/list.do"><button type="button"
+						class="w3-button w3-section w3-theme-l2 w3-ripple"
 						style="padding: 8px; font-size: 12pt; width: 200px">놀이기구
 						보러가기</button></a>
 			</c:when>
@@ -206,7 +232,7 @@
 					<c:when test="${mybasket.BASKET1 eq null}">
 					</c:when>
 					<c:otherwise>${mybasket.BASKET1}    <button
-							type="submit" class="delete" id="1">목록에서 빼기</button>
+							type="submit" class="delete w3-button w3-section w3-theme-l2 w3-ripple" id="1">삭제</button>
 						<br />
 					</c:otherwise>
 				</c:choose>
@@ -215,7 +241,7 @@
 					<c:when test="${mybasket.BASKET2 eq null}">
 					</c:when>
 					<c:otherwise>${mybasket.BASKET2}   <button
-							type="submit" class="delete" id="2">목록에서 빼기</button>
+							type="submit" class="delete w3-button w3-section w3-theme-l2 w3-ripple" id="2">삭제</button>
 						<br />
 					</c:otherwise>
 				</c:choose>
@@ -224,7 +250,7 @@
 					<c:when test="${mybasket.BASKET3 eq null}">
 					</c:when>
 					<c:otherwise>${mybasket.BASKET3}   <button
-							type="submit" class="delete" id="3">목록에서 빼기</button>
+							type="submit" class="delete w3-button w3-section w3-theme-l2 w3-ripple" id="3">삭제</button>
 						<br />
 					</c:otherwise>
 				</c:choose>
@@ -233,7 +259,7 @@
 					<c:when test="${mybasket.BASKET4 eq null}">
 					</c:when>
 					<c:otherwise>${mybasket.BASKET4}   <button
-							type="submit" class="delete" id="4">목록에서 빼기</button>
+							type="submit" class="delete w3-button w3-section w3-theme-l2 w3-ripple" id="4">삭제</button>
 						<br />
 					</c:otherwise>
 				</c:choose>
@@ -242,46 +268,53 @@
 					<c:when test="${mybasket.BASKET5 eq null}">
 					</c:when>
 					<c:otherwise>${mybasket.BASKET5}   <button
-							type="submit" class="delete" id="5">목록에서 빼기</button>
+							type="submit" class="delete w3-button w3-section w3-theme-l2 w3-ripple" id="5">삭제</button>
 						<br />
 					</c:otherwise>
 				</c:choose>
 
 			</c:otherwise>
 		</c:choose>
-	<hr />
-	</div>
-	<c:choose>
-		<c:when test="${checkagree.NICK eq null && (mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
- 	&& mypage.MATCHTYPE ne null}">
-			<button type="submit" id="agree">매칭 동의</button>
-		</c:when>
-		<c:otherwise>
-			<!-- 널이 아니라면 -->
-			<c:choose>
-				<c:when
-					test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
- 	&& mypage.MATCHTYPE ne null }">
-					<form action="/matchingBoard/matching.do" method="post">
-						<button type="submit" id="heart">매칭하기</button>
-
-					</form>
-
+		<br/>
+		<hr/>
+		<br/>
+		<c:choose>
+				<c:when test="${checkagree.NICK eq null && (mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
+		 	&& mypage.MATCHTYPE ne null}">
+					<button type="submit" class="w3-button w3-section w3-theme-l2 w3-ripple"
+								style="padding: 8px; font-size: 12pt; width: 120px" id="agree">매칭 동의</button>
 				</c:when>
 				<c:otherwise>
- 			장바구니에 정보가 없거나 내정보에서 매칭유형,이메일,담력 등을 설정하지 않으면 매칭을 할 수 없습니다.
- 	</c:otherwise>
-
+					<!-- 널이 아니라면 -->
+					<c:choose>
+						<c:when
+							test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
+		 					&& mypage.MATCHTYPE ne null }">
+		 				
+							<form action="/matchingBoard/matching.do" method="post">
+								<button type="submit" class="w3-button w3-section w3-ripple"
+								style="padding: 8px; font-size: 12pt; width: 120px" id="heart">매칭하기</button>
+							</form>
+						
+						</c:when>
+						<c:otherwise>
+							<small style="color:red">
+		 					장바구니에 정보가 없거나<br/>
+		 					이메일 인증 후, 추가 정보를 입력하지 않으면<br/>
+		 					매칭이 불가능합니다.</small>
+		 				</c:otherwise>
+					</c:choose>
+				</c:otherwise>
 			</c:choose>
-
-		</c:otherwise>
-	</c:choose>
-	</form>
+		
+				</div>
+				</form>
+			</div>
 	</div>
-	</div>
-
-
 </div>
+
+
+
 
 
 
