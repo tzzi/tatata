@@ -68,10 +68,10 @@
 				단 하나의 MultipartResolver만 등록가능하고, 
 				id를 multipartResolver 로 등록해야됨. 
 				dispatcherServlet이 id로 검색해서 사용-->
-	<!-- <bean id="multipartResolver"
+	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="uploadTempDir" value="/temp"/>
-	</bean> -->
+	</bean> 
 	
 	<!-- SQL -->
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="c3p0">
