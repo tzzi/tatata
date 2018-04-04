@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
 <!doctype html>
 <style>
 /* td {
@@ -23,7 +25,7 @@ table {
 	text-align: center;
 }
 
-.button {
+/* .button {
 	display: inline-block;
 	padding: 2px 3px;
 	font-size: 18px;
@@ -46,27 +48,28 @@ table {
 	background-color: #3e8e41;
 	box-shadow: 0 5px #666;
 	transform: translateY(4px);
-}
+} */
 </style>
 
 </head>
 <body>
 
-	<div class="w3-container w3-center">
-		<h1>Q&A 게시판</h1>
+	<div class="w3-container" align="center">
+		<header class="w3-container w3-pale-red">
+			<h1 style="color: white" align="center">Q N A &nbsp; B O A R D</h1>
+		</header>
 		<br />
 
-		<table class="w3-table-all w3-hoverable "
+		<table class="w3-table-all w3-hoverable w3-center"
 			style="margin-left: auto; margin-right: auto; text-align: center">
-
 			<thead>
 				<tr class="w3-light-grey w3-center" align="center">
-					<th>no</th>
-					<th>제목</th>
-					<th>글쓴이(닉네임)</th>
-					<th>등록일</th>
-					<th>조회</th>
-					<th>좋아요</th>
+					<th width="5%" align="center">no</th>
+					<th width="50%" align="center">제목</th>
+					<th width="10%" align="center">글쓴이(닉네임)</th>
+					<th width="10%" align="center">등록일</th>
+					<th width="5%" align="center">조회</th>
+					<th width="20%" align="center">좋아요</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,8 +84,66 @@ table {
 					</tr>
 				</c:forEach>
 			</tbody>
+
 		</table>
-		<style>
+
+		<table class="w3-table"
+			style="margin-left: auto; margin-right: auto; text-align: center">
+			<tr class="w3-right">
+				<td>
+					<div class="w3-text-theme w3-right">
+						<a href="/qnaboard/writeform.do" style="margin-right: 3px"><button
+								class="w3-button w3-section w3-theme-l2 w3-ripple" type="submit"
+								class="button">글쓰기</button></a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="w3-center">
+						<div class="w3-container">
+							<div class="w3-bar">
+								<c:choose>
+									<c:when test="${paging.page gt  1}">
+										<a href="/qnaboard/qnaindex2.do?page=${paging.page-1}" class="w3-button">&laquo;</a>
+									</c:when>
+								</c:choose>
+
+
+								<c:forEach var="item" items="${paging}"
+									begin="${paging.startPage }" end="${paging.endPage }" step="1"
+									varStatus="status">
+									<c:choose>
+										<c:when test="${status.index eq paging.page}">
+											<b>[${paging.page }]</b>
+										</c:when>
+										<c:otherwise>
+											<a href="/qnaboard/qnaindex2.do?page=${status.index }" class="w3-button">[${status.index }]</a>
+
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<c:choose>
+									<c:when test="${paging.page lt paging.totalPage }">
+										<a href="/qnaboard/qnaindex2.do?page=${paging.page+1 }" class="w3-button">&raquo;</a>
+									</c:when>
+								</c:choose>
+
+								<c:choose>
+									<c:when test="${paging.endPage lt paging.totalPage }">
+										<a href="/qnaboard/qnaindex2.do?page=${paging.totalPage }" class="w3-button">끝</a>
+									</c:when>
+
+								</c:choose>
+
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<!-- <style>
 table {
 	height: 15px;
 	margin: auto;
@@ -96,61 +157,11 @@ th {
 		<table class="w3-table-all"
 			style="margin-left: auto; margin-right: auto; text-align: center">
 			<tr class="w3-right">
-				<th><a href="/qnaboard/writeform.do" style="margin-right: 3px"><button
-							type="submit" class="button">글쓰기</button></a></th>
+				<th></th>
 
 			</tr>
-		</table>
-
+		</table> -->
 		<hr />
-
-
-		<!-- <p align="right">
-		<button class="button">Click Me</button>
-	
-		</p> -->
 	</div>
-	<div class="w3-center">
-		<div class="w3-container">
-			<div class="w3-bar">
-				<c:choose>
-					<c:when test="${paging.page gt  1}">
-						<a href="/qnaboard/qnaindex2.do?page=${paging.page-1}">이전</a>
-					</c:when>
-				</c:choose>
-
-
-				<c:forEach var="item" items="${paging}" begin="${paging.startPage }"
-					end="${paging.endPage }" step="1" varStatus="status">
-					<c:choose>
-						<c:when test="${status.index eq paging.page}">
-							<b>[${paging.page }]</b>
-						</c:when>
-						<c:otherwise>
-						<a href="/qnaboard/qnaindex2.do?page=${status.index }">[${status.index }]</a>
-			
-			</c:otherwise>
-					</c:choose>
-				</c:forEach>
-
-			<c:choose>
-			<c:when test="${paging.page lt paging.totalPage }">
-				<a href="/qnaboard/qnaindex2.do?page=${paging.page+1 }">다음</a>
-			</c:when>
-			</c:choose>
-			
-			<c:choose>
-			<c:when test="${paging.endPage lt paging.totalPage }">
-			<a href="/qnaboard/qnaindex2.do?page=${paging.totalPage }">끝</a>
-			</c:when>
-			
-			</c:choose>
-			
-			</div>
-		</div>
-	</div>
-	<br />
-
-
 
 </body>

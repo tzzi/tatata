@@ -4,12 +4,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- <style type="text/css">
-	.font {
+<style>
+/* 	body,h1 {font-family: "Raleway", sans-serif} */
+	/* body,h1 {font-family: "Montserrat", sans-serif} */
+	body,h1 {font-family: "Lato", sans-serif}
+	
+	/*  .font {
 	font-family : '굴림'
-	}
-</style> -->
+	} */ 
+</style>
 <!-- <link rel="stylesheet" href="/WEB-INF/views/view/style.css"> -->
+<body>
 <div class="w3-container">
 	<br>
 	<div class="w3-row">
@@ -24,10 +29,10 @@
 				<c:when test="${empty sessionScope.auth }">
 					<a href="/join/joinindex.do"
 						class="font w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						회원가입 </a>
+						CREATE ACCOUNT</a>
 					<a href="/login/loginindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						로그인</a>
+						LOGIN</a>
 						
 					
 						
@@ -44,9 +49,6 @@
 						</c:when>
 				</c:choose>	
 					
-					
-					
-						
 					<c:choose>
 					<c:when test="${gender eq 1 }">
 						<img src="/image/man.png" height="50" width="50">
@@ -64,25 +66,25 @@
 					</a>
 					<a href="/rideboard/list.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						놀이공원 정보 게시판</a>
+						PARKS & RIDES</a>
 					<a href="/qnaboard/qnaindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						Q&A게시판</a>
+						Q&A BOARD</a>
 					<a href="/matchingBoard/matchingIndex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						매칭보드</a>
+						MATCHING INFO</a>
 					<a href="/matchingBoard/matchingreview.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						매칭 게시판</a>
+						REVIEW BOARD</a>
 					<a href="/survey/surveyindex.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						후기 설문조사</a>
+						SURVEY REVIEW</a>
 					<a href="/survey/statistics.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						통계</a>
+						STATISTICS</a>
 					<a href="/login/logout.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
-						로그아웃</a>
+						LOGOUT</a>
 						
 				</c:otherwise>
 			</c:choose>
@@ -94,3 +96,4 @@
 	<br>
 
 </div>
+</body>

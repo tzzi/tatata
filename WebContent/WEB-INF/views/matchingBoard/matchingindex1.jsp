@@ -79,121 +79,83 @@
   }
 }
 
-[class*="col-"] {
-	float: left;
-	padding: 15px;
-}
-[class*="colo-"] {
-	float: right;
-	padding: 15px;
-}
-.col-6 {
-	width: 50%;
-}
-.colo-4 {
-	width: 50%;
-}
 
 </style>
 
-<div class="w3-container" align="center">
-	<header class="w3-container w3-pale-red">
-		<h1 style="color: white" align="center"> M A T C H I N G &nbsp; I N F O</h1>
-	</header>
-	<br />
-</div>
 
-<div class="w3-row-padding w3-content" style="max-width: 1400px">
-	<div class="col-6">
-		<div class="w3-container w3-margin-top w3-center"
-			style="width: 550px; height: 700px">
-			<form class="w3-card-4 w3-center">
+
+
+
+<div align="center">
+	<h1>나의 정보</h1>
+
+
 	<p>
 		<c:choose>
 			<c:when test="${mypage.MATCHTYPE eq null }">
-  				<small style="color:red">상단의 본인의 아이디를 클릭하여 이메일 인증 후, 추가 정보를 입력해주세요.</small>
+  마이 페이지에서 정보수정을 통해 매칭유형과 이메일, 담력등을 선택해주세요<hr />
 			</c:when>
 
 			<c:otherwise>
-			
-				<table>
-					<tr>
-						<th>아 이 디</th>
-						<td>${mypage.ID}</td>
-					</tr>
-					<tr>
-						<th>이 메 일</th>
-						<td>${mypage.EMAIL }</td>
-					</tr>
-					<tr>
-						<th>담 력</th>
-						<td>${mypage.FEAR}</td>
-					</tr>
-					<tr>
-						<th>자 기 소 개</th>
-						<td>${mypage.INTRO }</td>
-					</tr>
-					<tr>
-						<th>성 별</th>
-						<td>
-							<c:choose>
-								<c:when test="${mypage.GENDER eq 1 }">
-									<img src="/image/man_symbol.png" height="30" width="30">
-								</c:when>
-								<c:otherwise>
-									<img src="/image/woman_symbol.png"  height="30" width="30">
-								</c:otherwise>
-							</c:choose>
-						</td>
-					</tr>
-					<tr>
-						<th>매 칭 유 형</th>
-						<td>
-							<c:choose>
-								<c:when test="${mypage.MATCHTYPE eq 1 }">
-									<c:choose>
-										<c:when test="${mypage.GENDER eq 1 }">
-											<img src="/image/man_symbol.png" height="30" width="30">
-											&
-											<img src="/image/man_symbol.png"  height="30" width="30">
-										</c:when>
-										<c:otherwise>
-											<img src="/image/woman_symbol.png" height="30" width="30">
-											&
-											<img src="/image/woman_symbol.png"  height="30" width="30">
-										</c:otherwise>
-									</c:choose>
-								</c:when>
-								<c:when test="${mypage.MATCHTYPE eq 2 }">
-									<img src="/image/man_symbol.png" height="30" width="30">
-									<i class="material-icons" style="font-size:30px;color:red;">favorite</i>
-									<img src="/image/woman_symbol.png"  height="30" width="30">
-								</c:when>
-								<c:otherwise>
-									<img src="/image/question.png" height="30" width="30">
-								</c:otherwise>
-							</c:choose>
-						</td>
-					</tr>
-				</table>
-						
+ 아아디 : ${mypage.ID}
+<br />
+나의 성별 : 
+<c:choose>
+	<c:when test="${mypage.GENDER eq 1 }">
+	<img src="/image/man_symbol.png" height="30" width="30">
+	</c:when>
+	<c:otherwise>
+	<img src="/image/woman_symbol.png"  height="30" width="30">
+	</c:otherwise>
+</c:choose>
+<br/>
+
+매칭유형 : 
+<c:choose>
+	<c:when test="${mypage.MATCHTYPE eq 1 }">
+		<c:choose>
+			<c:when test="${mypage.GENDER eq 1 }">
+				<img src="/image/man_symbol.png" height="30" width="30">
+				&
+				<img src="/image/man_symbol.png"  height="30" width="30">
+			</c:when>
+			<c:otherwise>
+				<img src="/image/woman_symbol.png" height="30" width="30">
+				&
+				<img src="/image/woman_symbol.png"  height="30" width="30">
 			</c:otherwise>
 		</c:choose>
-			</form>
-		</div>
-	</div>
-	
-	
-	<br/>
-	<div class="colo-4">
-		<div class="w3-container w3-margin-top w3-center"
-			style="width: 550px; height: 700px">
-			<form class="w3-card-4 w3-center">
-				<div>
+	</c:when>
+	<c:when test="${mypage.MATCHTYPE eq 2 }">
+	<img src="/image/man_symbol.png" height="30" width="30">
+	<i class="material-icons" style="font-size:30px;color:red;">favorite</i>
+	<img src="/image/woman_symbol.png"  height="30" width="30">
+	</c:when>
+	<c:otherwise>
+	<img src="/image/question.png" height="30" width="30">
+	</c:otherwise>
+</c:choose>
+
+
+				<br />
+이메일 : ${mypage.EMAIL }
+<br />
+담력 : ${mypage.FEAR}
+<br />
+경고 : ${mypage.YELLOW_CARD}
+<br />
+자기소개 : ${mypage.INTRO }
+<hr />
+장바구니
+<br />
+
+			</c:otherwise>
+		</c:choose>
+
 		<c:choose>
 			<c:when
 				test="${mybasket.BASKET1 eq null && mybasket.BASKET2 eq null && mybasket.BASKET3 eq null && mybasket.BASKET1 eq null && mybasket.BASKET4 eq null 
-				&& mybasket.BASKET5 eq null}">
+	&& mybasket.BASKET5 eq null}">
 			장바구니에 정보가 없으면 매칭이 되지 않습니다.<br />
 				<a href="/rideboard/list.do"><button type="submit"
 						class="btn btn-primary"
@@ -250,7 +212,7 @@
 			</c:otherwise>
 		</c:choose>
 	<hr />
-	</div>
+
 	<c:choose>
 		<c:when test="${checkagree.NICK eq null && (mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
  	&& mypage.MATCHTYPE ne null}">
@@ -276,9 +238,7 @@
 
 		</c:otherwise>
 	</c:choose>
-	</form>
-	</div>
-	</div>
+
 
 
 </div>
