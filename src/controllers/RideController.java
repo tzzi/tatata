@@ -50,6 +50,9 @@ public class RideController {
 			HttpServletRequest req) {
 		String park_name = param.get("park_name");
 		String ride_name = param.get("ride_name");
+		String time = param.get("time");
+		String price = param.get("price");
+		String limit = param.get("limit");
 		String type = param.get("type");
 		String content = param.get("content");
 		String image = param.get("image");
@@ -67,6 +70,9 @@ public class RideController {
 		}
 		map.put("park_name", park_name);
 		map.put("ride_name", ride_name);
+		map.put("time", time);
+		map.put("limit", limit);
+		map.put("price", price);
 		map.put("type", type);
 		map.put("content", content);
 		map.put("image", url + dst.getName());
@@ -76,6 +82,9 @@ public class RideController {
 
 		req.setAttribute("park_name", park_name);
 		req.setAttribute("ride_name", ride_name);
+		req.setAttribute("time", time);
+		req.setAttribute("limit", limit);
+		req.setAttribute("price", price);
 		req.setAttribute("type", type);
 		req.setAttribute("image", image);
 		req.setAttribute("content", content);
@@ -223,6 +232,8 @@ public class RideController {
 	}
 
 
+
+
 	// 공원 이름 별 목록
 	@RequestMapping(path = "/place.do")
 	public String detailworldController(String name, ModelMap modelMap) {
@@ -230,24 +241,5 @@ public class RideController {
 		modelMap.put("rideboard", rdao.parkdetail(name));
 		return "list";
 	}
-	
 }
-
-/*   //공원 이름 별 목록
-   @RequestMapping(path = "/worldlist.do", produces = "application/json;charset=utf-8")
-  @ResponseBody
-   public String detailworldController(String park_name,ModelMap modelMap) {
-	   System.out.println("공원 이름별 목록");
-	   String a="a";
-	   System.out.println(park_name);
-	   if(!park_name.equals("all")) {		   
-		   modelMap.put("rideboard", rdao.parkdetail(park_name));
-		   System.out.println("전체 목록이 아님");
-	   }else {
-		modelMap.put("rideboard",rdao.alllist());
-		   System.out.println("전체 목록");
-	   }
-	   return "[{\"result\":" + a + "}]";
-   }
-}*/
   	

@@ -62,9 +62,9 @@ public class SurveyDAO {
 	}
 	
 	// 가입자들의 사는 지역 순위
-	public List areachart() {
+	public List<Map> areachart() {
 		SqlSession session = factory.openSession();
-		List<Object> rst = null;
+		List<Map> rst = null;
 		try {
 			rst = session.selectList("survey.areachart");
 		} finally {
@@ -74,9 +74,9 @@ public class SurveyDAO {
 	}
 	
 	// 가입자 성별 비율
-	public List genderrate() {
+	public List<Map> genderrate() {
 		SqlSession session = factory.openSession();
-		List<Object> rst = null;
+		List<Map> rst = null;
 		try {
 			rst = session.selectList("survey.genderrate");
 		} finally {
@@ -86,9 +86,9 @@ public class SurveyDAO {
 	}
 	
 	// 매칭 된 사람들의 담력도 순위
-	public List fearrate() {
+	public List<Map> fearrate() {
 		SqlSession session = factory.openSession();
-		List<Object> rst = null;
+		List<Map> rst = null;
 		try {
 			rst = session.selectList("survey.fearrate");
 		} finally {
@@ -98,9 +98,9 @@ public class SurveyDAO {
 	}
 	
 	// 매칭 유형 순위
-	public List matchtyperank() {
+	public List<Map> matchtyperank() {
 		SqlSession session = factory.openSession();
-		List<Object> rst = null;
+		List<Map> rst = null;
 		try {
 			rst = session.selectList("survey.matchtyperank");
 		} finally {

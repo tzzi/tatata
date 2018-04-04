@@ -84,12 +84,12 @@ public class RideboardDAO {
 	   }
 
 	   // 공원 별
-	   public List<Map> parkdetail(String park_name) {
+	   public List<Map> parkdetail(String name) {
 	      SqlSession session = factory.openSession();
 	      try {
-	         System.out.println(park_name);
+	         System.out.println(name);
 
-	         return session.selectList("rideboard.parkdetail",park_name);
+	         return session.selectList("rideboard.parkdetail",name);
 	      } finally {
 	         session.close();
 	      }
