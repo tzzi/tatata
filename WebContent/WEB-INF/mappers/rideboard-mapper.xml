@@ -33,7 +33,7 @@
 
 	<!-- 좋아요  -->
    <update id="goodcnt">
-   update rideboard set good_cnt = good_cnt+1 where ride_name= #{ride_name}
+   update rideboard set good_cnt = good_cnt+1 where ride_name= #{ride_name} 
    </update>
    <!--  좋아요 중복체크 -->
    <insert id="ride_likeoverlap">
@@ -45,7 +45,7 @@
    </insert>
    <!-- 놀이기구 리뷰 보기 -->
    <select id="ridereply_list" resultType="java.util.HashMap">
-   select * from ridereply where ridename = #{ridename}
+   select * from ridereply where ridename = #{ridename} order by leftdate desc
    </select>
    
 </mapper>

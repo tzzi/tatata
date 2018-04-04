@@ -36,22 +36,22 @@
 	</div>
 	<div class="w3-container">
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="전체보기"
+			class="w3-button w3-section w3-border w3-large world" id="전체보기"
 			onclick="location.href='/rideboard/list.do'">전체보기</button>
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="롯데월드"
+			class="w3-button w3-section w3-white w3-border w3-large world" id="롯데월드"
 			onclick="location.href='/rideboard/place.do?name=롯데월드'">롯데월드</button>
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="에버랜드"
+			class="w3-button w3-section w3-white w3-border w3-large world" id="에버랜드"
 			onclick="location.href='/rideboard/place.do?name=에버랜드'">에버랜드</button>
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="서울랜드"
+			class="w3-button w3-section w3-white w3-border w3-large world" id="서울랜드"
 			onclick="location.href='/rideboard/place.do?name=서울랜드'">서울랜드</button>
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="경주랜드"
+			class="w3-button w3-section w3-white w3-border w3-large world" id="경주랜드"
 			onclick="location.href='/rideboard/place.do?name=경주랜드'">경주랜드</button>
 		<button style="outline: none;"
-			class="w3-button w3-section w3-purple w3-large world" id="e월드"
+			class="w3-button w3-section w3-white w3-border w3-large world" id="e월드"
 			onclick="location.href='/rideboard/place.do?name=e월드'">e월드</button>
 		<br /> <form action=""><select id="type" name="type">
 			<option value="스릴">스릴</option>
@@ -68,8 +68,7 @@
 		</c:if>
 		<div class="w3-third w3-padding w3-container w3-margin-bottom"
 			style="border: 2px;">
-
-			<b class="w3-opacity w3-card-4 w3-round-large"
+			<b class="w3-opacity "
 				style="font-size: 15pt; color: gray;"> ${ride.RIDE_NAME } </b> <a
 				href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}&no=${ride.NO}">
 				<img src="${ride.IMAGE }" alt="Norway"
@@ -86,7 +85,7 @@
 						${ride.GOOD_CNT }</i>&nbsp;
 				</button>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<span class="fa fa-tumblr w3-large w3-text-yellow">&nbsp;&nbsp;${ride.TYPE }</span>
 
 			</div>
