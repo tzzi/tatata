@@ -443,11 +443,6 @@
 						</tr>
 						
 				</table>
-				<div class="w3-center" align="center">
-					<a href="./surveyindex.do"><button type="button"
-					class="w3-button w3-section w3-theme-l2 w3-ripple"
-					style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
-				</div>
 			</div>
 		</form>
 	</div>
