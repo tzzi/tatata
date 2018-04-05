@@ -268,12 +268,12 @@ input[type=radio] {
 	});
 
 	$("#complete").on("click", function() {
-		if($(".total1:checked").length==0 &&
-				$(".total2:checked").length==0 && 
-				$(".total3:checked").length==0 && 
-				$(".total4:checked").length==0 && 
-				$(".total5:checked").length==0 && 
-				$(".total6:checked").length==0 && 
+		if($(".total1:checked").length==0 ||
+				$(".total2:checked").length==0 || 
+				$(".total3:checked").length==0 || 
+				$(".total4:checked").length==0 || 
+				$(".total5:checked").length==0 || 
+				$(".total6:checked").length==0 || 
 				$(".total7:checked").length==0  
 				) {
 			window.alert("평가를 하지 않은 항목이 있습니다.");
