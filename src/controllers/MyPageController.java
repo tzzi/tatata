@@ -60,20 +60,21 @@ public class MyPageController {
 	
 	// 정보수정 - 비번 확인 후 정보수정 화면띄우기
 	@RequestMapping("/modifyinfo.do")
-	public String modyfyinfoHandler(HttpSession session,ModelMap modelmap) {
+	public String modyfyinfoHandler(@RequestParam Map Map,HttpSession session,ModelMap modelmap) {
 		System.out.println(session.getAttribute("addinfo"));
-		
+		System.out.println("Map123123" + Map);
 		String id=(String) session.getAttribute("userId");
 		System.out.println(id);
 		Map param = new LinkedHashMap<>();
 		param.put("id", id);
 		modelmap.put("addinfoload", mdao.addinfoload(param));
-		System.out.println("모델맵 : "+ modelmap);
+		
 			
 		
 		System.out.println(session.getAttribute("addinfo"));
 		
 		Map map = (Map)session.getAttribute("addinfo");
+		System.out.println("성별"+ map.get("GENDER"));
 		System.out.println("GENDER에 있는 것" + map.get("GENDER"));
 		if(map.get("GENDER") != null) {
 			session.setAttribute("gender", map.get("GENDER"));
@@ -133,6 +134,8 @@ public class MyPageController {
 		String email = (String) param.get("h_email");
 		System.out.println("email : "+ email);
 		
+		
+		session.setAttribute("gender", param.get("gender"));
 		param.put("email", email);		
 		System.out.println("파람 : " + param);
 		session.setAttribute("addinfo", param);
@@ -211,6 +214,7 @@ public class MyPageController {
 	@RequestMapping("/addinforst.do")
 	public String addinfoHandle(@RequestParam Map param, HttpSession session, ModelMap map) {
 		System.out.println("addinfo에서 넘어온 파라미터값 " +param);
+		
 		String id = (String)param.get("id");
 		String email = (String)param.get("h_email");
 		Integer gender = Integer.parseInt((String)param.get("gender"));
@@ -236,6 +240,7 @@ public class MyPageController {
 		
 		session.setAttribute("addinfo", map);
 		session.setAttribute("email", email);
+		session.setAttribute("gender", gender);
 		System.out.println("넘길 파람값 : " + map);
 		int rst = mdao.addinfo(map);
 		System.out.println("rst: " +rst);

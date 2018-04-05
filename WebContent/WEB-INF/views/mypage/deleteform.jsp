@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="center">
-					<button type="submit" id="confirm" style="padding: 8px; font-size: 12pt; width: 150px" disabled>회원탈퇴</button>
+					<button type="button" id="confirm" style="padding: 8px; font-size: 12pt; width: 150px" disabled>회원탈퇴</button>
 				</td>
 			</tr>
 			
@@ -58,8 +58,9 @@
 	
 	
 	$('#confirm').click(function() { 
-		var result = confirm('정말 회원탈퇴를 하시겠습니까?'); 
-		if(result) { 
+		var result = confirm('정말 회원탈퇴를 하시겠습니까?');
+		console.log(result);
+		if(result==true) { 
 			window.alert("회원탈퇴가 완료되었습니다.")
 			location.replace('/'); 
 		} else { 

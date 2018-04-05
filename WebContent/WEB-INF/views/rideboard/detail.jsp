@@ -374,7 +374,6 @@
 			} else if (obj[0].result == 5) {
 				window.alert("이미 장바구니에 담겨있는 놀이기구입니다.");
 			} else if (obj[0].result == 3) {
-				window.alert(obj[0].result)
 				window.alert("장바구니가 가득찼습니다.");
 			} else {
 			}
