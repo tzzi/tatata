@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
-<header class="w3-container w3-pale-red">
-  <h1 style="color: white">게시물 등록</h1>
+<header class="w3-container w3-pale-red w3-center">
+  <h1 style="color: white">REGISTER RIDES</h1>
 </header>
 
 <div class="w3-container w3-margin-top" align="center">
