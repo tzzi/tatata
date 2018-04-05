@@ -161,7 +161,7 @@
 }
 
 .col-10 {
-	width: 83.33%;
+	width: 13.5%;
 }
 
 .col-11 {
@@ -198,7 +198,7 @@
 		<div class="col-1 "></div>
 		<!-- 이미지 div -->
 		<div class="col-2 w3-border w3-round-large w3-card-4 w3-white w3-display-container w3-hover-opacity">
-			<img class="w3-round-large" src="/start/logo.jpg"
+			<img class="w3-round-large" src="${rideboard.IMAGE }"
 				style="width: 100%; height: 450px">
 			<div class="w3-display-middle w3-display-hover w3-xlarge">
 			<button id="cart" style="outline: none; width: 110px;height: 110px;" class="w3-white w3-card-4 w3-round-xlarge"><i class="fa fa-shopping-basket w3-text-blue w3-round-jumbo w3-jumbo"></i></button>
@@ -246,25 +246,39 @@
 	<div class="w3-border w3-white w3-card-4 w3-round-large w3-center" style="width: 95%" align="center">
 	
 	 <p class="w3-justify">
-			<div align="left" id="rsc"
+			<div align="left" class="row" id="rsc"
 			style="overflow: scroll; width: 100%; height: 500px; padding: 10px; ">
 			<c:forEach items="${ridereply_list }" var="r">
+			 	<div class=" w3-container">
+			 	<div class=" col-10 w3-section w3-center ">
 			 	<c:choose>
 					<c:when test="${gender eq 1 }">
-						<img src="/image/man.png" height="50" width="50">
+						<img src="/image/man.png" height="65" width="100%">
 					</c:when>
 					<c:when test="${gender eq 2 }">
-						<img src="/image/woman.png"  height="50" width="50">
+						<img src="/image/woman.png"  height="65" width="100%">
 					</c:when>
 					<c:otherwise>
-						<img src="/image/default.png"  height="50" width="50">
+						<img src="/image/default.png"  height="65" width="100%">
 					</c:otherwise>
 					</c:choose>
-					&nbsp;&nbsp;<b>${r.MENT }</b>&nbsp;&nbsp;<small>${r.LEFTDATE }&nbsp;&nbsp;평점 :&nbsp;${r.SCORE }/10 </small>&nbsp;&nbsp;
-			<br/><small>${r.NICK }</small><br/>
+					<small>${r.NICK }</small>
+			 	</div>
+			 	<div class=" w3-container w3-section col-9">
+			 	<div class="w3-container w3-margin-bottom ">
+			 	<small>평 점 : ${r.SCORE } / 10</small> | <small>${r.LEFTDATE }</small>
+			 	</div>
+			 	<div class="w3-container">
+			 	${r.MENT }
+			 	</div>
+			 	<div class="w3-container">
+			 	</div>
+			 	</div>
+			 	</div>
+				
 			</c:forEach>
 			</div>
-			<p>
+			<br/>
 			
  <span class="star-input">
   <span class="input">
@@ -335,9 +349,9 @@
 			}
 		}).done(function(obj) {
 			if (obj[0].result == 1) {
-				window.alert("글등록 성공")
+				window.alert("정상적으로 등록하였습니다.")
 			} else {
-				window.alert("글등록 실패")
+				window.alert("등록에 실패하였습니다.")
 			}
 		});
 		$(".score").val("");
@@ -346,7 +360,6 @@
 	});
 	// 장바구니 버튼 ajax
 	$("#cart").click(function() {
-		window.alert("장바구니 버튼 눌림")
 		$.ajax("/rideboard/cart.do", {
 			"method" : "post",
 			"async" : false,
@@ -356,7 +369,6 @@
 				"type" : "${rideboard.TYPE}"
 			}
 		}).done(function(obj) {
-			window.alert("rst값" + obj[0].result)
 			if (obj[0].result == 1) {
 				window.alert("장바구니에 담겼습니다.");
 			} else if (obj[0].result == 5) {
@@ -365,7 +377,6 @@
 				window.alert(obj[0].result)
 				window.alert("장바구니가 가득찼습니다.");
 			} else {
-				window.alert("이건 뭐지...")
 			}
 		});
 	});

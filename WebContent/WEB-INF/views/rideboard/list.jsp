@@ -102,7 +102,6 @@
 	//좋아요 버튼 
 	$(".like").click(function() {
 		var id = $(this).attr("id");
-		window.alert(id + "  좋아요 버튼 누름")
 		$.ajax("/rideboard/overlap.do", {
 			"method" : "post",
 			"async" : false,
