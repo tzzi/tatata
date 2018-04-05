@@ -292,10 +292,10 @@
 							test="${(mybasket.BASKET1 ne null || mybasket.BASKET2 ne null || mybasket.BASKET3 ne null || mybasket.BASKET4 ne null || mybasket.BASKET5 ne null)
 		 					&& mypage.MATCHTYPE ne null }">
 		 				
-							<form action="/matchingBoard/matching.do" method="post">
-								<button type="submit" class="w3-button w3-section w3-ripple"
+							<a href="/matchingBoard/matching.do" method="post">
+								<button type="button" class="w3-button w3-section w3-ripple"
 								style="padding: 8px; font-size: 12pt; width: 120px" id="heart">매칭하기</button>
-							</form>
+							</a>
 						
 						</c:when>
 						<c:otherwise>
