@@ -242,7 +242,7 @@ public class MyPageController {
 		if(rst==1) {
 			return "redirect:/index.do";
 		} else {
-			return "/mypage/addinforst.do";
+			return "redirect:/mypage/addinforst.do";
 		}
 		
 	}
