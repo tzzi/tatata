@@ -149,7 +149,7 @@
 	<div class="colo-4">
 		<div class="w3-container w3-margin-top w3-center"
 			style="width: 550px; height: 700px">
-			<form class="w3-card-4 w3-center">
+			<div class="w3-card-4 w3-center">
 				<div class="w3-left">
 					<div>
 						<br /> <label><h4>C O M M E N T</h4></label>
@@ -175,8 +175,7 @@
 					</p>
 				</div>
 				<br />
-				<div>
-					<div class="w3-text-theme">
+				<div class="w3-text-theme">
 						<table align="center">
 							<tr>
 								<td>
@@ -186,21 +185,42 @@
 								<td>&nbsp;&nbsp;</td>
 								<td>
 									<button type="button" id="b1"
-									class="w3-button w3-section w3-theme-l2 w3-ripple"
+									class="w3-button w3-section w3-theme-l1 w3-ripple"
 									style="width: 51px; padding: 3px; height: 80;">
 									<b>작성</b>
 									</button>
 								</td>
 							</tr>
+							<tr height="40px">
+								<td colspan="3" align="center">
+									<c:choose>
+										<c:when test="${qnadetail.WRITER eq userNick}">
+										<form action="/qnaboard/modified.do">
+											<button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple" 
+											id="delete" style="width: 120px; padding: 8px; ">삭제</button>
+											&nbsp;&nbsp;
+											<button type="submit" class="w3-button w3-section w3-theme-l2 w3-ripple" 
+											id="modified" style="width: 120px; padding: 8px; ">수정</button>
+											&nbsp;&nbsp;
+											<a href="./qnaindex.do"><button type="button"
+											class="w3-button w3-section w3-theme-l2 w3-ripple"
+											style="padding: 8px; font-size: 12pt; width: 120px">이전으로</button></a>
+											<input type=hidden name = "q_no" value="${qnadetail.Q_NO }">
+											<input type=hidden name = "title" value="${qnadetail.TITLE }">
+											<input type=hidden name = "content" value="${qnadetail.CONTENT }">
+										</form>
+										</c:when>
+										</c:choose>
+								</td>
+							</tr>
 						</table>
 					</div>
-					<br />
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="colo-7">
+<%-- <div class="colo-7">
 <c:choose>
 	<c:when test="${qnadetail.WRITER eq userNick}">
 	<form action="/qnaboard/modified.do">
@@ -212,7 +232,7 @@
 	</form>
 	</c:when>
 	</c:choose>
-	</div>
+	</div> --%>
 <hr />
 <div align="center">
 

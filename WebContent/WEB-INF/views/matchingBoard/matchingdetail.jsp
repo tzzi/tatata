@@ -149,7 +149,7 @@
 	<div class="colo-4">
 		<div class="w3-container w3-margin-top w3-center"
 			style="width: 550px; height: 700px">
-			<form class="w3-card-4 w3-center">
+			<div class="w3-card-4 w3-center">
 				<div class="w3-left">
 					<div>
 						<br /> <label><h4>C O M M E N T</h4></label>
@@ -218,7 +218,7 @@
 						</table>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>	
 </div>
@@ -366,7 +366,7 @@ ${sessionScope.userId}${matchingdetail.M_NO}
 	
 	$("#delete").click(function(){
 		window.alert("삭제 버튼 누름")
-		$.ajax("/matchingBoard/Postsdelte.do",{
+		$.ajax("/matchingBoard/Postsdelete.do",{
 			"method" : "post",
 			"data":{
 				"m_no" : ${matchingdetail.M_NO}
