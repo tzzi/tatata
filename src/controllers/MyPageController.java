@@ -75,16 +75,27 @@ public class MyPageController {
 		
 		Map map = (Map)session.getAttribute("addinfo");
 		System.out.println("GENDER에 있는 것" + map.get("GENDER"));
-		session.setAttribute("gender", map.get("GENDER"));
-		session.setAttribute("birth_y", map.get("BIRTH_Y"));
-		session.setAttribute("birth_m", map.get("BIRTH_M"));
-		session.setAttribute("birth_d", map.get("BIRTH_D"));
-		session.setAttribute("area", map.get("AREA"));
-		session.setAttribute("email", map.get("EMAIL"));
-		session.setAttribute("fear", map.get("FEAR"));
-		session.setAttribute("matchtype", map.get("MATCHTYPE"));
-		session.setAttribute("intro", map.get("INTRO"));
-	
+		if(map.get("GENDER") != null) {
+			session.setAttribute("gender", map.get("GENDER"));
+			session.setAttribute("birth_y", map.get("BIRTH_Y"));
+			session.setAttribute("birth_m", map.get("BIRTH_M"));
+			session.setAttribute("birth_d", map.get("BIRTH_D"));
+			session.setAttribute("area", map.get("AREA"));
+			session.setAttribute("email", map.get("EMAIL"));
+			session.setAttribute("fear", map.get("FEAR"));
+			session.setAttribute("matchtype", map.get("MATCHTYPE"));
+			session.setAttribute("intro", map.get("INTRO"));
+		} else {
+			session.setAttribute("gender", map.get("gender"));
+			session.setAttribute("birth_y", map.get("birth_y"));
+			session.setAttribute("birth_m", map.get("birth_m"));
+			session.setAttribute("birth_d", map.get("birth_d"));
+			session.setAttribute("area", map.get("area"));
+			session.setAttribute("email", map.get("email"));
+			session.setAttribute("fear", map.get("fear"));
+			session.setAttribute("matchtype", map.get("matchtype"));
+			session.setAttribute("intro", map.get("intro"));
+		}
 		return "modify_info";
 	}
 	
