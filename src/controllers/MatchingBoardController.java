@@ -175,7 +175,6 @@ public class MatchingBoardController {
 			String likecheck = id+m_no;
 			System.out.println("likecheck : "+ likecheck);
 			modelMap.put("likecheck", mdao.checklike(likecheck));
-			System.out.println("나와라 모델맵 : "+ modelMap);
 			Cookie setCookie = new Cookie("count"+m_no+id, "조회수쿠키"); // 쿠키 생성
 			setCookie.setMaxAge(60 * 60 * 24); // 기간을 하루로 지정
 			response.addCookie(setCookie);

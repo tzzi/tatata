@@ -18,24 +18,25 @@
 	<div class="w3-container w3-margin-top w3-center" style="width: 600px;">
 		<div class="w3-container w3-margin-top w3-center"
 				style="width: 550px; height: 700px">
-				<form class="w3-card-4 w3-center">
+				<div class="w3-card-4 w3-center">
 					<br/>
-					당신의 매칭 상대는<br/>
+					
 					<c:choose>
 						<c:when test="${matching.NICK eq null }">
 						같은 놀이기구를 선택한 사람이 없습니다.<br/>
 						놀이기구를 다시 선택해주시거나
-						담력이 비슷한 사람끼리 매칭 하시겠습니까?<br/>
+						놀이기구 타입이 비슷한 사람과 매칭 하시겠습니까?<br/>
 						<form action="/matchingBoard/matching2.do">
 							<button type="submit" class="w3-button w3-section w3-theme-l2 w3-ripple" 
 							style="padding: 8px; font-size: 12pt; width: 100px;"
-							id="matching">담력이 비슷한 사람끼리 매칭</button>
+							id="matching">매칭</button>
 							<input type="hidden" value="${mypage.NICK }"/>
 						</form>
 						
 						</c:when>
 						<c:otherwise>
 					<p>
+					당신의 매칭 상대는<br/>
 					${matching.NICK }님  입니다.<br/>
 					</p>
 					 <a href="/matchingBoard/matchingcheck.do">
@@ -47,7 +48,7 @@
 					</p> -->
 						</c:otherwise>
 					</c:choose>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
