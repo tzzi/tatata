@@ -33,7 +33,6 @@ public class RideController {
 
 	@RequestMapping("/index.do")
 	public String ride_indexHandle() {
-
 		return "ride_index";
 
 	}
@@ -91,11 +90,10 @@ public class RideController {
 		req.setAttribute("left_date", left_date);
 		int rst = rdao.write(map);
 		if (rst == 1) {
-			return "write_complete";
+		return"redirect:/rideboard/list.do";
 		} else {
 			return "write";
 		}
-
 	}
 
 	// 놀이기구 전체 목록
@@ -126,7 +124,7 @@ public class RideController {
 		return "[{\"result\":" + b + "}]";
 	}
 
-	//
+	//놀이기구 리뷰 
 	@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
@@ -202,13 +200,8 @@ public class RideController {
 		return "R_detail";
 	}
 
-	/*
-	 * @RequestMapping("/parkdetail.do") public String
-	 * parkdetailHandle(@RequestParam String park_name, ModelMap modelMap) {
-	 * 
-	 * modelMap.put("rideboard", rdao.parkdetail(park_name)); return "parkdetail"; }
-	 */
-	// 장바구니
+
+	// 매칭바구니
 	@RequestMapping(path = "/cart.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String basketHandle(@RequestParam Map map, @RequestParam String nick, @RequestParam String basket,
@@ -230,8 +223,6 @@ public class RideController {
 		return "[{\"result\":" + a + "}]";
 
 	}
-
-
 
 
 	// 공원 이름 별 목록

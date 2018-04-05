@@ -68,14 +68,14 @@
 		</c:if>
 		<div class="w3-third w3-padding w3-container w3-margin-bottom"
 			style="border: 2px;">
-			<b class="w3-opacity "
-				style="font-size: 15pt; color: gray;"> ${ride.RIDE_NAME } </b> <a
+			<b class="w3-round-large w3-card-4 w3-opacity "
+				style="font-size: 15pt; color: gray;">&nbsp; ${ride.RIDE_NAME } / ${ride.PARK_NAME}&nbsp;</b> <a
 				href="/rideboard/detail.do?ride_name=${ride.RIDE_NAME}&no=${ride.NO}">
 				<img src="${ride.IMAGE }" alt="Norway"
 				style="width: 100%; height: 300px;"
 				class="w3-hover-opacity  w3-round-large w3-border">
 			</a>
-			<div class=" w3-light-gray w3-border">
+			<div class="w3-light-gray w3-border">
 				<span class="w3-button  w3-light-gray"> <i
 					class="fa fa-user w3-text-blue w3-xlarge">&nbsp;&nbsp;${ride.COUNT }</i>
 				</span>&nbsp;&nbsp;
@@ -102,7 +102,6 @@
 	//좋아요 버튼 
 	$(".like").click(function() {
 		var id = $(this).attr("id");
-		window.alert(id + "  좋아요 버튼 누름")
 		$.ajax("/rideboard/overlap.do", {
 			"method" : "post",
 			"async" : false,

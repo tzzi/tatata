@@ -132,6 +132,7 @@ public class MatchingBoardController {
 		return "matchingreview";
 		
 	}
+	//글쓰기 화면 넘김
 	@RequestMapping("/writeform.do")
 	public String wirteformHandle() {
 		return "mwriteform";
@@ -204,78 +205,6 @@ public class MatchingBoardController {
 
 		}
 	
-		//리플쓰기
-		@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
-		@ResponseBody
-		public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
-				@RequestParam int m_no,HttpSession session) {
-			String nick = (String) session.getAttribute("userNick");
-			map.put("nick", nick);
-			int rst = mdao.matchingreplywrite(map);
-			modelMap.put("qnadetaillist", mdao.detail(m_no));
-			modelMap.put("qnadetail", mdao.detailmatching(m_no));
-			System.out.println("2 : " +modelMap);
-			String b = "1";
-			if (rst == 1) {
-				req.setAttribute("rst", "1", 0);
-				b = "1";
-			} else {
-				req.setAttribute("rst", "0", 0);
-				b = "2";
-			}
-			
-			return "[{\"result\":" + b + "}]";
-		}
-
-		//중복확인
-		@RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")
-		@ResponseBody
-		public String overlapController(@RequestParam String overlap) {
-			int rst = mdao.overlap(overlap);
-			
-			String b = "0";
-			if (rst ==1) {
-				b="1";
-			}else {
-				b="2";
-			}
-			return "[{\"result\":" + b + "}]";
-		}
-		
-		//좋아요 증가
-		@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
-		@ResponseBody
-		public String addlikeController(@RequestParam int m_no) {
-			int rst = mdao.like(m_no);
-			
-			
-			String b = "0";
-			if(rst==1) {
-				b = "1";
-			}else{
-				b = "2";
-			}
-			return "[{\"result\":" + b + "}]";
-					
-		}
-		//좋아요 취소,좋아요수 빼기
-		@RequestMapping(path = "/likecancel.do", produces = "application/json;charset=utf-8")
-		@ResponseBody
-		public String likecancelController(@RequestParam int m_no,HttpSession session) {
-			String id = (String) session.getAttribute("userId");
-			String likecheck = id+m_no;
-			int rst = 0 ;
-			String b = "0";
-			System.out.println("좋아요 취소한다아!!");
-			rst = mdao.deletelike(likecheck);
-			mdao.subtractlike(m_no);
-			if(rst==1) {
-				b ="1";
-			}else {
-				b="2";
-			}
-			return "[{\"result\":" + b + "}]";
-		}
 		
 	
 	//마이페이지 
@@ -364,29 +293,7 @@ public class MatchingBoardController {
 		
 		return "matchingcheck";
 	}
-	//매칭 상황 등록
-	@RequestMapping(path="/insertmatching.do", produces="application/json;charset=utf-8")
-	@ResponseBody
-	public String insertmatchingHandle(@RequestParam Map map, WebRequest req) {
-		int rst = mdao.matchinginsert(map);
-		String b = "1";
-		if(rst==1) {
-			b="1";
-		}else if(rst==2) {
-			b="2";
-		}
-		else {
-			b = "3";
-		}
-		return "[{\"result\":" +b+"}]";
-	}
-	@RequestMapping("/basketFix.do")
-	public String basketFixHandle(ModelMap modelmap,HttpSession session) {
-		String nick = (String) session.getAttribute("userNick");
-		modelmap.put("myinfo", mdao.mybasketinfo(nick));
-		
-		return "basketFix";
-	}
+	
 	//글 수정하기
 	@RequestMapping("/modified.do")
 	public String modifiedHandle(@RequestParam Map map,ModelMap modelmap,HttpSession session) {
@@ -487,7 +394,7 @@ public class MatchingBoardController {
 		}
 		return "[{\"result\":" +b+"}]";
 	}
-	@RequestMapping(path="/Postsdelte.do",  produces="application/json;charset=utf-8")
+	@RequestMapping(path="/Postsdelete.do",  produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String deleteHandle(@RequestParam int m_no) {
 		int rst1 = mdao.delete(m_no);
@@ -501,5 +408,92 @@ public class MatchingBoardController {
 		
 		return "[{\"result\":" +b+"}]";
 	}
-	
+	//리플쓰기
+			@RequestMapping(path = "/detailwrite.do", produces = "application/json;charset=utf-8")
+			@ResponseBody
+			public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
+					@RequestParam int m_no,HttpSession session) {
+				String nick = (String) session.getAttribute("userNick");
+				map.put("nick", nick);
+				int rst = mdao.matchingreplywrite(map);
+				modelMap.put("qnadetaillist", mdao.detail(m_no));
+				modelMap.put("qnadetail", mdao.detailmatching(m_no));
+				System.out.println("2 : " +modelMap);
+				String b = "1";
+				if (rst == 1) {
+					req.setAttribute("rst", "1", 0);
+					b = "1";
+				} else {
+					req.setAttribute("rst", "0", 0);
+					b = "2";
+				}
+				
+				return "[{\"result\":" + b + "}]";
+			}
+
+			//중복확인
+			@RequestMapping(path = "/overlap.do", produces = "application/json;charset=utf-8")
+			@ResponseBody
+			public String overlapController(@RequestParam String overlap) {
+				int rst = mdao.overlap(overlap);
+				
+				String b = "0";
+				if (rst ==1) {
+					b="1";
+				}else {
+					b="2";
+				}
+				return "[{\"result\":" + b + "}]";
+			}
+			
+			//좋아요 증가
+			@RequestMapping(path = "/addlike.do", produces = "application/json;charset=utf-8")
+			@ResponseBody
+			public String addlikeController(@RequestParam int m_no) {
+				int rst = mdao.like(m_no);
+				
+				
+				String b = "0";
+				if(rst==1) {
+					b = "1";
+				}else{
+					b = "2";
+				}
+				return "[{\"result\":" + b + "}]";
+						
+			}
+			//좋아요 취소,좋아요수 빼기
+			@RequestMapping(path = "/likecancel.do", produces = "application/json;charset=utf-8")
+			@ResponseBody
+			public String likecancelController(@RequestParam int m_no,HttpSession session) {
+				String id = (String) session.getAttribute("userId");
+				String likecheck = id+m_no;
+				int rst = 0 ;
+				String b = "0";
+				System.out.println("좋아요 취소한다아!!");
+				rst = mdao.deletelike(likecheck);
+				mdao.subtractlike(m_no);
+				if(rst==1) {
+					b ="1";
+				}else {
+					b="2";
+				}
+				return "[{\"result\":" + b + "}]";
+			}
+			//매칭 상황 등록
+			@RequestMapping(path="/insertmatching.do", produces="application/json;charset=utf-8")
+			@ResponseBody
+			public String insertmatchingHandle(@RequestParam Map map, WebRequest req) {
+				int rst = mdao.matchinginsert(map);
+				String b = "1";
+				if(rst==1) {
+					b="1";
+				}else if(rst==2) {
+					b="2";
+				}
+				else {
+					b = "3";
+				}
+				return "[{\"result\":" +b+"}]";
+			}
 }
