@@ -56,7 +56,7 @@
 			</c:when>
 			<c:otherwise>
 					<c:forEach items="${matchingforme }" var="b">
-					${b.MYNICK}<br/>
+					${b.MYNICK}  <br/>
 					</c:forEach>
 			</c:otherwise>
 		</c:choose>

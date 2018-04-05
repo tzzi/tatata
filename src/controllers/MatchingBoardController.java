@@ -231,7 +231,8 @@ public class MatchingBoardController {
 	//1차 매칭
 	@RequestMapping("/matching.do")
 	public String matchingHandle(HttpSession session, ModelMap modelMap) {
-		
+		List<Map> list1 = new LinkedList<>();
+		Map map1 = new LinkedHashMap<>();
 		String nick = (String) session.getAttribute("userNick");
 		String id = (String) session.getAttribute("userId");
 		int rst = 0;
@@ -244,7 +245,16 @@ public class MatchingBoardController {
 		if(rst==1) {
 			modelMap.put("matching",mdao.Matchingpage(nick,id));
 			modelMap.put("mypage", mdao.readmypage(nick));
-			System.out.println(modelMap);			
+			System.out.println("모델메엡 : " + modelMap);		
+			
+			list1.addAll(mdao.matchingcheck(nick));
+			map1.put("list1", list1.size());//없으면 0
+			
+			int a = (int) map1.get("list1");
+			System.out.println(a);
+			if(a!=0) {
+				session.setAttribute("mathcingcheck", "1");
+			}
 			return "matching";
 		}else {
 			return "matchingIndex";
@@ -255,13 +265,20 @@ public class MatchingBoardController {
 	//2차 매칭
 	@RequestMapping("/matching2.do")
 	public String matching2Handle(HttpSession session, ModelMap modelMap) {
-		
+		List<Map> list1 = new LinkedList<>();
+		Map map1 = new LinkedHashMap<>();
 		String nick = (String) session.getAttribute("userNick");
 		
 		String id = (String) session.getAttribute("userId");
 		System.out.println("id : "+id);
+		list1.addAll(mdao.matchingcheck(nick));
+		map1.put("list1", list1.size());//없으면 0
 		
-		
+		int a = (int) map1.get("list1");
+		System.out.println(a);
+		if(a!=0) {
+			session.setAttribute("mathcingcheck", "1");
+		}
 		modelMap.put("matching2", mdao.Matchingpage2(nick, id));
 		return "matching2";
 	}
@@ -279,7 +296,7 @@ public class MatchingBoardController {
 		modelmap.put("matchingcheck", mdao.matchingcheck(nick));//내가 고를 상대
 		list1.addAll(mdao.matchingcheck(nick));
 		System.out.println(list1.size());
-		map1.put("list1", list1.size());
+		map1.put("list1", list1.size());//없으면 0
 		modelmap.put("list1", map1);
 		
 		modelmap.put("matchingforme", mdao.matchingforme(nick));//나를 고른 상대

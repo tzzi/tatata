@@ -34,9 +34,9 @@
     놀이기구 타입으로 찾아낸 너의 상대<br/>
 ${matching2.NICK}님이 매칭 되었습니다.
 <p>
- <a href="/matchingBoard/matchingcheck.do"><button type="submit"
-						class="btn btn-primary"
-						style="padding: 8px; font-size: 12pt; width: 200px">나의 매칭</button></a>
+ <a href="/matchingBoard/matchingcheck.do">
+					 <button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple"
+					style="padding: 8px; font-size: 12pt; width: 100px;">나의 매칭</button></a>
 	</p>					
 
 </c:otherwise>

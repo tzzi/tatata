@@ -41,7 +41,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><small>※ 이메일을 인증 받으시면, 매칭서비스를 이용하실 수
+					<td colspan="2"><small style="color:red;">※ 이메일을 인증 받으시면, 매칭서비스를 이용하실 수
 							있습니다.</small><br /></td>
 				</tr>
 				<tr>
