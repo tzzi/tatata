@@ -3,38 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<div align="center" style="min-height: 80%">
-		<!-- Section 영역 -->
-		<h3>D E L E T E &nbsp; I D & I N F O</h3>
-		<br/>
-		<form action="/mypage/delete.do" autocomplete="off" method="post">
-		
-		<table>		
-			<tr>
-				<th height="50px">아이디</th>
-				<td></td>
-				<td align="center">${sessionScope.userId }</td> 
-			</tr>
-			
-			<tr>
-				<th height="50px">비밀번호</th>
-				<td></td>
-				<td align="center">
-				<input type="password" name="pass1" id="inputpass" placeholder="비밀번호"
-				 style="padding: 8px; font-size: 12pt; width: 250px;"/></td>
-				 <td><button type="button"
-					id="pass_bt" style="padding: 7px; font-size: 12pt; width: 50px">확인</button></td>
-				<br/>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">
-					<button type="button" id="confirm" style="padding: 8px; font-size: 12pt; width: 150px" disabled>회원탈퇴</button>
-				</td>
-			</tr>
-			
-		</table>
-
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://www.w3schools.com/lib/w3-theme-purple.css">
