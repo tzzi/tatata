@@ -146,6 +146,20 @@ public class RideController {
 		
 		return "[{\"result\":" + b + "}]";
 	}
+	// 놀이기구 리뷰 삭제
+	@RequestMapping(path = "/replydelete.do", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String replydeleteController(@RequestParam String ment) {
+		int rst = rdao.replydelete(ment);
+		
+		String b = "0";
+		if(rst ==1) {
+			b="1";
+		}else {
+			b="2";
+		}
+		return "[{\"result\":"+b+"}]";
+	}
 	// 좋아요 수 증가
 	@RequestMapping(path = "/ride_like.do", produces = "application/json;charset=utf-8")
 	@ResponseBody

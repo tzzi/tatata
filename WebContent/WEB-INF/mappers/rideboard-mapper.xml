@@ -47,5 +47,8 @@
    <select id="ridereply_list" resultType="java.util.HashMap">
    select * from ridereply where ridename = #{ridename} order by leftdate desc
    </select>
-   
+   <!-- 리뷰글 삭제 -->
+   <select id="replydelete">
+   delete from ridereply where ment = #{ment}
+   </select>
 </mapper>

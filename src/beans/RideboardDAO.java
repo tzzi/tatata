@@ -126,6 +126,18 @@ public class RideboardDAO {
 	         session.close();
 	      }
 	   }  
+	 //글 삭제하기
+	 		public int replydelete(String ment) {
+	 			SqlSession session = factory.openSession();
+	 			System.out.println(ment);
+	 			int rst;
+	 			try {
+	 				rst = session.delete("rideboard.replydelete",ment);
+	 			}finally {
+	 				session.close();
+	 			}
+	 			return rst;
+	 		}
 	// 장바구니
 	public int basket(Map map, String nick, String basket, String type) {
 		SqlSession session = factory.openSession();

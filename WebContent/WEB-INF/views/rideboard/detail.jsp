@@ -272,9 +272,10 @@
 			 	<small>평 점 : ${r.SCORE } / 10</small> | <small>${r.LEFTDATE }</small>
 			 	</div>
 			 	<div class="w3-container">
-			 	${r.MENT }
+			 	<b id="ment">${r.MENT }</b>
 			 	</div>
 			 	<div class="w3-container">
+			 	<button class="w3-button delete">삭제</button>
 			 	</div>
 			 	</div>
 			 	</div>
@@ -382,6 +383,25 @@
 			} else {
 			}
 		});
+	});
+	//리뷰 삭제 버튼
+	$(".delete").click(function() {
+		
+		$.ajax("/rideboard/replydelete.do", {
+			"method" : "post",
+			"async" : false,
+			"data" : {
+				"ment" : $("#ment").val()
+			}
+		}).done(function(obj) {
+			if (obj[0].result == 1) {
+				window.alert("정상적으로 등록하였습니다.")
+			} else {
+				window.alert("등록에 실패하였습니다.")
+			}
+		});
+		$("#ment").val("");
+		location.reload()
 	});
 	//좋아요버튼
 	$(".like").click(function() {
