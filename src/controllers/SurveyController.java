@@ -45,9 +45,7 @@ public class SurveyController {
 	// 통계창
 	@RequestMapping("/statistics.do")
 	public String statisticsHandle(HttpSession session) {
-		String id = (String)session.getAttribute("userId");
-		Map param = new LinkedHashMap<>();
-		param.put("id", id);
+		
 		
 		BigDecimal man = (BigDecimal)sdao.genderrate().get(0).get("CNT");
 		BigDecimal woman = (BigDecimal)sdao.genderrate().get(1).get("CNT");

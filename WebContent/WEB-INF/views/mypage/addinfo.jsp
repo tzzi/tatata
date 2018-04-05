@@ -207,8 +207,7 @@
 			</tr>
 			
 			<tr>
-				<td></td>
-				<td colspan="2" align="center">
+				<td colspan="3" align="center">
 					<br/>
 					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" class="authsuccess w3-button w3-section w3-theme-l2 w3-ripple" id="addinfoinsert" disabled>추가정보입력</button>
 					<a href="./mypageindex.do"><button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
