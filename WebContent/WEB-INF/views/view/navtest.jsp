@@ -7,7 +7,10 @@
 <style>
 /* 	body,h1 {font-family: "Raleway", sans-serif} */
 	/* body,h1 {font-family: "Montserrat", sans-serif} */
-	body,h1 {font-family: "Lato", sans-serif}
+	body,h1 {font-family: "Lato", sans-serif
+	}.w3-button{
+	font-family : sans-serif;
+	}
 	
 	/*  .font {
 	font-family : '굴림'

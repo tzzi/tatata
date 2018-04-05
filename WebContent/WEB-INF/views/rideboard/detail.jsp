@@ -187,7 +187,7 @@
 <!-- 파크명 -->
 	<div class="w3-container w3-pale-red w3-card-4 w3-center">
 		<h1 style="color: white">
-			<b>${rideboard.RIDE_NAME }</b>
+			${rideboard.RIDE_NAME }
 		</h1>
 	</div>
 	<!-- 배경div -->

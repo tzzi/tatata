@@ -24,9 +24,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-	<div class="w3-container w3-pale-red w3-card-4">
+	<div class="w3-container w3-pale-red w3-center">
 		<h1 style="color: white">
-			<b>Amusement Park</b> &nbsp;
+			A M U S E M E N T &nbsp; P A R K
 			<c:choose>
 			<c:when test="${admin eq 1}">
 			<a href="/rideboard/write.do"><button class="w3-button w3-border w3-black w3-large "><i class="fa fa-upload">게시물 작성</i></button></a>
