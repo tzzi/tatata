@@ -3,20 +3,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<div align="center" style="min-height: 80%">
-		<!-- Section 영역 -->
-		<h3>A D D &nbsp; I N F O R M A T I O N</h3>
-		<br/>
-		<form action="/mypage/addinforst.do" autocomplete="off" method="post">
-		
-		<table>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-purple.css">
+
+<div class="w3-container" align="center" style="min-height: 80%">
+
+	<header class="w3-container w3-pale-red">
+		<h1 style="color: white" align="center">A D D &nbsp; I N F O R M A T I O N</h1>
+	</header>
+	<br />
+	
+	<div class="w3-container w3-margin-top w3-center" style="width: 600px;">
+	<form class="w3-card-4 w3-center" action="/mypage/addinforst.do" autocomplete="off" method="post">
+		<div align="center" >
+			<table>
+			<tr><td><br/></td></tr>
 			<tr>
 				<th height="50px">이메일 인증</th>
 				<td></td>
 				<td align="center">
 					<input type="text" name="email" value="${email }" placeholder="이메일"
 					style="padding: 8px; font-size: 12pt; width: 220px;"  ${ empty email? '':'disabled' }/>
-					<button type="submit" formaction="/mypage/sendKey.do" formmethod="post" 
+					<button type="submit" class="w3-button w3-section w3-theme-l2 w3-ripple" formaction="/mypage/sendKey.do" formmethod="post" 
 					id="email" style="padding: 7px; font-size: 12pt; width: 90px"  ${ empty email? '':'disabled' }>인증</button>
 					<input type="hidden" name="h_email" value="${email }"/>
 				 </td>
@@ -28,7 +37,7 @@
 				<td align="center">
 					<input type="text" name="key" placeholder="인증키"
 					style="padding: 8px; font-size: 12pt; width: 220px;" id="inkey"/>
-					<button type="button" 
+					<button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple"
 					id="key" style="padding: 7px; font-size: 12pt; width: 90px">확인</button>
 					<br/>
 					<br/>
@@ -164,8 +173,6 @@
 					<input type="radio" ${ fear eq 3 ? 'checked':'' } name="fear" id="f_low" value="3"  class="authsuccess" ${ fear eq 3 ? '':'disabled' }/>
 					<label for="f_low">하수</label>
 
-					
-					
 				</td>
 			</tr>
 			
@@ -203,19 +210,19 @@
 				<td></td>
 				<td colspan="2" align="center">
 					<br/>
-					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" class="authsuccess" id="addinfoinsert" disabled>추가정보입력</button>
-					<input type="reset" value="초기화" style="padding: 8px; font-size: 12pt; width: 100px">
-					<a href="./mypageindex.do"><button type="button" class="btn btn-primary" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
+					<button type="submit" style="padding: 8px; font-size: 12pt; width: 120px" class="authsuccess w3-button w3-section w3-theme-l2 w3-ripple" id="addinfoinsert" disabled>추가정보입력</button>
+					<a href="./mypageindex.do"><button type="button" class="w3-button w3-section w3-theme-l2 w3-ripple" style="padding: 8px; font-size: 12pt; width: 100px">이전으로</button></a>
 				</td>
 			</tr>
+			<tr><td><br/></td></tr>
 		</table>
-			
+		</div>
 				
 		</form>	
 				
 
 	</div>
-	
+</div>	
 <script>
 	$("#email").on("click", function() {
 		window.alert("이메일 인증키가 전송되었습니다.\n단, 이메일이 잘못되었을 시 전송되지 않습니다.");
