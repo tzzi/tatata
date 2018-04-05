@@ -201,7 +201,11 @@
 			<img class="w3-round-large" src="${rideboard.IMAGE }"
 				style="width: 100%; height: 450px">
 			<div class="w3-display-middle w3-display-hover w3-xlarge">
-			<button id="cart" style="outline: none; width: 110px;height: 110px;" class="w3-white w3-card-4 w3-round-xlarge"><i class="fa fa-shopping-basket w3-text-blue w3-round-jumbo w3-jumbo"></i></button>
+			<button id="cart" style="outline: none; width: 110px;height: 110px;" class="w3-white w3-button w3-round-xlarge"><i class="fa fa-shopping-basket w3-text-blue w3-round-jumbo w3-jumbo"></i></button>
+			&nbsp;&nbsp;&nbsp;
+			<button type="button" id="${rideboard.RIDE_NAME }" 
+					class="w3-button fa fa-thumbs-up w3-round-large w3-jumbo w3-text-red w3-white like">
+				</button>
 			</div>
 		</div>
 		
@@ -209,11 +213,10 @@
 		<div class="col-2">
 			<div class="w3-white w3-card-4 w3-border w3-round-large w3-container w3-section">
 			<p>
-				<i class="fa fa-user w3-text-blue w3-xxlarge">&nbsp;&nbsp;${rideboard.COUNT }</i>
-				&nbsp;&nbsp;&nbsp;&nbsp; <i
-					class="fa fa-thumbs-up w3-text-red  w3-xxlarge">&nbsp;
-					${rideboard.GOOD_CNT }</i>&nbsp;&nbsp;&nbsp;&nbsp; <i
-					class="fa fa-tumblr w3-xlarge w3-text-yellow ">&nbsp;&nbsp;${rideboard.TYPE }</i>
+				<i class="fa fa-tumblr w3-large w3-xxlarge w3-text-yellow">&nbsp;&nbsp;${rideboard.TYPE }</i>
+				&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-user w3-text-blue w3-xxlarge">&nbsp;&nbsp;${rideboard.COUNT }</i>
+				&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-thumbs-up w3-text-red w3-xxlarge">&nbsp;&nbsp;${rideboard.GOOD_CNT }</i>
+	
 			</p>
 			</div>
 			<h2 class=" w3-white w3-card-4 w3-round-large w3-section">${rideboard.RIDE_NAME }</h2>
@@ -379,6 +382,36 @@
 			} else {
 			}
 		});
+	});
+	//좋아요버튼
+	$(".like").click(function() {
+		var id = $(this).attr("id");
+		$.ajax("/rideboard/overlap.do", {
+			"method" : "post",
+			"async" : false,
+			"data" : {
+				"ride_name" : id
+			}
+		}).done(function(obj) {
+			if (obj[0].result == 1) {
+				$.ajax("/rideboard/ride_like.do", {
+					"method" : "post",
+					"async" : false,
+					"data" : {
+						"ride_name" : id
+					}
+				}).done(function(obj) {
+					if (obj[0].result == 1) {
+						window.alert("추천되었습니다.")
+					} else {
+						window.alert("알 수 없는 이유로 추천에 실패하셨습니다.")
+					}
+				});
+			} else {
+				window.alert("이미 추천 하셨습니다.")
+			}
+		});
+		location.reload();
 	});
 </script>
 
