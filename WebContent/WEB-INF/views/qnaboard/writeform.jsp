@@ -43,7 +43,8 @@ controller에서 넘김
 			<div class="w3-text-theme">
 				<button class="w3-button w3-section w3-theme-l2 w3-ripple">
 					<b style="color: white">글 등록 </b>
-				</button>
+					
+				</button>				
 			</div>
 
 		</form>
