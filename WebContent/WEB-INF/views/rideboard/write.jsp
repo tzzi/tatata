@@ -81,7 +81,7 @@
          </select>&nbsp;&nbsp;&nbsp;&nbsp;
          </p>
          <div>
-         <img src="" style="width: 350px; height: 300px; border-radius: 30px;"
+         <img src="/start/Main.jpg" style="width: 350px; height: 300px; border-radius: 30px;"
             id="preview" />
       </div>
       <input type="file" name="file" id="photo" style="display: none;" />
