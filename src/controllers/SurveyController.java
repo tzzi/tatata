@@ -1,6 +1,7 @@
 package controllers;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -162,12 +163,22 @@ public class SurveyController {
 //		System.out.println("평균값 구하기 키로겟 " + sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 		// 자리수.. 설정
 //		System.out.println("sdao.averageForEachSurvey() : " + sdao.averageForEachSurvey());
-		map.put("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
+		Map newmap = new HashMap();
+		newmap = sdao.averageForEachSurvey();
+		/*System.out.println(newmap);*/
+		map.put("avg_m_first", newmap.get("AVG(M_FIRST)"));
+		map.put("avg_m_meet", newmap.get("AVG(M_MEET)"));
+		map.put("avg_m_pr_time", newmap.get("AVG(M_PR_TIME)"));
+		map.put("avg_m_moral", newmap.get("AVG(M_MORAL)"));
+		map.put("avg_m_communi", newmap.get("AVG(M_COMMUNI)"));
+		map.put("avg_total", newmap.get("AVG(TOTAL)"));
+		
+		/*map.put("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 		map.put("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
 		map.put("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));
 		map.put("avg_m_moral", sdao.averageForEachSurvey().get("AVG(M_MORAL)"));
 		map.put("avg_m_communi", sdao.averageForEachSurvey().get("AVG(M_COMMUNI)"));
-		map.put("avg_total", sdao.averageForEachSurvey().get("AVG(TOTAL)"));
+		map.put("avg_total", sdao.averageForEachSurvey().get("AVG(TOTAL)"));*/
 //		session.setAttribute("avg_m_first", sdao.averageForEachSurvey().get("AVG(M_FIRST)"));
 //		session.setAttribute("avg_m_meet", sdao.averageForEachSurvey().get("AVG(M_MEET)"));
 //		session.setAttribute("avg_m_pr_time", sdao.averageForEachSurvey().get("AVG(M_PR_TIME)"));

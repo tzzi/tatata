@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AuthFilter implements Filter{
-
+  
 	public void init(FilterConfig config) throws ServletException {
 		
 	}
