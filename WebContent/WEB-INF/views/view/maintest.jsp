@@ -31,7 +31,7 @@
 </div>
  -->
 <div >
-	<img src="/image/SiteMain_1.jpg">
+	<img src="/image/SiteMain_1.jpg" style="width:100%">
 </div>
 
 </div>

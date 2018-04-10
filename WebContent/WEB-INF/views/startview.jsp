@@ -98,18 +98,12 @@ html {
 
 <body>
    <div align="center">
-      <div style="width: 960px">
-         <div style="min-height: 400px;"></div>
-
-
-         <div style="min-height: 100px"></div>
-         <div style="min-height: 170px"> 
+      <div style="width: 100%">
+         <div style="min-height: 85%"> 
          <!-- <h1>놀이공원 & 놀이기구 정보를 한눈에</h1>
          <h3><b>생생한 현장 소식을 전하다</b></h3> -->
          </div>
          <div align="center" style="min-height: 150px;">
-
-
             <!-- <a href="/join/joinindex.do"> --><button onclick="document.getElementById('id02').style.display='block'" class="my-transparent-button"
                   style="vertical-align: middle">
                   <span>J O I N </span>
