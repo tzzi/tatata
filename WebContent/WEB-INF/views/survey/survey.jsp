@@ -72,7 +72,7 @@ input[type=radio] {
 							<td>
 								<div class="survey">
 									<input class="w3-radio total2" type="radio" name="match_type"
-										value="1"><label>동성</label> <input class="w3-radio"
+										value="1"><label>동성</label> <input class="w3-radio total2"
 										type="radio" name="match_type" value="2"><label>이성</label>
 									<input class="w3-radio total2" type="radio" name="match_type"
 										value="3"><label>무관</label>
