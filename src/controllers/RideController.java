@@ -130,9 +130,9 @@ public class RideController {
 	public String detailwriteController(@RequestParam Map map, WebRequest req, ModelMap modelMap,
 		@RequestParam String ride_name,@RequestParam int no,HttpSession session) {
 		String nick = (String) session.getAttribute("userNick");
+		System.out.println("뭐들어오지?? : " + map);
 		map.put("nick", nick);
 		modelMap.put("ridedetail", rdao.detail(ride_name));
-		
 		String b = "1";
 		int rst = 0;
 		rst = rdao.ridereplywrite(map);

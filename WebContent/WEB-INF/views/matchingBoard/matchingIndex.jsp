@@ -325,7 +325,7 @@
 		var id = $(this).attr("id");
 		$.ajax("/matchingBoard/delete.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"nick" : "${sessionScope.userNick}",
 				"no" : id
@@ -341,7 +341,7 @@
 	$("#agree").click(function() {
 		$.ajax("/matchingBoard/agree.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"nick" : "${sessionScope.userNick}",
 				"id" : "${sessionScope.userId}"

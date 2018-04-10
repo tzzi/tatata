@@ -53,14 +53,14 @@
 		<button style="outline: none;"
 			class="w3-button w3-section w3-white w3-border w3-large world" id="e월드"
 			onclick="location.href='/rideboard/place.do?name=e월드'">e월드</button>
-		<br /> <form action=""><select id="type" name="type">
+		<br /> <!-- <form action=""><select id="type" name="type">
 			<option value="스릴">스릴</option>
 			<option value="연애">연애</option>
 			<option value="어린이">어린이</option>
 		</select>
 			<input type="text" name="writee" />
 			<button type="button" class="w3-button fa fa-search "></button>
-			</form>
+			</form> -->
 	</div>
 	<c:forEach items="${rideboard }" var="ride" varStatus="vs">
 		<c:if test="${vs.count %3 == 1}">
@@ -104,7 +104,7 @@
 		var id = $(this).attr("id");
 		$.ajax("/rideboard/overlap.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"ride_name" : id
 			}
@@ -112,7 +112,7 @@
 			if (obj[0].result == 1) {
 				$.ajax("/rideboard/ride_like.do", {
 					"method" : "post",
-					"async" : false,
+					"async" : true,
 					"data" : {
 						"ride_name" : id
 					}

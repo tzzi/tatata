@@ -274,9 +274,6 @@
 			 	<div class="w3-container">
 			 	<b id="ment">${r.MENT }</b>
 			 	</div>
-			 	<div class="w3-container">
-			 	<button class="w3-button delete">삭제</button>
-			 	</div>
 			 	</div>
 			 	</div>
 				
@@ -301,7 +298,7 @@
 </span>
 		</p>
 		<br/>
-		<textarea class="w3-round-large" id="ment" name="ment" style="outline:none; width: 70%; padding: 3px; height: 80px;"></textarea>
+		<textarea class="w3-round-large" id="ment1" name="ment1" style="outline:none; width: 70%; padding: 3px; height: 80px;"></textarea>
 		<br/><br/>
 		 <button type="button" id="sbt" class="w3-button w3-round-large w3-theme w3-opacity"><i class="fa fa-pencil w3-xxlarge">Post</i></button> 
 			<h5 style="color: white;"><small>1</small></h5>
@@ -343,12 +340,12 @@
 	$("#sbt").click(function() {
 		$.ajax("/rideboard/detailwrite.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"ride_name" : "${rideboard.RIDE_NAME}",
 				"no" : "${rideboard.NO}",
 				"score" : $(".score:checked").val(),
-				"ment" : $("#ment").val()
+				"ment" : $("#ment1").val()
 
 			}
 		}).done(function(obj) {
@@ -366,7 +363,7 @@
 	$("#cart").click(function() {
 		$.ajax("/rideboard/cart.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"nick" : "${sessionScope.userNick}",
 				"basket" : "${rideboard.RIDE_NAME}",
@@ -388,7 +385,7 @@
 		
 		$.ajax("/rideboard/replydelete.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"ment" : $("#ment").val()
 			}
@@ -407,7 +404,7 @@
 		var id = $(this).attr("id");
 		$.ajax("/rideboard/overlap.do", {
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data" : {
 				"ride_name" : id
 			}
@@ -415,7 +412,7 @@
 			if (obj[0].result == 1) {
 				$.ajax("/rideboard/ride_like.do", {
 					"method" : "post",
-					"async" : false,
+					"async" : true,
 					"data" : {
 						"ride_name" : id
 					}

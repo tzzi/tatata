@@ -41,7 +41,7 @@
    </insert>
    <!-- 놀이기구 리뷰 쓰기 -->
    <insert id ="ridereply_write">
-   insert into ridereply(no,ridename,score,nick,ment,leftdate) values(no_seq.nextval,#{ride_name},#{score},#{nick},#{ment},sysdate)
+   insert into ridereply(no,ridename,score,nick,ment,leftdate) values(no_seq.nextval,#{ride_name},#{score,jdbcType=INTEGER },#{nick},#{ment},sysdate)
    </insert>
    <!-- 놀이기구 리뷰 보기 -->
    <select id="ridereply_list" resultType="java.util.HashMap">

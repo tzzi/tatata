@@ -56,7 +56,7 @@
 	$(document).ready(function(){
 		$.ajax("/matchingBoard/insertmatching.do",{
 			"method" : "post",
-			"async" : false,
+			"async" : true,
 			"data":{
 				"matchingnick" : "${matching.NICK}",
 				"fear" : ${matching.FEAR},
@@ -70,6 +70,7 @@
 	         //0(실패) or 1(성공)
 	         if(obj[0].result==1){
 	        	window.alert("매칭에 성공하셨습니다.")
+	        	<%session.setAttribute("mathcingcheck", "1");%>
 	         }else if(obj[0].result==2){
 	        	 window.alert("이미 같은 사람과 매칭 되었습니다 .(f5 그만 눌러!!!)")
 	         }else{

@@ -37,14 +37,17 @@
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						LOGIN</a>
 						
-					
-						
 				</c:when>
 				<c:otherwise>
-				
+				<script>
+					console.log(${mathcingcheck});
+					</script>
 				<c:choose>
-				<c:when test="${mathcingcheck ne null }">
-					<a href="/matchingBoard/matchingcheck.do"
+				<c:when test="${mathcingcheck eq 1 }">
+				<script>
+				
+				</script>	
+				<a href="/matchingBoard/matchingcheck.do"
 						class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-blue w3-hover-text-blue">
 						<i class="material-icons" style="font-size:30px;color:red;">favorite</i>
 						</a>

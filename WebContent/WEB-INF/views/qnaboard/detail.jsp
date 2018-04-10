@@ -347,7 +347,7 @@ ${sessionScope.userId}${qnadetail.Q_NO}
 	$("#like").click(function(){
 		$.ajax("/qnaboard/overlap.do",{
 			"method" : "post",
-			"async": false,
+			"async": true,
 			"data":{
 				"overlap" : "${sessionScope.userId}${qnadetail.Q_NO}"
 			}
@@ -355,7 +355,7 @@ ${sessionScope.userId}${qnadetail.Q_NO}
 			if(obj[0].result==1){
 				$.ajax("/qnaboard/addlike.do",{
 				"method" : "post",
-				"async" : false,
+				"async" : true,
 				"data":{
 					"q_no" : ${qnadetail.Q_NO}
 				}
@@ -369,7 +369,7 @@ ${sessionScope.userId}${qnadetail.Q_NO}
 			}else{
 				$.ajax("/qnaboard/likecancel.do",{
 					"method":"post",
-					"async" : false,
+					"async" : true,
 					"data":{
 						"q_no" : ${qnadetail.Q_NO}
 					}

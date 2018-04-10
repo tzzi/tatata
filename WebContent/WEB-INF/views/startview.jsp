@@ -340,7 +340,7 @@ html {
        $("#login").click(function(){
          $.ajax("/login/login.do",{
             "method" : "post",
-            "async" : false,
+            "async" : true,
             "data" : {
                "id" : $("#id1").val(),
                "pass" : $("#password").val()
